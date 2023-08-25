@@ -8,6 +8,7 @@ Create Date: 2020-11-20 15:06:02.230689
 from alembic import op
 import sqlalchemy as sa
 
+#add these in ***********************************
 import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
@@ -32,6 +33,7 @@ def upgrade():
     sa.UniqueConstraint('username')
     )
 
+    # add this in to add a schema ***********************************
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###qqqqqqqqq
