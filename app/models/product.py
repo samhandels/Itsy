@@ -18,6 +18,10 @@ class Product(db.Model):
 
 # relationship atrribute
     users = db.relationship("User", back_populates="products")
+    favorites_lists = db.relationship("Favorite", back_populates="products")
+    reviews = db.relationship("Review", back_populates="products")
+    shopping_cart_items = db.relationship("ShoppingCartItems", back_populates="products")
+    product_images = db.relationship("ProductImage", back_populates="products")
 
     def to_dict(self):
         return {
