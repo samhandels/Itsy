@@ -12,7 +12,7 @@ class ShoppingCartItems(db.Model):
 
     # relationship atrribute
     shopping_carts = db.relationship("ShoppingCart", back_populates="shopping_cart_items")
-    products = db.relationship("Product", backpopulates="shopping_cart_items")
+    products = db.relationship("Product", back_populates="shopping_cart_items")
 
     def to_dict(self):
         return {
