@@ -38,6 +38,11 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
+            'firstName': self.firstName,
+            'lastName': self.lastName,
             'username': self.username,
-            'email': self.email
+            'hashed_password': self.hashed_password,
+            'email': self.email,
+            'createdAt': self.createdAt,
+            'updatedAt': self.updatedAt
         }
