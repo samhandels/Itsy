@@ -11,6 +11,7 @@ class ShoppingCart(db.Model):
 
     # relationship atrribute
     users = db.relationship("User", back_populates="shopping_carts")
+    shopping_cart_items = db.relationship("ShoppingCartItems", back_populates="shopping_carts")
 
     def to_dict(self):
         return {
