@@ -18,6 +18,12 @@ class User(db.Model, UserMixin):
     createdAt = db.Column(db.DateTime)
     updatedAt = db.Column(db.DateTime)
 
+    # relationship atrribute
+    favorites_lists = db.relationship("Favorite", back_populates="users")
+    products = db.relationship("Product", back_populates="users")
+    reviews = db.relationship("Review", back_populates="users")
+    shopping_carts = db.relationship("ShoppingCart", back_populates="users")
+
     @property
     def password(self):
         return self.hashed_password
