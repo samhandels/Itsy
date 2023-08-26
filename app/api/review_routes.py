@@ -15,33 +15,40 @@ def validation_errors_to_error_messages(validation_errors):
         return errorMessages
 
 @reviews.route("/")
-def get_reviews():
+def get_all_reviews():
     all_reviews = Review.query.all()
     response = [rev.to_dict() for rev in all_reviews]
-    print(response)
-    return response
+    print(response.to_dict())
+    return response.to_dict()
 
 @reviews.route("/<int:id>")
-def get_one_review():
-    response = Review.query.get(id)
+def get_one_review(review_id):
+    response = Review.query.get(review_id)
+    print(response.to_dict())
+    return response.to_dict()
+
+@reviews.route("/current")
+def get_user_reviews():
+    user_reviews = Review.query.filter(Review.userId == current_user.id).all()
+    response = [user_rev.to_dict() for user_rev in user_reviews]
     print(response)
     return response
 
 @reviews.route("/<int:id>/reviews")
-def get_all_reviews_by_product():
-    product_reviews = Review.query.filter(Review.productId == id).all()
+def get_all_reviews_by_product(product_id):
+    product_reviews = Review.query.filter(Review.productId == product_id).all()
     response = [prod_rev.to_dict() for prod_rev in product_reviews]
     print(response)
     return response
 
 @reviews.route("/<int:id>/reviews/new", methods=["POST"])
-def create_review_by_product():
+def create_review_by_product(product_id):
     form = ReviewForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
 
     if form.validate_on_submit():
         review = Review(
-            productId = id,
+            productId = product_id,
             userId = current_user.id,
             review = form.data["review"],
             stars = form.data["stars"],
@@ -55,15 +62,14 @@ def create_review_by_product():
 
 
 @reviews.route("/<int:id>", methods=["DELETE"])
-def delete_review():
-    review_to_delete = Review.query.get(id)
+def delete_review(review_id):
+    review_to_delete = Review.query.get(review_id)
     product_id = review_to_delete.productId
     db.session.delete(review_to_delete)
     db.session.commit()
     return redirect(f"/products/{product_id}")
 
-@reviews.route("/<int:id>", methods=["PUT"])
-def update_review():
-    review_to_update = Review.query.get(id)
-    product_id = review_to_update.productId
-    
+# @reviews.route("/<int:id>", methods=["PUT"])
+# def update_review():
+#     review_to_update = Review.query.get(id)
+#     product_id = review_to_update.productId
