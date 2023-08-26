@@ -1,33 +1,31 @@
-.review-modal {
-    width: 300px;
-    height: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
-.review-step {
-    display: grid;
-    grid-template-columns: 1fr;
-}
 
-.stars-area {
-    display: flex;
-}
+
 
 .review-progress-tracker {
+    position: sticky;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     column-gap: 5px;
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+
+.stars-area {
+    align-items: center;
 }
 
 .review-progress-tracker>div {
     width: 20px;
     height: 20px;
     border: 2px solid black;
-    border-radius: 12px;
-    margin-bottom: 10px;
+    border-radius: 20px;
+    margin-bottom: 20px;
 }
+
+
 
 .complete {
     background-color: none;
@@ -35,10 +33,4 @@
 
 .current {
     background-color: black;
-}
-
-.review-progress-tracker>div>i {
-    display: flex;
-    justify-content: center;
-    margin-top: 2px;
 }
