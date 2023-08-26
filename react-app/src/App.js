@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
+import ReviewFormPage from "./components/ReviewFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 // import ProtectedRoute from "./components/auth/ProtectedRoute"
@@ -24,6 +25,9 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route path="/reviews">
+            <ReviewFormPage />
           </Route>
           {/* <ProtectedRoute path="/feed">
             <Feed /> // will check if there is a user logged in, otherwise will redirect you to log in. requires user to be authenticated to visit it

@@ -1,0 +1,44 @@
+.review-modal {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.review-step {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.stars-area {
+    display: flex;
+}
+
+.review-progress-tracker {
+    display: flex;
+    justify-content: flex-end;
+    column-gap: 5px;
+}
+
+.review-progress-tracker>div {
+    width: 20px;
+    height: 20px;
+    border: 2px solid black;
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
+
+.complete {
+    background-color: none;
+}
+
+.current {
+    background-color: black;
+}
+
+.review-progress-tracker>div>i {
+    display: flex;
+    justify-content: center;
+    margin-top: 2px;
+}
