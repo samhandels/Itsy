@@ -1,25 +1,39 @@
-# from flask import Blueprint
-# from flask_login import login_required
-# from app.models import ShoppingCart
+from flask import Blueprint, request
+from flask_login import login_required, current_user
+from ..models.shopping_cart_items import ShoppingCartItems
+from ..forms.shopping_cart_form import ShoppingCartForm
 
-# shopping_cart_routes = Blueprint('shopping_carts', __name__)
-
-
-# @shopping_cart_routes.route('/')
-# @login_required
-# def shopping_carts():
-#     """
-#     Query for all shopping_carts and returns them in a list of shopping_cart dictionaries
-#     """
-#     shopping_carts = ShoppingCart.query.all()
-#     return {'shopping_carts': [cart.to_dict() for cart in shopping_carts]}
+shopping_cart = Blueprint('shopping_carts', __name__)
 
 
-# @shopping_cart_routes.route('/<int:id>')
-# @login_required
-# def shopping_carts(id):
-#     """
-#     Query for a shopping_cart by id and returns that shopping_cart in a dictionary
-#     """
-#     shopping_cart = ShoppingCart.query.get(id)
-#     return shopping_cart.to_dict()
+@shopping_cart.route('/current')
+@login_required
+def get_shopping_cart():
+    """
+    Query for all shopping_cart_items and returns them in a list of shopping_cart dictionaries
+    """
+    shopping_cart = ShoppingCartItems.query.all()
+    response = [cart.to_dict() for cart in shopping_cart]
+    print(response)
+    return {'shopping_carts': response}
+
+
+
+#this goes into products detail page
+@products.route('products/<int:id>', methods=["POST"])
+@login_required
+def create_shopping_cart_item_by_product():
+    """
+    Create a shopping cart item to the shopping cart from the product detail page
+    """
+    shopping_cart = ShoppingCartItems.query.get(id)
+    return shopping_cart.to_dict()
+
+
+
+@shopping_cart.route('/current', methods=["PUT"])
+def update_shopping_cart_item():
+    shopping_cart_item_to_update = ShoppingCartItems.query.get(id)
+    product_id = shopping_cart_item_to_update.productId
+    
+
