@@ -4,9 +4,10 @@ import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import ReviewFormPage from "./components/ReviewFormPage";
+import AllShoppingCartItems from "./components/ShoppingCart/AllShoppingCartItems";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
-// import ProtectedRoute from "./components/auth/ProtectedRoute"
+import ProtectedRoute from "./components/auth/ProtectedRoute"
 
 function App() {
   const dispatch = useDispatch();
@@ -29,6 +30,9 @@ function App() {
           <Route path="/reviews">
             <ReviewFormPage />
           </Route>
+          <ProtectedRoute path="/shopping_cart/current">
+            <AllShoppingCartItems />
+          </ProtectedRoute>
           {/* <ProtectedRoute path="/feed">
             <Feed /> // will check if there is a user logged in, otherwise will redirect you to log in. requires user to be authenticated to visit it
           </ProtectedRoute> */}
