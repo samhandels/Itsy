@@ -17,11 +17,12 @@ def seed_favorites():
     db.session.add(favorite2)
     db.session.add(favorite3)
     db.session.commit()
+    print("fav lists added to DB")
 
 def undo_favorites():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.favorites RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.favorites_lists RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute(text("DELETE FROM favorites"))
+        db.session.execute(text("DELETE FROM favorites_lists"))
 
     db.session.commit()
