@@ -4,7 +4,7 @@ import { useModal } from "../../context/Modal"
 import { Link } from 'react-router-dom'
 import './ReviewFormModal.css'
 
-const ReviewFormModal = ({ reviewId }) => {
+const ReviewFormModal = ({  }) => {
     const [reviewDetails, setReviewDetails] = useState("")
     const [rating, setRating] = useState(0)
     const [activeRating, setActiveRating] = useState(0)
@@ -22,21 +22,11 @@ const ReviewFormModal = ({ reviewId }) => {
         <div className="review-modal">
             <form className="review-form" onSubmit={nextPage}>
                 <div className="review-progress-tracker">
-                    <div className={reviewPage === 1 ? "current" : "complete"}>{reviewDetails === "" ? "" : <i class="fa-solid fa-check" ></i>}</div>
-                    <div className={reviewPage === 2 ? "current" : "complete"}>{rating === 0 ? "" : <i class="fa-solid fa-check" ></i>}</div>
+                    <div className={reviewPage === 1 ? "current" : "complete"}>{rating === 0 ? "" : <i class="fa-solid fa-check" ></i>}</div>
+                    <div className={reviewPage === 2 ? "current" : "complete"}>{reviewDetails === "" ? "" : <i class="fa-solid fa-check" ></i>}</div>
                     <div className={reviewPage === 3 ? "current" : "complete"}>{(reviewDetails === "" && rating === "") ? <i class="fa-solid fa-check" ></i> : ""}</div>
                 </div>
-                {reviewPage === 1 &&
-                    <div className='review-step'>
-                        <textarea type="text" placeholder={reviewDetails === "" ? "Leave your review here" : ""}
-                            onChange={e => setReviewDetails(e.target.value)}>
-                            {
-                                reviewDetails == "" ? "" : reviewDetails
-                            }
-                        </textarea>
-                        <button type="button" onClick={nextPage}>Next</button>
-                    </div>}
-                {reviewPage === 2 && <div className='review-step'>
+                {reviewPage === 1 && <div className='review-step'>
                     <div className="stars-area">
                         <div
                             onMouseEnter={() => setActiveRating(1)}
@@ -70,9 +60,19 @@ const ReviewFormModal = ({ reviewId }) => {
                         </div>
                         <p>Stars</p>
                     </div>
-                    <button type="button" onClick={prevPage}>Go Back</button>
+                   
                     <button type="button" onClick={nextPage}>Next</button>
                 </div>}
+                {reviewPage === 2 &&
+                    <div className='review-step'>
+                        <textarea type="text" placeholder={reviewDetails === "" ? "Leave your review here" : ""}
+                            onChange={e => setReviewDetails(e.target.value)}>
+                            {
+                                reviewDetails == "" ? "" : reviewDetails
+                            }
+                        </textarea>
+                        <button type="button" onClick={nextPage}>Next</button>
+                    </div>}
                 {
                     reviewPage === 3 &&
                     <div className='review-step'>

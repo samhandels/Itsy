@@ -1,0 +1,8 @@
+.review-mini {
+    display: flex;
+}
+
+.review-container button {
+    background-color: none;
+    border: none;
+}
