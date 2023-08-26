@@ -22,12 +22,17 @@ def get_products():
       "ownerId": 1,
       "price": 12.95,
       "quantity": 10,
-      "updatedAt": null
+      "updatedAt": null,
+      "product_image": [
+      "https://i.etsystatic.com/24879642/r/il/84b06b/4197773364/il_794xN.4197773364_560s.jpg"
+      ]
       }
       ]
       """
       all_products = Product.query.all()
+
       response = [prod.to_dict() for prod in all_products]
+
       print(response)
       return response
 
