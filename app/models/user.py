@@ -19,10 +19,10 @@ class User(db.Model, UserMixin):
     updatedAt = db.Column(db.DateTime)
 
     # relationship atrribute
-    favorites_lists = db.relationship("Favorite", back_populates="users")
-    products = db.relationship("Product", back_populates="users")
-    reviews = db.relationship("Review", back_populates="users")
-    shopping_carts = db.relationship("ShoppingCart", back_populates="users")
+    favorites_lists = db.relationship("Favorite", back_populates="users", cascade="all, delete")
+    products = db.relationship("Product", back_populates="users", cascade="all, delete")
+    reviews = db.relationship("Review", back_populates="users", cascade="all, delete")
+    shopping_carts = db.relationship("ShoppingCart", back_populates="users", cascade="all, delete")
 
     @property
     def password(self):
