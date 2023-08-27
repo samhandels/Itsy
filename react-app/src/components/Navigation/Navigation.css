@@ -5,3 +5,14 @@
 .hidden {
   display: none;
 }
+
+/* Navbar changes 8/27 */
+
+.main-nav-bar {
+  display: flex;
+}
+.main-nav-bar > li {
+  list-style-type: none;
+}
+
+
