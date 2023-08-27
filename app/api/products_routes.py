@@ -109,18 +109,18 @@ def delete_product(id):
             return { "error": "product can't be found" }
 
 
-# @products.route("/<int:id>/reviews")
-# def get_all_reviews_by_product(id):
-#     """
-#     Query for reviews by product id
-#     """
-#     product_reviews = Review.query.filter(Review.productId == id).all()
-#     response = [prod_rev.to_dict() for prod_rev in product_reviews]
-#     print(response)
-#     return response
+@products.route("/<int:id>/reviews")
+def get_all_reviews_by_product(id):
+    """
+    Query for reviews by product id
+    """
+    product_reviews = Review.query.filter(Review.productId == id).all()
+    response = [prod_rev.to_dict() for prod_rev in product_reviews]
+    print(response)
+    return response
 
 
-@products.route("/<int:id>/reviews/new", methods=["POST"])
+@products.route("/<int:id>/reviews/new/", methods=["POST"])
 def create_review_by_product(id):
     """
     Post new review for product by product id

@@ -3,10 +3,11 @@ import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
-import ReviewFormPage from "./components/ReviewFormPage";
+import ReviewFormPage from "./components/Reviews/ReviewFormPage";
 import AllShoppingCartItems from "./components/ShoppingCart/AllShoppingCartItems";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
+import Footer from "./components/Footer";
 import ProtectedRoute from "./components/auth/ProtectedRoute"
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
           </ProtectedRoute> */}
         </Switch>
       )}
+      <Footer />
     </>
   );
 }
