@@ -1,3 +1,27 @@
 .components-border {
   border: 1px rgb(206, 117, 53) solid;
- } 
+} 
+
+
+.container {
+  border: 1px grey solid;
+}
+
+
+.row{
+  display: flex;
+  flex-direction: row;
+}
+
+.column{
+  display: flex;
+  flex-direction: column;
+}
+
+img{
+  width: 100%;
+  width: 100px;
+  height: 100px;
+  aspect-ratio: 1/1;
+  border-radius: 10px;
+}
