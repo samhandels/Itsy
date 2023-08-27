@@ -18,26 +18,14 @@ const loadReview = review => {
     }
 }
 
-const addReview = review => {
-    return {
-        type: ADD_REVIEW,
-        review
-    }
+export const getAllReviews = () => async (dispatch) => {
+    const res = await fetch('/api/reviews')
+
+    const reviews = await res.json();
+
+    dispatch(loadReviews(reviews))
 }
 
-const updateReview = review => {
-    return {
-        type: UPDATE_REVIEW,
-        review
-    }
-}
-
-const deleteReview = reviewId => {
-    return {
-        type: DELETE_REVIEW,
-        reviewId
-    }
-}
 
 
 const initialState = {
@@ -45,7 +33,7 @@ const initialState = {
     review: {}
 }
 
-const spotsReducer = (state = initialState, action = action) => {
+export const reviewsReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case LOAD_REVIEWS:
@@ -75,5 +63,3 @@ const spotsReducer = (state = initialState, action = action) => {
             return state;
     }
 }
-
-export default spotsReducer;
