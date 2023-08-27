@@ -11,7 +11,7 @@ function Navigation({ isLoaded }) {
 	return (
 		<ul className="main-nav-bar">
 			<li>
-				<NavLink exact to="/">Itsy</NavLink>
+				<NavLink className="itsy-logo" exact to="/">Itsy</NavLink>
 			</li>
 			<li className="search-bar">
 				<div>
@@ -27,7 +27,7 @@ function Navigation({ isLoaded }) {
 			</li>
 			<li className="nav-bar-links">
 				<i class="fa-regular fa-heart"></i>
-				{isLoaded && (<ProfileButton user={sessionUser} />)}
+				{isLoaded && (<ProfileButton className="profile-button" user={sessionUser} />)}
 				<i class="fa-solid fa-store"></i>
 				<i class="fa-regular fa-user"></i>
 				<i class="fa-solid fa-cart-shopping"></i>
