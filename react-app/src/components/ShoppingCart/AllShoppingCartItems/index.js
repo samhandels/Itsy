@@ -1,6 +1,6 @@
 import React from "react";
 import "./AllShoppingCartItems.css";
-// import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 // import { useEffect } from "react";
 // import { getSpotReviewsThunk } from "../../../store/reviews";
 // import SingleReview from "../SingleReview";
@@ -18,7 +18,7 @@ export default function AllShoppingCartItems({ spot }) {
   //   dispatch(getSpotReviewsThunk(spotId));
   // }, [dispatch]);
 
-  // const sessionUser = useSelector((state) => state.session.user);
+  const sessionUser = useSelector((state) => state.session.user);
   // //if the user have posted on this spot already, hide the post your view button with the popup Modal
   // let posted = "";
   // let sessionUserReview = reviews.find(
@@ -32,10 +32,23 @@ export default function AllShoppingCartItems({ spot }) {
   //   notposted = "";
 
   // if (!reviews) return null;
-  // if (!sessionUser) return null;
+  if (!sessionUser) return null;
   return (
     <div className="components-border">
-      <h1>{} shopping cart</h1>
+      <section className="components-border">Nav</section>
+      <section className="shopping_cart_container components-border">
+        {items.map((item)=>(
+        <div className="item-card" key={item.id}>
+          <div>
+             <SingleItem item={item} />
+          </div>
+        </div>
+                ))}
+      </section>
+      <section className="components-border">Footer</section>
     </div>
   );
 }
+
+
+
