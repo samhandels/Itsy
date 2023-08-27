@@ -28,7 +28,10 @@ def get_products():
       "updatedAt": null,
       "product_image": [
       "https://i.etsystatic.com/24879642/r/il/84b06b/4197773364/il_794xN.4197773364_560s.jpg"
-      ]
+      ],
+      "reviews": [
+      "Here is a review for product 1 by user 2"
+    ]
       }
       ]
       """
