@@ -11,24 +11,24 @@ function Navigation({ isLoaded }) {
 	return (
 		<ul className="main-nav-bar">
 			<li>
-				<NavLink exact to="/">Itsy</NavLink>
+				<NavLink className="itsy-logo" exact to="/">Itsy</NavLink>
 			</li>
-			<li className="SearchBar">
-				<div>
-					<input type="text"
-						placeholder="Search for anything"
-					// onChange={handleChange}
-					// value={searchInput}
-					/>
-					<i class="fa-solid fa-magnifying-glass"></i>
-				</div>
+			<li className="search-bar">
+				<input
+					className="search-bar-input"
+					type="text"
+					placeholder="Search for anything"
+				// onChange={handleChange}
+				// value={searchInput}
+				/>
+				<i className="fa-solid fa-magnifying-glass"></i>
+
 			</li>
-			<li>
-				<i class="fa-regular fa-heart"></i>
-				{isLoaded && (<ProfileButton user={sessionUser} />)}
-				<i class="fa-solid fa-store"></i>
-				<i class="fa-regular fa-user"></i>
-				<i class="fa-solid fa-cart-shopping"></i>
+			<li className="nav-bar-links">
+				<i className="fa-regular fa-heart"></i>
+				<i className="fa-solid fa-store"></i>
+				{isLoaded && (<ProfileButton className="profile-button" user={sessionUser} />)}
+				<i className="fa-solid fa-cart-shopping"></i>
 			</li>
 		</ul>
 	);
