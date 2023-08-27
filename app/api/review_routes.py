@@ -44,37 +44,6 @@ def get_user_reviews():
     print(response)
     return response
 
-# @products.route("/<int:id>/reviews")
-# def get_all_reviews_by_product(product_id):
-#     """
-#     Query for reviews by product id
-#     """
-#     product_reviews = Review.query.filter(Review.productId == product_id).all()
-#     response = [prod_rev.to_dict() for prod_rev in product_reviews]
-#     print(response)
-#     return response
-
-# @products.route("/<int:id>/reviews/new", methods=["POST"])
-# def create_review_by_product(product_id):
-#     """
-#     Post new review for product by product id
-#     """
-#     form = ReviewForm()
-#     form["csrf_token"].data = request.cookies["csrf_token"]
-
-#     if form.validate_on_submit():
-#         review = Review(
-#             productId = product_id,
-#             userId = current_user.id,
-#             review = form.data["review"],
-#             stars = form.data["stars"],
-#             createdAt = datetime.now(),
-#             updatedAt = datetime.now()
-#         )
-#         db.session.add(review)
-#         db.session.commit()
-#         return review.to_dict()
-#     return {'errors': validation_errors_to_error_messages(form.errors)}
 
 
 @reviews.route("/<int:id>", methods=["DELETE"])
