@@ -1,21 +1,35 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
 from ..models.shopping_cart_items import ShoppingCartItems
+from ..models.product import Product
 
 shopping_cart = Blueprint('shopping_carts', __name__)
 
 
 @shopping_cart.route('/current')
-@login_required
+# @login_required
 def get_shopping_cart():
     """
     Query for all shopping_cart_items and returns them in a list of shopping_cart dictionaries with the current user
     """
-    ShoppingCartItems.query.filter(ShoppingCartItems.shoppingCartId == current_user.id).all()
-    response = [cart.to_dict() for cart in shopping_cart]
-    print(response)
-    return {'shopping_carts': response}
-
+    # shopping_cart = db.seesion.query(ShoppingCartItems, Product).filter(ShoppingCartItems.shoppingCartId == current_user.id, ShoppingCartItems.productId == Product.id).all()
+    # shopping_cart = ShoppingCartItems.query.filter(ShoppingCartItems.shoppingCartId == current_user.id).all()
+    # shopping_cart = ShoppingCartItems.query.all()
+    # cart = ShoppingCartItems.query.filter(ShoppingCartItems.id == 1)
+  # SQLAlchemy loads addresses here
+    # print(cart.to_dict())
+    # response = [cart.to_dict() for cart in shopping_cart][0]
+    # response = []
+    # for item in shopping_cart:
+    #     product = Product.query.filter(item.productId == Product.id)
+    #     item["Product"] = product
+    #     response.append(item.to_dict())
+    product = (ShoppingCartItems).query.first()
+    print(product.product)  # SQLAlchemy loads addresses here
+    return product.to_dict()
+    # print(response)
+    # return {'shopping_carts': response.products}
+    # return {'the_cart': cart.to_dict()}
 
 
 # #this goes into products detail page

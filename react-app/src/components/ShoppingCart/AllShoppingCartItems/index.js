@@ -7,7 +7,7 @@ import "./AllShoppingCartItems.css";
 // import OpenModalButton from "../../OpenModalButton";
 // import ReviewFormModal from "../ReviewFormModal";
 
-export default function AllShoppingCartItems({ spot, hidePostBtn }) {
+export default function AllShoppingCartItems({ spot }) {
   // const spotId = spot.id;
   // const reviews = Object.values(
   //   useSelector((state) => (state.reviews.spot ? state.reviews.spot : []))
@@ -35,7 +35,7 @@ export default function AllShoppingCartItems({ spot, hidePostBtn }) {
   // if (!sessionUser) return null;
   return (
     <div className="components-border">
-      <h1>My shopping cart</h1>
+      <h1>{} shopping cart</h1>
     </div>
   );
 }
