@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../store/productsReducer";
 import { ProductCard } from "../ProductCard";
+import './styleAllProducts.css'
 
 export const  AllProducts = () => {
       const dispatch = useDispatch()
@@ -23,35 +24,35 @@ export const  AllProducts = () => {
       return (
 
             <div>
-                  <div id='filter-holder'>
-                        <div>
+                  <div id='filter-holder-AllProducts'>
+                        <div className="filter-AllProducts">
                               Jewelry & Accessories
                         </div>
-                        <div>
+                        <div className="filter-AllProducts">
                               Clothing & Shoes
                         </div>
-                        <div>
+                        <div className="filter-AllProducts">
                               Home & Living
                         </div>
-                        <div>
+                        <div className="filter-AllProducts">
                               Wedding & Party
                         </div>
-                        <div>
+                        <div className="filter-AllProducts">
                               Toys & Entertainment
                         </div>
-                        <div>
+                        <div className="filter-AllProducts">
                               Art & Collectibles
                         </div>
-                        <div>
+                        <div className="filter-AllProducts">
                               Craft Supplies
                         </div>
-                        <div>
+                        <div className="filter-AllProducts">
                               Gifts & Cards
                         </div>
 
                   </div>
 
-                  <div id='productCard-holder'>
+                  <div id='productCard-holder-AllProducts'>
                         {/* {products} */}
                         {products.map((product) => (
                               <ProductCard product={product} key={product.id} />
