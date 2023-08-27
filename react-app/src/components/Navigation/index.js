@@ -14,7 +14,6 @@ function Navigation({ isLoaded }) {
 				<NavLink className="itsy-logo" exact to="/">Itsy</NavLink>
 			</li>
 			<li className="search-bar">
-				<div>
 					<input
 						className="search-bar-input"
 						type="text"
@@ -23,13 +22,12 @@ function Navigation({ isLoaded }) {
 					// value={searchInput}
 					/>
 					<i class="fa-solid fa-magnifying-glass"></i>
-				</div>
+
 			</li>
 			<li className="nav-bar-links">
 				<i class="fa-regular fa-heart"></i>
-				{isLoaded && (<ProfileButton className="profile-button" user={sessionUser} />)}
 				<i class="fa-solid fa-store"></i>
-				<i class="fa-regular fa-user"></i>
+				{isLoaded && (<ProfileButton className="profile-button" user={sessionUser} />)}
 				<i class="fa-solid fa-cart-shopping"></i>
 			</li>
 		</ul>
