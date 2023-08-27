@@ -3,11 +3,13 @@ import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
-import ReviewFormPage from "./components/ReviewFormPage";
+import ReviewFormPage from "./components/Reviews/ReviewFormPage";
 import AllShoppingCartItems from "./components/ShoppingCart/AllShoppingCartItems";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
+import Footer from "./components/Footer";
 import ProtectedRoute from "./components/auth/ProtectedRoute"
+import { AllProducts } from "./components/AllProducts";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,11 +35,15 @@ function App() {
           <ProtectedRoute path="/shopping_cart/current">
             <AllShoppingCartItems />
           </ProtectedRoute>
+          <Route exact path='/'>
+            <AllProducts />
+          </Route>
           {/* <ProtectedRoute path="/feed">
             <Feed /> // will check if there is a user logged in, otherwise will redirect you to log in. requires user to be authenticated to visit it
           </ProtectedRoute> */}
         </Switch>
       )}
+      <Footer />
     </>
   );
 }

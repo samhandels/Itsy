@@ -28,7 +28,10 @@ def get_products():
       "updatedAt": null,
       "product_image": [
       "https://i.etsystatic.com/24879642/r/il/84b06b/4197773364/il_794xN.4197773364_560s.jpg"
-      ]
+      ],
+      "reviews": [
+      "Here is a review for product 1 by user 2"
+    ]
       }
       ]
       """
@@ -106,18 +109,18 @@ def delete_product(id):
             return { "error": "product can't be found" }
 
 
-# @products.route("/<int:id>/reviews")
-# def get_all_reviews_by_product(id):
-#     """
-#     Query for reviews by product id
-#     """
-#     product_reviews = Review.query.filter(Review.productId == id).all()
-#     response = [prod_rev.to_dict() for prod_rev in product_reviews]
-#     print(response)
-#     return response
+@products.route("/<int:id>/reviews")
+def get_all_reviews_by_product(id):
+    """
+    Query for reviews by product id
+    """
+    product_reviews = Review.query.filter(Review.productId == id).all()
+    response = [prod_rev.to_dict() for prod_rev in product_reviews]
+    print(response)
+    return response
 
 
-@products.route("/<int:id>/reviews/new", methods=["POST"])
+@products.route("/<int:id>/reviews/new/", methods=["POST"])
 def create_review_by_product(id):
     """
     Post new review for product by product id
