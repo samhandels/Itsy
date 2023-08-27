@@ -30,10 +30,10 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/reviews">
+          <Route exact path="/reviews">
             <ReviewFormPage />
           </Route>
-          <Route path="/reviews/curent">
+          <Route path="/reviews/current">
             <UserReviewPage />
           </Route>
           <ProtectedRoute path="/shopping_cart/current">
