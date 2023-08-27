@@ -10,9 +10,27 @@
 
 .main-nav-bar {
   display: flex;
+  justify-content: space-between;
+  margin-left: 20px;
+  margin-right: 60px;
+
 }
-.main-nav-bar > li {
+
+.main-nav-bar>li {
   list-style-type: none;
 }
 
+.nav-bar-links {
+  display: flex;
+  column-gap: 10px
+}
 
+.search-bar-input {
+  border: none;
+}
+
+.search-bar {
+  border: 1px solid grey;
+  padding: 5px 30px;
+  border-radius: 20px;
+}

@@ -13,9 +13,11 @@ function Navigation({ isLoaded }) {
 			<li>
 				<NavLink exact to="/">Itsy</NavLink>
 			</li>
-			<li className="SearchBar">
+			<li className="search-bar">
 				<div>
-					<input type="text"
+					<input
+						className="search-bar-input"
+						type="text"
 						placeholder="Search for anything"
 					// onChange={handleChange}
 					// value={searchInput}
@@ -23,7 +25,7 @@ function Navigation({ isLoaded }) {
 					<i class="fa-solid fa-magnifying-glass"></i>
 				</div>
 			</li>
-			<li>
+			<li className="nav-bar-links">
 				<i class="fa-regular fa-heart"></i>
 				{isLoaded && (<ProfileButton user={sessionUser} />)}
 				<i class="fa-solid fa-store"></i>
