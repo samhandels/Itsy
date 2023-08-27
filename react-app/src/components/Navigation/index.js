@@ -4,19 +4,32 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 
-function Navigation({ isLoaded }){
+function Navigation({ isLoaded }) {
 	const sessionUser = useSelector(state => state.session.user);
 
+
 	return (
-		<ul>
+		<ul className="main-nav-bar">
 			<li>
-				<NavLink exact to="/">Home</NavLink>
+				<NavLink exact to="/">Itsy</NavLink>
 			</li>
-			{isLoaded && (
-				<li>
-					<ProfileButton user={sessionUser} />
-				</li>
-			)}
+			<li className="SearchBar">
+				<div>
+					<input type="text"
+						placeholder="Search for anything"
+					// onChange={handleChange}
+					// value={searchInput}
+					/>
+					<i class="fa-solid fa-magnifying-glass"></i>
+				</div>
+			</li>
+			<li>
+				<i class="fa-regular fa-heart"></i>
+				{isLoaded && (<ProfileButton user={sessionUser} />)}
+				<i class="fa-solid fa-store"></i>
+				<i class="fa-regular fa-user"></i>
+				<i class="fa-solid fa-cart-shopping"></i>
+			</li>
 		</ul>
 	);
 }

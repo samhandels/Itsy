@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useModal } from "../../context/Modal"
 import { Link } from 'react-router-dom'
-import OpenModalButton from '../OpenModalButton'
+import OpenModalButton from '../../OpenModalButton'
 import ReviewFormModal from '../ReviewFormModal'
 import './ReviewFormPage.css'
 
@@ -13,6 +12,7 @@ const ReviewFormPage = ({ reviewId }) => {
 
     return (
         <div className="review-container">
+            <Link to=""></Link>
             <OpenModalButton
                 buttonText={<form>
                     <div className='review-mini'>
