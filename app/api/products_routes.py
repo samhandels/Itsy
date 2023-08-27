@@ -32,7 +32,7 @@ def get_products():
       }
       ]
       """
-      all_products = Product.query.all()
+      all_products = Product.query.all().join(Review)
 
       response = [prod.to_dict() for prod in all_products]
 
