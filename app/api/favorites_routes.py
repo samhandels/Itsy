@@ -19,3 +19,4 @@ def get_favorites():
     response = [fav.to_dict() for fav in all_favorites]
     print(response)
     return response
+    
