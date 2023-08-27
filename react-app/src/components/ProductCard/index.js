@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import './styleProductCard.css'
 
 export const ProductCard = ({product}) => {
@@ -13,15 +14,20 @@ export const ProductCard = ({product}) => {
       return (
 
             <div id='card-holder-productCard'>
-                  <div id='card-image-ProductCard'>
-                        <img id='card-image-ProductCard' src={ product.product_image[0] } />
-                  </div>
-                  <div id='card-name-productCard'>
-                        { product.name }
-                  </div>
-                  <div id='card-price-productCard'>
-                        {dollar.format(product.price)}
-                  </div>
+                  {/* <NavLink> */}
+
+                        <div id='card-image-ProductCard'>
+                              <img id='card-image-ProductCard' src={ product.product_image[0] } />
+                        </div>
+                        <div id='card-name-productCard'>
+                              { product.name }
+                        </div>
+                        <div id='card-price-productCard'>
+                              {dollar.format(product.price)}
+                        </div>
+
+
+                  {/* </NavLink> */}
 
             </div>
 
