@@ -5,15 +5,18 @@ from datetime import datetime
 # Adds a demo user, you can add other users here if you want
 def seed_products():
     product1 = Product(
-        ownerId=1, name='product-one' , price=12.95, description='This is the description for the first product', quantity=10, category='toys')
+        ownerId=1, name='Mini iPhones - Little Fingers' , price=12.95, description='This is the description for the first product', quantity=10, category='toys')
     product2 = Product(
-        ownerId=2, name='product-two' , price=11.95, description='This is the description for the second product', quantity=5, category='gifts')
+        ownerId=2, name='Tiny Water Bottles' , price=11.95, description='This is the description for the second product', quantity=5, category='gifts')
     product3 = Product(
-        ownerId=3, name='product-three' , price=10.95, description='This is the description for the third product', quantity=1, category='home')
+        ownerId=3, name='Small Refrigerator w/ lights' , price=10.95, description='This is the description for the third product', quantity=1, category='home')
+    product4 = Product(
+        ownerId=1, name='Miniture Fruit Varieties' , price=9.95, description='This is the description for the third product', quantity=4, category='craft')
 
     db.session.add(product1)
     db.session.add(product2)
     db.session.add(product3)
+    db.session.add(product4)
     db.session.commit()
 
 
