@@ -1,29 +1,49 @@
 export const LOAD_PRODUCTS = 'products/loadproducts';
 
-export const loadproducts = (products) => ({
+export const loadProducts = (products) => ({
       type: LOAD_PRODUCTS,
       products
-})
+});
 
-export const fetchProducts = (query) => async (dispatch) => {
-
-      if (query) {
-
+export const fetchProducts = () => async (dispatch) => {
             const res = await fetch('/api/products')
 
-            if (res.ok) {
-                  const allProducts = await res.json();
-                  dispatch (loadproducts(allProducts));
-            }
+            console.log('here');
 
-      } else {
+            const allProducts = await res.json();
 
-            const res = await fetch('/api/products')
+            const productsArray = Object.values(allProducts)
+
+            // console.log('thunk', productsArray);
+
+            dispatch (loadProducts(productsArray))
 
 
+            // if (res.ok) {
+            //       const allProducts = await res.json();
+            //       console.log('thunk', allProducts);
 
+            //       dispatch (loadproducts(allProducts))
+            //       return allProducts
+            // } else {
+            //       const errors = await res.json()
+            //       return errors
+            // }
+
+      // }
+
+}
+
+
+/** ======== Reducer ======== */
+
+const initialState = {};
+
+export const productsReducer = (state = initialState, action) => {
+      switch (action.type) {
+            case LOAD_PRODUCTS:
+                  return [ ...action.products ];
+            default:
+                  return state;
       }
-
-
-
 }
