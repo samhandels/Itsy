@@ -22,16 +22,16 @@ export default function SingleItems({ item, product }) {
 
   if (!sessionUser) return null;
   return (
-    <div className="components-border row space-between">
-      <div className="item container row">
-        <div className="owner-img column">
+    <div className="components-border row space-between margin-bottom">
+      <div className="item container row card">
+        <div className="owner-item-delete column margin-right">
           <div className=" product-owner row space-between">
             <div>{product.ownerName}</div>
             <div>Contact shop</div>
           </div>
           <div className="item-detail container row">
             <div className="img-delete column">
-              <div>
+              <div className="">
                 <img
                   src={product.product_image[0]}
                   alt=""
@@ -59,10 +59,11 @@ export default function SingleItems({ item, product }) {
         </div>
         <div className="item-price container column">
           <div>${price}</div>
-          <div>{item.product.quantity}</div>
+          <div className="red">Only {item.product.quantity} available and it's in 2 people's carts</div>
+          {/* <div>3 sold in the past 24 hours</div> */}
         </div>
       </div>
-      <div className="payment container column">
+      <div className="payment container column margin-right padding">
         <div className="column">
           <div>How you'll pay</div>
           <label>
