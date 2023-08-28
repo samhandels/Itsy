@@ -3,8 +3,6 @@ import './styleProductCard.css'
 
 export const ProductCard = ({product}) => {
 
-      console.log('card comp', product);
-
       let dollar = new Intl.NumberFormat('en-US', {
             style: 'currency',
             currency: 'USD',
