@@ -32,52 +32,64 @@ const ReviewFormModal = () => {
             </div>
             <form className="review-form" onSubmit={nextPage}>
                 {reviewPage === 1 && <div className='review-step review-step-1'>
-                    <div>
-                
+                    <div >
+                        <div className="review-step-one-upper">
+                            <div>
+                                <img src="https://i.etsystatic.com/24879642/r/il/84b06b/4197773364/il_794xN.4197773364_560s.jpg"></img>
+                            </div>
+                            <div className="review-step-one-upper-right">
+                                <div>PRODUCT NAME HERE</div>
+                                <div>SHOP OWNER NAME HERE</div>
+                                <div className="stars-area">
+                                    <tooltip title="Disappointed">
+                                        <div
+                                            onMouseEnter={() => setActiveRating(1)}
+                                            onMouseLeave={() => setActiveRating(rating)}
+                                            onClick={() => setRating(1)}>
+                                            <i className={activeRating >= 1 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
+                                        </div>
+                                    </tooltip>
+                                    <tooltip title="Not a fan">
+                                        <div
+                                            onMouseEnter={() => setActiveRating(2)}
+                                            onMouseLeave={() => setActiveRating(rating)}
+                                            onClick={() => setRating(2)}>
+                                            <i className={activeRating >= 2 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
+                                        </div>
+                                    </tooltip>
+                                    <tooltip title="It's okay">
+                                        <div
+                                            onMouseEnter={() => setActiveRating(3)}
+                                            onMouseLeave={() => setActiveRating(rating)}
+                                            onClick={() => setRating(3)}>
+                                            <i className={activeRating >= 3 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
+                                        </div>
+                                    </tooltip>
+                                    <tooltip title="Like it">
+                                        <div
+                                            onMouseEnter={() => setActiveRating(4)}
+                                            onMouseLeave={() => setActiveRating(rating)}
+                                            onClick={() => setRating(4)}>
+                                            <i className={activeRating >= 4 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
+                                        </div>
+                                    </tooltip>
+                                    <tooltip title="Love it">
+                                        <div
+                                            onMouseEnter={() => setActiveRating(5)}
+                                            onMouseLeave={() => setActiveRating(rating)}
+                                            onClick={() => setRating(5)}>
+                                            <i className={activeRating >= 5 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
+                                        </div>
+                                    </tooltip>
+                                </div>
+                                <div>My review rating</div>
+                            </div>
+                        </div>
+                        <div className="low-review-help">
+                            <p>Sorry your experience wasn't great</p>
+                            <p>Learn ways to get help with your order.</p>
+                        </div>
                     </div>
-                    <div className="stars-area">
-                        <tooltip title="Disappointed">
-                            <div
-                                onMouseEnter={() => setActiveRating(1)}
-                                onMouseLeave={() => setActiveRating(rating)}
-                                onClick={() => setRating(1)}>
-                                <i className={activeRating >= 1 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
-                            </div>
-                        </tooltip>
-                        <tooltip title="Not a fan">
-                            <div
-                                onMouseEnter={() => setActiveRating(2)}
-                                onMouseLeave={() => setActiveRating(rating)}
-                                onClick={() => setRating(2)}>
-                                <i className={activeRating >= 2 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
-                            </div>
-                        </tooltip>
-                        <tooltip title="It's okay">
-                            <div
-                                onMouseEnter={() => setActiveRating(3)}
-                                onMouseLeave={() => setActiveRating(rating)}
-                                onClick={() => setRating(3)}>
-                                <i className={activeRating >= 3 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
-                            </div>
-                        </tooltip>
-                        <tooltip title="Like it">
-                            <div
-                                onMouseEnter={() => setActiveRating(4)}
-                                onMouseLeave={() => setActiveRating(rating)}
-                                onClick={() => setRating(4)}>
-                                <i className={activeRating >= 4 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
-                            </div>
-                        </tooltip>
-                        <tooltip title="Love it">
-                            <div
-                                onMouseEnter={() => setActiveRating(5)}
-                                onMouseLeave={() => setActiveRating(rating)}
-                                onClick={() => setRating(5)}>
-                                <i className={activeRating >= 5 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
-                            </div>
-                        </tooltip>
-                    </div>
-
                 </div>}
                 {reviewPage === 2 &&
                     <div className='review-step'>

@@ -1,7 +1,3 @@
-
-
-
-
 .review-progress-tracker {
     position: sticky;
     display: flex;
@@ -40,4 +36,8 @@
 
 .current {
     background-color: black;
+}
+
+.review-step-one-upper {
+    display: flex;
 }
