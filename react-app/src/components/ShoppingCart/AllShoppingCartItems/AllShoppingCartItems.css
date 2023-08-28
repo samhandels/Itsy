@@ -40,7 +40,6 @@
 }
 
 .lightgray {
-  color: lightgray;
   border: 1px lightgrey solid;
   padding: 20px;
 }
@@ -50,6 +49,7 @@
   color: white;
   border-radius: 50px;
   padding: 10px 15px;
+  position: relative;
 }
 
 .card {

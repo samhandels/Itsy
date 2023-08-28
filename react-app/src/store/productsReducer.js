@@ -57,6 +57,42 @@ export const fetchProductDetails = (productId) => async (dispatch) => {
       }
 }
 
+export const createProductThunk = (product) => async (dispatch) => {
+      try {
+        const res = await fetch("/api/products", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(product),
+        });
+    
+        if (res.ok) {
+          const productResponse = await res.json();
+          return productResponse;
+        } else {
+          const errors = await res.json();
+          return errors;
+        }
+      } catch (error) {
+        const errors = await error.json();
+        return errors;
+      }
+    };
+
+export const updateProductThunk = (product) => async (dispatch) => {
+      const res = await fetch(`/api/products/${product.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(product),
+      });
+    
+      if (res.ok) {
+        const productResponse = await res.json();
+        return productResponse;
+      } else {
+        const errors = await res.json();
+        return errors;
+      }
+    };
 
 /** ======== Reducer ======== */
 
