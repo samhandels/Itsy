@@ -24,10 +24,8 @@ export default function AllShoppingCartItems() {
   if (!items) return null;
   if (!sessionUser) return null;
   return (
-    <div className="components-border">
-      <section className="components-border">Nav</section>
-      <section className="shopping-cart container components-border">
-      <h1>Hello {sessionUser.username}, {} items in your shopping cart</h1>
+      <div className="shopping-cart components-border">
+      <div>Hello {sessionUser.username}, {} items in your shopping cart</div>
         {items.map((item)=>(
         <div className="cart_item" key={item.id}>
           <div>
@@ -35,9 +33,8 @@ export default function AllShoppingCartItems() {
           </div>
         </div>
                 ))}
-      </section>
-      <section className="components-border">Footer</section>
-    </div>
+      </div>
+
   );
 }
 
