@@ -1,9 +1,15 @@
-export const LOAD_PRODUCTS = 'products/loadproducts';
+export const LOAD_PRODUCTS = 'products/loadProducts';
+export const GET_PRODUCT = 'products/getProducts';
 
 export const loadProducts = (products) => ({
       type: LOAD_PRODUCTS,
       products
 });
+
+export const getProduct = (product) => ({
+      type: GET_PRODUCT,
+      product
+})
 
 export const fetchProducts = (query) => async (dispatch) => {
 
@@ -37,6 +43,20 @@ export const fetchProducts = (query) => async (dispatch) => {
 
 }
 
+export const fetchProductDetails = (productId) => async (dispatch) => {
+      const res = await fetch(`/api/products/${productId}`)
+
+      if (res.ok) {
+            const product = await res.json()
+            const products = {}
+            products.singleProduct = { ...product }
+            dispatch (getProduct(products))
+      } else {
+            const errors = await res.json()
+            return errors
+      }
+}
+
 
 /** ======== Reducer ======== */
 
@@ -46,6 +66,8 @@ export const productsReducer = (state = initialState, action) => {
       switch (action.type) {
             case LOAD_PRODUCTS:
                   return [ ...action.products ];
+            case GET_PRODUCT:
+                  return { ...action.product }
             default:
                   return state;
       }

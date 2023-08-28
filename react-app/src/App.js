@@ -12,6 +12,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute"
 import { AllProducts } from "./components/AllProducts";
 import UserReviewPage from "./components/Reviews/UserReviewPage"
 import FavoritesPage from "./components/Favorites";
+import { ProductDetails } from "./components/ProductDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,6 +37,9 @@ function App() {
           </Route>
           <Route path="/reviews/current">
             <UserReviewPage />
+          </Route>
+          <Route exact path="/products/:productId">
+            <ProductDetails />
           </Route>
           <ProtectedRoute path="/favorites">
             <FavoritesPage />
