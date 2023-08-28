@@ -145,6 +145,7 @@ export const ProductForm = ({ product, formType }) => {
           </div>
         </section>
         <section className="InventoryandPricing lightgray">
+        <div>Inventory and Pricing</div>
           <label>
             <i className="fa-solid fa-dollar-sign"></i>
             {"  "}
@@ -172,6 +173,9 @@ export const ProductForm = ({ product, formType }) => {
             {hasSubmitted && errors.quantity && `${errors.quantity}`}
           </div>
         </section>
+        <button className="black-button" type="submit">
+          {formType}
+        </button>
       </form>
     </div>
   );
