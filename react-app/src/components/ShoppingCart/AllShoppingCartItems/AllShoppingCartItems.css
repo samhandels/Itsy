@@ -1,5 +1,6 @@
 .components-border {
   border: 1px lightgrey solid;
+  margin-bottom: 50px;
 } 
 
 
@@ -26,6 +27,9 @@
   border-radius: 10px;
 }
 
+.center{
+  margin: auto;
+}
 
 .space-between{
   justify-content: space-between;
@@ -34,4 +38,12 @@
 
 .lightgray{
   color: lightgray
+}
+
+.black-button{
+
+background-color: black;
+color: white;
+border-radius: 50px;
+padding: 10px 15px;
 }

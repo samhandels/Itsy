@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom"
 import "../AllShoppingCartItems/AllShoppingCartItems.css";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -6,11 +7,15 @@ import { useDispatch, useSelector } from "react-redux";
 export default function SingleItems({ item }) {
 
   const sessionUser = useSelector((state) => state.session.user);
- 
+  const price = item.product.price
+  const discount = price * 1/5
+  const subtotal = price * 4/5
+  const shipping = price * 1/10
+  const total = price * 1.1
 
   if (!sessionUser) return null;
   return (
-    <div className="components-border">
+    <div className="components-border row">
       <div className="item container row">
         <div className="item-detail container row">
           <div className="img-delete column">
@@ -27,7 +32,7 @@ export default function SingleItems({ item }) {
           </div>
         </div>
         <div className="item-price container column">
-          <div>$ {item.product.price}</div>
+          <div>${price.toFixed(2)}</div>
           <div>{item.product.quantity}</div>
         </div>
         </div>
@@ -35,24 +40,25 @@ export default function SingleItems({ item }) {
         <div>How you'll pay</div>
         <div className="row space-between">
         <div>Item(s) total</div>
-        <div>$ {item.product.price}</div>
+        <div>${price}</div>
         </div>
         <div className="row space-between">
           <div>Shop discount</div>
-          <div>$ {item.product.price * 1/5}</div>
+          <div>-${discount.toFixed(2)}</div>
         </div>
         <div className="row space-between ">
           <div>Subtotal</div>
-          <div>$ {item.product.price * 4/5}</div>
+          <div>${subtotal.toFixed(2)}</div>
         </div>
         <div className="row space-between ">
           <div>Shipping</div>
-          <div>$ {item.product.price * 1/10}</div>
+          <div>${shipping.toFixed(2)}</div>
         </div>
         <div className="row space-between ">
           <div>Total (item)</div>
-          <div>$ {item.product.price * 1.1}</div>
+          <div>${total.toFixed(2)}</div>
         </div>
+        <div className="row center"><button className="black-button">Proceed to checkout</button></div>
         </div>
     </div>
   );
