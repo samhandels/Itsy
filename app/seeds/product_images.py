@@ -10,10 +10,13 @@ def seed_product_images():
         productId=2, url='https://i.etsystatic.com/16453374/r/il/5b06c1/3720713756/il_794xN.3720713756_tjnt.jpg')
     product_image3 = ProductImage(
         productId=3, url='https://i.etsystatic.com/45002849/r/il/38a572/5066251372/il_794xN.5066251372_7s1h.jpg')
+    product_image4 = ProductImage(
+        productId=4, url='https://i.etsystatic.com/16453374/r/il/75cabe/3985637731/il_794xN.3985637731_pps2.jpg' )
 
     db.session.add(product_image1)
     db.session.add(product_image2)
     db.session.add(product_image3)
+    db.session.add(product_image4)
     db.session.commit()
 
 

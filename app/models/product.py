@@ -19,9 +19,9 @@ class Product(db.Model):
 # relationship atrribute
     users = db.relationship("User", back_populates="products")
     favorites_lists = db.relationship("Favorite", back_populates="products", cascade="all, delete")
-    reviews = db.relationship("Review", back_populates="products", cascade="all, delete")
+    reviews = db.relationship("Review", back_populates="products", cascade="all, delete", lazy="joined")
     shopping_cart_items = db.relationship("ShoppingCartItems", back_populates="products", cascade="all, delete")
-    product_images = db.relationship("ProductImage", back_populates="products", cascade="all, delete")
+    product_images = db.relationship("ProductImage", back_populates="products", cascade="all, delete", lazy="joined")
 
 
     def to_dict(self):
@@ -35,5 +35,6 @@ class Product(db.Model):
             'category': self.category,
             'createdAt': self.createdAt,
             'updatedAt': self.updatedAt,
-            'product_image': [product_image.url for product_image in self.product_images]
+            'product_image': [product_image.url for product_image in self.product_images],
+            'reviews': [review.review for review in self.reviews]
         }

@@ -12,11 +12,19 @@ class ShoppingCartItems(db.Model):
 
     # relationship atrribute
     shopping_carts = db.relationship("ShoppingCart", back_populates="shopping_cart_items")
-    products = db.relationship("Product", back_populates="shopping_cart_items")
+    products = db.relationship("Product", back_populates="shopping_cart_items", lazy="joined", order_by="asc(Product.updatedAt)")
 
     def to_dict(self):
         return {
             'id': self.id,
             'shoppingCartId': self.shoppingCartId,
-            'productId': self.productId
+            'productId': self.productId,
+            'product': {
+                'ownerId': self.products.ownerId,
+                'name': self.products.name,
+                'price': self.products.price,
+                'description': self.products.description,
+                'quantity': self.products.quantity,
+                'category': self.products.category
+            }
         }

@@ -4,6 +4,7 @@ import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import { Link } from "react-router-dom/";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -39,15 +40,16 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
+      <button className="user-button" onClick={openMenu}>
         <i className="fas fa-user-circle" />
       </button>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <li>{user.username}</li>
-            <li>{user.email}</li>
-            <li>
+            <li className="profile-dropdown-li">{user.username}</li>
+            <li className="profile-dropdown-li">{user.email}</li>
+            <li className="profile-dropdown-li"><Link to="/reviews/current">Your Reviews</Link></li>
+            <li className="profile-dropdown-li">
               <button onClick={handleLogout}>Log Out</button>
             </li>
           </>
