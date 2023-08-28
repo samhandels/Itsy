@@ -1,12 +1,8 @@
-
-
 .hidden {
   display: none;
 }
 
 /* Navbar changes 8/27 */
-
-
 
 .main-nav-bar {
   display: grid;
@@ -17,7 +13,7 @@
 }
 
 .itsy-logo {
-  color: #F1641E;
+  color: #f1641e;
   text-decoration: none;
   font-size: 40px;
   margin-left: 10px;
@@ -56,8 +52,6 @@
   align-self: center;
 }
 
-
-
 .profile-button {
   background-color: none;
   border: none;
@@ -82,6 +76,7 @@
 
 .fa-store {
   margin-top: -3px;
+  color: black;
 }
 
 /* profile modal */
