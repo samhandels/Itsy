@@ -9,10 +9,10 @@ const FavoritesPage = () => {
     const currentUser = useSelector((state) => state.session.user);
     const favorites = useSelector((state) => state.favorites.favorites);
     const dispatch = useDispatch()
-    console.log("favorites -------------", favorites)
+    // console.log("favorites -------------", favorites)
 
     let favArr = Object.values(favorites)
-    console.log("fav Arr ---------------", favArr)
+    // console.log("fav Arr ---------------", favArr)
 
     useEffect(() => {
         dispatch(getAllFavorites())

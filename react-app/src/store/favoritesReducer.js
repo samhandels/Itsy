@@ -35,7 +35,7 @@ const deleteFavorite = (favoriteId) => {
 export const getAllFavorites = () => async (dispatch) => {
     const res = await fetch('/api/favorites');
     const favorites = await res.json();
-    console.log("favorites thunk -----------", favorites)
+    // console.log("favorites thunk -----------", favorites)
     dispatch(loadFavorites(favorites));
 };
 
