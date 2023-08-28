@@ -1,7 +1,12 @@
 /* TODO Add site wide styles */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700;900&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700;900&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
 
 body {
-      font-family: "Spectral", serif;
-      color: rgb(35, 56, 43);
+  font-family: "Spectral", serif;
+  color: rgb(35, 56, 43);
+}
+
+.box-shadow {
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
 }
