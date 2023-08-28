@@ -11,6 +11,7 @@ import Footer from "./components/Footer";
 import ProtectedRoute from "./components/auth/ProtectedRoute"
 import { AllProducts } from "./components/AllProducts";
 import UserReviewPage from "./components/Reviews/UserReviewPage"
+import FavoritesPage from "./components/Favorites";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,15 +37,15 @@ function App() {
           <Route path="/reviews/current">
             <UserReviewPage />
           </Route>
+          <ProtectedRoute path="/favorites">
+            <FavoritesPage />
+          </ProtectedRoute>
           <ProtectedRoute path="/shopping_cart/current">
             <AllShoppingCartItems />
           </ProtectedRoute>
           <Route exact path='/'>
             <AllProducts />
           </Route>
-          {/* <ProtectedRoute path="/feed">
-            <Feed /> // will check if there is a user logged in, otherwise will redirect you to log in. requires user to be authenticated to visit it
-          </ProtectedRoute> */}
         </Switch>
       )}
       <Footer />

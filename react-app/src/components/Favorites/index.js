@@ -22,9 +22,9 @@ const FavoritesPage = () => {
                 </h2>
             </div>
             <div>
-                {favorites.map((product) => (
+                {/* {favorites.map((product) => (
                     <ProductCard product={product} key={product.id} />
-                ))}
+                ))} */}
             </div>
         </>
     );
