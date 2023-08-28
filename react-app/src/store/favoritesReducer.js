@@ -35,20 +35,21 @@ const deleteFavorite = (favoriteId) => {
 export const getAllFavorites = () => async (dispatch) => {
     const res = await fetch('/api/favorites');
     const favorites = await res.json();
+    // console.log("favorites thunk -----------", favorites)
     dispatch(loadFavorites(favorites));
 };
 
 
 const initialState = {
     favorites: {},
-    favorite: {},
+    // favorite: {},
 };
 
 export const favoritesReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case LOAD_FAVORITES:
-            const favoritesState = { ...state, favorites: {}, favorite: { ...state.favorite } };
+            const favoritesState = { ...state, favorites: {} };
             action.favorites.forEach((favorite) => {
                 favoritesState.favorites[favorite.id] = favorite;
             });
