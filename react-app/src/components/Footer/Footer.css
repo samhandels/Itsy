@@ -3,23 +3,23 @@
     border-top: 1px solid #e0e0e0;
 }
 
-.renewable-energy-section {
+#renewable-energy-section {
+    font-family: "Roboto";
+    font-weight: 300;
+    text-decoration-line: underline;
+    text-decoration-style: dashed;
+    color: white;
     text-align: center;
-    padding: 10px 0;
-    font-weight: bold;
+    padding: 7px;
     background-color: rgb(77,107,198);
-    color: #FFFFFF;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 .team-section {
     padding: 20px 0;
     background-color: rgb(46,70,108);
     color: #FFFFFF;
-}
-
-.team-section h2 {
-    text-align: center;
-    margin-bottom: 15px;
 }
 
 .team-members {
@@ -33,9 +33,13 @@
     border-radius: 50%;
 }
 
-.team-member p {
+.team-member {
     text-align: center;
     margin-top: 5px;
+}
+
+.member-image:hover {
+    box-shadow: 0px 0px 5px 5px white;
 }
 
 .bottom-links {
@@ -47,12 +51,31 @@
     color: #FFFFFF;
 }
 
-.bottom-links a {
+a {
     margin: 0 10px;
     color: #FFFFFF;
     text-decoration: none;
 }
+.bottom-links {
+    padding-left: 10px;
+    padding-top: 0;
+}
 
 .bottom-links a:hover {
     text-decoration: underline;
+
+}
+
+.who-we-are {
+    color: rgb(77,107,198);
+    font-family: "Roboto";
+    font-weight: 900;
+    font-size: 90px;
+    margin-left: -50px;
+    margin-right: -50px;
+    opacity: .35;
+}
+
+.who-we-are:hover {
+    opacity: 1;
 }

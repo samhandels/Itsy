@@ -1,6 +1,4 @@
-.profile-dropdown {
-  position: absolute;
-}
+
 
 .hidden {
   display: none;
@@ -8,40 +6,48 @@
 
 /* Navbar changes 8/27 */
 
+
+
 .main-nav-bar {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  column-gap: 40px;
+  grid-template-columns: 70px auto 130px;
+  column-gap: 20px;
   padding-left: 0px;
   margin: 10px 10px;
 }
 
-.main-nav-bar>li {
-  list-style-type: none;
-}
-
-.nav-bar-links {
-  display: flex;
-  column-gap: 10px;
-  justify-content: flex-end;
-  align-items: center;
+.itsy-logo {
+  color: #F1641E;
+  text-decoration: none;
+  font-size: 40px;
+  margin-left: 10px;
 }
 
 .search-bar-input {
   border: none;
-}
-
-.fa-solid {
-  justify-self: flex-end;
+  font-family: "Roboto";
+  font-weight: 300;
+  font-size: 15px;
 }
 
 .search-bar {
   border: 1px solid black;
+  margin-top: 5px;
+  margin-bottom: 5px;
   padding: 5px 30px;
-  border-radius: 20px;
+  border-radius: 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.nav-bar-links {
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 10px;
 }
 
 .profile-button {
@@ -56,17 +62,31 @@
 
 .fa-user-circle {
   font-size: 18px;
+  margin-left: -3px;
+  margin-right: -3px;
 }
 
-.itsy-logo {
-  color: #F1641E;
-  text-decoration: none;
-  font-size: 30px;
+.fa-heart {
+  margin-top: -3px;
+  margin-right: 2px;
 }
 
+.fa-store {
+  margin-top: -3px;
+}
+
+/* profile modal */
+.profile-dropdown {
+  position: absolute;
+}
 
 .profile-dropdown {
   background-color: white;
   position: absolute;
   top: 60px;
+}
+
+.fa-cart-shopping {
+  color: black;
+  padding-left: -3px;
 }
