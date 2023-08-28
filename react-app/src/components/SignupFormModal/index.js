@@ -8,6 +8,8 @@ function SignupFormModal() {
 	const dispatch = useDispatch();
 	const [email, setEmail] = useState("");
 	const [username, setUsername] = useState("");
+	const [firstName, setFirstName] = useState("")
+	const [lastName, setLastName] = useState("")
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [errors, setErrors] = useState([]);
@@ -30,16 +32,17 @@ function SignupFormModal() {
 	};
 
 	return (
-		<>
-			<h1>Sign Up</h1>
-			<form onSubmit={handleSubmit}>
-				<ul>
+		<div className="signup-modal">
+			<div className="signup-title">Create your account</div>
+			<div className="signup-subtitle">Registration is easy.</div>
+			<form className="signup-form" onSubmit={handleSubmit}>
+				{errors.length ? <ul>
 					{errors.map((error, idx) => (
 						<li key={idx}>{error}</li>
 					))}
-				</ul>
-				<label>
-					Email
+				</ul> : ""}
+				<label className="signup-field">
+					Email address
 					<input
 						type="text"
 						value={email}
@@ -47,7 +50,7 @@ function SignupFormModal() {
 						required
 					/>
 				</label>
-				<label>
+				<label className="signup-field">
 					Username
 					<input
 						type="text"
@@ -56,7 +59,25 @@ function SignupFormModal() {
 						required
 					/>
 				</label>
-				<label>
+				<label className="signup-field">
+					First Name
+					<input
+						type="text"
+						value={firstName}
+						onChange={(e) => setFirstName(e.target.value)}
+						required
+					/>
+				</label>
+				<label className="signup-field">
+					Last Name
+					<input
+						type="text"
+						value={lastName}
+						onChange={(e) => setLastName(e.target.value)}
+						required
+					/>
+				</label>
+				<label className="signup-field">
 					Password
 					<input
 						type="password"
@@ -65,7 +86,7 @@ function SignupFormModal() {
 						required
 					/>
 				</label>
-				<label>
+				<label className="signup-field">
 					Confirm Password
 					<input
 						type="password"
@@ -74,9 +95,9 @@ function SignupFormModal() {
 						required
 					/>
 				</label>
-				<button type="submit">Sign Up</button>
+				<button className="signup-button grow" type="submit">Register</button>
 			</form>
-		</>
+		</div>
 	);
 }
 

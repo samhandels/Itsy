@@ -7,7 +7,7 @@ import './ReviewFormModal.css'
 const ReviewFormModal = () => {
     const [reviewDetails, setReviewDetails] = useState("")
     const [rating, setRating] = useState(0)
-    const [activeRating, setActiveRating] = useState(currentRating)
+    const [activeRating, setActiveRating] = useState(0)
     const [reviewPage, setReviewPage] = useState(1)
 
 
@@ -26,7 +26,7 @@ const ReviewFormModal = () => {
     return (
         <div className="review-modal">
             <div className="review-progress-tracker">
-                {reviewPage === 1 && <p>{currentRating}</p>}
+                {reviewPage === 1 && <p>Leave a Review</p>}
                 {reviewPage === 2 && <p>Great! One more thing...</p>}
                 {reviewPage === 3 && <p>Ready to submit?</p>}
                 <div className='progress-circles'>
