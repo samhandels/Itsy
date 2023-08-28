@@ -28,7 +28,7 @@ function Navigation({ isLoaded }) {
         <NavLink exact to="/favorites">
 				  <i className="nav-link fa-regular fa-heart"></i>
         </NavLink>
-				<i className="nav-link fa-solid fa-store"></i>
+				<NavLink exact to="/store"><i className="nav-link fa-solid fa-store"></i></NavLink>
 				{isLoaded && (
 					<ProfileButton className="nav-link profile-button" user={sessionUser} />
 				)}

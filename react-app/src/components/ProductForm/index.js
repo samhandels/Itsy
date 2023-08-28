@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import "../ShoppingCart/AllShoppingCartItems/AllShoppingCartItems.css"
 // import { createProductThunk } from "../../../store/products";
 // import { updateProductThunk } from "../../../store/products";
 //! need to create thunks
@@ -55,13 +56,13 @@ export const ProductForm = ({ product, formType }) => {
     // console.log("what product is in the productForm==============", product);
 
     // console.log("1. user input", product);
-    if (formType === "Update product") {
+    if (formType === "Update") {
       // && !Object.values(errors).length
       // const editedproduct = await dispatch(
       //   updateProductThunk(product)
       // );
       // product = editedproduct;
-    } else if (formType === "Create product") {
+    } else if (formType === "Create") {
       // && !Object.values(errors).length
       // const newproduct = await dispatch(
       //   createProductThunk(product)
@@ -84,14 +85,14 @@ export const ProductForm = ({ product, formType }) => {
     //     errors
     //   );
   } else {
-    history.push(`/products/${product.id}`);
+    // history.push(`/products/${product.id}`);
   }
 
   return (
     <div className="center-container">
       <div>Create a Product</div>
       <form onSubmit={handleSubmit}>
-        <section className="productImage">
+        <section className="productImage lightgray">
           <div>Photo</div>
           <label>
             <input
@@ -105,7 +106,7 @@ export const ProductForm = ({ product, formType }) => {
             {hasSubmitted && errors.productImage && `${errors.productImage}`}
           </div>
         </section>
-        <section className="productDetail">
+        <section className="productDetail lightgray">
           <div>Product details</div>
           <div>Tell the world all about your item and why they’ll love it.</div>
           <label>
@@ -120,7 +121,7 @@ export const ProductForm = ({ product, formType }) => {
             {hasSubmitted && errors.name && `${errors.name}`}
           </div>
           <label>
-            <i className="fa-solid fa-dollar-sign"></i>
+            <i className="fa-solid fa-magnifying-glass"></i>
             {"  "}
             <input
               type="text"
@@ -143,7 +144,7 @@ export const ProductForm = ({ product, formType }) => {
             {hasSubmitted && errors.description && `${errors.description}`}
           </div>
         </section>
-        <section className="InventoryandPricing">
+        <section className="InventoryandPricing lightgray">
           <label>
             <i className="fa-solid fa-dollar-sign"></i>
             {"  "}
