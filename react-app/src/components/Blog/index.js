@@ -4,7 +4,7 @@ import './Blog.css';
 function BlogSection() {
     return (
         <div className="blog-section">
-            <a className="blog-header">Fresh from the blog -</a>
+            <h1 className="blog-header">Fresh from the blog -</h1>
 
             <div className="blog-cards">
                 <div className="blog-card">
