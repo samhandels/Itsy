@@ -25,7 +25,9 @@ function Navigation({ isLoaded }) {
 				<i className="fa-solid fa-magnifying-glass"></i>
 			</div>
 			<div className="nav-bar-links">
-				<i className="nav-link fa-regular fa-heart"></i>
+        <NavLink exact to="/favorites">
+				  <i className="nav-link fa-regular fa-heart"></i>
+        </NavLink>
 				<i className="nav-link fa-solid fa-store"></i>
 				{isLoaded && (
 					<ProfileButton className="nav-link profile-button" user={sessionUser} />
