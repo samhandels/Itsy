@@ -12,3 +12,7 @@
     align-items: center;
     column-gap: 20px;
 }
+
+.add-review-modal {
+    border-radius: 10px;
+}

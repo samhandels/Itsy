@@ -6,15 +6,18 @@ import ReviewFormModal from '../ReviewFormModal'
 import './ReviewFormPage.css'
 
 
+
 const ReviewFormPage = ({ reviewId }) => {
     const [rating, setRating] = useState()
     const [activeRating, setActiveRating] = useState()
+
 
     return (
         <div className="review-container">
             <Link to=""></Link>
             <OpenModalButton
-                buttonText={<form className = "review-component">
+                buttonText={<form className="review-component"
+                >
                     <p>Review this item</p>
                     <div className='review-mini'>
                         <div
