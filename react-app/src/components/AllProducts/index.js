@@ -18,7 +18,6 @@ export const  AllProducts = () => {
             dispatch(fetchProducts())
       }, [dispatch])
 
-      console.log("in component", products);
 
       if (!products.length) return null
 

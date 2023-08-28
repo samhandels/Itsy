@@ -36,5 +36,6 @@ class Product(db.Model):
             'createdAt': self.createdAt,
             'updatedAt': self.updatedAt,
             'product_image': [product_image.url for product_image in self.product_images],
-            'reviews': [review.review for review in self.reviews]
+            'reviews': [review.review for review in self.reviews],
+            'ownerName': self.users.username
         }
