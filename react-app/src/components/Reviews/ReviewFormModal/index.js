@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useModal } from "../../../context/Modal"
-import { Link } from 'react-router-dom'
+// import { useDispatch, useSelector } from 'react-redux'
+// import { useModal } from "../../../context/Modal"
+// import { Link } from 'react-router-dom'
 import './ReviewFormModal.css'
 
-const ReviewFormModal = ({ }) => {
+const ReviewFormModal = () => {
     const [reviewDetails, setReviewDetails] = useState("")
     const [rating, setRating] = useState(0)
     const [activeRating, setActiveRating] = useState(0)

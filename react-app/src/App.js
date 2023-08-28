@@ -10,6 +10,7 @@ import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import ProtectedRoute from "./components/auth/ProtectedRoute"
 import { AllProducts } from "./components/AllProducts";
+import UserReviewPage from "./components/Reviews/UserReviewPage"
 
 function App() {
   const dispatch = useDispatch();
@@ -29,8 +30,11 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/reviews">
+          <Route exact path="/reviews">
             <ReviewFormPage />
+          </Route>
+          <Route path="/reviews/current">
+            <UserReviewPage />
           </Route>
           <ProtectedRoute path="/shopping_cart/current">
             <AllShoppingCartItems />

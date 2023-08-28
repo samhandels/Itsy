@@ -1,18 +1,58 @@
 .footer-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     background-color: #f8f8f8;
-    padding: 15px 50px;
     border-top: 1px solid #e0e0e0;
 }
 
-.footer-container a {
+.renewable-energy-section {
+    text-align: center;
+    padding: 10px 0;
+    font-weight: bold;
+    background-color: rgb(77,107,198);
+    color: #FFFFFF;
+}
+
+.team-section {
+    padding: 20px 0;
+    background-color: rgb(46,70,108);
+    color: #FFFFFF;
+}
+
+.team-section h2 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.team-members {
+    display: flex;
+    justify-content: space-around;
+}
+
+.team-member img {
+    max-width: 100px;
+    height: auto;
+    border-radius: 50%;
+}
+
+.team-member p {
+    text-align: center;
+    margin-top: 5px;
+}
+
+.bottom-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    background-color: rgb(35,35,71);
+    color: #FFFFFF;
+}
+
+.bottom-links a {
     margin: 0 10px;
-    color: #333;
+    color: #FFFFFF;
     text-decoration: none;
 }
 
-.footer-container a:hover {
+.bottom-links a:hover {
     text-decoration: underline;
 }

@@ -14,6 +14,15 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f"{field} : {error}")
         return errorMessages
 
+@reviews.route("/current")
+def get_user_reviews():
+    """
+    Query for reviews by user id
+    """
+    user_reviews = Review.query.filter(Review.userId == current_user.id).all()
+    response = [user_rev.to_dict() for user_rev in user_reviews]
+    print(response)
+    return response
 @reviews.route("/")
 def get_all_reviews():
     """
@@ -34,15 +43,6 @@ def get_one_review(id):
     print(response.to_dict())
     return response.to_dict()
 
-@reviews.route("/current")
-def get_user_reviews():
-    """
-    Query for reviews by user id
-    """
-    user_reviews = Review.query.filter(Review.userId == current_user.id).all()
-    response = [user_rev.to_dict() for user_rev in user_reviews]
-    print(response)
-    return response
 
 
 

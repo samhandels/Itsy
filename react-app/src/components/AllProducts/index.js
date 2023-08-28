@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../store/productsReducer";
 import { ProductCard } from "../ProductCard";
 import './styleAllProducts.css'
+import BlogSection from "../Blog";
 
 export const  AllProducts = () => {
       const dispatch = useDispatch()
@@ -59,7 +60,7 @@ export const  AllProducts = () => {
                         ))}
 
                   </div>
-
+                  <BlogSection />
             </div>
 
       )
