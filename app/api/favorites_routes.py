@@ -14,7 +14,7 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f"{field} : {error}")
         return errorMessages
 
-@favorites.route("/")
+@favorites.route("")
 @login_required
 def get_favorites():
     all_favorites = Favorite.query.filter(Favorite.userId==current_user.id).all()

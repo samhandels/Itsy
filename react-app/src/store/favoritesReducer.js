@@ -42,14 +42,14 @@ export const getAllFavorites = () => async (dispatch) => {
 
 const initialState = {
     favorites: {},
-    favorite: {},
+    // favorite: {},
 };
 
 export const favoritesReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case LOAD_FAVORITES:
-            const favoritesState = { ...state, favorites: {...state.favorites}, favorite: { ...state.favorite } };
+            const favoritesState = { ...state, favorites: {} };
             action.favorites.forEach((favorite) => {
                 favoritesState.favorites[favorite.id] = favorite;
             });

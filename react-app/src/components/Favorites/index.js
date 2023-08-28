@@ -12,11 +12,12 @@ const FavoritesPage = () => {
     console.log("favorites -------------", favorites)
 
     let favArr = Object.values(favorites)
+    console.log("fav Arr ---------------", favArr)
 
     useEffect(() => {
         dispatch(getAllFavorites())
     }, [dispatch])
-    if (!favorites.length) return null
+    if (!favArr.length) return null
 
     return (
         <>
@@ -26,12 +27,12 @@ const FavoritesPage = () => {
             <div>
                 <h2>
                     Favorite Items
-                    <span>({favorites.length})</span>
+                    <span>({favArr.length})</span>
                 </h2>
             </div>
             <div>
-                {favorites.map((product) => (
-                    <ProductCard product={product} key={product.id} />
+                {favArr.map((fav) => (
+                    <ProductCard product={fav.product} key={fav.product.id} />
                 ))}
             </div>
         </>
