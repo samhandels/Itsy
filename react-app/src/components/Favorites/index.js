@@ -30,10 +30,12 @@ const FavoritesPage = () => {
                     <span>({favArr.length})</span>
                 </h2>
             </div>
-            <div>
-                {favArr.map((fav) => (
-                    <ProductCard product={fav.product} key={fav.product.id} />
-                ))}
+            <div className='fav-products-holder'>
+                <div className='fav-products-list'>
+                    {favArr.map((fav) => (
+                        <ProductCard product={fav.product} key={fav.product.id} />
+                        ))}
+                </div>
             </div>
         </>
     );
