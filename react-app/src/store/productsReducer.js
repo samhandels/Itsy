@@ -5,32 +5,35 @@ export const loadProducts = (products) => ({
       products
 });
 
-export const fetchProducts = () => async (dispatch) => {
+export const fetchProducts = (query) => async (dispatch) => {
+
+      if (query) {
+            const res = await fetch(`/api/products?${query}`)
+
+            if (res.ok) {
+                  const allProducts = await res.json();
+                  const productsArray = Object.values(allProducts)
+                  dispatch (loadProducts(productsArray))
+
+            } else {
+                  const errors = await res.json()
+                  return errors
+            }
+
+      } else {
             const res = await fetch('/api/products')
 
-            // console.log('here');
+            if (res.ok) {
+                  const allProducts = await res.json();
+                  const productsArray = Object.values(allProducts)
+                  dispatch (loadProducts(productsArray))
 
-            const allProducts = await res.json();
+            } else {
+                  const errors = await res.json()
+                  return errors
+            }
 
-            const productsArray = Object.values(allProducts)
-
-            // console.log('thunk', productsArray);
-
-            dispatch (loadProducts(productsArray))
-
-
-            // if (res.ok) {
-            //       const allProducts = await res.json();
-            //       console.log('thunk', allProducts);
-
-            //       dispatch (loadproducts(allProducts))
-            //       return allProducts
-            // } else {
-            //       const errors = await res.json()
-            //       return errors
-            // }
-
-      // }
+      }
 
 }
 
