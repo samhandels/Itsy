@@ -18,10 +18,20 @@
   flex-direction: column;
 }
 
-img{
+.cart-img{
   width: 100%;
   width: 100px;
   height: 100px;
   aspect-ratio: 1/1;
   border-radius: 10px;
+}
+
+
+.space-between{
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lightgray{
+  color: lightgray
 }

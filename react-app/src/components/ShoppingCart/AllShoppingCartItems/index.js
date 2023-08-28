@@ -2,7 +2,6 @@ import React from "react";
 import "./AllShoppingCartItems.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fetchProducts } from "../../../store/productsReducer"
 import { getItemsThunk } from "../../../store/shoppingCartReducer";
 import SingleItem from "../SingleItem";
 
@@ -25,7 +24,7 @@ export default function AllShoppingCartItems() {
   if (!sessionUser) return null;
   return (
       <div className="shopping-cart components-border">
-      <div>Hello {sessionUser.username}, {} items in your shopping cart</div>
+      <div>Hello {sessionUser.username}, {items.length} items in your shopping cart</div>
         {items.map((item)=>(
         <div className="cart_item" key={item.id}>
           <div>

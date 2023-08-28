@@ -16,7 +16,7 @@ export default function SingleItems({ item }) {
           <div className="img-delete column">
             <div>
             {/* {item.product.product_image[0]} */}
-            <img src="https://ae01.alicdn.com/kf/S873941bf1184438a8d928a6572dea72dJ/Teasing-Cat-Plastic-Finger-Gloves-Human-Fake-Hand-Cat-Interactive-Toys-Caress-Cat-Dog-Toys-Little.jpg" alt="" />
+            <img src="https://ae01.alicdn.com/kf/S873941bf1184438a8d928a6572dea72dJ/Teasing-Cat-Plastic-Finger-Gloves-Human-Fake-Hand-Cat-Interactive-Toys-Caress-Cat-Dog-Toys-Little.jpg" alt="" className="cart-img"/>
             
             </div>
             <div>delete</div>
@@ -31,7 +31,29 @@ export default function SingleItems({ item }) {
           <div>{item.product.quantity}</div>
         </div>
         </div>
-        <div className="payment container"></div>
+        <div className="payment container column">
+        <div>How you'll pay</div>
+        <div className="row space-between">
+        <div>Item(s) total</div>
+        <div>$ {item.product.price}</div>
+        </div>
+        <div className="row space-between">
+          <div>Shop discount</div>
+          <div>$ {item.product.price * 1/5}</div>
+        </div>
+        <div className="row space-between ">
+          <div>Subtotal</div>
+          <div>$ {item.product.price * 4/5}</div>
+        </div>
+        <div className="row space-between ">
+          <div>Shipping</div>
+          <div>$ {item.product.price * 1/10}</div>
+        </div>
+        <div className="row space-between ">
+          <div>Total (item)</div>
+          <div>$ {item.product.price * 1.1}</div>
+        </div>
+        </div>
     </div>
   );
 }
