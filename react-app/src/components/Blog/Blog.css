@@ -1,5 +1,5 @@
 .blog-section {
-    margin: 20px 0;
+    margin: 20px;
 }
 
 .blog-header {
@@ -25,7 +25,7 @@
 
 .blog-card img {
     width: 100%;
-    max-height: 75%;
+    height: auto;
     object-fit: cover;
 }
 

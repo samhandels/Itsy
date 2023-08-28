@@ -9,8 +9,8 @@ function BlogSection() {
             <div className="blog-cards">
                 <div className="blog-card">
                     <img src="https://i.etsystatic.com/inv/411136/5223390808/inv_fullxfull.5223390808_bmsfw7wx.jpg?version=0" alt="Jewelry blog post" />
-                    <h1>Jewelry Trends of 2023</h1>
-                    <p>Discover the latest in jewelry designs and the pieces that are making headlines this year.</p>
+                    <div>Jewelry Trends of 2023</div>
+                    <div>Discover the latest in jewelry designs and the pieces that are making headlines this year.</div>
                 </div>
 
                 <div className="blog-card">
