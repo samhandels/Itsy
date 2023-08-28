@@ -23,6 +23,7 @@ def get_products():
       "id": 1,
       "name": "product-one",
       "ownerId": 1,
+      "ownerName": "Demo",
       "price": 12.95,
       "quantity": 10,
       "updatedAt": null,
@@ -31,7 +32,7 @@ def get_products():
       ],
       "reviews": [
       "Here is a review for product 1 by user 2"
-    ]
+      ]
       }
       ]
       """
