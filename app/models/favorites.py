@@ -13,11 +13,16 @@ class Favorite(db.Model):
 
 # relationship atrribute
     users = db.relationship("User", back_populates="favorites_lists")
-    products = db.relationship("Product", back_populates="favorites_lists")
+    products = db.relationship("Product", back_populates="favorites_lists", lazy="joined")
 
     def to_dict(self):
         return {
             'id': self.id,
             'userId': self.userId,
-            'productId': self.productId
+            'productId': self.productId,
+            'product': {
+                'name': self.products.name,
+                'price': self.products.price,
+                'product_image': [product_image.url for product_image in self.products.product_images]
+            }
         }

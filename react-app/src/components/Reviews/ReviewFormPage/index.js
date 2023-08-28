@@ -14,7 +14,8 @@ const ReviewFormPage = ({ reviewId }) => {
         <div className="review-container">
             <Link to=""></Link>
             <OpenModalButton
-                buttonText={<form>
+                buttonText={<form className = "review-component">
+                    <p>Review this item</p>
                     <div className='review-mini'>
                         <div
                             onMouseEnter={() => setActiveRating(1)}
@@ -46,10 +47,6 @@ const ReviewFormPage = ({ reviewId }) => {
                             onClick={() => setRating(5)}>
                             <i className={activeRating >= 5 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
                         </div>
-                        <div>
-                            <p>Stars</p>
-                        </div>
-
                     </div>
                 </form >}
                 modalComponent={<ReviewFormModal />}
