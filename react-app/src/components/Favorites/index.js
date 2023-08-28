@@ -2,6 +2,7 @@ import React from 'react';
 import './Favorites.css';
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { ProductCard } from "../ProductCard";
 
 
 const FavoritesPage = () => {
