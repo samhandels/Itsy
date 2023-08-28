@@ -8,9 +8,13 @@ import AllShoppingCartItems from "./components/ShoppingCart/AllShoppingCartItems
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
-import ProtectedRoute from "./components/auth/ProtectedRoute"
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 import { AllProducts } from "./components/AllProducts";
-import UserReviewPage from "./components/Reviews/UserReviewPage"
+import UserReviewPage from "./components/Reviews/UserReviewPage";
+import FavoritesPage from "./components/Favorites";
+import { ProductDetails } from "./components/ProductDetails";
+import { Store } from "./components/Store";
+import { CreateProductForm } from "./components/ProductForm/CreateProductForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,7 +28,7 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route path="/login" >
+          <Route path="/login">
             <LoginFormPage />
           </Route>
           <Route path="/signup">
@@ -36,15 +40,24 @@ function App() {
           <Route path="/reviews/current">
             <UserReviewPage />
           </Route>
+          <Route exact path="/products/new">
+            <CreateProductForm />
+          </Route>
+          <Route path="/products/:productId">
+            <ProductDetails />
+          </Route>
+          <ProtectedRoute path="/favorites">
+            <FavoritesPage />
+          </ProtectedRoute>
           <ProtectedRoute path="/shopping_cart/current">
             <AllShoppingCartItems />
           </ProtectedRoute>
-          <Route exact path='/'>
+          <ProtectedRoute path="/store">
+            <Store />
+          </ProtectedRoute>
+          <Route exact path="/">
             <AllProducts />
           </Route>
-          {/* <ProtectedRoute path="/feed">
-            <Feed /> // will check if there is a user logged in, otherwise will redirect you to log in. requires user to be authenticated to visit it
-          </ProtectedRoute> */}
         </Switch>
       )}
       <Footer />

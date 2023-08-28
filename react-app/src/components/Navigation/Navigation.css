@@ -1,12 +1,8 @@
-
-
 .hidden {
   display: none;
 }
 
 /* Navbar changes 8/27 */
-
-
 
 .main-nav-bar {
   display: grid;
@@ -17,7 +13,7 @@
 }
 
 .itsy-logo {
-  color: #F1641E;
+  color: #f1641e;
   text-decoration: none;
   font-size: 40px;
   margin-left: 10px;
@@ -42,12 +38,18 @@
 }
 
 .nav-bar-links {
-  display: flex;
-  flex-direction: row;
-  column-gap: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   justify-content: flex-end;
   align-items: center;
   margin-right: 10px;
+}
+
+.nav-link {
+  width: 15px;
+  margin-left: 0px;
+  padding-left: 0px;
+  align-self: center;
 }
 
 .profile-button {
@@ -69,10 +71,12 @@
 .fa-heart {
   margin-top: -3px;
   margin-right: 2px;
+  color: black;
 }
 
 .fa-store {
   margin-top: -3px;
+  color: black;
 }
 
 /* profile modal */

@@ -1,39 +1,98 @@
-export const LOAD_PRODUCTS = 'products/loadproducts';
+export const LOAD_PRODUCTS = 'products/loadProducts';
+export const GET_PRODUCT = 'products/getProducts';
 
 export const loadProducts = (products) => ({
       type: LOAD_PRODUCTS,
       products
 });
 
-export const fetchProducts = () => async (dispatch) => {
+export const getProduct = (product) => ({
+      type: GET_PRODUCT,
+      product
+})
+
+export const fetchProducts = (query) => async (dispatch) => {
+
+      if (query) {
+            const res = await fetch(`/api/products?${query}`)
+
+            if (res.ok) {
+                  const allProducts = await res.json();
+                  const productsArray = Object.values(allProducts)
+                  dispatch (loadProducts(productsArray))
+
+            } else {
+                  const errors = await res.json()
+                  return errors
+            }
+
+      } else {
             const res = await fetch('/api/products')
 
-            // console.log('here');
+            if (res.ok) {
+                  const allProducts = await res.json();
+                  const productsArray = Object.values(allProducts)
+                  dispatch (loadProducts(productsArray))
 
-            const allProducts = await res.json();
+            } else {
+                  const errors = await res.json()
+                  return errors
+            }
 
-            const productsArray = Object.values(allProducts)
-
-            // console.log('thunk', productsArray);
-
-            dispatch (loadProducts(productsArray))
-
-
-            // if (res.ok) {
-            //       const allProducts = await res.json();
-            //       console.log('thunk', allProducts);
-
-            //       dispatch (loadproducts(allProducts))
-            //       return allProducts
-            // } else {
-            //       const errors = await res.json()
-            //       return errors
-            // }
-
-      // }
+      }
 
 }
 
+export const fetchProductDetails = (productId) => async (dispatch) => {
+      const res = await fetch(`/api/products/${productId}`)
+
+      if (res.ok) {
+            const product = await res.json()
+            const products = {}
+            products.singleProduct = { ...product }
+            dispatch (getProduct(products))
+      } else {
+            const errors = await res.json()
+            return errors
+      }
+}
+
+export const createProductThunk = (product) => async (dispatch) => {
+      try {
+        const res = await fetch("/api/products", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(product),
+        });
+    
+        if (res.ok) {
+          const productResponse = await res.json();
+          return productResponse;
+        } else {
+          const errors = await res.json();
+          return errors;
+        }
+      } catch (error) {
+        const errors = await error.json();
+        return errors;
+      }
+    };
+
+export const updateProductThunk = (product) => async (dispatch) => {
+      const res = await fetch(`/api/products/${product.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(product),
+      });
+    
+      if (res.ok) {
+        const productResponse = await res.json();
+        return productResponse;
+      } else {
+        const errors = await res.json();
+        return errors;
+      }
+    };
 
 /** ======== Reducer ======== */
 
@@ -43,6 +102,8 @@ export const productsReducer = (state = initialState, action) => {
       switch (action.type) {
             case LOAD_PRODUCTS:
                   return [ ...action.products ];
+            case GET_PRODUCT:
+                  return { ...action.product }
             default:
                   return state;
       }
