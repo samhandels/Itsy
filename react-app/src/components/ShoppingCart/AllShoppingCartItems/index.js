@@ -3,17 +3,20 @@ import "./AllShoppingCartItems.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchProducts } from "../../../store/productsReducer"
+import { getItemsThunk } from "../../../store/shoppingCartReducer";
 import SingleItem from "../SingleItem";
 
 
 export default function AllShoppingCartItems() {
   const items = Object.values(
-    useSelector((state) => (state.products ? state.products : []))
+    useSelector((state) => (state.items ? state.items : []))
   );
+
+  // console.log("*********************the items from useSelector in component**************", items);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchProducts());
+    dispatch(getItemsThunk());
   }, [dispatch]);
 
   const sessionUser = useSelector((state) => state.session.user);

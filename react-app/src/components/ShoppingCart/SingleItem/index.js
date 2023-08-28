@@ -15,18 +15,18 @@ export default function SingleItems({ item }) {
         <div className="item-detail container row">
           <div className="img-delete column">
             <div>
-            <img src={item.product_image[0]} alt="" />
+            {/* <img src={item.product.product_image[0]} alt="" /> */}
             </div>
             <div>delete</div>
           </div>
           <div className="description-quantity column">
-          <div>{item.name}</div>
-          <div>{item.quantity}</div>
+          <div>{item.product.name}</div>
+          <div>{item.product.quantity}</div>
           </div>
         </div>
         <div className="item-price container column">
-          <div>{item.price}</div>
-          <div>{item.quantity}</div>
+          <div>{item.product.price}</div>
+          <div>{item.product.quantity}</div>
         </div>
         <div className="payment container"></div>
     </div>
