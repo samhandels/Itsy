@@ -6,3 +6,9 @@
     background-color: none;
     border: none;
 }
+
+.review-component {
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+}

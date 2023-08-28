@@ -42,13 +42,21 @@
 }
 
 .nav-bar-links {
-  display: flex;
-  flex-direction: row;
-  column-gap: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   justify-content: flex-end;
   align-items: center;
   margin-right: 10px;
 }
+
+.nav-link {
+  width: 15px;
+  margin-left: 0px;
+  padding-left: 0px;
+  align-self: center;
+}
+
+
 
 .profile-button {
   background-color: none;
