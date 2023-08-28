@@ -4,50 +4,57 @@ import { NavLink } from "react-router-dom";
 import "../AllShoppingCartItems/AllShoppingCartItems.css";
 import { useDispatch, useSelector } from "react-redux";
 
-export default function SingleItems({ item }) {
+export default function SingleItems({ item, product }) {
   const productQuantity = item.product.quantity;
   const quantityArr = [...Array(productQuantity + 1).keys()];
   quantityArr.shift(); //1......productQuantity
+
   const [purchaseQuantity, setPurchaseQuantity] = useState(1);
+
   const sessionUser = useSelector((state) => state.session.user);
+
   const price = item.product.price;
-  const discount = (price * 0.2).toFixed(2);
-  const subtotal = (price * 0.8).toFixed(2);
-  const shipping = (price * 0.1).toFixed(2);
-  const total = (price * 1.1);
+  const itemTotal = (item.product.price * purchaseQuantity).toFixed(2);
+  const discount = (price * 0.2 * purchaseQuantity).toFixed(2);
+  const subtotal = (price * 0.8 * purchaseQuantity).toFixed(2);
+  const shipping = (price * 0.1 * purchaseQuantity).toFixed(2);
+  const total = (price * 1.1 * purchaseQuantity).toFixed(2);
 
   if (!sessionUser) return null;
   return (
     <div className="components-border row space-between">
       <div className="item container row">
-        <div className="item-detail container row">
-          <div className="img-delete column">
-            <div>owner name</div>
-
-            <div>
-              <img
-                src="https://ae01.alicdn.com/kf/S873941bf1184438a8d928a6572dea72dJ/Teasing-Cat-Plastic-Finger-Gloves-Human-Fake-Hand-Cat-Interactive-Toys-Caress-Cat-Dog-Toys-Little.jpg"
-                alt=""
-                className="cart-img"
-              />
-            </div>
-            <div>delete</div>
+        <div className="owner-img column">
+          <div className=" product-owner row space-between">
+            <div>{product.ownerName}</div>
+            <div>Contact shop</div>
           </div>
-          <div className="description-quantity column">
-            <div>{item.product.name}</div>
-            <div></div>
-            <label>
-              Quantity
-              <select
-                name="selectedPurchaseQuantity"
-                value={purchaseQuantity}
-                onChange={(e) => setPurchaseQuantity(e.target.value)}
-              >
-                {quantityArr.map((number) => (
-                  <option value={number}>{number}</option>
-                ))}
-              </select>
-            </label>
+          <div className="item-detail container row">
+            <div className="img-delete column">
+              <div>
+                <img
+                  src={product.product_image[0]}
+                  alt=""
+                  className="cart-img"
+                />
+              </div>
+              <div>delete</div>
+            </div>
+            <div className="description-quantity column">
+              <div>{item.product.name}</div>
+              <div>Quantity</div>
+              <label>
+                <select
+                  name="selectedPurchaseQuantity"
+                  value={purchaseQuantity}
+                  onChange={(e) => setPurchaseQuantity(e.target.value)}
+                >
+                  {quantityArr.map((number) => (
+                    <option value={number}>{number}</option>
+                  ))}
+                </select>
+              </label>
+            </div>
           </div>
         </div>
         <div className="item-price container column">
@@ -72,7 +79,7 @@ export default function SingleItems({ item }) {
         </div>
         <div className="row space-between">
           <div>Item(s) total</div>
-          <div>${price * purchaseQuantity}</div>
+          <div>${itemTotal}</div>
         </div>
         <div className="row space-between">
           <div>Shop discount</div>
