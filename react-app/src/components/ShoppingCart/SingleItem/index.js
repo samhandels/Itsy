@@ -11,11 +11,13 @@ export default function SingleItems({ item }) {
   if (!sessionUser) return null;
   return (
     <div className="components-border">
-      <div className="item container row"></div>
+      <div className="item container row">
         <div className="item-detail container row">
           <div className="img-delete column">
             <div>
-            {/* <img src={item.product.product_image[0]} alt="" /> */}
+            {/* {item.product.product_image[0]} */}
+            <img src="https://ae01.alicdn.com/kf/S873941bf1184438a8d928a6572dea72dJ/Teasing-Cat-Plastic-Finger-Gloves-Human-Fake-Hand-Cat-Interactive-Toys-Caress-Cat-Dog-Toys-Little.jpg" alt="" />
+            
             </div>
             <div>delete</div>
           </div>
@@ -27,6 +29,7 @@ export default function SingleItems({ item }) {
         <div className="item-price container column">
           <div>{item.product.price}</div>
           <div>{item.product.quantity}</div>
+        </div>
         </div>
         <div className="payment container"></div>
     </div>
