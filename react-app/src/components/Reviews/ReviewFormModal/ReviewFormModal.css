@@ -120,6 +120,10 @@
     border-radius: 10px;
 }
 
+#modal {
+    z-index: 3;
+}
+
 .review-text-sugg {
     font-size: 14px;
     font-weight: bold;
