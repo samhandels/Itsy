@@ -27,8 +27,8 @@ export default function SingleItems({ item }) {
           </div>
         </div>
         <div className="item-price container column">
-          <div>{item.product.price}</div>
-          <div>{item.product.quantity}</div>
+          <div>$ {item.product.price}</div>
+          <div>quantity: {item.product.quantity}</div>
         </div>
         </div>
         <div className="payment container"></div>
