@@ -15,8 +15,7 @@ def validation_errors_to_error_messages(validation_errors):
 
 @favorites.route("/")
 def get_favorites():
-    all_favorites = Favorite.query.all()
+    all_favorites = Favorite.query.filter_by(user_id=current_user.id).all()
     response = [fav.to_dict() for fav in all_favorites]
     print(response)
-    return response
-    
+    return {"favorites": response}
