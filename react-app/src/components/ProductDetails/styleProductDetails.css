@@ -1,0 +1,98 @@
+
+#filter-holder-ProductDetails {
+      font-size: 14px;
+      font-weight: 200;
+      text-decoration-line: underline;
+      text-align: center;
+      padding-bottom: 10px;
+      border-bottom: 2px solid rgb(222,222,222);
+}
+
+#entire-page-productDetails {
+      display: grid;
+      grid-template-columns: auto 30%;
+      gap: 2rem;
+      margin-top: 2rem;
+}
+
+#left-panel-productDetails {
+      margin-left: 20px;
+}
+
+#right-panel-productDetails {
+      margin-right: 20px;
+}
+
+#primary-image-holder-productDetails {
+      width: 100%;
+      border-radius: 10px;
+}
+
+#primary-image-productDetails {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 7px;
+      aspect-ratio: 4/3;
+      box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+
+#supply-count-productDetails {
+      color: rgb(166,26,46);
+      font-weight: 700;
+      font-size: 18px;
+      margin-top: 7px;
+}
+
+#price-productDetails {
+      font-family: "Roboto";
+      font-weight: 500;
+      font-size: 30px;
+      margin-top: 7px;
+}
+
+#desc-productDetails {
+      font-weight: 200;
+      margin-top: 10px;
+      font-size: 18px;
+}
+
+#owner-productDetails {
+      font-weight: 600;
+      font-size: 17px;
+      margin-top: 7px;
+}
+
+#how-many-productDetails {
+      font-weight: 300;
+      border: 1px solid rgb(222,222,222);
+      border-radius: 5px;
+      margin-top: 10px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-left: 7px;
+      box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+
+#reviews-holder-productDetails {
+      font-size: 18px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+}
+
+#install-productDetails {
+      margin-top: 30px;
+      font-weight: 200;
+      font-size: 12px;
+}
+
+#Add-productDetails {
+      margin-top: 5px;
+      background-color: black;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      border-radius: 30px;
+}
