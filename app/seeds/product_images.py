@@ -11,12 +11,25 @@ def seed_product_images():
     product_image3 = ProductImage(
         productId=3, url='https://i.etsystatic.com/45002849/r/il/38a572/5066251372/il_794xN.5066251372_7s1h.jpg')
     product_image4 = ProductImage(
-        productId=4, url='https://i.etsystatic.com/16453374/r/il/75cabe/3985637731/il_794xN.3985637731_pps2.jpg' )
+        productId=4, url='https://i.etsystatic.com/16453374/r/il/75cabe/3985637731/il_794xN.3985637731_pps2.jpg')
+    product_image5 = ProductImage(
+        productId=5, url='https://i.etsystatic.com/11939576/r/il/e66518/5004761948/il_794xN.5004761948_ahhh.jpg')
+    product_image6 = ProductImage(
+        productId=6, url='https://i.etsystatic.com/15038810/r/il/0606a5/4485261786/il_794xN.4485261786_8enj.jpg')
+    product_image7 = ProductImage(
+        productId=7, url='https://i.etsystatic.com/20257527/r/il/c9c63d/4070354997/il_794xN.4070354997_12rg.jpg')
+    product_image8 = ProductImage(
+        productId=8, url='https://i.etsystatic.com/36840965/r/il/50cf61/5028439116/il_794xN.5028439116_pvwx.jpg')
+
 
     db.session.add(product_image1)
     db.session.add(product_image2)
     db.session.add(product_image3)
     db.session.add(product_image4)
+    db.session.add(product_image5)
+    db.session.add(product_image6)
+    db.session.add(product_image7)
+    db.session.add(product_image8)
     db.session.commit()
 
 

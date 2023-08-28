@@ -11,12 +11,24 @@ def seed_products():
     product3 = Product(
         ownerId=3, name='Small Refrigerator w/ lights' , price=10.95, description='This is the description for the third product', quantity=1, category='home')
     product4 = Product(
-        ownerId=1, name='Miniture Fruit Varieties' , price=9.95, description='This is the description for the third product', quantity=4, category='craft')
+        ownerId=1, name='Minature Fruit Varieties' , price=9.95, description='This is the description for the third product', quantity=4, category='craft')
+    product5 = Product(
+        ownerId=2, name='Tiny Pouncing Kitten' , price=8.95, description='This is the description for the fourth product', quantity=10, category='toys')
+    product6 = Product(
+        ownerId=3, name='Mini Camera Keychain' , price=7.95, description='This is the description for the third product', quantity=12, category='gift')
+    product7 = Product(
+        ownerId=1, name='Fancy Plastic Hangers' , price=6.95, description='This is the description for the third product', quantity=20, category='home')
+    product8 = Product(
+        ownerId=2, name='Mini Food Brands' , price=15.95, description='This is the description for the third product', quantity=15, category='art')
 
     db.session.add(product1)
     db.session.add(product2)
     db.session.add(product3)
     db.session.add(product4)
+    db.session.add(product5)
+    db.session.add(product6)
+    db.session.add(product7)
+    db.session.add(product8)
     db.session.commit()
 
 

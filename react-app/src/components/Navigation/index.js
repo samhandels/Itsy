@@ -8,13 +8,13 @@ function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
 
   return (
-    <ul className="main-nav-bar">
-      <li>
+    <div className="main-nav-bar">
+      <div>
         <NavLink className="itsy-logo" exact to="/">
           Itsy
         </NavLink>
-      </li>
-      <li className="search-bar">
+      </div>
+      <div className="search-bar">
         <input
           className="search-bar-input"
           type="text"
@@ -23,8 +23,8 @@ function Navigation({ isLoaded }) {
           // value={searchInput}
         />
         <i className="fa-solid fa-magnifying-glass"></i>
-      </li>
-      <li className="nav-bar-links">
+      </div>
+      <div className="nav-bar-links">
         <i className="fa-regular fa-heart"></i>
         <i className="fa-solid fa-store"></i>
         {isLoaded && (
@@ -33,8 +33,8 @@ function Navigation({ isLoaded }) {
         <NavLink exact to="/shopping_cart/current">
           <i className="fa-solid fa-cart-shopping"></i>
         </NavLink>
-      </li>
-    </ul>
+      </div>
+    </div>
   );
 }
 
