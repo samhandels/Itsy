@@ -55,13 +55,13 @@ export const ProductForm = ({ product, formType }) => {
     // console.log("what product is in the productForm==============", product);
 
     // console.log("1. user input", product);
-    if (formType === "Update product") {
+    if (formType === "Update") {
       // && !Object.values(errors).length
       // const editedproduct = await dispatch(
       //   updateProductThunk(product)
       // );
       // product = editedproduct;
-    } else if (formType === "Create product") {
+    } else if (formType === "Create") {
       // && !Object.values(errors).length
       // const newproduct = await dispatch(
       //   createProductThunk(product)
