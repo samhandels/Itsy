@@ -28,9 +28,11 @@
 }
 
 .team-member img {
+    position: relative;
     max-width: 100px;
     height: auto;
     border-radius: 50%;
+    z-index: 1;
 }
 
 .team-member {
@@ -38,8 +40,13 @@
     margin-top: 5px;
 }
 
+.member-image {
+    transition: 1s ease-out
+}
+
 .member-image:hover {
     box-shadow: 0px 0px 5px 5px white;
+    transition: 0.1s ease-in;
 }
 
 .bottom-links {
@@ -74,8 +81,10 @@ a {
     margin-left: -50px;
     margin-right: -50px;
     opacity: .35;
+    transition: 0.5s ease-in-out;
 }
 
 .who-we-are:hover {
-    opacity: 1;
+    opacity: 0.9;
+    z-index: 2;
 }

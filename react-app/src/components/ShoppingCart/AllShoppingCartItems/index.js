@@ -2,16 +2,16 @@ import React from "react";
 import "./AllShoppingCartItems.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fetchProducts } from "../../../store/productsReducer"
 import { getItemsThunk } from "../../../store/shoppingCartReducer";
 import SingleItem from "../SingleItem";
-
 
 export default function AllShoppingCartItems() {
   const items = Object.values(
     useSelector((state) => (state.items ? state.items : []))
   );
-
+  const products = Object.values(
+    useSelector((state) => (state.products ? state.products : []))
+  ); //because you come from landing page, the state would have products already
   // console.log("*********************the items from useSelector in component**************", items);
   const dispatch = useDispatch();
 
@@ -24,19 +24,22 @@ export default function AllShoppingCartItems() {
   if (!items) return null;
   if (!sessionUser) return null;
   return (
-      <div className="shopping-cart components-border">
-      <div>Hello {sessionUser.username}, {} items in your shopping cart</div>
-        {items.map((item)=>(
-        <div className="cart_item" key={item.id}>
-          <div>
-             <SingleItem item={item} />
-          </div>
-        </div>
-                ))}
+    <div className="shopping-cart components-border">
+      <div>
+        Hello {sessionUser.username}, {items.length} items in your shopping cart
       </div>
-
+      {items.map((item) => {
+        const product = products.find((product) => {
+          return item.productId === product.id;
+        });
+        return (
+          <div className="cart_item" key={item.id}>
+            <div>
+              <SingleItem item={item} product={product} />
+            </div>
+          </div>
+        );
+      })}
+    </div>
   );
 }
-
-
-
