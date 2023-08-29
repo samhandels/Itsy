@@ -24,10 +24,10 @@ export const getItemsThunk = () => async (dispatch) => {
 
 export const createItemThunk = (productId) => async (dispatch) => {
   //  try {
-  const res = await fetch(`/api/shopping_cart/current`, {
+  const res = await fetch("/api/shopping_cart/current", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(productId),
+    body: JSON.stringify(),
   });
 
   // console.log(res);

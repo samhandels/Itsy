@@ -12,12 +12,14 @@ export function AddtoCartModal({productId}) {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
   const history = useHistory();
-
+  // console.log("************In Add to Cart Modal **********", productId);
+  
   const createCartItem = (e) => {
     e.preventDefault();
     dispatch(createItemThunk(productId))
-    history.push("/")
+    // history.push("/")
     history.push("/shopping_cart/current")
+    // .then(closeModal)
 
   };
 

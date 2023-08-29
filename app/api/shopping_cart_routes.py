@@ -20,15 +20,16 @@ def get_shopping_cart():
 
 @shopping_cart.route('/current', methods=["POST"])
 @login_required
-def create_shopping_cart_item_by_product(product_id):
+def create_shopping_cart_item_by_product():
     """
     Create a shopping cart item to the shopping cart from the product detail page, only need productID and shoppingCartId
     """
+    # print("**************** shopping cart api routes ***************", product_id)
     item = ShoppingCartItems(
-        productId = product_id,
+        # productId = product_id,
         shoppingCartId = current_user.id
     )
-    
+    # print("**************** shopping cart api routes ***************", item)
     db.session.add(item)
     db.session.commit()
     return shopping_cart.to_dict()
