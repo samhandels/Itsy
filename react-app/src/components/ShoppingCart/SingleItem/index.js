@@ -3,6 +3,10 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "../AllShoppingCartItems/AllShoppingCartItems.css";
 import { useDispatch, useSelector } from "react-redux";
+import OpenModalButton from "../../OpenModalButton/index";
+import { OrderCompleteModal } from "../OrderCompleteModal";
+
+//!need to add when click on item card redirect to product detail page
 
 export default function SingleItems({ item, product }) {
   const productQuantity = item.product.quantity;
@@ -38,7 +42,9 @@ export default function SingleItems({ item, product }) {
                   className="cart-img"
                 />
               </div>
-              <div>delete</div>
+              <div>
+                <i className="fa-solid fa-x"></i>Remove
+              </div>
             </div>
             <div className="description-quantity column">
               <div>{item.product.name}</div>
@@ -59,7 +65,9 @@ export default function SingleItems({ item, product }) {
         </div>
         <div className="item-price container column">
           <div>${price}</div>
-          <div className="red">Only {item.product.quantity} available and it's in 2 people's carts</div>
+          <div className="red">
+            Only {item.product.quantity} available and it's in 2 people's carts
+          </div>
           {/* <div>3 sold in the past 24 hours</div> */}
         </div>
       </div>
@@ -99,7 +107,11 @@ export default function SingleItems({ item, product }) {
           <div>${total}</div>
         </div>
         <div className="row center">
-          <button className="black-button">Proceed to checkout</button>
+          <OpenModalButton
+            buttonStyle="black-button"
+            buttonText="Order up!"
+            modalComponent={<OrderCompleteModal item={item} />}
+          />
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 
 #filter-holder-ProductDetails {
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 200;
       text-decoration-line: underline;
       text-align: center;
@@ -9,18 +9,25 @@
 }
 
 #entire-page-productDetails {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+}
+
+#page-productDetails {
+      max-width: 1000px;
       display: grid;
-      grid-template-columns: auto 30%;
-      gap: 2rem;
+      grid-template-columns: auto 35%;
+      gap: 2.5rem;
       margin-top: 2rem;
 }
 
 #left-panel-productDetails {
-      margin-left: 20px;
+      border: none;
 }
 
 #right-panel-productDetails {
-      margin-right: 20px;
+      margin-bottom: 50px;
 }
 
 #primary-image-holder-productDetails {
@@ -52,7 +59,7 @@
       margin-top: 7px;
 }
 
-#desc-productDetails {
+#name-productDetails {
       font-weight: 200;
       margin-top: 10px;
       font-size: 18px;
@@ -64,11 +71,16 @@
       margin-top: 7px;
 }
 
+#return-productDetails {
+      font-weight: 200;
+      margin-top: 15px;
+}
+
 #how-many-productDetails {
       font-weight: 300;
       border: 1px solid rgb(222,222,222);
       border-radius: 5px;
-      margin-top: 10px;
+      margin-top: 20px;
       padding-top: 10px;
       padding-bottom: 10px;
       padding-left: 7px;
@@ -85,14 +97,123 @@
 #install-productDetails {
       margin-top: 30px;
       font-weight: 200;
-      font-size: 12px;
+      font-size: 13px;
 }
 
 #Add-productDetails {
-      margin-top: 5px;
+      margin-top: 10px;
       background-color: black;
       color: white;
       text-align: center;
       padding: 10px;
       border-radius: 30px;
+}
+
+#star-section-productDetails {
+      font-family: "Roboto";
+      font-weight: 300;
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      margin-top: 20px;
+      margin-left: -10px;
+      gap: 1rem;
+}
+
+#star-image-productDetails {
+      object-fit: contain;
+}
+
+#star-text-productDetails {
+      font-size: 12px;
+}
+
+#truck-section-productDetails {
+      font-family: "Roboto";
+      font-weight: 300;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-top: 5px;
+      margin-left: 2px;
+      gap: 1rem;
+}
+
+#truck-image-productDetails {
+      object-fit: contain;
+}
+
+#truck-text-productDetails {
+      font-size: 13px;
+      padding-left: 5px;
+}
+
+#desc-section-productDetails {
+      border: none
+}
+
+#desc-productDetails {
+      margin-top: -15px;
+}
+
+#cost-productDetails {
+      font-weight: 100;
+      font-size: 14px;
+      margin-top: -15px;
+}
+
+#free-productDetails {
+      font-weight: 300;
+      font-size: 20px;
+}
+
+#offset-productDetails {
+      font-family: "Roboto";
+      font-weight: 300;
+      font-size: 12px;
+      background-color: rgb(221,235,227);
+      padding: 10px;
+      border-radius: 15px;
+      margin-top: 10px;
+}
+
+#return-div-productDetails {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-top: 30px;
+}
+
+#accepted-productDetails {
+      font-weight: 300;
+      font-size: 20px;
+      text-decoration-line: underline;
+      text-decoration-style: dashed;
+}
+
+#days-productDetails {
+      font-weight: 300;
+      font-size: 20px;
+      text-decoration-line: underline;
+      text-decoration-style: dashed;
+}
+
+#hand-section-productDetails {
+      font-family: "Roboto";
+      font-weight: 300;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-top: 20px;
+      margin-left: 2px;
+      gap: 1rem;
+}
+
+#hand-image-productDetails {
+      object-fit: contain;
+}
+
+#hand-text-productDetails {
+      font-size: 13px;
+      padding-left: 5px;
 }

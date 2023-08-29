@@ -12,7 +12,7 @@ export const ProductCard = ({product}) => {
       return (
 
             <div id='card-holder-productCard'>
-                  {/* <NavLink> */}
+                  <NavLink id="link-ProductCard" to={`/products/${product.id}`}>
 
                         <div id='card-image-ProductCard'>
                               <img id='card-image-ProductCard' src={ product.product_image[0] } />
@@ -25,7 +25,7 @@ export const ProductCard = ({product}) => {
                         </div>
 
 
-                  {/* </NavLink> */}
+                  </NavLink>
 
             </div>
 

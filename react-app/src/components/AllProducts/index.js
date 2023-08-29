@@ -52,6 +52,21 @@ export const  AllProducts = () => {
 
                   </div>
 
+                  <div id='sales-banner-AllProducts'>
+                        <div id='up-to-AllProducts'>
+                              Up to 50% off
+                        </div>
+                        <div id='labor-day-AllProducts'>
+                              The Labor Day Sales Event is here!
+                        </div>
+                        <div id='shop-button-AllProducts'>
+                              Shop now
+                        </div>
+                        <div id='terms-AllProducts'>
+                              Participating sellers only. Terms apply.
+                        </div>
+                  </div>
+
                   <div id='productCard-holder-AllProducts'>
                         {/* {products} */}
                         {products.map((product) => (
