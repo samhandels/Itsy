@@ -80,7 +80,7 @@ def create_product():
                   description = form.data["description"],
                   quantity = form.data["quantity"],
                   category = form.data["category"],
-                  owner_id = None
+                  ownerId = current_user.id
             )
 
             # NEED TO ADD CURRENT USER ABOVE *******************
