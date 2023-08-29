@@ -10,12 +10,25 @@ import hand from "./itsy-hand.png";
 import { AddtoCartModal} from "../ShoppingCart/AddtoCartModal"
 import OpenModalButton from "../../components/OpenModalButton";
 import ReviewFormPage from "../Reviews/ReviewFormPage";
+import { createFavorite, removeFavorite } from '../../store/favoritesReducer';
 
 export const ProductDetails = () => {
   const { productId } = useParams();
   const dispatch = useDispatch();
 
   const reviews = useSelector((state) => state.reviews.reviews)
+  const favorites = useSelector((state) => state.favorites.favorites);
+
+  const isFavorite = (productId) => {
+    return favorites[productId];
+  };
+  const handleHeartClick = (productId) => {
+    if (isFavorite(productId)) {
+        dispatch(removeFavorite(productId));
+    } else {
+        dispatch(createFavorite(productId));
+    }
+  };
 
   let dollar = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -46,6 +59,7 @@ export const ProductDetails = () => {
       <div id="entire-page-productDetails">
         <div id="page-productDetails">
           <div id="left-panel-productDetails">
+              <i className={`nav-link fa-regular ${isFavorite(product.id) ? "fa-heart-filled" : "fa-heart"}`} onClick={() => handleHeartClick(product.id)}></i>
             <div id="primary-image-holder-productDetails">
               <img
                 id="primary-image-productDetails"

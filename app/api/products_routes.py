@@ -3,6 +3,7 @@ from ..models import db
 from ..models.product import Product
 from ..models.reviews import Review
 from ..models.shopping_cart_items import ShoppingCartItems
+from ..models.favorites import Favorite
 from ..forms.product_form import ProductForm
 from ..forms.review_form import ReviewForm
 from datetime import datetime
@@ -160,3 +161,21 @@ def create_shopping_cart_item_by_product(id):
     db.session.add(item)
     db.session.commit()
     return item.to_dict()
+
+@products.route('/<int:id>/favorites', methods=["POST"])
+@login_required
+def add_favorite(id):
+
+
+    existing_favorite = Favorite.query.filter(Favorite.userId == current_user.id, Favorite.productId == id).first()
+    if existing_favorite:
+        return {"errors": ["This product is already in favorites."]}, 400
+
+    new_favorite = Favorite(
+         productId = id,
+         userId = current_user.id
+    )
+
+    db.session.add(new_favorite)
+    db.session.commit()
+    return new_favorite.to_dict(), 201
