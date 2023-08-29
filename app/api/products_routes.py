@@ -88,7 +88,7 @@ def create_product():
             print(new_product)
             db.session.add(new_product)
             db.session.commit()
-            return new_product
+            return new_product.to_dict()
 
       else:
             print(form.errors)
@@ -160,4 +160,3 @@ def create_shopping_cart_item_by_product(id):
     db.session.add(item)
     db.session.commit()
     return item.to_dict()
-
