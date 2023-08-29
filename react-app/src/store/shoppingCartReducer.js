@@ -33,7 +33,7 @@ export const createItemThunk = (productId) => async (dispatch) => {
   // console.log(res);
   if (res.ok) {
     const newItemResponse = await res.json();
-    dispatch(getItemsThunk);
+    dispatch(getItemsThunk());
     return newItemResponse;
   } else {
     const errors = await res.json();
@@ -46,34 +46,18 @@ export const createItemThunk = (productId) => async (dispatch) => {
 };
 
 
-export const updateItemThunk = (Item) => async (dispatch) => {
-  const res = await fetch(`/api/Items/${Item.id}`, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(Item),
+export const deleteItemThunk = (item) => async (dispatch) => {
+  const res = await fetch(`/api/shopping_cart/${item.id}`, {
+    method: "DELETE",
   });
 
   if (res.ok) {
-    const ItemResponse = await res.json();
-    return ItemResponse;
+    dispatch(getItemsThunk());
   } else {
     const errors = await res.json();
     return errors;
   }
 };
-
-// export const deleteItemThunk = (item) => async (dispatch) => {
-//   const res = await fetch(`/api/shopping_cart/${item.id}`, {
-//     method: "DELETE",
-//   });
-
-//   if (res.ok) {
-//     dispatch(getItemsThunk());
-//   } else {
-//     const errors = await res.json();
-//     return errors;
-//   }
-// };
 
 const initialState = {}; //store shape
 

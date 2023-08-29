@@ -59,7 +59,7 @@ export const ProductDetails = () => {
       <div id="entire-page-productDetails">
         <div id="page-productDetails">
           <div id="left-panel-productDetails">
-              <i className={`nav-link fa-regular ${isFavorite(product.id) ? "fa-heart-filled" : "fa-heart"}`} onClick={() => handleHeartClick(product.id)}></i>
+              <i id="heart-icon-prod-detail" className={`nav-link fa-regular ${isFavorite(product.id) ? "fa-heart-filled" : "fa-heart"}`} onClick={() => handleHeartClick(product.id)}></i>
             <div id="primary-image-holder-productDetails">
               <img
                 id="primary-image-productDetails"
