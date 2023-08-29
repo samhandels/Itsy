@@ -59,7 +59,7 @@ export const fetchProductDetails = (productId) => async (dispatch) => {
 
 export const createProductThunk = (product) => async (dispatch) => {
       try {
-            const res = await fetch("/api/products", {
+            const res = await fetch("/api/products/new", {
                   method: "POST",
                   headers: { "Content-Type": "application/json" },
                   body: JSON.stringify(product),
@@ -67,7 +67,10 @@ export const createProductThunk = (product) => async (dispatch) => {
 
             if (res.ok) {
                   const productResponse = await res.json();
-                  return productResponse;
+                  const products = {}
+                  products.singleProduct = { ...productResponse }
+                  dispatch(getProduct(products))
+                  return products;
             } else {
                   const errors = await res.json();
                   return errors;
