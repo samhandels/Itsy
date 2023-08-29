@@ -1,4 +1,4 @@
-#sideModal {
+#sidemodal {
  position: fixed;
  top: 0;
  right: 0;
@@ -6,7 +6,7 @@
  bottom: 0;
  display: flex;
  flex-direction: row;
- justify-content: end;
+ justify-content: flex-end;
  align-items: center;
 }
 
@@ -22,4 +22,5 @@
 #modal-content {
  position: absolute;
  background-color:white;
+ height: 100vh;
 }
