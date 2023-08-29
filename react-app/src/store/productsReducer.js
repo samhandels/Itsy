@@ -99,8 +99,6 @@ export const updateProductThunk = (product) => async (dispatch) => {
       }
 };
 
-export const
-
 /** ======== Reducer ======== */
 
 const initialState = {};
