@@ -26,6 +26,14 @@
       border: none;
 }
 
+#heart-icon-prod-detail {
+      position: absolute;
+      left:635px;
+      right:auto !important;
+      top:156px;
+      bottom:auto !important;
+}
+
 #right-panel-productDetails {
       margin-bottom: 50px;
 }
