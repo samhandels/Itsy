@@ -7,6 +7,8 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import star from "./itsy-star.png";
 import truck from "./itsy-truck.png";
 import hand from "./itsy-hand.png";
+import { AddtoCartModal} from "../ShoppingCart/AddtoCartModal"
+import OpenModalButton from "../../components/OpenModalButton";
 
 export const ProductDetails = () => {
   const { productId } = useParams();
@@ -72,7 +74,13 @@ export const ProductDetails = () => {
                   Learn more
                 </a>
               </div>
-              <div id="Add-productDetails">Add to cart</div>
+              <div>
+                <OpenModalButton
+                  buttonStyle="Add-productDetails"
+                  buttonText="Add to cart"
+                    modalComponent={<AddtoCartModal />}
+          />
+              </div>
 
               <div id="star-section-productDetails">
                 <img id="star-image-productDetails" src={star} />
