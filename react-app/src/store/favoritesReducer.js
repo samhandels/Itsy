@@ -40,7 +40,7 @@ export const getAllFavorites = () => async (dispatch) => {
 };
 
 export const createFavorite = (productId) => async (dispatch) => {
-    const res = await fetch(`/api/favorites/${productId}`, {
+    const res = await fetch(`/api/favorites`, {
         method: 'POST'
     });
 
@@ -55,7 +55,7 @@ export const createFavorite = (productId) => async (dispatch) => {
 };
 
 export const removeFavorite = (productId) => async (dispatch) => {
-    const res = await fetch(`/api/favorites/${productId}`, {
+    const res = await fetch(`/api/favorites`, {
         method: 'DELETE'
     });
 
