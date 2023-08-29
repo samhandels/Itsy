@@ -31,7 +31,7 @@ export const ProductCard = ({product}) => {
             <div id='card-holder-productCard'>
                   <NavLink id="link-ProductCard" to={`/products/${product.id}`}>
 
-                  <i className={`nav-link fa-regular ${isFavorite(product.id) ? "fa-heart-filled" : "fa-heart"}`} onClick={() => handleHeartClick(product.id)}></i>
+                  <i className={`nav-link fa-regular fa-heart`} onClick={() => handleHeartClick(product.id)}></i>
 
                         <div id='card-image-ProductCard'>
                               <img id='card-image-ProductCard' src={ product.product_image[0] } />

@@ -22,18 +22,18 @@ def get_favorites():
     return response
 
 
-@favorites.route("", methods=["POST"])
-@login_required
-def add_favorite(productId):
-    existing_favorite = Favorite.query.filter(userId = current_user.id, productId = productId).first()
-    if existing_favorite:
-        return {"errors": ["This product is already in favorites."]}, 400
+# @favorites.route("", methods=["POST"])
+# @login_required
+# def add_favorite(productId):
+#     existing_favorite = Favorite.query.filter(userId = current_user.id, productId = productId).first()
+#     if existing_favorite:
+#         return {"errors": ["This product is already in favorites."]}, 400
 
-    new_favorite = Favorite(userId=current_user.id, productId = productId)
-    db.session.add(new_favorite)
-    db.session.commit()
+#     new_favorite = Favorite(userId=current_user.id, productId = productId)
+#     db.session.add(new_favorite)
+#     db.session.commit()
 
-    return new_favorite.to_dict(), 201
+#     return new_favorite.to_dict(), 201
 
 
 @favorites.route("", methods=["DELETE"])

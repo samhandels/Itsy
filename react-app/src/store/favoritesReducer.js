@@ -40,9 +40,13 @@ export const getAllFavorites = () => async (dispatch) => {
 };
 
 export const createFavorite = (productId) => async (dispatch) => {
-    const res = await fetch(`/api/favorites`, {
-        method: 'POST'
+    console.log("IN THE CREATE FAVORITE THUNK", createFavorite())
+    const res = await fetch(`/api/products/${productId}/favorites`, {
+        method: 'POST',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify()
     });
+    console.log("IN THE FAVORITE THUNK - RES", res)
 
     if (res.ok) {
         const favorite = await res.json();
