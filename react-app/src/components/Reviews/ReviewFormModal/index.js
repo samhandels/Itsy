@@ -1,14 +1,20 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 // import { useDispatch, useSelector } from 'react-redux'
 import { useModal } from '../../../context/Modal'
 import { Link } from 'react-router-dom'
 import './ReviewFormModal.css'
+import { postReview } from '../../../store/reviewsReducer'
 
-const ReviewFormModal = () => {
+const ReviewFormModal = ({ productId }) => {
     const [reviewDetails, setReviewDetails] = useState("")
     const [rating, setRating] = useState(0)
     const [activeRating, setActiveRating] = useState(0)
     const [reviewPage, setReviewPage] = useState(1)
+
+    
+    try {
+        await dispatch(postReview(productId, reviewInfo))
+    }
 
 
     const { closeModal } = useModal();
@@ -22,6 +28,9 @@ const ReviewFormModal = () => {
         setReviewPage(reviewPage - 1)
         console.log("Page" + reviewPage)
     }
+
+    let reviewInfo = { reviewDetails, stars }
+
 
     return (
         <div className="review-modal">

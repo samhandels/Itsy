@@ -18,12 +18,48 @@ const loadReview = review => {
     }
 }
 
+const addReview = review => {
+    return {
+        type: ADD_REVIEW,
+        review
+    }
+}
+
 export const getAllReviews = () => async (dispatch) => {
     const res = await fetch('/api/reviews')
 
     const reviews = await res.json();
 
     dispatch(loadReviews(reviews))
+}
+
+
+export const getOneReview = (reviewId) => async (dispatch) => {
+    const res = await fetch(`/api/reviews/${reviewId}`)
+    const review = await res.json()
+    dispatch(loadReview(review))
+}
+
+export const postReview = (review) => async(dispatch) => {
+    const productId = review.productId
+    try {
+        const res = await fetch(`/api/products/${productId}/reviews`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json"},
+            body: JSON.stringify(review)
+        });
+
+        if(res.ok) {
+            const reviewResponse = await res.json();
+            return reviewResponse;
+        } else {
+            const errors = await res.json();
+            return errors;
+        }
+    } catch (error) {
+        const errors = await error.json();
+        return errors;
+    }
 }
 
 
