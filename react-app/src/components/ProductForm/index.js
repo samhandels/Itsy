@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import "../ShoppingCart/AllShoppingCartItems/AllShoppingCartItems.css"
-// import { createProductThunk } from "../../../store/products";
-// import { updateProductThunk } from "../../../store/products";
-//! need to create thunks
+import './styleProductForm.css'
+import { fetchCreateProduct } from "../../store/productsReducer";
+
 
 export const ProductForm = ({ product, formType }) => {
   // all the inputs
@@ -44,13 +43,11 @@ export const ProductForm = ({ product, formType }) => {
     // setErrors({});
     product = {
       ...product,
-      productImage,
       category,
       quantity,
       description,
       name,
-      price,
-      Owner: { ...sessionUser },
+      price
     };
     // console.log("what product is in the productForm==============", product);
 
@@ -64,10 +61,13 @@ export const ProductForm = ({ product, formType }) => {
     } else if (formType === "Create") {
       // && !Object.values(errors).length
       // const newproduct = await dispatch(
-      //   createProductThunk(product)
+      //   fetchCreateProduct(product)
       // );
       // console.log("3. back to form", newproduct);
       // product = newproduct;
+      const newProduct = await dispatch(fetchCreateProduct(product))
+
+      history.replace(`/products/${newProduct.singleProduct.id}`)
     }
   };
 
@@ -90,6 +90,7 @@ export const ProductForm = ({ product, formType }) => {
   return (
     <div className="center-container">
       <div>Create a Product</div>
+      <div>Add a photo and details about your item. Fill out what you can for now — you will be able to edit this later.</div>
       <form onSubmit={handleSubmit}>
         <section className="productImage lightgray">
           <div>Photo</div>
@@ -107,42 +108,115 @@ export const ProductForm = ({ product, formType }) => {
         </section>
         <section className="productDetail lightgray">
           <div>Product details</div>
-          <div>Tell the world all about your item and why they’ll love it.</div>
-          <label>
-            <input
-              type="text"
-              placeholder=""
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </label>
-          <div className="errors">
-            {hasSubmitted && errors.name && `${errors.name}`}
+          <div>Tell the world all about your item and why they will love it.</div>
+
+
+          <div id='title-div-ProductForm'>
+
+            <div id='left-title-div-ProductForm'>
+
+                <div id='name-ProductForm'>Product Name</div>
+                <div id='name-desc-ProductForm'>Include keywords that buyers would use to search for your item.</div>
+
+
+            </div>
+
+            <div id='right-title-div-ProductForm'>
+
+
+                <label >
+                  <input id='title-input-ProductForm'
+                    type="text"
+                    placeholder=""
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </label>
+                <div className="errors">
+                  {hasSubmitted && errors.name && `${errors.name}`}
+                </div>
+            </div>
           </div>
-          <label>
-            <i className="fa-solid fa-magnifying-glass"></i>
-            {"  "}
-            <input
-              type="text"
-              placeholder="Small GrandPa Whale, Tiny Tooth Fairy Letter"
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-            />
-          </label>
-          <div className="errors">
-            {hasSubmitted && errors.category && `${errors.category}`}
+
+
+          <div id='category-div-ProductForm'>
+
+
+            <div id='left-category-div-ProductForm'>
+
+                <div id='category-ProductForm'>Category</div>
+                <div id='category-desc-ProductForm'>Choose a category that will help more shoppers find your item.</div>
+
+
+            </div>
+
+
+            <div id='right-category-div-ProductForm'>
+
+                <label>
+                  <input id='category-input-ProductForm'
+                    type="text"
+                    placeholder=""
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value)}
+                  />
+                </label>
+                <div className="errors">
+                  {hasSubmitted && errors.category && `${errors.category}`}
+                </div>
+
+
+            </div>
+
+
+
           </div>
-          <label>
-            <textarea
-              placeholder="Please write at least 30 characters"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-          </label>
-          <div className="errors">
-            {hasSubmitted && errors.description && `${errors.description}`}
+
+
+          <div id='desc-div-ProductForm'>
+
+            <div id='left-desc-div-ProductForm'>
+
+                <div id='desc-ProductForm'>Description</div>
+                <div id='desc-desc-ProductForm'>Start with a brief overview that describes your item’s finest features. Shoppers will only see the first few lines of your description at first, so make it count!</div>
+                <div id='desc-desc2-ProductForm'>Not sure what else to say? Shoppers also like hearing about your process, and the story behind this item.</div>
+
+            </div>
+
+
+            <div id='left-desc-div-ProductForm'>
+
+
+              <label>
+                <textarea id='desc-input-ProductForm'
+                  placeholder="Please write at least 30 characters"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                />
+              </label>
+              <div className="errors">
+                {hasSubmitted && errors.description && `${errors.description}`}
+              </div>
+
+
+
+            </div>
+
+
           </div>
+
+
+
+
         </section>
+
+
+
+
+
+
+
+
         <section className="InventoryandPricing lightgray">
         <div>Inventory and Pricing</div>
           <label>

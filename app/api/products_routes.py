@@ -3,6 +3,7 @@ from ..models import db
 from ..models.product import Product
 from ..models.reviews import Review
 from ..models.shopping_cart_items import ShoppingCartItems
+from ..models.favorites import Favorite
 from ..forms.product_form import ProductForm
 from ..forms.review_form import ReviewForm
 from datetime import datetime
@@ -80,7 +81,7 @@ def create_product():
                   description = form.data["description"],
                   quantity = form.data["quantity"],
                   category = form.data["category"],
-                  owner_id = None
+                  ownerId = current_user.id
             )
 
             # NEED TO ADD CURRENT USER ABOVE *******************
@@ -88,7 +89,7 @@ def create_product():
             print(new_product)
             db.session.add(new_product)
             db.session.commit()
-            return new_product
+            return new_product.to_dict()
 
       else:
             print(form.errors)
@@ -161,3 +162,20 @@ def create_shopping_cart_item_by_product(id):
     db.session.commit()
     return item.to_dict()
 
+@products.route('/<int:id>/favorites', methods=["POST"])
+@login_required
+def add_favorite(id):
+
+
+    existing_favorite = Favorite.query.filter(Favorite.userId == current_user.id, Favorite.productId == id).first()
+    if existing_favorite:
+        return {"errors": ["This product is already in favorites."]}, 400
+
+    new_favorite = Favorite(
+         productId = id,
+         userId = current_user.id
+    )
+
+    db.session.add(new_favorite)
+    db.session.commit()
+    return new_favorite.to_dict(), 201
