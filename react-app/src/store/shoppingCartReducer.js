@@ -8,7 +8,6 @@ export const getItemsAction = (items) => ({
   items,
 });
 
-
 /** Thunk: */
 export const getItemsThunk = () => async (dispatch) => {
   const res = await fetch("/api/shopping_cart/current");
@@ -18,48 +17,49 @@ export const getItemsThunk = () => async (dispatch) => {
     //thunk response is the backend route response, with a dict in the models to_dict method
     const itemsArr = items.shopping_carts;
     // console.log("*********************the response from backend in thunk**************", itemsArr);
-    
+
     dispatch(getItemsAction(itemsArr));
   }
 };
 
-// export const createItemThunk = (newItem, spotId) => async (dispatch) => {
-//  try {
-//    const res = await fetch(`/api/spots/${spotId}/Items`, {
-//      method: "POST",
-//      headers: { "Content-Type": "application/json" },
-//      body: JSON.stringify(newItem),
-//    });
+export const createItemThunk = (productId) => async (dispatch) => {
+  //  try {
+  const res = await fetch(`/api/products/${productId}/shopping_cart`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(),
+  });
 
-//    // console.log(res);
-//    if (res.ok) {
-//      const newItemResponse = await res.json();
-//      dispatch(getItemsThunk);
-//      return newItemResponse;
-//    } else {
-//      const errors = await res.json();
-//      return errors;
-//    }
-//  } catch (error) {
-//    // const errors = await error.json();
-//    return error;
-//  }
-// };
+  // console.log(res);
+  if (res.ok) {
+    const newItemResponse = await res.json();
+    dispatch(getItemsThunk());
+    return newItemResponse;
+  } else {
+    const errors = await res.json();
+    return errors;
+  }
+  //  } catch (error) {
+  // const errors = await error.json();
+  //  return error;
+  //  }
+};
 
-// export const deleteItemThunk = (item) => async (dispatch) => {
-//  const res = await fetch(`/api/shopping_cart/${item.id}`, {
-//    method: "DELETE",
-//  });
 
-//  if (res.ok) {
-//    dispatch(getItemsThunk());
-//  } else {
-//    const errors = await res.json();
-//    return errors;
-//  }
-// };
+export const deleteItemThunk = (item) => async (dispatch) => {
+  const res = await fetch(`/api/shopping_cart/${item.id}`, {
+    method: "DELETE",
+  });
 
-const initialState = { }; //store shape 
+  if (res.ok) {
+    dispatch(getItemsThunk());
+  } else {
+    const errors = await res.json();
+    return errors;
+  }
+};
+
+const initialState = {}; //store shape
 
 /** shopping Cart reducers: */
 const shoppingCartReducer = (state = initialState, action) => {

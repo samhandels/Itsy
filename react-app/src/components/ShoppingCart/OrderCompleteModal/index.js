@@ -1,4 +1,4 @@
-// Render a pop up after you click on Proceed to checkout
+// Render a pop up after you click on Proceed to checkout in the shopping cart(SingleItem component)
 import { useDispatch } from "react-redux";
 import { useModal } from "../../../context/Modal";
 import "./OrderComplete.css";
@@ -11,8 +11,7 @@ export function OrderCompleteModal(item) {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
 
-  const orderComplete = (e) => {
-    e.preventDefault();
+  const orderComplete = () => {
     // dispatch(deleteItemThunk(item)).then(closeModal);
   };
 

@@ -1,41 +1,87 @@
-import { useState } from 'react'
-// import { useDispatch, useSelector } from 'react-redux'
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useModal } from '../../../context/Modal'
 import { Link } from 'react-router-dom'
 import './ReviewFormModal.css'
+import { postReview, updateReview } from '../../../store/reviewsReducer'
 
-const ReviewFormModal = () => {
-    const [reviewDetails, setReviewDetails] = useState("")
-    const [rating, setRating] = useState(0)
-    const [activeRating, setActiveRating] = useState(0)
+const ReviewFormModal = ({ productId, type, reviewId }) => {
+    const dispatch = useDispatch();
+    const [review, setReview] = useState("")
+    const [stars, setStars] = useState(0)
+    const [activeStars, setActiveStars] = useState(0)
     const [reviewPage, setReviewPage] = useState(1)
-
-
+    const [errors, setErrors] = useState([])
     const { closeModal } = useModal();
+    let reviewInfo = { review, stars }
+    let reviews = useSelector((state) => state.reviews.reviews)
+    let revArr = Object.values(reviews)
+
+    const thisReview = revArr[reviewId]
+
+
+
+    let handleSubmit;
+    if (type === "create") {
+
+        handleSubmit = async (e) => {
+            e.preventDefault()
+            const data = await dispatch(postReview(productId, reviewInfo))
+            if (data) {
+                setErrors(data);
+            } else {
+                closeModal();
+            }
+        }
+    }
+
+
+
+    if (type === "update") {
+
+        handleSubmit = async (e) => {
+            e.preventDefault()
+
+            if (review) reviewInfo.review = review
+            else reviewInfo.review = thisReview.review
+            if (stars) reviewInfo.stars = stars
+            else reviewInfo.review = thisReview.stars
+
+            reviewInfo.id = thisReview.id
+
+            const data = await dispatch(updateReview(reviewInfo))
+            if (data) {
+                setErrors(data);
+            } else {
+                closeModal();
+            }
+        }
+    }
+
     const nextPage = (e) => {
         e.preventDefault();
         setReviewPage(reviewPage + 1)
-        console.log("Page" + reviewPage)
     }
     const prevPage = (e) => {
         e.preventDefault();
         setReviewPage(reviewPage - 1)
-        console.log("Page" + reviewPage)
     }
+
+
 
     return (
         <div className="review-modal">
             <div className="review-progress-tracker">
-                {reviewPage === 1 && <p>Leave a Review</p>}
-                {reviewPage === 2 && <p>Great! One more thing...</p>}
-                {reviewPage === 3 && <p>Ready to submit?</p>}
+                {reviewPage === 1 && (type === "create" ? <p>Leave a Review</p> : <p>Make changes to this review?</p>)}
+                {reviewPage === 2 && (type === "create" ? <p>Great! One more thing...</p> : <p>Here's what you wrote</p>)}
+                {reviewPage === 3 && (type === "create" ? <p>Ready to submit?</p> : <p>Submit your update?</p>)}
                 <div className='progress-circles'>
-                    <div className={reviewPage === 1 ? "current" : "complete"}>{rating === 0 ? "" : <i className="fa-solid fa-check" ></i>}</div>
-                    <div className={reviewPage === 2 ? "current" : "complete"}>{reviewDetails === "" ? "" : <i className="fa-solid fa-check" ></i>}</div>
-                    <div className={reviewPage === 3 ? "current" : "complete"}>{(reviewDetails === "" && rating === "") ? <i className="fa-solid fa-check" ></i> : ""}</div>
+                    <div className={reviewPage === 1 ? "current" : "complete"}>{stars === 0 ? "" : <i className="fa-solid fa-check" ></i>}</div>
+                    <div className={reviewPage === 2 ? "current" : "complete"}>{review === "" ? "" : <i className="fa-solid fa-check" ></i>}</div>
+                    <div className={reviewPage === 3 ? "current" : "complete"}>{(review === "" && stars === "") ? <i className="fa-solid fa-check" ></i> : ""}</div>
                 </div>
             </div>
-            <form className="review-form" onSubmit={nextPage}>
+            <form className="review-form" onSubmit={handleSubmit}>
                 {reviewPage === 1 && <div className='review-step review-step-1'>
                     <div >
                         <div className="review-step-one-upper">
@@ -44,53 +90,55 @@ const ReviewFormModal = () => {
                             </div>
                             <div className="review-step-one-upper-right">
                                 <div>PRODUCT NAME HERE</div>
-                                <div>SHOP OWNER NAME HERE</div>
+                                 <div>SHOP OWNER NAME HERE</div>
+
                                 <div className="modal-stars-area">
+
                                     <tooltip title="Disappointed">
                                         <div
-                                            onMouseEnter={() => setActiveRating(1)}
-                                            onMouseLeave={() => setActiveRating(rating)}
-                                            onClick={() => setRating(1)}>
-                                            <i className={activeRating >= 1 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
+                                            onMouseEnter={() => setActiveStars(1)}
+                                            onMouseLeave={() => setActiveStars(stars)}
+                                            onClick={() => setStars(1)}>
+                                            <i className={activeStars >= 1 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
                                         </div>
                                     </tooltip>
                                     <tooltip title="Not a fan">
                                         <div
-                                            onMouseEnter={() => setActiveRating(2)}
-                                            onMouseLeave={() => setActiveRating(rating)}
-                                            onClick={() => setRating(2)}>
-                                            <i className={activeRating >= 2 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
+                                            onMouseEnter={() => setActiveStars(2)}
+                                            onMouseLeave={() => setActiveStars(stars)}
+                                            onClick={() => setStars(2)}>
+                                            <i className={activeStars >= 2 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
                                         </div>
                                     </tooltip>
                                     <tooltip title="It's okay">
                                         <div
-                                            onMouseEnter={() => setActiveRating(3)}
-                                            onMouseLeave={() => setActiveRating(rating)}
-                                            onClick={() => setRating(3)}>
-                                            <i className={activeRating >= 3 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
+                                            onMouseEnter={() => setActiveStars(3)}
+                                            onMouseLeave={() => setActiveStars(stars)}
+                                            onClick={() => setStars(3)}>
+                                            <i className={activeStars >= 3 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
                                         </div>
                                     </tooltip>
                                     <tooltip title="Like it">
                                         <div
-                                            onMouseEnter={() => setActiveRating(4)}
-                                            onMouseLeave={() => setActiveRating(rating)}
-                                            onClick={() => setRating(4)}>
-                                            <i className={activeRating >= 4 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
+                                            onMouseEnter={() => setActiveStars(4)}
+                                            onMouseLeave={() => setActiveStars(stars)}
+                                            onClick={() => setStars(4)}>
+                                            <i className={activeStars >= 4 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
                                         </div>
                                     </tooltip>
                                     <tooltip title="Love it">
                                         <div
-                                            onMouseEnter={() => setActiveRating(5)}
-                                            onMouseLeave={() => setActiveRating(rating)}
-                                            onClick={() => setRating(5)}>
-                                            <i className={activeRating >= 5 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
+                                            onMouseEnter={() => setActiveStars(5)}
+                                            onMouseLeave={() => setActiveStars(stars)}
+                                            onClick={() => setStars(5)}>
+                                            <i className={activeStars >= 5 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
                                         </div>
                                     </tooltip>
                                 </div>
-                                <div>My review rating<span className="error">*</span></div>
+                                <div>My review stars<span className="error">*</span></div>
                             </div>
                         </div>
-                        {rating < 3 && <div className="low-review-help">
+                        {stars < 3 && <div className="low-review-help">
                             <p>Sorry your experience wasn't great</p>
                             <p>Learn ways to <Link className="review-help-link" onClick={() => closeModal()} to="/">get help with your order.</Link></p>
                         </div>}
@@ -104,24 +152,23 @@ const ReviewFormModal = () => {
                             <li>if the item matched the description</li>
                             <li>if the item met your expectations</li>
                         </ul>
-                        <textarea className="review-text" type="text" placeholder={reviewDetails === "" ? "Leave your review here" : ""}
-                            onChange={e => setReviewDetails(e.target.value)}>
-                            {
-                                reviewDetails === "" ? "" : reviewDetails
-                            }
+                        <textarea className="review-text" type="text" placeholder={review === "" ? "Leave your review here" : ""}
+                            onChange={e => setReview(e.target.value)}>
+                            {type === "create" ? (review === "" ? "" : review) : (thisReview.review ? thisReview.review : "")}
                         </textarea>
                         <p>By submitting, you agree to <Link to="/" onClick={() => closeModal()} className="review-help-link">Etsy's Review Policy</Link></p>
                     </div>}
                 {
                     reviewPage === 3 &&
                     <div className='review-step review-step-3'>
-                        <p className="review-detail-review">{reviewDetails}</p>
+                        {type === "create" && <p className="review-detail-review">{review}</p>}
+                        {type === "update" && review ? review : thisReview.review}
                         <div>
-                            <i className={rating >= 1 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
-                            <i className={rating >= 2 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
-                            <i className={rating >= 3 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
-                            <i className={rating >= 4 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
-                            <i className={rating >= 5 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
+                            <i className={stars >= 1 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
+                            <i className={stars >= 2 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
+                            <i className={stars >= 3 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
+                            <i className={stars >= 4 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
+                            <i className={stars >= 5 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
                         </div>
                     </div>
                 }
@@ -129,7 +176,7 @@ const ReviewFormModal = () => {
                     {reviewPage === 1 && <button type="button" className="back-button">Exit</button>}
                     {reviewPage > 1 && <button type="button" className="back-button" onClick={prevPage}>Go Back</button>}
                     {reviewPage < 3 && <button type="button" className="forward-button" onClick={nextPage}>Next</button>}
-                    {reviewPage === 3 && <button type="submit" className="forward-button" >Submit Your Review</button>}
+                    {reviewPage === 3 && <button type="submit" className="forward-button" >Submit</button>}
                 </div>
 
             </form>

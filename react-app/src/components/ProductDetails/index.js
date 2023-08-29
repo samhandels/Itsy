@@ -7,10 +7,28 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import star from "./itsy-star.png";
 import truck from "./itsy-truck.png";
 import hand from "./itsy-hand.png";
+import { AddtoCartModal} from "../ShoppingCart/AddtoCartModal"
+import OpenModalButton from "../../components/OpenModalButton";
+import ReviewFormPage from "../Reviews/ReviewFormPage";
+import { createFavorite, removeFavorite } from '../../store/favoritesReducer';
 
 export const ProductDetails = () => {
   const { productId } = useParams();
   const dispatch = useDispatch();
+
+  const reviews = useSelector((state) => state.reviews.reviews)
+  const favorites = useSelector((state) => state.favorites.favorites);
+
+  const isFavorite = (productId) => {
+    return favorites[productId];
+  };
+  const handleHeartClick = (productId) => {
+    if (isFavorite(productId)) {
+        dispatch(removeFavorite(productId));
+    } else {
+        dispatch(createFavorite(productId));
+    }
+  };
 
   let dollar = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -20,12 +38,13 @@ export const ProductDetails = () => {
   const product = useSelector((state) =>
     state.products ? state.products.singleProduct : null
   );
+  const revArr = Object.values(reviews)
+  const userReviews = revArr.filter((review) => review.productId === product?.id)
+
 
   useEffect(() => {
     dispatch(fetchProductDetails(productId));
   }, [dispatch, productId]);
-
-  console.log("herehere", product);
 
   if (!product) return null;
 
@@ -40,14 +59,19 @@ export const ProductDetails = () => {
       <div id="entire-page-productDetails">
         <div id="page-productDetails">
           <div id="left-panel-productDetails">
+              <i id="heart-icon-prod-detail" className={`nav-link fa-regular ${isFavorite(product.id) ? "fa-heart-filled" : "fa-heart"}`} onClick={() => handleHeartClick(product.id)}></i>
             <div id="primary-image-holder-productDetails">
               <img
                 id="primary-image-productDetails"
                 src={product.product_image[0]}
               />
             </div>
-
-            <div id="reviews-holder-productDetails">{product.reviews[0]}</div>
+            <div>
+              <ReviewFormPage productId={product.id} />
+            </div>
+            {userReviews.map((review) => (
+              <div>{review.review}</div>
+            ))}
           </div>
 
           <div id="right-panel-productDetails">
@@ -72,7 +96,13 @@ export const ProductDetails = () => {
                   Learn more
                 </a>
               </div>
-              <div id="Add-productDetails">Add to cart</div>
+              <div>
+                <OpenModalButton
+                  buttonStyle="Add-productDetails"
+                  buttonText="Add to cart"
+                    modalComponent={<AddtoCartModal productId={product?.id}/>}
+          />
+              </div>
 
               <div id="star-section-productDetails">
                 <img id="star-image-productDetails" src={star} />

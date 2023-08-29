@@ -2,10 +2,12 @@ from flask import Blueprint, request, redirect
 from ..models import db
 from ..models.product import Product
 from ..models.reviews import Review
+from ..models.shopping_cart_items import ShoppingCartItems
+from ..models.favorites import Favorite
 from ..forms.product_form import ProductForm
 from ..forms.review_form import ReviewForm
 from datetime import datetime
-from flask_login import current_user # current_user.id
+from flask_login import login_required, current_user # current_user.id
 
 
 products = Blueprint("products", __name__)
@@ -79,7 +81,7 @@ def create_product():
                   description = form.data["description"],
                   quantity = form.data["quantity"],
                   category = form.data["category"],
-                  owner_id = None
+                  ownerId = current_user.id
             )
 
             # NEED TO ADD CURRENT USER ABOVE *******************
@@ -87,7 +89,7 @@ def create_product():
             print(new_product)
             db.session.add(new_product)
             db.session.commit()
-            return new_product
+            return new_product.to_dict()
 
       else:
             print(form.errors)
@@ -121,7 +123,7 @@ def get_all_reviews_by_product(id):
     return response
 
 
-@products.route("/<int:id>/reviews/new/", methods=["POST"])
+@products.route("/<int:id>/reviews", methods=["POST"])
 def create_review_by_product(id):
     """
     Post new review for product by product id
@@ -144,3 +146,36 @@ def create_review_by_product(id):
     else:
           print(form.errors)
           return {"errors":form.errors}
+
+
+@products.route('/<int:id>/shopping_cart', methods=["POST"])
+@login_required
+def create_shopping_cart_item_by_product(id):
+    """
+    Create a shopping cart item to the shopping cart from the product detail page, only need productID and shoppingCartId
+    """
+    item = ShoppingCartItems(
+        productId = id,
+        shoppingCartId = current_user.id
+    )
+    db.session.add(item)
+    db.session.commit()
+    return item.to_dict()
+
+@products.route('/<int:id>/favorites', methods=["POST"])
+@login_required
+def add_favorite(id):
+
+
+    existing_favorite = Favorite.query.filter(Favorite.userId == current_user.id, Favorite.productId == id).first()
+    if existing_favorite:
+        return {"errors": ["This product is already in favorites."]}, 400
+
+    new_favorite = Favorite(
+         productId = id,
+         userId = current_user.id
+    )
+
+    db.session.add(new_favorite)
+    db.session.commit()
+    return new_favorite.to_dict(), 201

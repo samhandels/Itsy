@@ -1,15 +1,22 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 // import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import OpenModalButton from '../../OpenModalButton'
 import ReviewFormModal from '../ReviewFormModal'
 import './ReviewFormPage.css'
+import { useDispatch } from 'react-redux'
+import { getAllReviews } from '../../../store/reviewsReducer'
 
 
 
-const ReviewFormPage = ({ reviewId }) => {
+const ReviewFormPage = ({ productId }) => {
     const [rating, setRating] = useState()
     const [activeRating, setActiveRating] = useState()
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getAllReviews())
+    }, [dispatch])
 
 
     return (
@@ -52,7 +59,7 @@ const ReviewFormPage = ({ reviewId }) => {
                         </div>
                     </div>
                 </form >}
-                modalComponent={<ReviewFormModal />}
+                modalComponent={<ReviewFormModal productId={productId} type={"create"} />}
             />
         </div >
     )

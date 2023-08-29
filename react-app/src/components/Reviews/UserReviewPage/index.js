@@ -1,6 +1,11 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getAllReviews } from "../../../store/reviewsReducer"
+import OpenModalButton from "../../OpenModalButton"
+import ReviewFormModal from "../ReviewFormModal"
+import ReviewDeleteModal from "../ReviewDeleteModal"
+import { useModal } from "../../../context/Modal"
+
 
 const UserReviewPage = () => {
     const currentUser = useSelector((state) => state.session.user)
@@ -8,6 +13,7 @@ const UserReviewPage = () => {
     const allReviews = useSelector((state) => state.reviews.reviews)
 
     let revArr = Object.values(allReviews)
+
 
     useEffect(() => {
         dispatch(getAllReviews())
@@ -23,6 +29,14 @@ const UserReviewPage = () => {
                 <div key={review.id}>
                     <p>ReviewId: {review.id}</p>
                     <p>Rating: {review.stars}</p>
+                    <OpenModalButton
+                        buttonText="Update"
+                        modalComponent={<ReviewFormModal productId={review.productId} type={"update"} reviewId={review.id}/>}
+                    />
+                    <OpenModalButton
+                        buttonText="Delete"
+                        modalComponent={<ReviewDeleteModal reviewId={review.id} />}
+                    />
                 </div>
             ))}
 

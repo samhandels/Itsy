@@ -19,7 +19,7 @@ export const fetchProducts = (query) => async (dispatch) => {
             if (res.ok) {
                   const allProducts = await res.json();
                   const productsArray = Object.values(allProducts)
-                  dispatch (loadProducts(productsArray))
+                  dispatch(loadProducts(productsArray))
 
             } else {
                   const errors = await res.json()
@@ -32,7 +32,7 @@ export const fetchProducts = (query) => async (dispatch) => {
             if (res.ok) {
                   const allProducts = await res.json();
                   const productsArray = Object.values(allProducts)
-                  dispatch (loadProducts(productsArray))
+                  dispatch(loadProducts(productsArray))
 
             } else {
                   const errors = await res.json()
@@ -50,49 +50,54 @@ export const fetchProductDetails = (productId) => async (dispatch) => {
             const product = await res.json()
             const products = {}
             products.singleProduct = { ...product }
-            dispatch (getProduct(products))
+            dispatch(getProduct(products))
       } else {
             const errors = await res.json()
             return errors
       }
 }
 
-export const createProductThunk = (product) => async (dispatch) => {
+export const fetchCreateProduct = (product) => async (dispatch) => {
       try {
-        const res = await fetch("/api/products", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(product),
-        });
-    
-        if (res.ok) {
-          const productResponse = await res.json();
-          return productResponse;
-        } else {
-          const errors = await res.json();
-          return errors;
-        }
+
+            console.log('hello');
+            const res = await fetch("/api/products/new", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify(product),
+            });
+
+            if (res.ok) {
+                  const productResponse = await res.json();
+                  const products = {}
+                  products.singleProduct = { ...productResponse }
+                  dispatch(getProduct(products))
+                  return products;
+            } else {
+                  const errors = await res.json();
+                  return errors;
+            }
       } catch (error) {
-        const errors = await error.json();
-        return errors;
+            const errors = await error.json();
+            return errors;
       }
-    };
+};
 
 export const updateProductThunk = (product) => async (dispatch) => {
       const res = await fetch(`/api/products/${product.id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(product),
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(product),
       });
-    
+
       if (res.ok) {
-        const productResponse = await res.json();
-        return productResponse;
+            const productResponse = await res.json();
+            return productResponse;
       } else {
-        const errors = await res.json();
-        return errors;
+            const errors = await res.json();
+            return errors;
       }
-    };
+};
 
 /** ======== Reducer ======== */
 
@@ -101,9 +106,9 @@ const initialState = {};
 export const productsReducer = (state = initialState, action) => {
       switch (action.type) {
             case LOAD_PRODUCTS:
-                  return [ ...action.products ];
+                  return [...action.products];
             case GET_PRODUCT:
-                  return { ...action.product }
+                  return { ...state, ...action.product }
             default:
                   return state;
       }
