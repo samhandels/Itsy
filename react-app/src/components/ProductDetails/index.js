@@ -7,10 +7,13 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import star from "./itsy-star.png";
 import truck from "./itsy-truck.png";
 import hand from "./itsy-hand.png";
+import ReviewFormPage from "../Reviews/ReviewFormPage";
 
 export const ProductDetails = () => {
   const { productId } = useParams();
   const dispatch = useDispatch();
+
+  const reviews = useSelector((state) => state.reviews.reviews)
 
   let dollar = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -20,6 +23,9 @@ export const ProductDetails = () => {
   const product = useSelector((state) =>
     state.products ? state.products.singleProduct : null
   );
+  const revArr = Object.values(reviews)
+  const userReviews = revArr.filter((review) => review.productId === product.id)
+
 
   useEffect(() => {
     dispatch(fetchProductDetails(productId));
@@ -46,8 +52,12 @@ export const ProductDetails = () => {
                 src={product.product_image[0]}
               />
             </div>
-
-            <div id="reviews-holder-productDetails">{product.reviews[0]}</div>
+            <div>
+              <ReviewFormPage productId={product.id} />
+            </div>
+            {userReviews.map((review) => (
+              <div>{review.review}</div>
+            ))}
           </div>
 
           <div id="right-panel-productDetails">

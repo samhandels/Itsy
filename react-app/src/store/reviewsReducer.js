@@ -40,18 +40,19 @@ export const getOneReview = (reviewId) => async (dispatch) => {
     dispatch(loadReview(review))
 }
 
-export const postReview = (review) => async(dispatch) => {
-    const productId = review.productId
+export const postReview = (productId, review) => async (dispatch) => {
+
     try {
         const res = await fetch(`/api/products/${productId}/reviews`, {
             method: "POST",
-            headers: { "Content-Type": "application/json"},
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(review)
         });
 
-        if(res.ok) {
-            const reviewResponse = await res.json();
-            return reviewResponse;
+
+        const reviewResponse = await res.json()
+        if (res.ok) {
+            dispatch(addReview(reviewResponse))
         } else {
             const errors = await res.json();
             return errors;
@@ -84,7 +85,7 @@ export const reviewsReducer = (state = initialState, action) => {
             return newState
         case ADD_REVIEW:
             newState = { ...state, reviews: { ...state.reviews } }
-            newState.review.reviews[action.review.id] = action.review
+            newState.reviews[action.review.id] = action.review
             newState.review = action.review
             return newState
         case DELETE_REVIEW:
