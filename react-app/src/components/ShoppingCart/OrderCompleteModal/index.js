@@ -4,8 +4,8 @@ import { useModal } from "../../../context/Modal";
 import "./OrderComplete.css";
 // import { updateProductThunk } from "../../../store/productsReducer";
 //! need to update the products quantity after the order is complete
-import { deleteItemThunk } from "../../../store/shoppingCartReducer";
-//! need to clear that out from the shopping cart after the order is complete
+// import { deleteItemThunk } from "../../../store/shoppingCartReducer";
+//! need to clear the item card out from the shopping cart after the order is complete
 
 export function OrderCompleteModal(item) {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ export function OrderCompleteModal(item) {
 
   const orderComplete = (e) => {
     e.preventDefault();
-    dispatch(deleteItemThunk(item)).then(closeModal);
+    // dispatch(deleteItemThunk(item)).then(closeModal);
   };
 
   return (

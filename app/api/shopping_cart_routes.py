@@ -36,20 +36,20 @@ def update_shopping_cart_item():
     When user set different purchase/order quantity with shopping cart item card
     """
     shopping_cart_item_to_update = ShoppingCartItems.query.get(id)
-    product_id = shopping_cart_item_to_update.productId
+    db.session.commit()
     
 
-@shopping_cart.route("/<int :id>", methods=["DELETE"])
-def delete_shopping_cart_item(id):
-    """
-    1. Clicking X Remove on item card section in shopping cart
-    2. Clicking Order up! from payment section in shopping cart
-    delete thunk fetch route: /api/shopping_cart/${item.id}
-    """
-    item = ShoppingCartItems.query.get(id)
-    db.session.delete(item)
-    db.session.commit()
-    return redirect(f"")
+# @shopping_cart.route("/<int:id>", methods=["DELETE"])
+# def delete_shopping_cart_item(id):
+#     """
+#     1. Clicking X Remove on item card section in shopping cart
+#     2. Clicking Order up! from payment section in shopping cart
+#     delete thunk fetch route: /api/shopping_cart/${item.id}
+#     """
+#     item = ShoppingCartItems.query.get(id)
+#     db.session.delete(item)
+#     db.session.commit()
+#     return redirect(f"")
 
 
 
