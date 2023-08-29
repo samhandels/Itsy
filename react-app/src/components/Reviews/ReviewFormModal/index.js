@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react'
-// import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useModal } from '../../../context/Modal'
 import { Link } from 'react-router-dom'
 import './ReviewFormModal.css'
 import { postReview, updateReview } from '../../../store/reviewsReducer'
-import { useDispatch } from 'react-redux'
 
-const ReviewFormModal = ({ productId, type }) => {
+const ReviewFormModal = ({ productId, type, reviewId }) => {
     const dispatch = useDispatch();
     const [review, setReview] = useState("")
     const [stars, setStars] = useState(0)
@@ -15,10 +14,16 @@ const ReviewFormModal = ({ productId, type }) => {
     const [errors, setErrors] = useState([])
     const { closeModal } = useModal();
     let reviewInfo = { review, stars }
+    let reviews = useSelector((state) => state.reviews.reviews)
+    let revArr = Object.values(reviews)
 
-    console.log("TYPE", type)
+    const thisReview = revArr[reviewId]
+
+
+
     let handleSubmit;
     if (type === "create") {
+
         handleSubmit = async (e) => {
             e.preventDefault()
             const data = await dispatch(postReview(productId, reviewInfo))
@@ -30,10 +35,21 @@ const ReviewFormModal = ({ productId, type }) => {
         }
     }
 
+
+
     if (type === "update") {
+
         handleSubmit = async (e) => {
             e.preventDefault()
-            const data = await dispatch(updateReview(productId, reviewInfo))
+
+            if (review) reviewInfo.review = review
+            else reviewInfo.review = thisReview.review
+            if (stars) reviewInfo.stars = stars
+            else reviewInfo.review = thisReview.stars
+
+            reviewInfo.id = thisReview.id
+
+            const data = await dispatch(updateReview(reviewInfo))
             if (data) {
                 setErrors(data);
             } else {
@@ -56,9 +72,9 @@ const ReviewFormModal = ({ productId, type }) => {
     return (
         <div className="review-modal">
             <div className="review-progress-tracker">
-                {reviewPage === 1 && <p>Leave a Review</p>}
-                {reviewPage === 2 && <p>Great! One more thing...</p>}
-                {reviewPage === 3 && <p>Ready to submit?</p>}
+                {reviewPage === 1 && (type === "create" ? <p>Leave a Review</p> : <p>Make changes to this review?</p>)}
+                {reviewPage === 2 && (type === "create" ? <p>Great! One more thing...</p> : <p>Here's what you wrote</p>)}
+                {reviewPage === 3 && (type === "create" ? <p>Ready to submit?</p> : <p>Submit your update?</p>)}
                 <div className='progress-circles'>
                     <div className={reviewPage === 1 ? "current" : "complete"}>{stars === 0 ? "" : <i className="fa-solid fa-check" ></i>}</div>
                     <div className={reviewPage === 2 ? "current" : "complete"}>{review === "" ? "" : <i className="fa-solid fa-check" ></i>}</div>
@@ -74,8 +90,10 @@ const ReviewFormModal = ({ productId, type }) => {
                             </div>
                             <div className="review-step-one-upper-right">
                                 <div>PRODUCT NAME HERE</div>
-                                <div>SHOP OWNER NAME HERE</div>
+                                 <div>SHOP OWNER NAME HERE</div>
+
                                 <div className="modal-stars-area">
+
                                     <tooltip title="Disappointed">
                                         <div
                                             onMouseEnter={() => setActiveStars(1)}
@@ -136,16 +154,15 @@ const ReviewFormModal = ({ productId, type }) => {
                         </ul>
                         <textarea className="review-text" type="text" placeholder={review === "" ? "Leave your review here" : ""}
                             onChange={e => setReview(e.target.value)}>
-                            {
-                                review === "" ? "" : review
-                            }
+                            {type === "create" ? (review === "" ? "" : review) : (thisReview.review ? thisReview.review : "")}
                         </textarea>
                         <p>By submitting, you agree to <Link to="/" onClick={() => closeModal()} className="review-help-link">Etsy's Review Policy</Link></p>
                     </div>}
                 {
                     reviewPage === 3 &&
                     <div className='review-step review-step-3'>
-                        <p className="review-detail-review">{review}</p>
+                        {type === "create" && <p className="review-detail-review">{review}</p>}
+                        {type === "update" && review ? review : thisReview.review}
                         <div>
                             <i className={stars >= 1 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
                             <i className={stars >= 2 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
@@ -159,7 +176,7 @@ const ReviewFormModal = ({ productId, type }) => {
                     {reviewPage === 1 && <button type="button" className="back-button">Exit</button>}
                     {reviewPage > 1 && <button type="button" className="back-button" onClick={prevPage}>Go Back</button>}
                     {reviewPage < 3 && <button type="button" className="forward-button" onClick={nextPage}>Next</button>}
-                    {reviewPage === 3 && <button type="submit" className="forward-button" >Submit Your Review</button>}
+                    {reviewPage === 3 && <button type="submit" className="forward-button" >Submit</button>}
                 </div>
 
             </form>

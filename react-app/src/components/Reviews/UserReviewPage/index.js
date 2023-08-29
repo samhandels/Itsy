@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { getAllReviews } from "../../../store/reviewsReducer"
 import OpenModalButton from "../../OpenModalButton"
 import ReviewFormModal from "../ReviewFormModal"
+import ReviewDeleteModal from "../ReviewDeleteModal"
 import { useModal } from "../../../context/Modal"
 
 
@@ -30,11 +31,11 @@ const UserReviewPage = () => {
                     <p>Rating: {review.stars}</p>
                     <OpenModalButton
                         buttonText="Update"
-                        modalComponent={<ReviewFormModal productId={review.productId} type={"update"} />}
+                        modalComponent={<ReviewFormModal productId={review.productId} type={"update"} reviewId={review.id}/>}
                     />
                     <OpenModalButton
                         buttonText="Delete"
-                        modalComponent={<ReviewDeleteModal productId={review.productId} type={"update"} />}
+                        modalComponent={<ReviewDeleteModal reviewId={review.id} />}
                     />
                 </div>
             ))}

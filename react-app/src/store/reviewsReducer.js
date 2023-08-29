@@ -32,6 +32,13 @@ const removeReview = reviewId => {
     }
 }
 
+const putReview = review => {
+    return {
+        type: UPDATE_REVIEW,
+        review
+    }
+}
+
 export const getAllReviews = () => async (dispatch) => {
     const res = await fetch('/api/reviews')
 
@@ -70,8 +77,39 @@ export const postReview = (productId, review) => async (dispatch) => {
     }
 }
 
-export const updateReview = (productId, review) => async (dispatch) => {
+export const updateReview = (review) => async (dispatch) => {
 
+    console.log("REVIEW SENT TO UPDATE THUNK", review)
+    // try {
+    //     const res = await fetch(`/api/reviews/${review.id}`, {
+    //         method: "PUT",
+    //         headers: { "Content-Type": "application/json" },
+    //         body: JSON.stringify(review)
+    //     });
+
+
+    //     const reviewResponse = await res.json()
+    //     console.log(reviewResponse)
+    //     if (res.ok) {
+    //         dispatch(putReview(reviewResponse))
+    //     } else {
+    //         const errors = await res.json();
+    //         return errors;
+    //     }
+    // } catch (error) {
+    //     const errors = await error.json();
+    //     return errors;
+    // }
+
+
+    const res = await fetch(`/api/reviews/${review.id}`)
+    const oldReview = await res.json()
+    console.log("Old Review", oldReview)
+    oldReview.review = review.review
+    oldReview.stars = review.stars
+
+    console.log("AFTER UPDATES", oldReview)
+    dispatch(putReview(oldReview))
 }
 
 export const deleteReview = (reviewId) => async (dispatch) => {
@@ -112,7 +150,7 @@ export const reviewsReducer = (state = initialState, action) => {
             return newState
         case UPDATE_REVIEW:
             newState = { ...state, reviews: { ...state.reviews } }
-            newState.reviews[action.reviewId] = action.reviewId
+            newState.reviews[action.review.id] = action.review
             return newState
         default:
             return state;

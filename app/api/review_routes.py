@@ -55,14 +55,14 @@ def update_review(id):
 
     if form.validate_on_submit():
         review = Review(
-            productId = id,
+            id = review.id,
+            productId = review.productId,
             userId = current_user.id,
-            review = form.data["review"],
-            stars = form.data["stars"],
-            createdAt = datetime.now(),
+            review = review.review,
+            stars = review.stars,
+            createdAt = review.createdAt,
             updatedAt = datetime.now()
         )
-        db.session.add(review)
         db.session.commit()
         return review.to_dict()
     else:
