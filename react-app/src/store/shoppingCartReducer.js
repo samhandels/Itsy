@@ -46,18 +46,18 @@ export const getItemsThunk = () => async (dispatch) => {
 //  }
 // };
 
-// export const deleteItemThunk = (item) => async (dispatch) => {
-//  const res = await fetch(`/api/items/${item.id}`, {
-//    method: "DELETE",
-//  });
+export const deleteItemThunk = (item) => async (dispatch) => {
+ const res = await fetch(`/api/shopping_cart/${item.id}`, {
+   method: "DELETE",
+ });
 
-//  if (res.ok) {
-//    dispatch(getItemsThunk());
-//  } else {
-//    const errors = await res.json();
-//    return errors;
-//  }
-// };
+ if (res.ok) {
+   dispatch(getItemsThunk());
+ } else {
+   const errors = await res.json();
+   return errors;
+ }
+};
 
 const initialState = { }; //store shape 
 
