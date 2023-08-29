@@ -23,6 +23,8 @@ const UserReviewPage = () => {
                 <div key={review.id}>
                     <p>ReviewId: {review.id}</p>
                     <p>Rating: {review.stars}</p>
+                    <button>Update</button>
+                    <button>Delete</button>
                 </div>
             ))}
 

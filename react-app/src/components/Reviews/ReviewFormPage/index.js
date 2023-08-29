@@ -59,7 +59,7 @@ const ReviewFormPage = ({ productId }) => {
                         </div>
                     </div>
                 </form >}
-                modalComponent={<ReviewFormModal productId={productId} />}
+                modalComponent={<ReviewFormModal productId={productId} type={"create"} />}
             />
         </div >
     )

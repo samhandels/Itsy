@@ -6,7 +6,7 @@ import './ReviewFormModal.css'
 import { postReview } from '../../../store/reviewsReducer'
 import { useDispatch } from 'react-redux'
 
-const ReviewFormModal = ({ productId }) => {
+const ReviewFormModal = ({ productId, type }) => {
     const dispatch = useDispatch();
     const [review, setReview] = useState("")
     const [stars, setStars] = useState(0)
@@ -16,14 +16,29 @@ const ReviewFormModal = ({ productId }) => {
     const { closeModal } = useModal();
     let reviewInfo = { review, stars }
 
+    console.log("TYPE", type)
+    let handleSubmit;
+    if (type === "create") {
+        handleSubmit = async (e) => {
+            e.preventDefault()
+            const data = await dispatch(postReview(productId, reviewInfo))
+            if (data) {
+                setErrors(data);
+            } else {
+                closeModal();
+            }
+        }
+    }
 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        const data = await dispatch(postReview(productId, reviewInfo))
-        if (data) {
-            setErrors(data);
-        } else {
-            closeModal();
+    if (type === "update") {
+        handleSubmit = async (e) => {
+            e.preventDefault()
+            const data = await dispatch(updateReview(productId, reviewInfo))
+            if (data) {
+                setErrors(data);
+            } else {
+                closeModal();
+            }
         }
     }
 
