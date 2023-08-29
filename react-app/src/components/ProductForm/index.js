@@ -6,7 +6,6 @@ import "../ShoppingCart/AllShoppingCartItems/AllShoppingCartItems.css"
 // import { updateProductThunk } from "../../../store/products";
 //! need to create thunks
 
-//!need to create 2 components, one for create, one for update
 export const ProductForm = ({ product, formType }) => {
   // all the inputs
   const [productImage, setProductImage] = useState("");
