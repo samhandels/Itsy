@@ -46,8 +46,6 @@ export const ProductDetails = () => {
     dispatch(fetchProductDetails(productId));
   }, [dispatch, productId]);
 
-  console.log("herehere", product);
-
   if (!product) return null;
 
   return (

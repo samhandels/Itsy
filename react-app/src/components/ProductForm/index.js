@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import './styleProductForm.css'
+import { fetchCreateProduct } from "../../store/productsReducer";
 
 
 export const ProductForm = ({ product, formType }) => {
@@ -42,13 +43,11 @@ export const ProductForm = ({ product, formType }) => {
     // setErrors({});
     product = {
       ...product,
-      productImage,
       category,
       quantity,
       description,
       name,
-      price,
-      Owner: { ...sessionUser },
+      price
     };
     // console.log("what product is in the productForm==============", product);
 
@@ -62,10 +61,13 @@ export const ProductForm = ({ product, formType }) => {
     } else if (formType === "Create") {
       // && !Object.values(errors).length
       // const newproduct = await dispatch(
-      //   createProductThunk(product)
+      //   fetchCreateProduct(product)
       // );
       // console.log("3. back to form", newproduct);
       // product = newproduct;
+      const newProduct = await dispatch(fetchCreateProduct(product))
+
+      history.replace(`/products/${newProduct.singleProduct.id}`)
     }
   };
 

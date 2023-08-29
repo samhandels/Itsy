@@ -57,8 +57,10 @@ export const fetchProductDetails = (productId) => async (dispatch) => {
       }
 }
 
-export const createProductThunk = (product) => async (dispatch) => {
+export const fetchCreateProduct = (product) => async (dispatch) => {
       try {
+
+            console.log('hello');
             const res = await fetch("/api/products/new", {
                   method: "POST",
                   headers: { "Content-Type": "application/json" },
@@ -96,6 +98,8 @@ export const updateProductThunk = (product) => async (dispatch) => {
             return errors;
       }
 };
+
+export const
 
 /** ======== Reducer ======== */
 
