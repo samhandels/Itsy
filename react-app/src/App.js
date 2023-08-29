@@ -40,9 +40,9 @@ function App() {
           <Route path="/reviews/current">
             <UserReviewPage />
           </Route>
-          <Route exact path="/products/new">
+          <ProtectedRoute exact path="/products/new">
             <CreateProductForm />
-          </Route>
+          </ProtectedRoute>
           <Route path="/products/:productId">
             <ProductDetails />
           </Route>
