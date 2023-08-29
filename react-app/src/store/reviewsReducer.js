@@ -63,9 +63,11 @@ export const postReview = (productId, review) => async (dispatch) => {
     }
 }
 
-export const updateReview = (productId, review) => async (dispatch) => {
-    
-}
+// export const updateReview = (productId, review) => async (dispatch) => {
+
+// }
+
+
 
 
 

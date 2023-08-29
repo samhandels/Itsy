@@ -44,6 +44,31 @@ def get_one_review(id):
     return response.to_dict()
 
 
+@reviews.route("/<int:id>", methods=["PUT"])
+def update_review(id):
+    """
+    Post new review for product by product id
+    """
+    review = Review.query.get(id)
+    form = ReviewForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+
+    if form.validate_on_submit():
+        review = Review(
+            productId = id,
+            userId = current_user.id,
+            review = form.data["review"],
+            stars = form.data["stars"],
+            createdAt = datetime.now(),
+            updatedAt = datetime.now()
+        )
+        db.session.add(review)
+        db.session.commit()
+        return review.to_dict()
+    else:
+          print(form.errors)
+          return {"errors":form.errors}
+
 
 
 @reviews.route("/<int:id>", methods=["DELETE"])

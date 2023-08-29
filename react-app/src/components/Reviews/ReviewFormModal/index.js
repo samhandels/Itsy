@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { useModal } from '../../../context/Modal'
 import { Link } from 'react-router-dom'
 import './ReviewFormModal.css'
-import { postReview } from '../../../store/reviewsReducer'
+import { postReview, updateReview } from '../../../store/reviewsReducer'
 import { useDispatch } from 'react-redux'
 
 const ReviewFormModal = ({ productId, type }) => {

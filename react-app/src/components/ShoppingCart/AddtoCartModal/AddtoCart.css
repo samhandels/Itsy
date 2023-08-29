@@ -1,0 +1,27 @@
+.button-container>button {
+ padding: 10px 20px;
+ border-radius: 20px;
+ position: static;
+}
+
+.forward-button {
+ background-color: black;
+ color: white;
+ border: none
+}
+
+.back-button {
+ background-color: lightgray;
+ color: white;
+ border: none;
+}
+
+.row {
+ display: flex;
+ flex-direction: row;
+}
+
+.column {
+ display: flex;
+ flex-direction: column;
+}

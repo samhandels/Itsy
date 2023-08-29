@@ -26,7 +26,7 @@ export const ProductDetails = () => {
     state.products ? state.products.singleProduct : null
   );
   const revArr = Object.values(reviews)
-  const userReviews = revArr.filter((review) => review.productId === product.id)
+  const userReviews = revArr.filter((review) => review.productId === product?.id)
 
 
   useEffect(() => {
@@ -88,7 +88,7 @@ export const ProductDetails = () => {
                 <OpenModalButton
                   buttonStyle="Add-productDetails"
                   buttonText="Add to cart"
-                    modalComponent={<AddtoCartModal />}
+                    modalComponent={<AddtoCartModal productId={product?.id}/>}
           />
               </div>
 

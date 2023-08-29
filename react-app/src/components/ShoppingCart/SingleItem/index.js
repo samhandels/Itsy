@@ -30,14 +30,14 @@ export default function SingleItems({ item, product }) {
       <div className="item container row card">
         <div className="owner-item-delete column margin-right">
           <div className=" product-owner row space-between">
-            <div>{product.ownerName}</div>
+            <div>{product?.ownerName}</div>
             <div>Contact shop</div>
           </div>
           <div className="item-detail container row">
             <div className="img-delete column">
               <div className="">
                 <img
-                  src={product.product_image[0]}
+                  src={product?.product_image[0]}
                   alt=""
                   className="cart-img"
                 />
