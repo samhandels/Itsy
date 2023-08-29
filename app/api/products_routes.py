@@ -2,10 +2,11 @@ from flask import Blueprint, request, redirect
 from ..models import db
 from ..models.product import Product
 from ..models.reviews import Review
+from ..models.shopping_cart_items import ShoppingCartItems
 from ..forms.product_form import ProductForm
 from ..forms.review_form import ReviewForm
 from datetime import datetime
-from flask_login import current_user # current_user.id
+from flask_login import login_required, current_user # current_user.id
 
 
 products = Blueprint("products", __name__)
@@ -144,3 +145,19 @@ def create_review_by_product(id):
     else:
           print(form.errors)
           return {"errors":form.errors}
+
+
+@products.route('/<int:id>/shopping_cart', methods=["POST"])
+@login_required
+def create_shopping_cart_item_by_product(id):
+    """
+    Create a shopping cart item to the shopping cart from the product detail page, only need productID and shoppingCartId
+    """
+    item = ShoppingCartItems(
+        productId = id,
+        shoppingCartId = current_user.id
+    )
+    db.session.add(item)
+    db.session.commit()
+    return item.to_dict()
+

@@ -18,21 +18,21 @@ def get_shopping_cart():
     return {'shopping_carts': response}
 
 
-@shopping_cart.route('/current', methods=["POST"])
-@login_required
-def create_shopping_cart_item_by_product():
-    """
-    Create a shopping cart item to the shopping cart from the product detail page, only need productID and shoppingCartId
-    """
-    # print("**************** shopping cart api routes ***************", product_id)
-    item = ShoppingCartItems(
-        # productId = product_id,
-        shoppingCartId = current_user.id
-    )
-    # print("**************** shopping cart api routes ***************", item)
-    db.session.add(item)
-    db.session.commit()
-    return shopping_cart.to_dict()
+# @shopping_cart.route('/current', methods=["POST"])
+# @login_required
+# def create_shopping_cart_item_by_product():
+#     """
+#     Create a shopping cart item to the shopping cart from the product detail page, only need productID and shoppingCartId
+#     """
+#     # print("**************** shopping cart api routes ***************", product_id)
+#     item = ShoppingCartItems(
+#         productId = product_id,  cannot get product id
+#         shoppingCartId = current_user.id
+#     )
+#     # print("**************** shopping cart api routes ***************", item)
+#     db.session.add(item)
+#     db.session.commit()
+#     return shopping_cart.to_dict()
 
 
 
