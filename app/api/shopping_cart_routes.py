@@ -18,33 +18,8 @@ def get_shopping_cart():
     return {'shopping_carts': response}
 
 
-# @shopping_cart.route('/current', methods=["POST"])
-# @login_required
-# def create_shopping_cart_item_by_product():
-#     """
-#     Create a shopping cart item to the shopping cart from the product detail page, only need productID and shoppingCartId
-#     """
-#     # print("**************** shopping cart api routes ***************", product_id)
-#     item = ShoppingCartItems(
-#         productId = product_id,  cannot get product id
-#         shoppingCartId = current_user.id
-#     )
-#     # print("**************** shopping cart api routes ***************", item)
-#     db.session.add(item)
-#     db.session.commit()
-#     return shopping_cart.to_dict()
+#create an item with methods=["POST"] is in the @products.route
 
-
-
-@shopping_cart.route('/current', methods=["PUT"])
-@login_required
-def update_shopping_cart_item():
-    """
-    When user set different purchase/order quantity with shopping cart item card
-    """
-    shopping_cart_item_to_update = ShoppingCartItems.query.get(id)
-    db.session.commit()
-    
 
 @shopping_cart.route("/<int:id>", methods=["DELETE"])
 @login_required

@@ -11,8 +11,7 @@ export function OrderCompleteModal(item) {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
 
-  const orderComplete = (e) => {
-    e.preventDefault();
+  const orderComplete = () => {
     // dispatch(deleteItemThunk(item)).then(closeModal);
   };
 
