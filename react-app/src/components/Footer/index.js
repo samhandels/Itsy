@@ -26,7 +26,12 @@ function Footer() {
                             </a>
                         </div>
                     </div>
-                    <div className='who-we-are'>WHO</div>
+
+                    <div id='who-footer'>
+                        <div id='who' className='who-we-are'>WHO</div>
+                        <div className='tech1'>Python<br/>Flask<br/>SQLAlchemy</div>
+                    </div>
+
                     <div className="team-member">
                         <img className='member-image' src="https://media.licdn.com/dms/image/C4D03AQFtc-pVwmDnEA/profile-displayphoto-shrink_200_200/0/1604125040371?e=1698883200&v=beta&t=hqwEc_8bV5b3XfhXlBlttQoiGcn9hyuv6bcTH9624T4" alt="Team Member 2" />
                         <div className='member-name' >Juvenal Burguillos</div>
@@ -37,7 +42,12 @@ function Footer() {
                                 <img className='github-logo' src={githubLogo} alt="GitHub" />
                             </a>
                     </div>
-                    <div className='who-we-are'>WE</div>
+
+                    <div id='we-footer'>
+                        <div id='we' className='who-we-are'>WE</div>
+                        <div className='tech2'>JS<br/>HTML<br/>CSS</div>
+                    </div>
+
                     <div className="team-member">
                         <img className='member-image' src="https://media.licdn.com/dms/image/C5603AQF0GSgWR49DHw/profile-displayphoto-shrink_200_200/0/1568408227822?e=1698883200&v=beta&t=lqj5Bb0FKkdi2f-MsDgd8aVbgyfvPwg8kiMSLp1N4Mg" alt="Team Member 3" />
                         <div className='member-name' >Sam Handelsman</div>
@@ -48,7 +58,12 @@ function Footer() {
                                 <img className='github-logo' src={githubLogo} alt="GitHub" />
                             </a>
                     </div>
-                    <div className='who-we-are'>ARE</div>
+
+                    <div id='are-footer'>
+                        <div id='are' className='who-we-are'>ARE</div>
+                        <div className='tech3'>React<br/>Redux<br/>PostgreSQL</div>
+                    </div>
+
                     <div className="team-member">
                         <img className='member-image' src="https://media.licdn.com/dms/image/D4E03AQExbSO-orZanQ/profile-displayphoto-shrink_200_200/0/1693175484136?e=1698883200&v=beta&t=WTw5NNcWTcE_n7hmuwTnahMyQRDSwNS1r1dHJsxXHL8" alt="Team Member 4" />
                         <div className='member-name' >Erica Zimmerman</div>

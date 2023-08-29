@@ -2,90 +2,132 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchProductDetails } from "../../store/productsReducer";
 import { useEffect } from "react";
-import './styleProductDetails.css'
-
+import "./styleProductDetails.css";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import star from "./itsy-star.png";
+import truck from "./itsy-truck.png";
+import hand from "./itsy-hand.png";
 
 export const ProductDetails = () => {
-      const { productId } = useParams()
-      const dispatch = useDispatch()
+  const { productId } = useParams();
+  const dispatch = useDispatch();
 
-      let dollar = new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'USD',
-      });
+  let dollar = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
 
-      const product = useSelector( (state) => state.products ? state.products.singleProduct : null )
+  const product = useSelector((state) =>
+    state.products ? state.products.singleProduct : null
+  );
 
-      useEffect( () => {
-            dispatch(fetchProductDetails(productId))
-      }, [dispatch, productId])
+  useEffect(() => {
+    dispatch(fetchProductDetails(productId));
+  }, [dispatch, productId]);
 
-      console.log('herehere', product);
+  console.log("herehere", product);
 
-      if (!product) return null
+  if (!product) return null;
 
-      return (
+  return (
+    <div>
+      <div id="filter-holder-ProductDetails">
+        <div id="filter-ProductDetails">
+          All categories ＞ {product.category} ＞ {product.name}
+        </div>
+      </div>
 
-            <div>
-
-            <div id='filter-holder-ProductDetails'>
-                  <div id='filter-ProductDetails'>
-                        All categories ＞  {product.category}  ＞ {product.name}
-                  </div>
+      <div id="entire-page-productDetails">
+        <div id="page-productDetails">
+          <div id="left-panel-productDetails">
+            <div id="primary-image-holder-productDetails">
+              <img
+                id="primary-image-productDetails"
+                src={product.product_image[0]}
+              />
             </div>
 
+            <div id="reviews-holder-productDetails">{product.reviews[0]}</div>
+          </div>
 
+          <div id="right-panel-productDetails">
+            <div id="order-side-panel-productDetials">
+              <div id="supply-count-productDetails">
+                Just {product.quantity} Available
+              </div>
+              <div id="price-productDetails">
+                {dollar.format(product.price)}
+              </div>
+              <div id="name-productDetails">{product.name}</div>
+              <div id="owner-productDetails">Sold by {product.ownerName}</div>
 
-            <div id='entire-page-productDetails'>
+              <div id="return-productDetails">
+                ✓ Returns & exchanges accepted
+              </div>
 
-                  <div id='left-panel-productDetails'>
+              <div id="how-many-productDetails">Select how many</div>
+              <div id="install-productDetails">
+                Pay in 4 installments with Klarna...
+                <a href="https://www.klarna.com/us/" target="_blank">
+                  Learn more
+                </a>
+              </div>
+              <div id="Add-productDetails">Add to cart</div>
 
-                        <div id='primary-image-holder-productDetails'>
-                              <img id='primary-image-productDetails' src={product.product_image[0]} />
-                        </div>
+              <div id="star-section-productDetails">
+                <img id="star-image-productDetails" src={star} />
+                <div id="star-text-productDetails">
+                  This seller consistently earned 5-star reviews, shipped on
+                  time, and replied quickly to any messages they received.
+                </div>
+              </div>
 
-                        <div id='reviews-holder-productDetails'>
-                              {product.reviews[0]}
-                        </div>
+              <div id="truck-section-productDetails">
+                <img id="truck-image-productDetails" src={truck} />
+                <div id="truck-text-productDetails">
+                  HOORAY! This item ships free to the US.
+                </div>
+              </div>
 
+              <div id="desc-section-productDetails">
+                <h4 id="h4-productDetails">Description</h4>
+                <div id="desc-productDetails">{product.description}</div>
+              </div>
 
+              <div id="ship-return-section-productDetails">
+                <h4>Shipping and Return Policies</h4>
+                <div id="cost-productDetails">Cost to ship</div>
+                <div id="free-productDetails">FREE</div>
 
+                <div id="offset-productDetails">
+                  Etsy offsets carbon emissions from shipping and packaging on
+                  this purchase.
+                </div>
 
+                <div id="return-div-productDetails">
+                  <div>
+                    <div id="cost-productDetails">Returns & Exchanges</div>
+                    <div id="accepted-productDetails">ACCEPTED</div>
                   </div>
-
-                  <div id='right-panel-productDetails'>
-
-                        <div id="order-side-panel-productDetials">
-                              <div id='supply-count-productDetails'>
-                                    Only {product.quantity} left
-                              </div>
-                              <div id='price-productDetails'>
-                                    {dollar.format(product.price)}
-                              </div>
-                              <div id='desc-productDetails'>
-                                    {product.description}
-                              </div>
-                              <div id='owner-productDetails'>
-                                    {product.ownerName}
-                              </div>
-                              <div id='how-many-productDetails'>
-                                    Select how many
-                              </div>
-                              <div id='install-productDetails'>
-                              Pay in 4 installments with Klarna. Learn more...
-                              </div>
-                              <div id='Add-productDetails'>
-                                    Add to cart
-                              </div>
-
-
-                        </div>
-
+                  <div>
+                    <div id="cost-productDetails">Return & Exchange Window</div>
+                    <div id="days-productDetails">21 DAYS</div>
                   </div>
+                </div>
 
-
+                <div id="hand-section-productDetails">
+                  <img id="hand-image-productDetails" src={hand} />
+                  <div id="hand-text-productDetails">
+                    Etsy Purchase Protection: Shop confidently on Etsy knowing
+                    if something goes wrong with an order, we've got your back
+                    for all eligible purchases.
+                  </div>
+                </div>
+              </div>
             </div>
-
-            </div>
-      )
-}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
