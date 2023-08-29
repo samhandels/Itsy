@@ -18,19 +18,25 @@ def get_shopping_cart():
     return {'shopping_carts': response}
 
 
-# #this goes into products detail page
-# @products.route('products/<int:id>', methods=["POST"])
-# @login_required
-# def create_shopping_cart_item_by_product():
-#     """
-#     Create a shopping cart item to the shopping cart from the product detail page
-#     """
-#     shopping_cart = ShoppingCartItems.query.get(id)
-#     return shopping_cart.to_dict()
+@shopping_cart.route('/current', methods=["POST"])
+@login_required
+def create_shopping_cart_item_by_product(product_id):
+    """
+    Create a shopping cart item to the shopping cart from the product detail page, only need productID and shoppingCartId
+    """
+    item = ShoppingCartItems(
+        productId = product_id,
+        shoppingCartId = current_user.id
+    )
+    
+    db.session.add(item)
+    db.session.commit()
+    return shopping_cart.to_dict()
 
 
 
 @shopping_cart.route('/current', methods=["PUT"])
+@login_required
 def update_shopping_cart_item():
     """
     When user set different purchase/order quantity with shopping cart item card
@@ -39,17 +45,18 @@ def update_shopping_cart_item():
     db.session.commit()
     
 
-# @shopping_cart.route("/<int:id>", methods=["DELETE"])
-# def delete_shopping_cart_item(id):
-#     """
-#     1. Clicking X Remove on item card section in shopping cart
-#     2. Clicking Order up! from payment section in shopping cart
-#     delete thunk fetch route: /api/shopping_cart/${item.id}
-#     """
-#     item = ShoppingCartItems.query.get(id)
-#     db.session.delete(item)
-#     db.session.commit()
-#     return redirect(f"")
+@shopping_cart.route("/<int:id>", methods=["DELETE"])
+@login_required
+def delete_shopping_cart_item(id):
+    """
+    1. Clicking X Remove on item card section in shopping cart
+    2. Clicking Order up! from payment section in shopping cart
+    delete thunk fetch route: /api/shopping_cart/${item.id}
+    """
+    item = ShoppingCartItems.query.get(id)
+    db.session.delete(item)
+    db.session.commit()
+    return redirect(f"")
 
 
 

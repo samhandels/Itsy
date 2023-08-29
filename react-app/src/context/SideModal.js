@@ -2,9 +2,9 @@ import React, { useRef, useState, useContext } from 'react';
 import ReactDOM from 'react-dom';
 import './SideModal.css';
 
-const ModalContext = React.createContext();
+const SideModalContext = React.createContext();
 
-export function ModalProvider({ children }) {
+export function SideModalProvider({ children }) {
   const modalRef = useRef();
   const [modalContent, setModalContent] = useState(null);
   // callback function that will be called when modal is closing
@@ -30,16 +30,16 @@ export function ModalProvider({ children }) {
 
   return (
     <>
-      <ModalContext.Provider value={contextValue}>
+      <SideModalContext.Provider value={contextValue}>
         {children}
-      </ModalContext.Provider>
+      </SideModalContext.Provider>
       <div ref={modalRef} />
     </>
   );
 }
 
-export function Modal() {
-  const { modalRef, modalContent, closeModal } = useContext(ModalContext);
+export function SideModal() {
+  const { modalRef, modalContent, closeModal } = useContext(SideModalContext);
   // If there is no div referenced by the modalRef or modalContent is not a
   // truthy value, render nothing:
   if (!modalRef || !modalRef.current || !modalContent) return null;
@@ -56,4 +56,4 @@ export function Modal() {
   );
 }
 
-export const useModal = () => useContext(ModalContext);
+export const useSideModal = () => useContext(SideModalContext);
