@@ -13,6 +13,7 @@ const UserReviewPage = () => {
 
     let revArr = Object.values(allReviews)
 
+
     useEffect(() => {
         dispatch(getAllReviews())
     }, [dispatch])
@@ -33,7 +34,7 @@ const UserReviewPage = () => {
                     />
                     <OpenModalButton
                         buttonText="Delete"
-                        modalComponent={<ReviewFormModal />}
+                        modalComponent={<ReviewDeleteModal productId={review.productId} type={"update"} />}
                     />
                 </div>
             ))}
