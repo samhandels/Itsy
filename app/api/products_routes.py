@@ -121,7 +121,7 @@ def get_all_reviews_by_product(id):
     return response
 
 
-@products.route("/<int:id>/reviews/new/", methods=["POST"])
+@products.route("/<int:id>/reviews", methods=["POST"])
 def create_review_by_product(id):
     """
     Post new review for product by product id
