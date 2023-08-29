@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import "../AllShoppingCartItems/AllShoppingCartItems.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,6 +7,9 @@ import OpenModalButton from "../../OpenModalButton/index";
 import { OrderCompleteModal } from "../OrderCompleteModal";
 
 //!need to add when click on item card redirect to product detail page
+import { deleteItemThunk } from "../../../store/shoppingCartReducer";
+//!need to add when click on remove it removes the item from cart
+
 
 export default function SingleItems({ item, product }) {
   const productQuantity = item.product.quantity;
@@ -15,16 +18,23 @@ export default function SingleItems({ item, product }) {
 
   const [purchaseQuantity, setPurchaseQuantity] = useState(1);
 
-  const sessionUser = useSelector((state) => state.session.user);
-
+  
   const price = item.product.price;
   const itemTotal = (item.product.price * purchaseQuantity).toFixed(2);
   const discount = (price * 0.2 * purchaseQuantity).toFixed(2);
   const subtotal = (price * 0.8 * purchaseQuantity).toFixed(2);
   const shipping = (price * 0.1 * purchaseQuantity).toFixed(2);
   const total = (price * 1.1 * purchaseQuantity).toFixed(2);
+  
+  // const sessionUser = useSelector((state) => state.session.user);
+  const dispatch = useDispatch();
 
-  if (!sessionUser) return null;
+  const removeItem = async () => {
+    await dispatch(deleteItemThunk(item))
+  };
+
+
+  // if (!sessionUser) return null;
   return (
     <div className="components-border row space-between margin-bottom">
       <div className="item container row card">
@@ -43,7 +53,7 @@ export default function SingleItems({ item, product }) {
                 />
               </div>
               <div>
-                <i className="fa-solid fa-x"></i>Remove
+              <button onClick={removeItem}><i className="fa-solid fa-x" ></i> Remove</button>
               </div>
             </div>
             <div className="description-quantity column">
@@ -94,15 +104,15 @@ export default function SingleItems({ item, product }) {
           <div>Shop discount</div>
           <div>-${discount}</div>
         </div>
-        <div className="row space-between ">
+        <div className="row space-between">
           <div>Subtotal</div>
           <div>${subtotal}</div>
         </div>
-        <div className="row space-between ">
+        <div className="row space-between">
           <div>Shipping</div>
           <div>${shipping}</div>
         </div>
-        <div className="row space-between ">
+        <div className="row space-between">
           <div>Total (1 item)</div>
           <div>${total}</div>
         </div>
