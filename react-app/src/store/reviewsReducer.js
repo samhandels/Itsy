@@ -18,12 +18,49 @@ const loadReview = review => {
     }
 }
 
+const addReview = review => {
+    return {
+        type: ADD_REVIEW,
+        review
+    }
+}
+
 export const getAllReviews = () => async (dispatch) => {
     const res = await fetch('/api/reviews')
 
     const reviews = await res.json();
 
     dispatch(loadReviews(reviews))
+}
+
+
+export const getOneReview = (reviewId) => async (dispatch) => {
+    const res = await fetch(`/api/reviews/${reviewId}`)
+    const review = await res.json()
+    dispatch(loadReview(review))
+}
+
+export const postReview = (productId, review) => async (dispatch) => {
+
+    try {
+        const res = await fetch(`/api/products/${productId}/reviews`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(review)
+        });
+
+
+        const reviewResponse = await res.json()
+        if (res.ok) {
+            dispatch(addReview(reviewResponse))
+        } else {
+            const errors = await res.json();
+            return errors;
+        }
+    } catch (error) {
+        const errors = await error.json();
+        return errors;
+    }
 }
 
 
@@ -48,7 +85,7 @@ export const reviewsReducer = (state = initialState, action) => {
             return newState
         case ADD_REVIEW:
             newState = { ...state, reviews: { ...state.reviews } }
-            newState.review.reviews[action.review.id] = action.review
+            newState.reviews[action.review.id] = action.review
             newState.review = action.review
             return newState
         case DELETE_REVIEW:

@@ -1,18 +1,26 @@
 .review-mini {
     display: flex;
+
+}
+
+.review-mini>div>i{
+    font-size: 18px
 }
 
 .review-container button {
-    background-color: none;
+    background-color: transparent;
     border: none;
+    margin-top: 30px;
 }
 
 .review-component {
     display: flex;
     align-items: center;
     column-gap: 20px;
-    
+    background-color: transparent;
+    border: none;
 }
+
 
 .add-review-modal {
     border-radius: 10px;
