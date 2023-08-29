@@ -39,6 +39,34 @@ export const getAllFavorites = () => async (dispatch) => {
     dispatch(loadFavorites(favorites));
 };
 
+export const createFavorite = (productId) => async (dispatch) => {
+    const res = await fetch(`/api/favorites/${productId}`, {
+        method: 'POST'
+    });
+
+    if (res.ok) {
+        const favorite = await res.json();
+        dispatch(addFavorite(favorite));
+        return null;
+    } else {
+        const errors = await res.json();
+        return errors;
+    }
+};
+
+export const removeFavorite = (productId) => async (dispatch) => {
+    const res = await fetch(`/api/favorites/${productId}`, {
+        method: 'DELETE'
+    });
+
+    if (res.ok) {
+        dispatch(deleteFavorite(productId));
+        return null;
+    } else {
+        const errors = await res.json();
+        return errors;
+    }
+};
 
 const initialState = {
     favorites: {},
