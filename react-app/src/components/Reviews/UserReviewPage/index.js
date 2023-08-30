@@ -15,7 +15,6 @@ const UserReviewPage = () => {
 
     let revArr = Object.values(allReviews)
 
-    console.log("REVARR NOW", revArr)
 
     useEffect(() => {
         dispatch(getAllReviews())

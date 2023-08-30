@@ -43,10 +43,8 @@ def update_review(id):
     """
     form = ReviewForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
-    print("BACKEND REVIEW PUT ROUTE")
     review = Review.query.get(id)
     if form.validate_on_submit():
-            print("FORM VALIDATEED")
 
             review.review = form.data["review"]
             review.stars = int(form.data["stars"])

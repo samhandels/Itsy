@@ -17,10 +17,7 @@ const ReviewUpdateModal = ({ productId, reviewId }) => {
     let reviewInfo = { review, stars }
     let reviews = useSelector((state) => state.reviews.reviews)
     let revArr = Object.values(reviews)
-    console.log("reviewId", reviewId)
-    console.log("revarr", reviewId)
     const thisReview = revArr.filter((review) => review.id === reviewId)[0]
-    console.log("thisReview", thisReview.id)
 
     const products = useSelector((state) => state.products)
     const prodArr = Object.values(products)
@@ -30,8 +27,6 @@ const ReviewUpdateModal = ({ productId, reviewId }) => {
 
 
     let handleSubmit;
-
-    console.log("this review", thisReview?.id)
 
     handleSubmit = async (e) => {
         e.preventDefault()
