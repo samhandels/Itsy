@@ -12,7 +12,9 @@ export const  AllProducts = () => {
       // dispatch(fetchProducts())
       // const products = fetchProducts()
 
-      const products = useSelector((state) => (state.products ? state.products : {} ))
+      const products = Object.values(
+            useSelector((state) => (state.products ? state.products : {}))
+          );
 
       const favorites = useSelector((state) => state.favorites.favorites);
 

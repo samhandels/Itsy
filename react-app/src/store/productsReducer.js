@@ -139,7 +139,7 @@ const initialState = {};
 export const productsReducer = (state = initialState, action) => {
       switch (action.type) {
             case LOAD_PRODUCTS:
-                  return [...action.products];
+                  return {...action.products};
             case GET_PRODUCT:
                   return { ...state, ...action.product };
             case DELETE_PRDODUCT:
