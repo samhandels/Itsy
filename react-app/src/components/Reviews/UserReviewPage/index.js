@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getAllReviews } from "../../../store/reviewsReducer"
 import OpenModalButton from "../../OpenModalButton"
-import ReviewFormModal from "../ReviewFormModal"
+import ReviewUpdateModal from "../ReviewUpdateModal"
 import ReviewDeleteModal from "../ReviewDeleteModal"
 import { useModal } from "../../../context/Modal"
 
@@ -28,10 +28,11 @@ const UserReviewPage = () => {
             {currentReviews.map((review) => (
                 <div key={review.id}>
                     <p>ReviewId: {review.id}</p>
+                    <p>Review: {review.review}</p>
                     <p>Rating: {review.stars}</p>
                     <OpenModalButton
                         buttonText="Update"
-                        modalComponent={<ReviewFormModal productId={review.productId} type={"update"} reviewId={review.id}/>}
+                        modalComponent={<ReviewUpdateModal productId={review.productId} type={"update"} reviewId={review.id} />}
                     />
                     <OpenModalButton
                         buttonText="Delete"
