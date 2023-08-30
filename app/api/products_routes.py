@@ -147,10 +147,10 @@ def update_product(id):
       if form.validate_on_submit():
            product = Product.query.get(id)
 
-           product.name = form.data["name"],
-           product.price = form.data["price"],
-           product.description = form.data["description"],
-           product.quantity = form.data["quantity"],
+           product.name = form.data["name"]
+           product.price = form.data["price"]
+           product.description = form.data["description"]
+           product.quantity = form.data["quantity"]
            product.category = form.data["category"]
            db.session.commit()
 
