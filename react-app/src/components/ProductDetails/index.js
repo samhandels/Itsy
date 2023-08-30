@@ -49,7 +49,7 @@ export const ProductDetails = () => {
   if (!product) return null;
 
   return (
-    <div>
+    <div id="largest-product-detail-div">
       <div id="filter-holder-ProductDetails">
         <div id="filter-ProductDetails">
           All categories ＞ {product.category} ＞ {product.name}

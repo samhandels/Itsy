@@ -1,3 +1,7 @@
+#largest-product-detail-div {
+      position: relative;
+}
+
 
 #filter-holder-ProductDetails {
       font-size: 15px;
@@ -28,10 +32,9 @@
 
 #heart-icon-prod-detail {
       position: absolute;
-      left:635px;
-      right:auto !important;
-      top:156px;
-      bottom:auto !important;
+      z-index: 1;
+      left: 57%;
+      top: 8%;
 }
 
 #right-panel-productDetails {
