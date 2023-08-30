@@ -4,27 +4,39 @@ import { useDispatch, useSelector } from "react-redux";
 // import { productDetailThunk } from "../../store/products";
 //! need product detail thunk
 import { ProductForm } from "../ProductForm/index"
+import { fetchProductDetails } from "../../store/productsReducer";
 
-export const UpdateSpotForm = () => {
-  let { productId } = useParams();
-  
-//!need to know the store shape
-  const product = useSelector((state) =>
-    state.product ? state.product[productId] : null
-  );
-  const dispatch = useDispatch();
+export const UpdateProductForm = () => {
 
-  useEffect(() => {
-    // dispatch(productDetailThunk(productId));
-  }, [dispatch, productId]);
+      const { productId } = useParams()
+      const dispatch = useDispatch()
 
-  if (!product) return null;
+      const product = useSelector( (state) =>
+            state.products ? state.products.singleProduct : null
+      )
 
-  return (
-    <div className="components-border">
-      <ProductForm product={product} formType="Update" />
-    </div>
-  );
+      useEffect( () => {
+            dispatch(fetchProductDetails(productId))
+      }, [dispatch, productId])
+
+
+      if (product) {
+
+            const updateForm = {
+
+
+            }
+
+            return (
+                  <ProductForm product={product} formType="Update" />
+            )
+
+
+      } else {
+            return (
+                  <h2>Currently Loading</h2>
+            )
+      }
+
+
 };
-
-

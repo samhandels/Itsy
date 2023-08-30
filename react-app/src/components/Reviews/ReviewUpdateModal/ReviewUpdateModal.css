@@ -1,0 +1,191 @@
+.review-progress-tracker {
+    position: sticky;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 20px;
+}
+
+.review-progress-tracker>div {
+    position: sticky;
+    display: flex;
+    justify-content: flex-end;
+    column-gap: 5px;
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.mini-modal-stars-area>div>i {
+    font-size: 10px;
+}
+
+.mini-modal-stars-area {
+    display: flex;
+}
+
+.modal-stars-area {
+    align-items: center;
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.fa-star {
+    font-size: 30px;
+}
+
+
+.review-progress-tracker>div>div {
+    width: 20px;
+    height: 20px;
+    border: 2px solid black;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.review-step {
+    height: 242px;
+    width: 360px;
+}
+
+
+.complete {
+    background-color: none;
+}
+
+.current {
+    background-color: black;
+}
+
+.review-step-one-upper {
+    display: flex;
+    column-gap: 10px;
+}
+
+.review-step-one-upper-right {
+    color: black;
+}
+
+.review-modal {
+    margin: 20px;
+    width: 360px;
+    height: 380px;
+}
+
+.review-button-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 30px 0px 30px;
+    width: 300px;
+    height: 39px;
+}
+
+.review-button-container>button {
+
+    padding: 10px 20px;
+    border-radius: 20px;
+    position: static;
+}
+
+.forward-button {
+    background-color: black;
+    color: white;
+}
+
+.back-button {
+    background-color: white;
+    border: none;
+}
+
+.low-review-help {
+    background-color: lightgrey;
+    border-radius: 10px;
+    padding: 8px 5px 8px 20px;
+    margin-top: 20px;
+}
+
+.low-review-help>p {
+    margin: 0px;
+    font-size: 14px;
+}
+
+.fa-check {
+    font-size: 18px;
+    color: black;
+}
+
+.progress-circles>div>i {
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 3px;
+}
+
+#modal-content {
+    border-radius: 10px;
+}
+
+#modal {
+    z-index: 3;
+}
+
+.review-text-sugg {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+.review-step-2>ul {
+    font-size: 12px;
+    margin-top: 0px;
+    padding-inline-start: 30px;
+}
+
+.review-step-2>p {
+    font-size: 12px;
+    margin-top: 0px;
+}
+
+.review-text {
+    width: 340px;
+    height: 120px;
+    margin-bottom: 0px;
+}
+
+.review-help-link {
+    color: black;
+    margin-left: 0px;
+}
+
+.review-product-image {
+    width: 140px;
+    height: 140px
+}
+
+
+.error {
+    color: red;
+}
+
+.review-detail-review {
+    height: 120px;
+    width: 360px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.review-step-3>div>i {
+    color: black;
+}
+
+.review-step-3>div {
+    display: flex;
+    justify-content: center;
+}
+
+.review-step-3 {
+    overflow: hidden;
+}
