@@ -15,6 +15,13 @@
     font-size: 20px;
 }
 
+.mini-modal-stars-area>div>i {
+    font-size: 10px;
+}
+
+.mini-modal-stars-area {
+    display: flex;
+}
 
 .modal-stars-area {
     align-items: center;

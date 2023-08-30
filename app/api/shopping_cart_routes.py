@@ -32,7 +32,7 @@ def delete_shopping_cart_item(id):
     item = ShoppingCartItems.query.get(id)
     db.session.delete(item)
     db.session.commit()
-    return redirect(f"")
+    return (f"item {item.id} deleted")
 
 
 

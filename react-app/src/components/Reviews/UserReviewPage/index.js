@@ -7,19 +7,21 @@ import ReviewDeleteModal from "../ReviewDeleteModal"
 import { useModal } from "../../../context/Modal"
 
 
+
 const UserReviewPage = () => {
-    const currentUser = useSelector((state) => state.session.user)
     const dispatch = useDispatch()
+    const currentUser = useSelector((state) => state.session.user)
     const allReviews = useSelector((state) => state.reviews.reviews)
 
     let revArr = Object.values(allReviews)
 
+    console.log("REVARR NOW", revArr)
 
     useEffect(() => {
         dispatch(getAllReviews())
     }, [dispatch])
-    if (!revArr.length) return null
     const currentReviews = revArr.filter((review) => review?.userId === currentUser.id)
+    if (!revArr.length) return null
 
 
     return (
@@ -32,7 +34,7 @@ const UserReviewPage = () => {
                     <p>Rating: {review.stars}</p>
                     <OpenModalButton
                         buttonText="Update"
-                        modalComponent={<ReviewUpdateModal productId={review.productId} type={"update"} reviewId={review.id} />}
+                        modalComponent={<ReviewUpdateModal productId={review.productId} reviewId={review.id} />}
                     />
                     <OpenModalButton
                         buttonText="Delete"
