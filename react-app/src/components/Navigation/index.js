@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
+import { getAllReviews } from "../../store/reviewsReducer";
 
 function Navigation({ isLoaded }) {
+	const dispatch = useDispatch()
 	const sessionUser = useSelector((state) => state.session.user);
+
+	useEffect(() => {
+		dispatch(getAllReviews())
+	})
 
 	return (
 		<div className="main-nav-bar">
@@ -25,9 +31,9 @@ function Navigation({ isLoaded }) {
 				<i className="fa-solid fa-magnifying-glass"></i>
 			</div>
 			<div className="nav-bar-links">
-        <NavLink exact to="/favorites">
-				  <i className="nav-link fa-regular fa-heart"></i>
-        </NavLink>
+				<NavLink exact to="/favorites">
+					<i className="nav-link fa-regular fa-heart"></i>
+				</NavLink>
 				<NavLink exact to="/store"><i className="nav-link fa-solid fa-store"></i></NavLink>
 				{isLoaded && (
 					<ProfileButton className="nav-link profile-button" user={sessionUser} />

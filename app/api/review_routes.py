@@ -49,7 +49,6 @@ def update_review(id):
     """
     Post new review for product by product id
     """
-    review = Review.query.get(id)
     form = ReviewForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
 

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useModal } from '../../../context/Modal'
 import { Link } from 'react-router-dom'
-import './ReviewFormModal.css'
+import './ReviewUpdateModal.css'
 import { getAllReviews, postReview, updateReview } from '../../../store/reviewsReducer'
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min'
 
@@ -24,27 +24,12 @@ const ReviewFormModal = ({ productId, type, reviewId }) => {
     const prodArr = Object.values(products)
     const thisProduct = prodArr[thisReview.productId - 1]
 
-    console.log(thisProduct)
+
 
 
     let handleSubmit;
-    if (type === "create") {
 
-        handleSubmit = async (e) => {
-            e.preventDefault()
-            const data = await dispatch(postReview(productId, reviewInfo))
-            if (data) {
-                setErrors(data);
-            } else {
-                await dispatch(getAllReviews())
-                closeModal();
-            }
-
-        }
-    }
-
-
-
+    console.log("this product", thisReview.stars)
     if (type === "update") {
 
         handleSubmit = async (e) => {
@@ -97,8 +82,8 @@ const ReviewFormModal = ({ productId, type, reviewId }) => {
                                 <img className="review-product-image" src="https://i.etsystatic.com/24879642/r/il/84b06b/4197773364/il_794xN.4197773364_560s.jpg"></img>
                             </div>
                             <div className="review-step-one-upper-right">
-                                <div>{thisProduct.name}</div>
-                                <div>{thisProduct.ownerName}</div>
+                                <div>{thisProduct && thisProduct.name}</div>
+                                <div>{thisProduct && thisProduct.ownerName}</div>
 
                                 <div className="modal-stars-area">
 
@@ -143,7 +128,13 @@ const ReviewFormModal = ({ productId, type, reviewId }) => {
                                         </div>
                                     </tooltip>
                                 </div>
-                                <div>My review stars<span className="error">*</span></div>
+                                <div className="mini-modal-stars-area">Current rating:
+                                    <div> <i className={thisReview?.stars > 0 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
+                                    <div> <i className={thisReview?.stars > 1 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
+                                    <div> <i className={thisReview?.stars > 2 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
+                                    <div> <i className={thisReview?.stars > 3 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
+                                    <div> <i className={thisReview?.stars > 4 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
+                                </div>
                             </div>
                         </div>
                         {stars < 3 && <div className="low-review-help">
