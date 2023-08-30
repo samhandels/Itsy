@@ -11,7 +11,7 @@ function Navigation({ isLoaded }) {
 
 	useEffect(() => {
 		dispatch(getAllReviews())
-	})
+	}, [dispatch])
 
 	return (
 		<div className="main-nav-bar">
