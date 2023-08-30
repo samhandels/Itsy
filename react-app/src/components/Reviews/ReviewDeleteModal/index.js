@@ -1,9 +1,6 @@
-import { useEffect, useState } from 'react'
-// import { useDispatch, useSelector } from 'react-redux'
+
 import { useModal } from '../../../context/Modal'
-import { Link } from 'react-router-dom'
-import './ReviewDeleteModal.css'
-import { deleteReview, updateReview } from '../../../store/reviewsReducer'
+import { deleteReview} from '../../../store/reviewsReducer'
 import { useDispatch } from 'react-redux'
 
 const ReviewDeleteModal = ({ reviewId }) => {

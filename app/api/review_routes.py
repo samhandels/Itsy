@@ -76,7 +76,3 @@ def delete_review(id):
     db.session.commit()
     return redirect(f"/products/{product_id}")
 
-# @reviews.route("/<int:id>", methods=["PUT"])
-# def update_review():
-#     review_to_update = Review.query.get(id)
-#     product_id = review_to_update.productId

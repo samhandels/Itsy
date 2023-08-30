@@ -40,7 +40,7 @@ const putReview = review => {
 }
 
 export const getAllReviews = () => async (dispatch) => {
-    const res = await fetch('/api/reviews/current')
+    const res = await fetch('/api/reviews')
 
     const reviews = await res.json();
 

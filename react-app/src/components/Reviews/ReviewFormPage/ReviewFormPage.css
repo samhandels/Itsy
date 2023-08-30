@@ -7,7 +7,7 @@
     font-size: 18px
 }
 
-.review-container button {
+.review-container>button {
     background-color: transparent;
     border: none;
     margin-top: 30px;
@@ -24,4 +24,20 @@
 
 .add-review-modal {
     border-radius: 10px;
+}
+
+.review-details {}
+
+.review-detail-button-container {
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+}
+
+.review-detail-button-container>button {
+    background-color: darkgrey;
+    color: white;
+    border-radius: 20px;
+    padding: 2px 10px;
+    border: none;
 }

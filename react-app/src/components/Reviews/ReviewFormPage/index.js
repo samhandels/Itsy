@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useReducer, useState } from 'react'
 // import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import OpenModalButton from '../../OpenModalButton'
 import ReviewFormModal from '../ReviewFormModal'
+import ReviewUpdateModal from '../ReviewUpdateModal'
+import ReviewDeleteModal from '../ReviewDeleteModal'
 import './ReviewFormPage.css'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { getAllReviews } from '../../../store/reviewsReducer'
 
 
@@ -12,8 +14,25 @@ import { getAllReviews } from '../../../store/reviewsReducer'
 const ReviewFormPage = ({ productId }) => {
     const [rating, setRating] = useState()
     const [activeRating, setActiveRating] = useState()
+    const user = useSelector((state) => state.session.user)
     const dispatch = useDispatch()
 
+    const reviews = useSelector((state) => state.reviews.reviews)
+    const revArr = Object.values(reviews)
+
+
+    const productReviews = revArr.filter((review) => review?.productId === productId)
+
+    let userLeftReview = false;
+
+    console.log("ProductREviews", productReviews)
+
+    for (let i = 0; i < productReviews.length; i++) {
+        if (productReviews[i].userId === user.id) {
+
+            userLeftReview = true
+        }
+    }
     useEffect(() => {
         dispatch(getAllReviews())
     }, [dispatch])
@@ -21,8 +40,7 @@ const ReviewFormPage = ({ productId }) => {
 
     return (
         <div className="review-container">
-            <Link to=""></Link>
-            <OpenModalButton
+            {!userLeftReview && <OpenModalButton
                 buttonText={<form className="review-component"
                 >
                     <p>Review this item</p>
@@ -60,7 +78,42 @@ const ReviewFormPage = ({ productId }) => {
                     </div>
                 </form >}
                 modalComponent={<ReviewFormModal productId={productId} type={"create"} />}
-            />
+            />}
+            {productReviews.map((review) => (
+                <div className="review-details">
+                    <div className="mini-modal-stars-area">
+                        <div> <i className={review?.stars > 0 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
+                        <div> <i className={review?.stars > 1 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
+                        <div> <i className={review?.stars > 2 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
+                        <div> <i className={review?.stars > 3 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
+                        <div> <i className={review?.stars > 4 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
+                    </div>
+                    <div>
+                        <div>{review.review}</div>
+                    </div>
+                    <div>
+                        <div>{review.username}</div>
+                        <div>{review.createdAt}</div>
+                    </div>
+
+                    {review.username === user.username ?
+                        <div className="review-detail-button-container">
+                            <OpenModalButton
+                                buttonText="Update"
+                                modalComponent={<ReviewUpdateModal productId={review.productId} reviewId={review.id} />}
+                            />
+                            <OpenModalButton
+                                buttonText="Delete"
+                                modalComponent={<ReviewDeleteModal reviewId={review.id} />}
+                            />
+                        </div> :
+                        <div>
+                            <i class="fa-solid fa-thumbs-up"></i> 2 Helpful?
+                        </div>
+                    }
+                    <hr></hr>
+                </div>
+            ))}
         </div >
     )
 

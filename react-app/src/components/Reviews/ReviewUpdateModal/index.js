@@ -75,7 +75,7 @@ const ReviewUpdateModal = ({ productId, reviewId }) => {
                     <div >
                         <div className="review-step-one-upper">
                             <div>
-                                <img className="review-product-image" src="https://i.etsystatic.com/24879642/r/il/84b06b/4197773364/il_794xN.4197773364_560s.jpg"></img>
+                                <img className="review-product-image" src={thisProduct.product_image}></img>
                             </div>
                             <div className="review-step-one-upper-right">
                                 <div>{thisProduct && thisProduct.name}</div>
@@ -135,33 +135,42 @@ const ReviewUpdateModal = ({ productId, reviewId }) => {
                         </div>
                         {stars < 3 && <div className="low-review-help">
                             <p>Sorry your experience wasn't great</p>
-                            <p>Learn ways to <Link className="review-help-link" onClick={() => closeModal()} to="/">get help with your order.</Link></p>
+                            <p>Learn ways to <Link className="review-help-link" onClick={() => closeModal()} to="/help/order-issues">get help with your order.</Link></p>
                         </div>}
                     </div>
                 </div>}
                 {reviewPage === 2 &&
                     <div className='review-step review-step-2'>
-                        <p className="review-text-sugg">Helpful reviews on Etsy mention:</p>
+                        <p className="review-text-sugg">Helpful reviews on Itsy mention:</p>
                         <ul>
                             <li>the quality of the item</li>
                             <li>if the item matched the description</li>
                             <li>if the item met your expectations</li>
                         </ul>
                         <textarea className="review-text" type="text" placeholder={review === "" ? "Leave your review here" : ""}
+                            value={thisReview === "" ? "" : thisReview.review}
                             onChange={e => setReview(e.target.value)}>
                         </textarea>
-                        <p>By submitting, you agree to <Link to="/" onClick={() => closeModal()} className="review-help-link">Etsy's Review Policy</Link></p>
+                        <p>By submitting, you agree to <Link to="/" onClick={() => closeModal()} className="review-help-link">Itsy's Review Policy</Link></p>
                     </div>}
                 {
                     reviewPage === 3 &&
                     <div className='review-step review-step-3'>
-                        <div>
+                        {stars > 0 && <div>
                             <i className={stars >= 1 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
                             <i className={stars >= 2 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
                             <i className={stars >= 3 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
                             <i className={stars >= 4 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
                             <i className={stars >= 5 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
-                        </div>
+                        </div>}
+                        {stars === 0 && <div>
+                            <i className={thisReview.stars >= 1 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
+                            <i className={thisReview.stars >= 2 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
+                            <i className={thisReview.stars >= 3 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
+                            <i className={thisReview.stars >= 4 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
+                            <i className={thisReview.stars >= 5 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
+                        </div>}
+                        {review === "" ? <div>{thisReview.review}</div> : <div>{review}</div>}
                     </div>
                 }
                 <div className="review-button-container">
