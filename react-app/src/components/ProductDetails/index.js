@@ -52,7 +52,7 @@ export const ProductDetails = () => {
     <div id="largest-product-detail-div">
       <div id="filter-holder-ProductDetails">
         <div id="filter-ProductDetails">
-          All categories ＞ {product.category} ＞ {product.name}
+          All Categories ＞ {product.category} ＞ {product.name}
         </div>
       </div>
 

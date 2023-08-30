@@ -3,16 +3,18 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import './styleProductForm.css'
 import { fetchCreateProduct } from "../../store/productsReducer";
+import { fetchUpdateProduct } from "../../store/productsReducer";
 
 
 export const ProductForm = ({ product, formType }) => {
   // all the inputs
-  const [productImage, setProductImage] = useState("");
-  const [name, setName] = useState("");
-  const [category, setCategory] = useState("");
-  const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("");
-  const [quantity, setQuantity] = useState("");
+  console.log("tetete", formType);
+  const [productImage, setProductImage] = useState(product.product_image? product.product_image[0] : "");
+  const [name, setName] = useState(product?.name);
+  const [category, setCategory] = useState(product?.category);
+  const [description, setDescription] = useState(product?.description);
+  const [price, setPrice] = useState(product?.price);
+  const [quantity, setQuantity] = useState(product?.quantity);
 
   const [errors, setErrors] = useState({});
   const [hasSubmitted, setHasSubmitted] = useState(false);
@@ -20,22 +22,22 @@ export const ProductForm = ({ product, formType }) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const sessionUser = useSelector((state) => state.session.user);
+  // const sessionUser = useSelector((state) => state.session.user);
 
-  useEffect(() => {
-    const errors = {};
-    if (!productImage) errors.productImage = "Product Image is required";
-    if (!name) errors.name = "Product title is required";
-    if (name.length >= 100)
-      errors.name = "Name must be less than 100 characters";
-    if (!category) errors.category = "Category is required";
-    if (!description) errors.description = "Description is required";
-    if (description.length >= 1000)
-      errors.name = "Description must be less than 1000 characters";
-    if (!price) errors.price = "Price  is required";
-    if (!quantity) errors.quantity = "Quantity is required";
-    setErrors(errors);
-  }, [productImage, category, quantity, description, name, price]);
+  // useEffect(() => {
+  //   const errors = {};
+  //   if (!productImage) errors.productImage = "Product Image is required";
+  //   if (!name) errors.name = "Product title is required";
+  //   if (!name.length >= 100)
+  //     errors.name = "Name must be less than 100 characters";
+  //   if (!category) errors.category = "Category is required";
+  //   if (!description) errors.description = "Description is required";
+  //   if (description.length >= 1000)
+  //     errors.name = "Description must be less than 1000 characters";
+  //   if (!price) errors.price = "Price  is required";
+  //   if (!quantity) errors.quantity = "Quantity is required";
+  //   setErrors(errors);
+  // }, [productImage, category, quantity, description, name, price]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,10 +49,11 @@ export const ProductForm = ({ product, formType }) => {
       quantity,
       description,
       name,
-      price
+      price,
+      url: productImage
     };
     // console.log("what product is in the productForm==============", product);
-
+      console.log('how about here', product);
     // console.log("1. user input", product);
     if (formType === "Update") {
       // && !Object.values(errors).length
@@ -58,6 +61,13 @@ export const ProductForm = ({ product, formType }) => {
       //   updateProductThunk(product)
       // );
       // product = editedproduct;
+      console.log('dododododod', product);
+      const updatedProduct = await dispatch(fetchUpdateProduct(product))
+
+      console.log('popp', updatedProduct);
+
+      history.replace(`/products/${updatedProduct.singleProduct.id}`)
+
     } else if (formType === "Create") {
       // && !Object.values(errors).length
       // const newproduct = await dispatch(
@@ -88,7 +98,8 @@ export const ProductForm = ({ product, formType }) => {
   }
 
   return (
-    <div className="center-container">
+    <div id="center-container-form">
+      <div>
       <div>Create a Product</div>
       <div>Add a photo and details about your item. Fill out what you can for now — you will be able to edit this later.</div>
       <form onSubmit={handleSubmit}>
@@ -154,12 +165,21 @@ export const ProductForm = ({ product, formType }) => {
             <div id='right-category-div-ProductForm'>
 
                 <label>
-                  <input id='category-input-ProductForm'
+                  <select id='category-input-ProductForm'
                     type="text"
                     placeholder=""
                     value={category}
-                    onChange={(e) => setCategory(e.target.value)}
-                  />
+                    onChange={(e) => setCategory(e.target.value)}>
+                      <option value=''>Choose a Category:</option>
+                      <option value='Jewelry'>Jewelry & Accessories</option>
+                      <option value='Clothing'>Clothing & Shoes</option>
+                      <option value='Home'>Home & Living</option>
+                      <option value='Wedding'>Wedding & Party</option>
+                      <option value='Toys'>Toys & Entertainment</option>
+                      <option value='Art'>Art & Collectibles</option>
+                      <option value='Craft'>Craft Supplies</option>
+                      <option value='Gifts'>Gifts & Gift Cards</option>
+                  </select>
                 </label>
                 <div className="errors">
                   {hasSubmitted && errors.category && `${errors.category}`}
@@ -250,6 +270,10 @@ export const ProductForm = ({ product, formType }) => {
           {formType}
         </button>
       </form>
+
+
+
+      </div>
     </div>
   );
 };

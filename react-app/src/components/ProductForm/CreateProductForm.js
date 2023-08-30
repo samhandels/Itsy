@@ -1,8 +1,7 @@
 import { ProductForm } from "../ProductForm/index"
 
 export const CreateProductForm = () => {
- let product = {
-};
+ let product = {};
 
   return (
     <div className="components-border">
@@ -10,4 +9,3 @@ export const CreateProductForm = () => {
     </div>
   );
 };
-

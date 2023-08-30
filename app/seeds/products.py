@@ -5,21 +5,21 @@ from datetime import datetime
 # Adds a demo user, you can add other users here if you want
 def seed_products():
     product1 = Product(
-        ownerId=1, name='Mini iPhones - Little Fingers' , price=12.95, description='This is the description for the first product', quantity=10, category='toys')
+        ownerId=1, name='Mini iPhones - Little Fingers' , price=12.95, description='This is the description for the first product', quantity=10, category='Toys')
     product2 = Product(
-        ownerId=2, name='Tiny Water Bottles' , price=11.95, description='This is the description for the second product', quantity=5, category='gifts')
+        ownerId=2, name='Tiny Water Bottles' , price=11.95, description='This is the description for the second product', quantity=5, category='Gifts')
     product3 = Product(
-        ownerId=3, name='Small Refrigerator w/ lights' , price=10.95, description='This is the description for the third product', quantity=1, category='home')
+        ownerId=3, name='Small Refrigerator w/ lights' , price=10.95, description='This is the description for the third product', quantity=1, category='Home')
     product4 = Product(
-        ownerId=1, name='Minature Fruit Varieties' , price=9.95, description='This is the description for the third product', quantity=4, category='craft')
+        ownerId=1, name='Minature Fruit Varieties' , price=9.95, description='This is the description for the third product', quantity=4, category='Craft')
     product5 = Product(
-        ownerId=2, name='Tiny Pouncing Kitten' , price=8.95, description='This is the description for the fourth product', quantity=10, category='toys')
+        ownerId=2, name='Tiny Pouncing Kitten' , price=8.95, description='This is the description for the fourth product', quantity=10, category='Toys')
     product6 = Product(
-        ownerId=3, name='Mini Camera Keychain' , price=7.95, description='This is the description for the third product', quantity=12, category='gift')
+        ownerId=3, name='Mini Camera Keychain' , price=7.95, description='This is the description for the third product', quantity=12, category='Gift')
     product7 = Product(
-        ownerId=1, name='Fancy Plastic Hangers' , price=6.95, description='This is the description for the third product', quantity=20, category='home')
+        ownerId=1, name='Fancy Plastic Hangers' , price=6.95, description='This is the description for the third product', quantity=20, category='Home')
     product8 = Product(
-        ownerId=2, name='Mini Food Brands' , price=15.95, description='This is the description for the third product', quantity=15, category='art')
+        ownerId=2, name='Mini Food Brands' , price=15.95, description='This is the description for the third product', quantity=15, category='Art')
 
     db.session.add(product1)
     db.session.add(product2)

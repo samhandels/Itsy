@@ -2,6 +2,7 @@ from flask import Blueprint, request, redirect
 from ..models import db
 from ..models.product import Product
 from ..models.reviews import Review
+from ..models.product_images import ProductImage
 from ..models.shopping_cart_items import ShoppingCartItems
 from ..models.favorites import Favorite
 from ..forms.product_form import ProductForm
@@ -60,6 +61,12 @@ def get_single_product(id):
       "price": 12.95,
       "quantity": 10,
       "updatedAt": null
+      "product_image": [
+      "https://i.etsystatic.com/24879642/r/il/84b06b/4197773364/il_794xN.4197773364_560s.jpg"
+      ],
+      "reviews": [
+      "Here is a review for product 1 by user 2"
+      ]
       }
       """
       response = Product.query.get(id)
@@ -69,6 +76,26 @@ def get_single_product(id):
 
 @products.route("/new", methods=["POST"])
 def create_product():
+      """
+      query one product by id, data response:
+      {
+      "category": "toys",
+      "createdAt": null,
+      "description": "This is the description for the first product",
+      "id": 1,
+      "name": "product-one",
+      "ownerId": 1,
+      "price": 12.95,
+      "quantity": 10,
+      "updatedAt": null
+      "product_image": [
+      "https://i.etsystatic.com/24879642/r/il/84b06b/4197773364/il_794xN.4197773364_560s.jpg"
+      ],
+      "reviews": [
+      "Here is a review for product 1 by user 2"
+      ]
+      }
+      """
       form = ProductForm()
 
       form["csrf_token"].data = request.cookies["csrf_token"]
@@ -84,16 +111,61 @@ def create_product():
                   ownerId = current_user.id
             )
 
-            # NEED TO ADD CURRENT USER ABOVE *******************
-
             print(new_product)
             db.session.add(new_product)
             db.session.commit()
-            return new_product.to_dict()
+
+            all_products = Product.query.all()
+
+            index = len(all_products)
+
+            new_image = ProductImage (
+                  url = form.data["url"],
+                  productId = index
+            )
+
+            print(new_image)
+            db.session.add(new_image)
+            db.session.commit()
+
+            response = Product.query.get(index)
+            print(response)
+            return response.to_dict()
 
       else:
             print(form.errors)
             return {"errors": form.errors}
+
+
+@products.route("/update/<int:id>", methods=["POST"])
+def update_product(id):
+
+      form = ProductForm()
+
+      form["csrf_token"].data = request.cookies["csrf_token"]
+
+      if form.validate_on_submit():
+           product = Product.query.get(id)
+
+           product.name = form.data["name"],
+           product.price = form.data["price"],
+           product.description = form.data["description"],
+           product.quantity = form.data["quantity"],
+           product.category = form.data["category"]
+           db.session.commit()
+
+           image = ProductImage.query.get(id)
+
+           image.url = form.data["url"]
+           db.session.commit()
+
+           response = Product.query.get(id)
+           print(response)
+           return response.to_dict()
+
+      else:
+           print(form.errors)
+           return {"errors": form.errors}
 
 
 @products.route("/delete/<int:id>", methods=["DELETE"])
