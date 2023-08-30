@@ -45,12 +45,13 @@ export default function SingleItems({ item, product }) {
           </div>
           <div className="item-detail container row">
             <div className="img-delete column">
-              <div className="">
+              <div className="item-img">
+              <NavLink to={`/products/${product?.id}`}>
                 <img
                   src={product?.product_image[0]}
                   alt=""
                   className="cart-img"
-                />
+                /></NavLink>
               </div>
               <div>
               <button onClick={removeItem}><i className="fa-solid fa-x" ></i> Remove</button>

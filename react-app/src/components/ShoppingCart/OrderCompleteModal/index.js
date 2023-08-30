@@ -12,7 +12,7 @@ export function OrderCompleteModal(item) {
   const { closeModal } = useModal();
 
   const orderComplete = () => {
-    // dispatch(deleteItemThunk(item)).then(closeModal);
+    // dispatch(deleteItemThunk(item)).then(closeModal());
   };
 
   return (

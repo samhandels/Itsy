@@ -46,13 +46,12 @@
 
 .black-button {
   padding: 10px 20px;
- border-radius: 20px;
- position: static;
- background-color: black;
- color: white;
- border: none
+  border-radius: 20px;
+  position: static;
+  background-color: black;
+  color: white;
+  border: none;
 }
-
 
 .card {
   /* border: 1px lightgray solid; */
@@ -93,4 +92,9 @@
 
 .item {
   width: 600px;
+}
+
+
+.item-img{
+  
 }

@@ -100,7 +100,7 @@ export const ProductDetails = () => {
                 <OpenModalButton
                   buttonStyle="Add-productDetails"
                   buttonText="Add to cart"
-                    modalComponent={<AddtoCartModal productId={product?.id}/>}
+                    modalComponent={<AddtoCartModal product={product}/>}
           />
               </div>
 
