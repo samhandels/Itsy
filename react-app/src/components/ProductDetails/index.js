@@ -1,22 +1,22 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchProductDetails } from "../../store/productsReducer";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./styleProductDetails.css";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import star from "./itsy-star.png";
 import truck from "./itsy-truck.png";
 import hand from "./itsy-hand.png";
-import { AddtoCartModal} from "../ShoppingCart/AddtoCartModal"
+import { AddtoCartModal } from "../ShoppingCart/AddtoCartModal";
 import OpenModalButton from "../../components/OpenModalButton";
 import ReviewFormPage from "../Reviews/ReviewFormPage";
-import { createFavorite, removeFavorite } from '../../store/favoritesReducer';
+import { createFavorite, removeFavorite } from "../../store/favoritesReducer";
 
 export const ProductDetails = () => {
   const { productId } = useParams();
   const dispatch = useDispatch();
 
-  const reviews = useSelector((state) => state.reviews.reviews)
+  const reviews = useSelector((state) => state.reviews.reviews);
   const favorites = useSelector((state) => state.favorites.favorites);
 
   const isFavorite = (productId) => {
@@ -24,9 +24,9 @@ export const ProductDetails = () => {
   };
   const handleHeartClick = (productId) => {
     if (isFavorite(productId)) {
-        dispatch(removeFavorite(productId));
+      dispatch(removeFavorite(productId));
     } else {
-        dispatch(createFavorite(productId));
+      dispatch(createFavorite(productId));
     }
   };
 
@@ -38,16 +38,23 @@ export const ProductDetails = () => {
   const product = useSelector((state) =>
     state.products ? state.products.singleProduct : null
   );
-  const revArr = Object.values(reviews)
-  const userReviews = revArr.filter((review) => review.productId === product?.id)
+  const revArr = Object.values(reviews);
+  const userReviews = revArr.filter(
+    (review) => review.productId === product?.id
+  );
 
-
+  //for product quantity drop down
+  const [purchaseQuantity, setPurchaseQuantity] = useState(1);
+  
   useEffect(() => {
     dispatch(fetchProductDetails(productId));
   }, [dispatch, productId]);
-
+  
   if (!product) return null;
-
+  //for product quantity drop down
+  const quantityArr = [...Array(product.quantity + 1).keys()];
+  quantityArr.shift(); //1......productQuantity
+  
   return (
     <div>
       <div id="filter-holder-ProductDetails">
@@ -59,7 +66,13 @@ export const ProductDetails = () => {
       <div id="entire-page-productDetails">
         <div id="page-productDetails">
           <div id="left-panel-productDetails">
-              <i id="heart-icon-prod-detail" className={`nav-link fa-regular ${isFavorite(product.id) ? "fa-heart-filled" : "fa-heart"}`} onClick={() => handleHeartClick(product.id)}></i>
+            <i
+              id="heart-icon-prod-detail"
+              className={`nav-link fa-regular ${
+                isFavorite(product.id) ? "fa-heart-filled" : "fa-heart"
+              }`}
+              onClick={() => handleHeartClick(product.id)}
+            ></i>
             <div id="primary-image-holder-productDetails">
               <img
                 id="primary-image-productDetails"
@@ -77,7 +90,7 @@ export const ProductDetails = () => {
           <div id="right-panel-productDetails">
             <div id="order-side-panel-productDetials">
               <div id="supply-count-productDetails">
-                Just {product.quantity} Available
+                Only {product.quantity} left!
               </div>
               <div id="price-productDetails">
                 {dollar.format(product.price)}
@@ -89,10 +102,27 @@ export const ProductDetails = () => {
                 ✓ Returns & exchanges accepted
               </div>
 
-              <div id="how-many-productDetails">Select how many</div>
+              <div id="how-many-productDetails">
+                {" "}
+                <label >
+                  <select
+                    name="selectedPurchaseQuantity"
+                    value={purchaseQuantity}
+                    onChange={(e) => setPurchaseQuantity(e.target.value)}
+                  >
+                    {quantityArr.map((number) => (
+                      <option value={number}>{number}</option>
+                    ))}
+                  </select>
+                </label>
+              </div>
               <div id="install-productDetails">
                 Pay in 4 installments with Klarna...
-                <a href="https://www.klarna.com/us/" target="_blank">
+                <a
+                  href="https://www.klarna.com/us/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   Learn more
                 </a>
               </div>
@@ -100,8 +130,8 @@ export const ProductDetails = () => {
                 <OpenModalButton
                   buttonStyle="Add-productDetails"
                   buttonText="Add to cart"
-                    modalComponent={<AddtoCartModal product={product}/>}
-          />
+                  modalComponent={<AddtoCartModal product={product} />}
+                />
               </div>
 
               <div id="star-section-productDetails">
