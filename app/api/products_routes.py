@@ -237,8 +237,6 @@ def create_shopping_cart_item_by_product(id):
 @products.route('/<int:id>/favorites', methods=["POST"])
 @login_required
 def add_favorite(id):
-
-
     existing_favorite = Favorite.query.filter(Favorite.userId == current_user.id, Favorite.productId == id).first()
     if existing_favorite:
         return {"errors": ["This product is already in favorites."]}, 400
@@ -251,3 +249,16 @@ def add_favorite(id):
     db.session.add(new_favorite)
     db.session.commit()
     return new_favorite.to_dict(), 201
+
+
+@products.route('/<int:id>/favorites', methods=["DELETE"])
+@login_required
+def delete_favorite(id):
+    favorite = Favorite.query.filter(Favorite.userId == current_user.id, Favorite.productId == id).first()
+    if not favorite:
+        return {"errors": ["Favorite not found."]}, 404
+
+    db.session.delete(favorite)
+    db.session.commit()
+
+    return {}, 204

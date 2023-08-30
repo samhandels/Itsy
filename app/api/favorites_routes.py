@@ -22,7 +22,7 @@ def get_favorites():
     return response
 
 
-# @favorites.route("", methods=["POST"])
+# @favorites.route("/<int:id>/favorites", methods=["POST"])
 # @login_required
 # def add_favorite(productId):
 #     existing_favorite = Favorite.query.filter(userId = current_user.id, productId = productId).first()
@@ -36,14 +36,14 @@ def get_favorites():
 #     return new_favorite.to_dict(), 201
 
 
-@favorites.route("", methods=["DELETE"])
-@login_required
-def delete_favorite(productId):
-    favorite = Favorite.query.filter(userId = current_user.id, productId = productId).first()
-    if not favorite:
-        return {"errors": ["Favorite not found."]}, 404
+# @favorites.route("", methods=["DELETE"])
+# @login_required
+# def delete_favorite(productId):
+#     favorite = Favorite.query.filter(userId = current_user.id, productId = productId).first()
+#     if not favorite:
+#         return {"errors": ["Favorite not found."]}, 404
 
-    db.session.delete(favorite)
-    db.session.commit()
+#     db.session.delete(favorite)
+#     db.session.commit()
 
-    return {}, 204
+#     return {}, 204
