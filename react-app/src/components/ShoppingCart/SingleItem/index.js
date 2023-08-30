@@ -29,8 +29,9 @@ export default function SingleItems({ item, product }) {
   // const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
 
-  const removeItem = async () => {
-    await dispatch(deleteItemThunk(item))
+  const removeItem = (e) => {
+    e.preventDefault();
+    dispatch(deleteItemThunk(item))
   };
 
 
