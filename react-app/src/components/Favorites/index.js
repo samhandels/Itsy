@@ -48,8 +48,25 @@ const FavoritesPage = () => {
                 </div>
             </div>
 
-            <div className=''>
+            <div className='suggested-categories-fav'>
+                <h1>Categories we think you'll love</h1>
+                <div className='Collection-Categories-fav'>
+                    <div>
+                        <img id="collection-image" src='https://i.etsystatic.com/9433423/r/il/d4a8bb/2857074970/il_794xN.2857074970_es2x.jpg'></img>
+                        <img id="collection-image" src='https://i.etsystatic.com/9302583/r/il/d2643a/791376408/il_340x270.791376408_8j0p.jpg'></img>
+                        <img id="collection-image" src='https://i.etsystatic.com/6570822/r/il/02a6d2/1027251046/il_340x270.1027251046_d3dn.jpg'></img>
+                        <img id="collection-image" src='https://i.etsystatic.com/11356515/r/il/bad65e/1729830145/il_340x270.1729830145_2ytt.jpg'></img>
 
+                        <h3>Toys</h3>
+                    </div>
+
+                    <div>Gifts</div>
+
+                    <div>Home</div>
+
+                    <div>Craft</div>
+
+                </div>
             </div>
 
 
