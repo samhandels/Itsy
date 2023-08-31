@@ -17,7 +17,14 @@ const FavoritesPage = () => {
     useEffect(() => {
         dispatch(getAllFavorites())
     }, [dispatch])
-    if (!favArr.length) return null
+
+
+    if (!favArr.length)
+    return (
+            <div>
+            <h1>Your Favorites are empty!</h1>
+            </div>
+    )
 
     return (
         <>
