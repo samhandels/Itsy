@@ -1,3 +1,5 @@
+
+
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useModal } from '../../../context/Modal'
@@ -148,7 +150,7 @@ const ReviewUpdateModal = ({ productId, reviewId }) => {
                             <li>if the item met your expectations</li>
                         </ul>
                         <textarea className="review-text" type="text" placeholder={review === "" ? "Leave your review here" : ""}
-                            value={thisReview === "" ? "" : thisReview.review}
+                            placeHolder={thisReview === "" ? "" : thisReview.review}
                             onChange={e => setReview(e.target.value)}>
                         </textarea>
                         <p>By submitting, you agree to <Link to="/" onClick={() => closeModal()} className="review-help-link">Itsy's Review Policy</Link></p>

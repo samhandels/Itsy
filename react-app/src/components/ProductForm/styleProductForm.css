@@ -1,9 +1,13 @@
-#center-container-form {
-      max-width: 1000px;
+#entire-page-form {
       display: flex;
-      flex-direction: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
+}
+
+#form-holder-form {
+      max-width: 1000px;
+
 }
 
 #title-div-ProductForm {

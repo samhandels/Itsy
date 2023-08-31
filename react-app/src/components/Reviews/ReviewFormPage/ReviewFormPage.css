@@ -1,3 +1,4 @@
+
 .review-mini {
     display: flex;
 
@@ -34,7 +35,10 @@
     border-radius: 10px;
 }
 
-.review-details {}
+.review-text::placeholder {
+    font-weight: normal;
+    color: black;
+}
 
 .review-detail-button-container-prod {
     display: flex;
