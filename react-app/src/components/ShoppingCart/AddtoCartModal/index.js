@@ -16,8 +16,8 @@ export function AddtoCartModal({ product, purchaseQuantity }) {
 
   const createCartItem = (e) => {
     e.preventDefault();
-    dispatch(createItemThunk(product.id, purchaseQuantity)).then(closeModal);
-    // history.push("/")
+    dispatch(createItemThunk(product.id, purchaseQuantity))
+    closeModal() //if use .then(closeModal) it doesn't fire
     history.push("/shopping_cart/current");
   };
 
@@ -32,7 +32,7 @@ export function AddtoCartModal({ product, purchaseQuantity }) {
 
       <div className="column buttons">
         <div className="button-container">
-          <button className="back-button" type="submit" onClick={closeModal}>
+          <button className="back-button" type="button" onClick={closeModal}>
             Don't add to cart
           </button>
         </div>
@@ -48,4 +48,11 @@ export function AddtoCartModal({ product, purchaseQuantity }) {
       </div>
     </>
   );
+}
+
+{
+  /* <form onSubmit={deleteProduct}>
+        <button type="submit" id="buttonY" >{`Yes`}</button>
+        <button type="button" id="buttonN" onClick={closeModal}>{`No`}</button>
+      </form> */
 }

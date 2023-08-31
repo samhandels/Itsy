@@ -14,6 +14,8 @@ export default function SingleItems({  product, productInCartNum }) {
 
   //reflect the current product number in the shopping cart!
   useEffect(()=>{
+    console.log(  "**********************product num in single ctiem card component******************", productInCartNum)
+    setPurchaseQuantity(productInCartNum)
   }, [productInCartNum])
 
   const dispatch = useDispatch();
