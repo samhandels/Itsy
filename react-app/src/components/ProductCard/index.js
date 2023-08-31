@@ -33,6 +33,8 @@ export const ProductCard = ({product}) => {
             currency: 'USD',
       });
 
+      console.log("looooook at me", product);
+
       if (!product) return null
       // console.log("PRODUCT inside product card", product)
       return (
