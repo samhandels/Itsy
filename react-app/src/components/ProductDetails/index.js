@@ -11,6 +11,8 @@ import { AddtoCartModal } from "../ShoppingCart/AddtoCartModal";
 import OpenModalButton from "../../components/OpenModalButton";
 import ReviewFormPage from "../Reviews/ReviewFormPage";
 import { createFavorite, removeFavorite } from "../../store/favoritesReducer";
+import { fetchProducts } from "../../store/productsReducer";
+
 
 export const ProductDetails = () => {
   const { productId } = useParams();
@@ -18,15 +20,19 @@ export const ProductDetails = () => {
 
   const reviews = useSelector((state) => state.reviews.reviews);
   const favorites = useSelector((state) => state.favorites.favorites);
+  const favArr = Object.values(favorites)
+
 
   const isFavorite = (productId) => {
-    return favorites[productId];
+    console.log("FAVARR ------------------", favArr)
+    return favArr.find(favorite => favorite.productId === productId);
   };
-  const handleHeartClick = (productId) => {
+  const handleHeartClick = async(productId) => {
+    console.log("ISFAVORITE(PRODUCTID) ON THE PRODUCT DETAIL IN THE HEART HANDLE CLICK", isFavorite(productId))
     if (isFavorite(productId)) {
-      dispatch(removeFavorite(productId));
+      await dispatch(removeFavorite(productId));
     } else {
-      dispatch(createFavorite(productId));
+      await dispatch(createFavorite(productId));
     }
   };
 
@@ -45,16 +51,21 @@ export const ProductDetails = () => {
 
   //for product quantity drop down
   const [purchaseQuantity, setPurchaseQuantity] = useState(1);
-  
+
+  useEffect(() => {
+    dispatch(fetchProducts())
+}, [dispatch])
+
   useEffect(() => {
     dispatch(fetchProductDetails(productId));
   }, [dispatch, productId]);
-  
+
+
   if (!product) return null;
   //for product quantity drop down
   const quantityArr = [...Array(product.quantity + 1).keys()];
   quantityArr.shift(); //1......productQuantity
-  
+
   return (
     <div id="largest-product-detail-div">
       <div id="filter-holder-ProductDetails">
@@ -133,7 +144,7 @@ export const ProductDetails = () => {
                   modalComponent={<AddtoCartModal product={product} />}
                 />
               </div>
-
+              <button className="Add-productDetails" onClick={() => handleHeartClick(product.id)}>Add to Favorites &#x2764; </button>
               <div id="star-section-productDetails">
                 <img id="star-image-productDetails" src={star} />
                 <div id="star-text-productDetails">
