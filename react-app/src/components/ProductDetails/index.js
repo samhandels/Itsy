@@ -10,7 +10,7 @@ import hand from "./itsy-hand.png";
 import { AddtoCartModal } from "../ShoppingCart/AddtoCartModal";
 import OpenModalButton from "../../components/OpenModalButton";
 import ReviewFormPage from "../Reviews/ReviewFormPage";
-import { createFavorite, removeFavorite } from "../../store/favoritesReducer";
+import { createFavorite, getAllFavorites, removeFavorite } from "../../store/favoritesReducer";
 import { fetchProducts } from "../../store/productsReducer";
 
 
@@ -24,15 +24,15 @@ export const ProductDetails = () => {
 
 
   const isFavorite = (productId) => {
-    console.log("FAVARR ------------------", favArr)
     return favArr.find(favorite => favorite.productId === productId);
   };
-  const handleHeartClick = async(productId) => {
-    console.log("ISFAVORITE(PRODUCTID) ON THE PRODUCT DETAIL IN THE HEART HANDLE CLICK", isFavorite(productId))
+  const handleHeartClick = async (productId) => {
     if (isFavorite(productId)) {
       await dispatch(removeFavorite(productId));
+      await dispatch(getAllFavorites())
     } else {
       await dispatch(createFavorite(productId));
+      await dispatch(getAllFavorites())
     }
   };
 
@@ -54,7 +54,7 @@ export const ProductDetails = () => {
 
   useEffect(() => {
     dispatch(fetchProducts())
-}, [dispatch])
+  }, [dispatch])
 
   useEffect(() => {
     dispatch(fetchProductDetails(productId));
@@ -79,9 +79,8 @@ export const ProductDetails = () => {
           <div id="left-panel-productDetails">
             <i
               id="heart-icon-prod-detail"
-              className={`nav-link fa-regular ${
-                isFavorite(product.id) ? "fa-heart" : "fa-heart"
-              }`}
+              className={`nav-link fa-regular ${isFavorite(product.id) ? "fa-heart" : "fa-heart"
+                }`}
               onClick={() => handleHeartClick(product.id)}
             ></i>
             <div id="primary-image-holder-productDetails">
@@ -142,7 +141,7 @@ export const ProductDetails = () => {
                 <OpenModalButton
                   buttonStyle="Add-productDetails"
                   buttonText="Add to cart"
-                  modalComponent={<AddtoCartModal product={product} purchaseQuantity={purchaseQuantity}/>}
+                  modalComponent={<AddtoCartModal product={product} purchaseQuantity={purchaseQuantity} />}
                 />
               </div>
               <button className="Add-productDetails" onClick={() => handleHeartClick(product.id)}>Add to Favorites &#x2764; </button>
