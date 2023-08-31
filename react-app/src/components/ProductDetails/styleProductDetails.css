@@ -246,3 +246,7 @@
       cursor: pointer;
       background-color: #f1641e;
 }
+
+.hide{
+      display: none;
+}

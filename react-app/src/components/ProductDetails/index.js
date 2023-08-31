@@ -51,6 +51,8 @@ export const ProductDetails = () => {
 
   //for product quantity drop down
   const [purchaseQuantity, setPurchaseQuantity] = useState(1);
+  //to check if the current user is the same as product owner
+  const sessionUser = useSelector((state) => state.session.user);
 
   useEffect(() => {
     dispatch(fetchProducts())
@@ -65,6 +67,10 @@ export const ProductDetails = () => {
   //for product quantity drop down
   const quantityArr = [...Array(product.quantity + 1).keys()];
   quantityArr.shift(); //1......productQuantity
+
+   //to check if the current user is the same as product owner, if true, don't show "add to cart" OpenModal
+  let productOwner = ""
+  if(product?.ownerId === sessionUser.id) productOwner = "hide"
 
   return (
     <div id="largest-product-detail-div">
@@ -139,7 +145,7 @@ export const ProductDetails = () => {
                   Learn more
                 </a>
               </div>
-              <div id='add-item-cart-fav-butt-ProductDetails'>
+              <div id='add-item-cart-fav-butt-ProductDetails' className={productOwner}>
                 <OpenModalButton
                   buttonStyle="Add-productDetails"
                   buttonText="Add to cart"
