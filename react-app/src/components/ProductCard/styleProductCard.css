@@ -37,6 +37,9 @@
 #fa-heart-product-card {
       position: absolute;
       z-index: 1;
-      left: 90%;
+      left: 87%;
       top: 5%;
+      background-color:#F4F1EA;
+      padding: 5px 5px 5px 5px;
+      border-radius: 50%;
 }
