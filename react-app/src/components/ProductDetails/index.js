@@ -26,7 +26,7 @@ export const ProductDetails = () => {
   const isFavorite = (productId) => {
     return favArr.find(favorite => favorite.productId === productId);
   };
-  const handleHeartClick = async(productId) => {
+  const handleHeartClick = async (productId) => {
     if (isFavorite(productId)) {
       await dispatch(removeFavorite(productId));
       await dispatch(getAllFavorites())
@@ -54,7 +54,7 @@ export const ProductDetails = () => {
 
   useEffect(() => {
     dispatch(fetchProducts())
-}, [dispatch])
+  }, [dispatch])
 
   useEffect(() => {
     dispatch(fetchProductDetails(productId));

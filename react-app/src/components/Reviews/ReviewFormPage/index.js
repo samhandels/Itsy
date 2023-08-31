@@ -26,11 +26,17 @@ const ReviewFormPage = ({ productId }) => {
 
     const prodArr = Object.values(products)
     console.log(prodArr)
+<<<<<<< HEAD
 
     const productReviews = revArr.filter((review) => review?.productId === productId)
     const thisProduct = prodArr.find((product) => product?.productId === productId)
     console.log(thisProduct)
+=======
+>>>>>>> dev
 
+    const productReviews = revArr.filter((review) => review?.productId === productId)
+    const thisProduct = prodArr.find((product) => product?.productId === productId)
+    console.log(thisProduct)
     let userLeftReview = false;
 
 
