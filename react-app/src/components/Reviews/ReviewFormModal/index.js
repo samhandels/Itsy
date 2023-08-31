@@ -1,10 +1,12 @@
+reviewformmodal.js
+
 import { useEffect, useState } from 'react'
 // import { useDispatch, useSelector } from 'react-redux'
 import { useModal } from '../../../context/Modal'
 import { Link } from 'react-router-dom'
 import './ReviewFormModal.css'
 import { postReview } from '../../../store/reviewsReducer'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 const ReviewFormModal = ({ productId }) => {
     const dispatch = useDispatch();
@@ -15,6 +17,16 @@ const ReviewFormModal = ({ productId }) => {
     const [errors, setErrors] = useState([])
     const { closeModal } = useModal();
     let reviewInfo = { review, stars }
+
+    let reviews = useSelector((state) => state.reviews.reviews)
+    let revArr = Object.values(reviews)
+
+    const products = useSelector((state) => state.products)
+    const prodArr = Object.values(products)
+    const thisProduct = prodArr[productId - 1]
+
+    console.log("PRODUCTID", productId)
+    console.log("THISPRODUCTID", thisProduct.id)
 
 
     const handleSubmit = async (e) => {
@@ -55,11 +67,11 @@ const ReviewFormModal = ({ productId }) => {
                     <div >
                         <div className="review-step-one-upper">
                             <div>
-                                <img className="review-product-image" src="https://i.etsystatic.com/24879642/r/il/84b06b/4197773364/il_794xN.4197773364_560s.jpg"></img>
+                                <img className="review-product-image" src={thisProduct.product_image}></img>
                             </div>
                             <div className="review-step-one-upper-right">
-                                <div>PRODUCT NAME HERE</div>
-                                <div>SHOP OWNER NAME HERE</div>
+                                <div>{thisProduct && thisProduct.name}</div>
+                                <div>{thisProduct && thisProduct.ownerName}</div>
                                 <div className="modal-stars-area">
                                     <tooltip title="Disappointed">
                                         <div

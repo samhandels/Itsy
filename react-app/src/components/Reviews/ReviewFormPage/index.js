@@ -1,3 +1,5 @@
+reviewformpage index.js
+
 import { useEffect, useReducer, useState } from 'react'
 // import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -76,7 +78,7 @@ const ReviewFormPage = ({ productId }) => {
                         </div>
                     </div>
                 </form >}
-                modalComponent={<ReviewFormModal productId={productId} type={"create"} />}
+                modalComponent={<ReviewFormModal productId={productId} />}
             />}
             {productReviews.map((review) => (
                 <div className="review-details">
@@ -107,7 +109,7 @@ const ReviewFormPage = ({ productId }) => {
                             />
                         </div> :
                         <div>
-                            <i class="fa-solid fa-thumbs-up"></i> 2 Helpful?
+                            <i className="fa-solid fa-thumbs-up"></i> 2 Helpful?
                         </div>
                     }
                 </div>
