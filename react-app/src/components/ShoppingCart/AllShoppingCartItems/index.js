@@ -38,7 +38,7 @@ export default function AllShoppingCartItems() {
   if (!sessionUser) return null;
   return (
     <div className="shopping-cart components-border">
-      <div>
+      <div className="greeting">
         Hello {sessionUser.username}, {productItemArray.length} items in your shopping cart
       </div>
 

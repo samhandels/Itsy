@@ -8,7 +8,7 @@ import star from "./itsy-star.png";
 import truck from "./itsy-truck.png";
 import hand from "./itsy-hand.png";
 import { AddtoCartModal } from "../ShoppingCart/AddtoCartModal";
-import OpenModalButton from "../../components/OpenModalButton";
+import OpenSideModalButton from "../../components/OpenSideModalButton";
 import ReviewFormPage from "../Reviews/ReviewFormPage";
 import { createFavorite, getAllFavorites, removeFavorite } from "../../store/favoritesReducer";
 import { fetchProducts } from "../../store/productsReducer";
@@ -146,7 +146,7 @@ export const ProductDetails = () => {
                 </a>
               </div>
               <div id='add-item-cart-fav-butt-ProductDetails' className={productOwner}>
-                <OpenModalButton
+                <OpenSideModalButton
                   buttonStyle="Add-productDetails"
                   buttonText="Add to cart"
                   modalComponent={<AddtoCartModal product={product} purchaseQuantity={purchaseQuantity} />}
