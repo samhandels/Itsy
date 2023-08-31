@@ -46,8 +46,9 @@ export const createItemThunk = (productId) => async (dispatch) => {
 };
 
 
-export const deleteItemThunk = (item) => async (dispatch) => {
-  const res = await fetch(`/api/shopping_cart/${item.id}`, {
+export const deleteItemThunk = (productId) => async (dispatch) => {
+     console.log("*********************the response from backend in thunk**************", productId);
+  const res = await fetch(`/api/shopping_cart/${productId}`, {
     method: "DELETE",
   });
 

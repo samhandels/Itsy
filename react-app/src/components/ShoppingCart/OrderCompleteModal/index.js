@@ -7,13 +7,13 @@ import "./OrderComplete.css";
 import { deleteItemThunk } from "../../../store/shoppingCartReducer";
 // need to clear the item card out from the shopping cart after the order is complete
 
-export function OrderCompleteModal({ item }) {
+export function OrderCompleteModal({ product }) {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
   
   const orderComplete = (e) => {
     e.preventDefault();
-    dispatch(deleteItemThunk(item)).then(closeModal);
+    dispatch(deleteItemThunk(product.id)).then(closeModal);
   };
 
   return (
