@@ -48,6 +48,9 @@ const FavoritesPage = () => {
                 </div>
             </div>
 
+            <div className=''>
+
+            </div>
 
 
             </div>

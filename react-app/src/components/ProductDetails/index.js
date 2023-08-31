@@ -62,6 +62,10 @@ export const ProductDetails = () => {
     dispatch(fetchProductDetails(productId));
   }, [dispatch, productId]);
 
+  useEffect(() => {
+    dispatch(getAllFavorites())
+  }, [dispatch, productId])
+
 
   if (!product) return null;
   //for product quantity drop down
@@ -85,7 +89,7 @@ export const ProductDetails = () => {
           <div id="left-panel-productDetails">
             <i
               id="heart-icon-prod-detail"
-              className={`nav-link fa-regular ${isFavorite(product.id) ? "fa-heart" : "fa-heart"
+              className={`nav-link fa-regular ${isFavorite(product.id) ? "fa-solid fa-heart" : "fa-heart"
                 }`}
               onClick={() => handleHeartClick(product.id)}
             ></i>
