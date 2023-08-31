@@ -15,6 +15,7 @@ export const Store = () => {
     useSelector((state) => (state.products ? state.products : {}))
   );
 
+  console.log("ALL PRODUCTS", allProducts)
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
@@ -35,19 +36,19 @@ export const Store = () => {
       <div id="productCard-holder-AllProducts">
         {product.length
           ? product.map((prod) => (
-              <div>
-                <ProductCard product={prod} key={prod.id} />
+            <div>
+              <ProductCard product={prod} key={prod.id} />
 
-                <NavLink exact to={`/products/update/${prod.id}`}>
-                  <button id="updateButtManPage">Update</button>
-                </NavLink>
+              <NavLink exact to={`/products/update/${prod.id}`}>
+                <button id="updateButtManPage">Update</button>
+              </NavLink>
 
-                <OpenModalButton
-                  buttonText="Delete"
-                  modalComponent={<DeleteProductsModal product={prod} />}
-                />
-              </div>
-            ))
+              <OpenModalButton
+                buttonText="Delete"
+                modalComponent={<DeleteProductsModal productId={prod.id} />}
+              />
+            </div>
+          ))
           : null}
       </div>
     </div>

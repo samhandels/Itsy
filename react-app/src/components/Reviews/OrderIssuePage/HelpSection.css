@@ -1,0 +1,113 @@
+.help-main {
+    display: grid;
+    grid-template-columns: 300px auto;
+    margin-top: 40px;
+}
+
+.order-issue-directory {
+    margin-left: 40px;
+}
+
+.help-section-nav-bar-left {
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    align-items: center;
+    row-gap: 0px;
+    height: fit-content;
+    padding-left: 40px;
+
+}
+
+.help-section-nav-bar-right {
+    width: 80%;
+}
+
+.order-issue-directory>i {
+    margin: 0px 5px;
+    font-size: 14px;
+}
+
+
+
+.left-navbar-link {
+    text-decoration: none;
+    margin: 5px 0px;
+    padding: 0px;
+    font-size: 14px;
+}
+
+.help-section-header {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.help-section-quick-answer {
+    background-color: #D7E6F5;
+    width: 60%;
+    padding: 10px;
+
+}
+
+.help-section-quick-answer-title {
+    display: flex;
+    height: 20px;
+    align-items: center;
+    column-gap: 8px;
+    font-weight: bold;
+}
+
+.fa-wand-sparkles {
+    background-color: white;
+    border-radius: 20px;
+    padding: 6px 6px;
+}
+
+.help-order-diagram {
+    display: flex;
+}
+
+.help-order-diagram-step {
+    border: 1px solid lightgrey;
+    width: 150px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.help-order-diagram-step-title {
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.help-order-diagram-step-comment {
+    font-size: 10px;
+}
+
+.help-order-diagram-step-callout {
+    font-size: 8px;
+    display: flex;
+    font-weight: bold
+}
+
+.fa-arrow-right {
+    align-self: center;
+    margin: 10px;
+}
+
+.help-order-diagram-title {
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    justify-self: center;
+}
+
+.help-button {
+    background-color: black;
+    color: white;
+    padding: 0px 5px;
+    
+}
+
+
+.help-section-quick-answer-main {
+    margin-left: 40px;
+}

@@ -85,9 +85,10 @@
     color: white;
 }
 
-.back-button {
+.back-button-review {
     background-color: white;
     border: none;
+    color: black;
 }
 
 .low-review-help {
@@ -123,7 +124,6 @@
 #modal {
     z-index: 3;
 }
-
 .review-text-sugg {
     font-size: 14px;
     font-weight: bold;
