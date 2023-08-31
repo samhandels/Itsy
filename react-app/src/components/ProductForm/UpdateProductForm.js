@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { productDetailThunk } from "../../store/products";
-//! need product detail thunk
+// need product detail thunk
 import { ProductForm } from "../ProductForm/index"
 import { fetchProductDetails } from "../../store/productsReducer";
 

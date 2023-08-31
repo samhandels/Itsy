@@ -5,16 +5,13 @@ import "../AllShoppingCartItems/AllShoppingCartItems.css";
 import { useDispatch, useSelector } from "react-redux";
 import OpenModalButton from "../../OpenModalButton/index";
 import { OrderCompleteModal } from "../OrderCompleteModal";
-
-//!need to add when click on item card redirect to product detail page
 import { deleteItemThunk } from "../../../store/shoppingCartReducer";
-//!need to add when click on remove it removes the item from cart
 
 export default function SingleItems({  product, productInCartNum }) {
 
   //reflect the current product number in the shopping cart!
   useEffect(()=>{
-    console.log(  "**********************product num in single ctiem card component******************", productInCartNum)
+    // console.log(  "**********************product num in single ctiem card component******************", productInCartNum)
     setPurchaseQuantity(productInCartNum)
   }, [productInCartNum])
 
@@ -132,7 +129,7 @@ export default function SingleItems({  product, productInCartNum }) {
           <OpenModalButton
             buttonStyle="black-button"
             buttonText="Order up!"
-            modalComponent={<OrderCompleteModal product={product} />}
+            modalComponent={<OrderCompleteModal product={product} purchaseQuantity={purchaseQuantity}/>}
           />
         </div>
       </div>

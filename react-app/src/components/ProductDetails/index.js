@@ -15,7 +15,7 @@ import {
   getAllFavorites,
   removeFavorite,
 } from "../../store/favoritesReducer";
-import { fetchProducts } from "../../store/productsReducer";
+import { fetchProducts, fetchUpdateProduct } from "../../store/productsReducer";
 
 export const ProductDetails = () => {
   const { productId } = useParams();
@@ -63,11 +63,12 @@ export const ProductDetails = () => {
   useEffect(() => {
     dispatch(fetchProductDetails(productId));
     dispatch(getAllFavorites());
+    // dispatch(fetchUpdateProduct(product))
   }, [dispatch, productId]);
 
   if (!product) return null;
   //for product quantity drop down
-  const quantityArr = [...Array(product.quantity + 1).keys()];
+  const quantityArr = [...Array(product?.quantity + 1).keys()];
   quantityArr.shift(); //1......productQuantity
 
   //to check if the current user is the same as product owner, if true, don't show "add to cart" OpenModal
