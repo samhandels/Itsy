@@ -93,9 +93,10 @@ export const ProductDetails = () => {
             <div>
               <ReviewFormPage productId={product.id} />
             </div>
-            {userReviews.map((review) => (
+
+            {/* {userReviews.map((review) => (
               <div>{review.review}</div>
-            ))}
+            ))} */}
           </div>
 
           <div id="right-panel-productDetails">
@@ -113,9 +114,10 @@ export const ProductDetails = () => {
                 ✓ Returns & exchanges accepted
               </div>
 
+
               <div id="how-many-productDetails">
-                {" "}
-                <label>
+
+                <label> Choose how many you would like {" "}.{" "}.{" "}.{" "}
                   <select
                     name="selectedPurchaseQuantity"
                     value={purchaseQuantity}
@@ -137,14 +139,20 @@ export const ProductDetails = () => {
                   Learn more
                 </a>
               </div>
-              <div>
+              <div id='add-item-cart-fav-butt-ProductDetails'>
                 <OpenModalButton
                   buttonStyle="Add-productDetails"
                   buttonText="Add to cart"
                   modalComponent={<AddtoCartModal product={product} purchaseQuantity={purchaseQuantity} />}
                 />
               </div>
+              <div id='add-item-cart-fav-butt-ProductDetails'>
+
               <button className="Add-productDetails" onClick={() => handleHeartClick(product.id)}>Add to Favorites &#x2764; </button>
+
+              </div>
+
+
               <div id="star-section-productDetails">
                 <img id="star-image-productDetails" src={star} />
                 <div id="star-text-productDetails">

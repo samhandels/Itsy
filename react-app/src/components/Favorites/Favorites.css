@@ -1,3 +1,38 @@
+#favorites-entire-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#favorites-inner-div {
+  width: 1000px;
+}
+
+#my-favorites-sign {
+  font-size: 50px;
+}
+
+#favorites-line {
+  border-bottom: 3px solid rgb(222,222,222);
+}
+
+#favorites-butt {
+  background-color: rgb(221,235,227);
+  color: black;
+  text-decoration: none;
+  padding: 0 424px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+#favorites-butt:hover {
+  color: white;
+  background-color: #f1641e;
+}
+
+
+
+
 .fav-products-list {
     display: grid;
     flex-direction: row;
@@ -12,6 +47,7 @@
 
 .fav-products-holder {
     display: grid;
+    margin-top: 20px;
 }
 
 
