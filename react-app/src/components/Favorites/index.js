@@ -14,8 +14,9 @@ const FavoritesPage = () => {
     let favArr = Object.values(favorites)
     // console.log("fav Arr ---------------", favArr)
 
+
     useEffect(() => {
-        dispatch(getAllFavorites())
+        dispatch(getAllFavorites(currentUser))
     }, [dispatch])
 
 

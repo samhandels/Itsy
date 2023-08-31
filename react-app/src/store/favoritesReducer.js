@@ -32,7 +32,10 @@ const deleteFavorite = (favoriteId) => {
 };
 
 
-export const getAllFavorites = () => async (dispatch) => {
+export const getAllFavorites = (user) => async (dispatch) => {
+    if (!user){
+        return
+    }
     const res = await fetch('/api/favorites');
     const favorites = await res.json();
     dispatch(loadFavorites(favorites));
