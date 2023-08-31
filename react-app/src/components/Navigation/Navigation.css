@@ -94,3 +94,10 @@
   color: black;
   padding-left: -3px;
 }
+
+.fa-circle {
+  color: #f1641e;
+  position: absolute;
+  right: 60px;
+  top: 20px;
+}
