@@ -43,10 +43,8 @@ def update_review(id):
     """
     form = ReviewForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
-    print("BACKEND REVIEW PUT ROUTE")
     review = Review.query.get(id)
     if form.validate_on_submit():
-            print("FORM VALIDATEED")
 
             review.review = form.data["review"]
             review.stars = int(form.data["stars"])
@@ -78,7 +76,3 @@ def delete_review(id):
     db.session.commit()
     return redirect(f"/products/{product_id}")
 
-# @reviews.route("/<int:id>", methods=["PUT"])
-# def update_review():
-#     review_to_update = Review.query.get(id)
-#     product_id = review_to_update.productId

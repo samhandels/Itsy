@@ -7,7 +7,15 @@
     font-size: 18px
 }
 
-.review-container button {
+.review-details {
+    border: 1px solid lightgrey;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+
+.review-container>button {
     background-color: transparent;
     border: none;
     margin-top: 30px;
@@ -24,4 +32,20 @@
 
 .add-review-modal {
     border-radius: 10px;
+}
+
+.review-details {}
+
+.review-detail-button-container-prod {
+    display: flex;
+    width: 40%;
+    justify-content: space-between;
+}
+
+.review-detail-button-container-prod>button {
+    background-color: darkgrey;
+    color: white;
+    border-radius: 20px;
+    padding: 2px 10px;
+    border: none;
 }
