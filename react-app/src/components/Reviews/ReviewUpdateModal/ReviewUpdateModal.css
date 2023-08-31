@@ -15,6 +15,13 @@
     font-size: 20px;
 }
 
+.mini-modal-stars-area>div>i {
+    font-size: 10px;
+}
+
+.mini-modal-stars-area {
+    display: flex;
+}
 
 .modal-stars-area {
     align-items: center;
@@ -85,10 +92,9 @@
     color: white;
 }
 
-.back-button-review {
+.back-button {
     background-color: white;
     border: none;
-    color: black;
 }
 
 .low-review-help {
@@ -124,6 +130,7 @@
 #modal {
     z-index: 3;
 }
+
 .review-text-sugg {
     font-size: 14px;
     font-weight: bold;

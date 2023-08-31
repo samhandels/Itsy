@@ -8,7 +8,7 @@ import { createItemThunk } from "../../../store/shoppingCartReducer";
 import { useHistory } from "react-router-dom";
 
 //userID == shoppingCartId
-export function AddtoCartModal({productId}) {
+export function AddtoCartModal({product}) {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
   const history = useHistory();
@@ -16,17 +16,21 @@ export function AddtoCartModal({productId}) {
   
   const createCartItem = (e) => {
     e.preventDefault();
-    dispatch(createItemThunk(productId))
+    dispatch(createItemThunk(product.id)).then(closeModal)
     // history.push("/")
     history.push("/shopping_cart/current")
-    // .then(closeModal)
+    
 
   };
 
   return (
     <>
      <div className="row">
-     <div>img</div>
+     <div className="item-img"><img
+                  src={product?.product_image[0]}
+                  alt=""
+                  className="cart-img"
+                /></div>
        <div>1 item added to cart!</div>
          </div>
      

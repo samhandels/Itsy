@@ -7,16 +7,24 @@ export const ProductCard = ({product}) => {
 
       const dispatch = useDispatch();
       const favorites = useSelector((state) => state.favorites.favorites);
-
+      const favArr = Object.values(favorites)
       const isFavorite = (productId) => {
-            return favorites[productId];
+            // console.log("PRODUCT ID INSIDE ISFAVORITE FUNCTION", productId)
+            // console.log("FAVORITES INSIDE ISFAVORITE FUNCTION", favorites)
+            // console.log("favArr .find in isFavorite --------", favArr.find(favorite => favorite.productId === productId))
+            return favArr.find(favorite => favorite.productId === productId);
+
         };
 
-      const handleHeartClick = (productId) => {
+
+
+      // console.log("FAVORITES HANDLE CLICK HEART -- ", favorites)
+      const handleHeartClick = async(productId) => {
+            // console.log("PRODUCT ID in handle-click", productId)
             if (isFavorite(productId)) {
-                dispatch(removeFavorite(productId));
+                await dispatch(removeFavorite(productId));
             } else {
-                dispatch(createFavorite(productId));
+                await dispatch(createFavorite(productId));
             }
         };
 
@@ -25,13 +33,16 @@ export const ProductCard = ({product}) => {
             currency: 'USD',
       });
 
+      console.log("looooook at me", product);
+
       if (!product) return null
+      // console.log("PRODUCT inside product card", product)
       return (
 
             <div id='card-holder-productCard'>
                   <NavLink id="link-ProductCard" to={`/products/${product.id}`}>
 
-                  <i className={`nav-link fa-regular fa-heart`} id='fa-heart-product-card' onClick={() => handleHeartClick(product.id)}></i>
+                  <i className={`fa-regular fa-heart`} id='fa-heart-product-card' onClick={() => handleHeartClick(product.id)}></i>
 
                         <div id='card-image-ProductCard'>
                               <img id='card-image-ProductCard' src={ product.product_image[0] } />

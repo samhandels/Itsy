@@ -4,6 +4,7 @@ import { fetchProducts } from "../../store/productsReducer";
 import { ProductCard } from "../ProductCard";
 import './styleAllProducts.css'
 import BlogSection from "../Blog";
+import { getAllFavorites } from "../../store/favoritesReducer";
 
 export const  AllProducts = () => {
       const dispatch = useDispatch()
@@ -11,12 +12,20 @@ export const  AllProducts = () => {
       // dispatch(fetchProducts())
       // const products = fetchProducts()
 
-      const products = useSelector((state) => (state.products ? state.products : {} ))
+      const products = Object.values(
+            useSelector((state) => (state.products ? state.products : {}))
+          );
+
+      const favorites = useSelector((state) => state.favorites.favorites);
 
 
       useEffect(() => {
             dispatch(fetchProducts())
       }, [dispatch])
+
+      useEffect(() => {
+            dispatch(getAllFavorites())
+        }, [dispatch])
 
 
       if (!products.length) return null

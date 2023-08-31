@@ -34,6 +34,27 @@ def get_all_reviews():
     print(response)
     return response
 
+
+
+@reviews.route("/<int:id>", methods=["PUT"])
+def update_review(id):
+    """
+    Post new review for product by product id
+    """
+    form = ReviewForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+    review = Review.query.get(id)
+    if form.validate_on_submit():
+
+            review.review = form.data["review"]
+            review.stars = int(form.data["stars"])
+            print("REVIEW", review)
+            db.session.commit()
+            return review.to_dict()
+    else:
+          print(form.errors)
+          return {"errors":form.errors}
+
 @reviews.route("/<int:id>")
 def get_one_review(id):
     """
@@ -42,33 +63,6 @@ def get_one_review(id):
     response = Review.query.get(id)
     print(response.to_dict())
     return response.to_dict()
-
-
-@reviews.route("/<int:id>", methods=["PUT"])
-def update_review(id):
-    """
-    Post new review for product by product id
-    """
-    review = Review.query.get(id)
-    form = ReviewForm()
-    form["csrf_token"].data = request.cookies["csrf_token"]
-
-    if form.validate_on_submit():
-        review = Review(
-            id = review.id,
-            productId = review.productId,
-            userId = current_user.id,
-            review = review.review,
-            stars = review.stars,
-            createdAt = review.createdAt,
-            updatedAt = datetime.now()
-        )
-        db.session.commit()
-        return review.to_dict()
-    else:
-          print(form.errors)
-          return {"errors":form.errors}
-
 
 
 @reviews.route("/<int:id>", methods=["DELETE"])
@@ -82,7 +76,3 @@ def delete_review(id):
     db.session.commit()
     return redirect(f"/products/{product_id}")
 
-# @reviews.route("/<int:id>", methods=["PUT"])
-# def update_review():
-#     review_to_update = Review.query.get(id)
-#     product_id = review_to_update.productId

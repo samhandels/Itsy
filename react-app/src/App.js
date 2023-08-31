@@ -15,6 +15,8 @@ import FavoritesPage from "./components/Favorites";
 import { ProductDetails } from "./components/ProductDetails";
 import { Store } from "./components/Store";
 import { CreateProductForm } from "./components/ProductForm/CreateProductForm";
+import { UpdateProductForm } from "./components/ProductForm/UpdateProductForm";
+import OrderIssuePage from "./components/Reviews/OrderIssuePage"
 
 function App() {
   const dispatch = useDispatch();
@@ -40,8 +42,14 @@ function App() {
           <Route path="/reviews/current">
             <UserReviewPage />
           </Route>
+          <Route exact path="/help/order-issues">
+            <OrderIssuePage />
+          </Route>
           <ProtectedRoute exact path="/products/new">
             <CreateProductForm />
+          </ProtectedRoute>
+          <ProtectedRoute exact path="/products/update/:productId">
+            <UpdateProductForm />
           </ProtectedRoute>
           <Route path="/products/:productId">
             <ProductDetails />

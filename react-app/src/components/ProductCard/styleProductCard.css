@@ -13,6 +13,9 @@
       box-shadow: 0px 1px 5px 1px lightgray;
       border-radius: 2px;
 }
+#card-holder-productCard {
+      position: relative;
+}
 
 #card-image-ProductCard:hover {
       box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
@@ -32,6 +35,8 @@
 }
 
 #fa-heart-product-card {
-      position:sticky;
-      transform: translatex(227px) translatey(26px);
+      position: absolute;
+      z-index: 1;
+      left: 90%;
+      top: 5%;
 }

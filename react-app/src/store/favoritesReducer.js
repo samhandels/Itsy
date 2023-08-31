@@ -35,18 +35,16 @@ const deleteFavorite = (favoriteId) => {
 export const getAllFavorites = () => async (dispatch) => {
     const res = await fetch('/api/favorites');
     const favorites = await res.json();
-    // console.log("favorites thunk -----------", favorites)
     dispatch(loadFavorites(favorites));
 };
 
 export const createFavorite = (productId) => async (dispatch) => {
-    console.log("IN THE CREATE FAVORITE THUNK", createFavorite())
+    // console.log("PRODUCT ID IN CREATE FAVORITE", productId)
     const res = await fetch(`/api/products/${productId}/favorites`, {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify()
+        body: JSON.stringify({ productId })
     });
-    console.log("IN THE FAVORITE THUNK - RES", res)
 
     if (res.ok) {
         const favorite = await res.json();
@@ -59,7 +57,7 @@ export const createFavorite = (productId) => async (dispatch) => {
 };
 
 export const removeFavorite = (productId) => async (dispatch) => {
-    const res = await fetch(`/api/favorites`, {
+    const res = await fetch(`/api/products/${productId}/favorites`, {
         method: 'DELETE'
     });
 

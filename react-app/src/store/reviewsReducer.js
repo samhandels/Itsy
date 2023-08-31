@@ -80,29 +80,12 @@ export const postReview = (productId, review) => async (dispatch) => {
 export const updateReview = (review) => async (dispatch) => {
 
     console.log("REVIEW SENT TO UPDATE THUNK", review)
-    // try {
-    //     const res = await fetch(`/api/reviews/${review.id}`, {
-    //         method: "PUT",
-    //         headers: { "Content-Type": "application/json" },
-    //         body: JSON.stringify(review)
-    //     });
 
-
-    //     const reviewResponse = await res.json()
-    //     console.log(reviewResponse)
-    //     if (res.ok) {
-    //         dispatch(putReview(reviewResponse))
-    //     } else {
-    //         const errors = await res.json();
-    //         return errors;
-    //     }
-    // } catch (error) {
-    //     const errors = await error.json();
-    //     return errors;
-    // }
-
-
-    const res = await fetch(`/api/reviews/${review.id}`)
+    const res = await fetch(`/api/reviews/${review.id}`, {
+        method: 'PUT',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(review)
+    })
     const oldReview = await res.json()
     console.log("Old Review", oldReview)
     oldReview.review = review.review
@@ -117,6 +100,7 @@ export const deleteReview = (reviewId) => async (dispatch) => {
         method: 'DELETE'
     })
     dispatch(removeReview(reviewId))
+
 }
 
 

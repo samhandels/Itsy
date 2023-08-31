@@ -1,3 +1,10 @@
+#center-container-form {
+      max-width: 1000px;
+      display: flex;
+      flex-direction: flex;
+      justify-content: center;
+      align-items: center;
+}
 
 #title-div-ProductForm {
       width: 100%;

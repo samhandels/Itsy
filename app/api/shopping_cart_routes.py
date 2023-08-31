@@ -28,11 +28,13 @@ def delete_shopping_cart_item(id):
     1. Clicking X Remove on item card section in shopping cart
     2. Clicking Order up! from payment section in shopping cart
     delete thunk fetch route: /api/shopping_cart/${item.id}
+    id is the product id, remove all the same product id of the shopping cart table
     """
-    item = ShoppingCartItems.query.get(id)
-    db.session.delete(item)
+    # >>> User.query.filter(User.email.endswith('@example.com')).all()
+    all_remove_items = ShoppingCartItems.query.filter(ShoppingCartItems.productId == id).all()
+    delete_posts = [db.session.delete(item) for item in all_remove_items]
     db.session.commit()
-    return redirect(f"")
+    return (f"product with id {id} deleted from shopping cart")
 
 
 
