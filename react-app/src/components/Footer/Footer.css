@@ -11,7 +11,8 @@
     color: white;
     text-align: center;
     padding: 7px;
-    background-color: rgb(77,107,198);
+    /* background-color: rgb(77,107,198); */
+    background-color: #FCB48C;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
@@ -19,7 +20,8 @@
 .team-section {
     padding-top: 20px;
     padding-bottom: 10px;
-    background-color: rgb(46,70,108);
+    /* background-color: rgb(46,70,108); */
+    background-color: #F48C5C;
     color: #FFFFFF;
 }
 
@@ -71,7 +73,8 @@
     justify-content: space-between;
     align-items: center;
     padding-top: 20px;
-    background-color: rgb(35,35,71);
+    /* background-color: rgb(35,35,71); */
+    background-color: #F4641C;
     color: #FFFFFF;
 }
 
@@ -91,7 +94,8 @@
 }
 
 .who-we-are {
-    color: rgb(77,107,198);
+    /* color: rgb(77,107,198); */
+    color: #FCB48C;
     font-family: "Roboto";
     font-weight: 900;
     font-size: 80px;
@@ -105,6 +109,7 @@
     opacity: 0.9;
     z-index: 2;
     cursor: grab;
+    color: #F4641C;
 }
 
 #who-footer {

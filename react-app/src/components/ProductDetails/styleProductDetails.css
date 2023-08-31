@@ -189,7 +189,8 @@
       font-family: "Roboto";
       font-weight: 300;
       font-size: 12px;
-      background-color: rgb(221,235,227);
+      background-color: #7b8a4b;
+      color: white;
       padding: 10px;
       border-radius: 15px;
       margin-top: 10px;
@@ -237,7 +238,8 @@
 }
 
 #add-item-cart-fav-butt-ProductDetails>button {
-      background-color: rgb(221,235,227);
+      /* background-color: rgb(221,235,227); */
+      background-color: #7b8a4b;
       border: none;
       width: 100%;
 }
