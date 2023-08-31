@@ -25,7 +25,6 @@ const ReviewFormPage = ({ productId }) => {
 
     let userLeftReview = false;
 
-    console.log("ProductREviews", productReviews)
 
     for (let i = 0; i < productReviews.length; i++) {
         if (productReviews[i].userId === user.id) {
@@ -97,7 +96,7 @@ const ReviewFormPage = ({ productId }) => {
                     </div>
 
                     {review.username === user.username ?
-                        <div className="review-detail-button-container">
+                        <div className="review-detail-button-container-prod">
                             <OpenModalButton
                                 buttonText="Update"
                                 modalComponent={<ReviewUpdateModal productId={review.productId} reviewId={review.id} />}
@@ -111,7 +110,6 @@ const ReviewFormPage = ({ productId }) => {
                             <i class="fa-solid fa-thumbs-up"></i> 2 Helpful?
                         </div>
                     }
-                    <hr></hr>
                 </div>
             ))}
         </div >

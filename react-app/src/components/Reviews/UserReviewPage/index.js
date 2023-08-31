@@ -77,17 +77,9 @@ const UserReviewPage = () => {
                 </div>
                 <div>
                     <div className="help-small-business">
-                        <div className="help-small-bus-title">Your reviews can help small business owners</div>
-                        <div>
-                            <ul>
-                                <li>Your reviews on Itsy help shop owners by providing them instant feedback and allowing
-                                    them to stock their shops with items their customers will love
-                                </li>
-                                <li>Your reviews on Itsy help shop owners by providing them instant feedback and allowing
-                                    them to stock their shops with items their customers will love
-                                </li>
-                            </ul>
-                        </div>
+                        <div className="help-small-bus-title">Your reviews on Itsy help shop owners by providing them instant feedback and allowing
+                                    them to stock their shops with items their customers will love</div>
+                        
                     </div>
                     <div className="help-small-business learn-more">
                         <div>Learn more about reviews</div>
