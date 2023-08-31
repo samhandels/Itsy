@@ -60,11 +60,8 @@ export const ProductDetails = () => {
 
   useEffect(() => {
     dispatch(fetchProductDetails(productId));
-  }, [dispatch, productId]);
-
-  useEffect(() => {
     dispatch(getAllFavorites())
-  }, [dispatch, productId])
+  }, [dispatch, productId]);
 
 
   if (!product) return null;
