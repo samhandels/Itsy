@@ -80,7 +80,7 @@ export const ProductDetails = () => {
             <i
               id="heart-icon-prod-detail"
               className={`nav-link fa-regular ${
-                isFavorite(product.id) ? "fa-heart-filled" : "fa-heart"
+                isFavorite(product.id) ? "fa-heart" : "fa-heart"
               }`}
               onClick={() => handleHeartClick(product.id)}
             ></i>
