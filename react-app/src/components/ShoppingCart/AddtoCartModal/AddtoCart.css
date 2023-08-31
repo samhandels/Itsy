@@ -25,3 +25,13 @@
  display: flex;
  flex-direction: column;
 }
+
+.center{
+ justify-content: center;
+ align-items: center;
+}
+
+
+.margin-top{
+ margin-top: 20px;
+}

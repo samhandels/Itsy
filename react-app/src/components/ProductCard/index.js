@@ -9,9 +9,6 @@ export const ProductCard = ({product}) => {
       const favorites = useSelector((state) => state.favorites.favorites);
       const favArr = Object.values(favorites)
       const isFavorite = (productId) => {
-            // console.log("PRODUCT ID INSIDE ISFAVORITE FUNCTION", productId)
-            // console.log("FAVORITES INSIDE ISFAVORITE FUNCTION", favorites)
-            // console.log("favArr .find in isFavorite --------", favArr.find(favorite => favorite.productId === productId))
             return favArr.find(favorite => favorite.productId === productId);
 
         };
@@ -40,7 +37,8 @@ export const ProductCard = ({product}) => {
             <div id='card-holder-productCard'>
                   <NavLink id="link-ProductCard" to={`/products/${product.id}`}>
 
-                  <i className={`fa-regular fa-heart`} id='fa-heart-product-card' onClick={() => handleHeartClick(product.id)}></i>
+                  <i className={`nav-link fa-regular ${isFavorite(product.id) ? "fa-solid fa-heart" : "fa-heart"
+                }`} id='fa-heart-product-card' onClick={() => handleHeartClick(product.id)}></i>
 
                         <div id='card-image-ProductCard'>
                               <img id='card-image-ProductCard' src={ product.product_image[0] } />

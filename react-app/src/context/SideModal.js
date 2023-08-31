@@ -48,7 +48,7 @@ export function SideModal() {
   return ReactDOM.createPortal(
     <div id="sideModal">
       <div id="modal-background" onClick={closeModal} />
-      <div id="modal-content">
+      <div id="sideModal-content">
         {modalContent}
       </div>
     </div>,
