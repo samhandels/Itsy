@@ -12,20 +12,21 @@ export const Store = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
 
-  const allProducts = Object.values(
-    useSelector((state) => (state.products ? state.products : {}))
-  );
+  const productsObj = useSelector((state) => (state.products ? state.products : {}))
 
-  console.log("ALL PRODUCTS", allProducts)
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-  if (!allProducts.length) return null;
+  if (!productsObj) return null
 
-  const product = allProducts.filter((prod) => prod.ownerId === sessionUser.id);
+  const singleProdKey = "singleProduct"
+  delete productsObj[singleProdKey]
+  const products = Object.values(productsObj)
 
-  if (!allProducts) return null;
+  const product = products.filter((prod) => prod.ownerId === sessionUser.id);
+
+  if (!product) return null;
 
   return (
     <div id='storefront-entire-page'>
