@@ -22,7 +22,7 @@ export function AddtoCartModal({ product, purchaseQuantity }) {
   };
 
   return (
-    <>
+    <div className="margin-top column center">
       <div className="row">
         <div className="item-img">
           <img src={product?.product_image[0]} alt="" className="cart-img" />
@@ -31,12 +31,12 @@ export function AddtoCartModal({ product, purchaseQuantity }) {
       </div>
 
         <div className="column">
-          <div className="button-container column">
+          <div className="button-container">
             <button className="back-button" type="button" onClick={closeModal}>
               Don't add to cart
             </button>
           </div>
-          <div className="button-container column">
+          <div className="button-container">
             <button
               className="forward-button"
               type="submit"
@@ -46,6 +46,6 @@ export function AddtoCartModal({ product, purchaseQuantity }) {
             </button>
           </div>
         </div>
-    </>
+    </div>
   );
 }

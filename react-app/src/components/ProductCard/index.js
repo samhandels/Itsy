@@ -9,9 +9,6 @@ export const ProductCard = ({product}) => {
       const favorites = useSelector((state) => state.favorites.favorites);
       const favArr = Object.values(favorites)
       const isFavorite = (productId) => {
-            // console.log("PRODUCT ID INSIDE ISFAVORITE FUNCTION", productId)
-            // console.log("FAVORITES INSIDE ISFAVORITE FUNCTION", favorites)
-            // console.log("favArr .find in isFavorite --------", favArr.find(favorite => favorite.productId === productId))
             return favArr.find(favorite => favorite.productId === productId);
 
         };
