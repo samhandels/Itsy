@@ -20,11 +20,16 @@ const ReviewFormPage = ({ productId }) => {
     const dispatch = useDispatch()
 
     const reviews = useSelector((state) => state.reviews.reviews)
+    const products = useSelector((state) => state.products)
     const revArr = Object.values(reviews)
 
 
-    const productReviews = revArr.filter((review) => review?.productId === productId)
+    const prodArr = Object.values(products)
+    console.log(prodArr)
 
+    const productReviews = revArr.filter((review) => review?.productId === productId)
+    const thisProduct = prodArr.find((product) => product?.productId === productId)
+    console.log(thisProduct)
     let userLeftReview = false;
 
 
