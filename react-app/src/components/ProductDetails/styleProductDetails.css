@@ -252,3 +252,7 @@
 .hide{
       display: none;
 }
+
+.fa-solid.fa-heart {
+      color:#f1641e;
+  }
