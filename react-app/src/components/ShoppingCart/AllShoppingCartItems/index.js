@@ -10,7 +10,7 @@ export default function AllShoppingCartItems() {
   const items = Object.values(
     useSelector((state) => (state.items ? state.items : []))
   ); //items are not unique, there can be several same product in the item table
-
+  console.log(  "**********************Items from all items in shopping cart******************", items)
   const products = Object.values(
     useSelector((state) => (state.products ? state.products : []))
   ); //because you come from landing page, the state would have products already
@@ -31,8 +31,8 @@ export default function AllShoppingCartItems() {
     return products.find((product) => product?.id === id); //create the productItem card for the cart
   })
 
-  console.log(  "**********************unique product ID Array******************", uniqueProductIdArray)
-  console.log(  "**********************unique product Array******************", productItemArray)
+  // console.log(  "**********************unique product ID Array******************", uniqueProductIdArray)
+  // console.log(  "**********************unique product Array******************", productItemArray)
   if (!items) return null;
   if (!products) return null;
   if (!sessionUser) return null;
@@ -62,9 +62,9 @@ export default function AllShoppingCartItems() {
           const productInCartNum = items.filter((item) => item.productId === uniqueProduct?.id).length //find out how many number of the same  product in the shopping cart
           let itemIdSameProductArray = items.filter((item) => item.productId); 
 
-          console.log(  "In item.map+++++++++++++++++++++++++ product +++++++++++++++++++++++", uniqueProduct)
+          {/* console.log(  "In item.map+++++++++++++++++++++++++ product +++++++++++++++++++++++", uniqueProduct) */}
           console.log(  "In item.map+++++++++++++++++++++++++ product Num+++++++++++++++++++++++", productInCartNum)
-          console.log(  "In item.map+++++++++++++++++++++++++ product Num+++++++++++++++++++++++", itemIdSameProductArray)
+          {/* console.log(  "In item.map+++++++++++++++++++++++++ product Num+++++++++++++++++++++++", itemIdSameProductArray) */}
           return (
             <div className="cart_item" key={uniqueProduct?.id}>
               <div>
