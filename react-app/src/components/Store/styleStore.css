@@ -1,0 +1,32 @@
+#storefront-entire-page {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+}
+
+#storefront-inner-div {
+      width: 1000px;
+}
+
+#my-storefront-sign {
+      font-size: 50px;
+}
+
+#store-line {
+      border-bottom: 2px solid rgb(222,222,222);
+}
+
+#storefront-butt {
+      background-color: rgb(221,235,227);
+      color: black;
+      text-decoration: none;
+      padding: 0 424px;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+}
+
+#storefront-butt:hover {
+      cursor: pointer;
+      color: white;
+      background-color: #f1641e;
+}
