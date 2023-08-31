@@ -20,16 +20,19 @@ const FavoritesPage = () => {
     if (!favArr.length) return null
 
     return (
-        <>
-            <div>
-                <h1>{currentUser.username}'s Favorites</h1>
-            </div>
-            <div>
-                <h2>
+        <div id='favorites-entire-page'>
+            <div id='favorites-inner-div'>
+
+
+                <div id='my-favorites-sign'>{currentUser.username}'s Favorites</div>
+                <div id='favorites-line'></div>
+
+
+                <div id='favorites-butt'>
                     Favorite Items
                     <span>({favArr.length})</span>
-                </h2>
-            </div>
+                </div>
+
             <div className='fav-products-holder'>
                 <div className='fav-products-list'>
                     {favArr.map((fav) => (
@@ -37,7 +40,11 @@ const FavoritesPage = () => {
                         ))}
                 </div>
             </div>
-        </>
+
+
+
+            </div>
+        </div>
     );
 }
 

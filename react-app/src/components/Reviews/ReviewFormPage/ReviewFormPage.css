@@ -1,33 +1,24 @@
+reviewformpage.css
+
 .review-mini {
     display: flex;
 
 }
-
 .review-mini>div>i {
     font-size: 18px
 }
-
 .review-details {
-    /* border: 1px solid lightgrey; */
+    border: 1px solid lightgrey;
     padding: 10px;
-    border-radius: 3px;
-    /* box-shadow: rgba(17, 17, 26, 0.1) 0px 16px 56px; */
-    /* margin-top: 15px; */
-    padding-top: 25px;
-    width: 90%;
-}
-
-.review-details:hover {
+    border-radius: 10px;
     box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
     rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
 }
-
 .review-container>button {
     background-color: transparent;
     border: none;
     margin-top: 30px;
 }
-
 .review-component {
     display: flex;
     align-items: center;
@@ -35,52 +26,24 @@
     background-color: transparent;
     border: none;
 }
-
-
 .add-review-modal {
     border-radius: 10px;
 }
 
-.review-detail-button-container-prod {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    gap: 1rem;
-    margin-top: 5px;
+.review-text::placeholder {
+    font-weight: normal;
+    color: black;
 }
 
+.review-detail-button-container-prod {
+    display: flex;
+    width: 40%;
+    justify-content: space-between;
+}
 .review-detail-button-container-prod>button {
-    background-color: rgb(221,235,227);
+    background-color: darkgrey;
     color: white;
     border-radius: 20px;
     padding: 2px 10px;
     border: none;
-}
-
-.review-detail-button-container-prod>button:hover {
-    cursor: pointer;
-    background-color: #f1641e;
-    color: white
-}
-
-#reviews-holder-ReviewFormPage {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#stars-ReviewFormPage {
-    font-size: 20px;
-}
-
-#review-ReviewFormPage {
-    font-weight: 200;
-    font-size: 20px;
-    margin-top: 10px;
-}
-
-#createdAt-ReviewFormPage {
-    font-weight: 100;
-    font-size: 12px;
 }
