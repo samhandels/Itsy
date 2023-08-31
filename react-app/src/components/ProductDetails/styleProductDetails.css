@@ -35,6 +35,9 @@
       z-index: 1;
       left: 57%;
       top: 8%;
+      background-color:#F4F1EA;
+      padding: 5px 5px 5px 5px;
+      border-radius: 50%;
 }
 
 #right-panel-productDetails {

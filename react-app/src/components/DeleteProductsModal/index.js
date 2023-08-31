@@ -12,14 +12,14 @@ export const DeleteProductsModal = ({ productId }) => {
 
   const history = useHistory();
 
-  //   const deleteProduct = () => {
-  //       (dispatch(fetchDeleteProduct(product.id)))
-  //       closeModal()
-  //   };
+//   const deleteProduct = () => {
+//       (dispatch(fetchDeleteProduct(product.id)))
+//       closeModal()
+//   };
 
   const deleteProduct = async () => {
-    await dispatch(fetchDeleteProduct(productId))
-    closeModal()
+      await dispatch(fetchDeleteProduct(productId))
+      closeModal()
   };
 
   const products = Object.values(

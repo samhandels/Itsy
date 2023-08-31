@@ -117,7 +117,12 @@ def create_product():
 
             all_products = Product.query.all()
 
-            index = len(all_products)
+            idList = []
+
+            for product in all_products:
+                 idList.append(product.id)
+
+            index = max(idList)
 
             new_image = ProductImage (
                   url = form.data["url"],
@@ -226,13 +231,22 @@ def create_shopping_cart_item_by_product(id):
     """
     Create a shopping cart item to the shopping cart from the product detail page, only need productID and shoppingCartId
     """
-    item = ShoppingCartItems(
-        productId = id,
-        shoppingCartId = current_user.id
-    )
-    db.session.add(item)
+
+    req_json = request.get_json(force = True) #{'purchaseQuantity': '3'}
+#     print("****************************request**************************", request)
+#     print("****************************request**************************", req_json)
+    str_quantity = req_json['purchaseQuantity']
+    quantity = int(str_quantity)
+#     print("****************************quantity**************************", quantity)
+#     print("****************************quantity type**************************", type(quantity))
+    create_items = [ShoppingCartItems(productId = id,shoppingCartId = current_user.id) for bananable in range(quantity)] #creating all the items with the same products id
+
+    for item in create_items:
+         db.session.add(item) #add them all to the database one by one
     db.session.commit()
-    return item.to_dict()
+    return (f"{current_user.id} user has created {quantity} products for the shopping cart")
+
+
 
 @products.route('/<int:id>/favorites', methods=["POST"])
 @login_required

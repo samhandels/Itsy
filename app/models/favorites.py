@@ -23,6 +23,7 @@ class Favorite(db.Model):
             'product': {
                 'name': self.products.name,
                 'price': self.products.price,
-                'product_image': [product_image.url for product_image in self.products.product_images]
+                'product_image': [product_image.url for product_image in self.products.product_images],
+                'id': self.products.id
             }
         }
