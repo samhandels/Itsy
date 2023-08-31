@@ -94,9 +94,9 @@ export const ProductDetails = () => {
               <ReviewFormPage productId={product.id} />
             </div>
 
-            {userReviews.map((review) => (
+            {/* {userReviews.map((review) => (
               <div>{review.review}</div>
-            ))}
+            ))} */}
           </div>
 
           <div id="right-panel-productDetails">
@@ -114,9 +114,10 @@ export const ProductDetails = () => {
                 ✓ Returns & exchanges accepted
               </div>
 
+
               <div id="how-many-productDetails">
-                {" "}
-                <label>
+
+                <label> Choose how many you would like {" "}.{" "}.{" "}.{" "}
                   <select
                     name="selectedPurchaseQuantity"
                     value={purchaseQuantity}
@@ -128,7 +129,7 @@ export const ProductDetails = () => {
                   </select>
                 </label>
               </div>
-              <div id="instaldivroductDetails">
+              <div id="install-productDetails">
                 Pay in 4 installments with Klarna...
                 <a
                   href="https://www.klarna.com/us/"

@@ -26,13 +26,6 @@ const ReviewFormPage = ({ productId }) => {
 
     const prodArr = Object.values(products)
     console.log(prodArr)
-<<<<<<< HEAD
-
-    const productReviews = revArr.filter((review) => review?.productId === productId)
-    const thisProduct = prodArr.find((product) => product?.productId === productId)
-    console.log(thisProduct)
-=======
->>>>>>> dev
 
     const productReviews = revArr.filter((review) => review?.productId === productId)
     const thisProduct = prodArr.find((product) => product?.productId === productId)
@@ -92,6 +85,9 @@ const ReviewFormPage = ({ productId }) => {
                 </form >}
                 modalComponent={<ReviewFormModal productId={productId} />}
             />}
+
+            <div id='reviews-holder-ReviewFormPage'>
+
             {productReviews.map((review) => (
                 <div className="review-details">
                     <div className="mini-modal-stars-area">
@@ -126,6 +122,11 @@ const ReviewFormPage = ({ productId }) => {
                     }
                 </div>
             ))}
+
+
+
+            </div>
+
 
 
         </div >
