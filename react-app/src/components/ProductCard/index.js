@@ -16,6 +16,8 @@ export const ProductCard = ({product}) => {
 
         };
 
+
+
       // console.log("FAVORITES HANDLE CLICK HEART -- ", favorites)
       const handleHeartClick = async(productId) => {
             // console.log("PRODUCT ID in handle-click", productId)
