@@ -80,7 +80,7 @@ export const ProductDetails = () => {
             <i
               id="heart-icon-prod-detail"
               className={`nav-link fa-regular ${
-                isFavorite(product.id) ? "fa-heart-filled" : "fa-heart"
+                isFavorite(product.id) ? "fa-heart" : "fa-heart"
               }`}
               onClick={() => handleHeartClick(product.id)}
             ></i>
@@ -88,6 +88,7 @@ export const ProductDetails = () => {
               <img
                 id="primary-image-productDetails"
                 src={product.product_image[0]}
+                alt="product_image"
               />
             </div>
             <div>
@@ -115,7 +116,7 @@ export const ProductDetails = () => {
 
               <div id="how-many-productDetails">
                 {" "}
-                <label >
+                <label>
                   <select
                     name="selectedPurchaseQuantity"
                     value={purchaseQuantity}
@@ -141,7 +142,7 @@ export const ProductDetails = () => {
                 <OpenModalButton
                   buttonStyle="Add-productDetails"
                   buttonText="Add to cart"
-                  modalComponent={<AddtoCartModal product={product} />}
+                  modalComponent={<AddtoCartModal product={product} purchaseQuantity={purchaseQuantity}/>}
                 />
               </div>
               <button className="Add-productDetails" onClick={() => handleHeartClick(product.id)}>Add to Favorites &#x2764; </button>

@@ -3,6 +3,7 @@ import "./AllShoppingCartItems.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getItemsThunk } from "../../../store/shoppingCartReducer";
+import { fetchProducts } from "../../../store/productsReducer";
 import SingleItem from "../SingleItem";
 
 export default function AllShoppingCartItems() {
@@ -18,6 +19,7 @@ export default function AllShoppingCartItems() {
   
   useEffect(() => {
     dispatch(getItemsThunk());
+    dispatch(fetchProducts()) //so all products are still on the shopping cart refreshing the page
   }, [dispatch]);
   
   const sessionUser = useSelector((state) => state.session.user);

@@ -22,12 +22,12 @@ export const getItemsThunk = () => async (dispatch) => {
   }
 };
 
-export const createItemThunk = (productId) => async (dispatch) => {
+export const createItemThunk = (productId, purchaseQuantity) => async (dispatch) => {
   //  try {
   const res = await fetch(`/api/products/${productId}/shopping_cart`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(),
+    body: JSON.stringify({"purchaseQuantity": purchaseQuantity}),
   });
 
   // console.log(res);
