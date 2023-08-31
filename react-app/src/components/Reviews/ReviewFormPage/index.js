@@ -1,3 +1,5 @@
+
+
 import { useEffect, useReducer, useState } from 'react'
 // import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -18,11 +20,16 @@ const ReviewFormPage = ({ productId }) => {
     const dispatch = useDispatch()
 
     const reviews = useSelector((state) => state.reviews.reviews)
+    const products = useSelector((state) => state.products)
     const revArr = Object.values(reviews)
 
 
-    const productReviews = revArr.filter((review) => review?.productId === productId)
+    const prodArr = Object.values(products)
+    console.log(prodArr)
 
+    const productReviews = revArr.filter((review) => review?.productId === productId)
+    const thisProduct = prodArr.find((product) => product?.productId === productId)
+    console.log(thisProduct)
     let userLeftReview = false;
 
 
@@ -76,23 +83,26 @@ const ReviewFormPage = ({ productId }) => {
                         </div>
                     </div>
                 </form >}
-                modalComponent={<ReviewFormModal productId={productId} type={"create"} />}
+                modalComponent={<ReviewFormModal productId={productId} />}
             />}
+
+            <div id='reviews-holder-ReviewFormPage'>
+
             {productReviews.map((review) => (
                 <div className="review-details">
                     <div className="mini-modal-stars-area">
-                        <div> <i className={review?.stars > 0 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
-                        <div> <i className={review?.stars > 1 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
-                        <div> <i className={review?.stars > 2 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
-                        <div> <i className={review?.stars > 3 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
-                        <div> <i className={review?.stars > 4 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
+                        <div> <i id='stars-ReviewFormPage' className={review?.stars > 0 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
+                        <div> <i id='stars-ReviewFormPage' className={review?.stars > 1 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
+                        <div> <i id='stars-ReviewFormPage' className={review?.stars > 2 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
+                        <div> <i id='stars-ReviewFormPage' className={review?.stars > 3 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
+                        <div> <i id='stars-ReviewFormPage' className={review?.stars > 4 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
                     </div>
                     <div>
-                        <div>{review.review}</div>
+                        <div id="review-ReviewFormPage">{review.review}</div>
                     </div>
                     <div>
                         <div>{review.username}</div>
-                        <div>{review.createdAt}</div>
+                        <div id='createdAt-ReviewFormPage'>{review.createdAt}</div>
                     </div>
 
                     {review.username === user.username ?
@@ -107,11 +117,18 @@ const ReviewFormPage = ({ productId }) => {
                             />
                         </div> :
                         <div>
-                            <i class="fa-solid fa-thumbs-up"></i> 2 Helpful?
+                            <i className="fa-solid fa-thumbs-up"></i> 2 Helpful?
                         </div>
                     }
                 </div>
             ))}
+
+
+
+            </div>
+
+
+
         </div >
     )
 

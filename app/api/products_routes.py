@@ -117,7 +117,12 @@ def create_product():
 
             all_products = Product.query.all()
 
-            index = len(all_products)
+            idList = []
+
+            for product in all_products:
+                 idList.append(product.id)
+
+            index = max(idList)
 
             new_image = ProductImage (
                   url = form.data["url"],

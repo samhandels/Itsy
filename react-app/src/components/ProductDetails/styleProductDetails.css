@@ -97,9 +97,13 @@
       margin-top: 20px;
       padding-top: 10px;
       padding-bottom: 10px;
-      padding-left: 7px;
+      padding-left: 20px;
+      box-shadow: rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+
+#how-many-productDetails:hover {
       box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
-    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+      rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
 }
 
 #reviews-holder-productDetails {
@@ -230,4 +234,15 @@
 #hand-text-productDetails {
       font-size: 13px;
       padding-left: 5px;
+}
+
+#add-item-cart-fav-butt-ProductDetails>button {
+      background-color: rgb(221,235,227);
+      border: none;
+      width: 100%;
+}
+
+#add-item-cart-fav-butt-ProductDetails>button:hover {
+      cursor: pointer;
+      background-color: #f1641e;
 }
