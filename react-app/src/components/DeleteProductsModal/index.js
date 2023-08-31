@@ -6,20 +6,20 @@ import { useEffect } from "react";
 import { fetchProducts } from "../../store/productsReducer";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
-export const DeleteProductsModal = ({ productId }) => {
+export const DeleteProductsModal = ({ product }) => {
   const { closeModal } = useModal();
   const dispatch = useDispatch();
 
   const history = useHistory();
 
-  //   const deleteProduct = () => {
-  //       (dispatch(fetchDeleteProduct(product.id)))
-  //       closeModal()
-  //   };
+//   const deleteProduct = () => {
+//       (dispatch(fetchDeleteProduct(product.id)))
+//       closeModal()
+//   };
 
   const deleteProduct = async () => {
-    await dispatch(fetchDeleteProduct(productId))
-    closeModal()
+      await dispatch(fetchDeleteProduct(product.id))
+      closeModal()
   };
 
   const products = Object.values(
@@ -34,10 +34,8 @@ export const DeleteProductsModal = ({ productId }) => {
     <div id="deleteModal">
       <h2>Confirm Delete</h2>
       <div id="youSure">Are you sure you want to remove this spot?</div>
-      <form onSubmit={deleteProduct}>
-        <button type="submit" id="buttonY" >{`Yes`}</button>
-        <button type="button" id="buttonN" onClick={closeModal}>{`No`}</button>
-      </form>
+      <button id="buttonY" onClick={deleteProduct}>{`Yes`}</button>
+      <button id="buttonN" onClick={closeModal}>{`No`}</button>
     </div>
   );
 };
