@@ -30,15 +30,9 @@
   background-color: #f1641e;
 }
 
-#collection-image {
-  width: 30%;
-  height: auto;
-  aspect-ratio: 4/3;
-  object-fit: cover;
-  border: none;
-  margin-bottom: -8px;
-  box-shadow: 0px 1px 5px 1px lightgray;
-  border-radius: 2px;
+.Collection-Categories-fav {
+  width: 100%;
+
 }
 
 .fav-products-list {
@@ -60,9 +54,50 @@
 
 .Collection-Categories-fav {
   display: grid;
-
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1.25rem;
 }
 
+#collection-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: 4/3;
+}
+
+.Photo-Div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .25rem;
+}
+
+.Photo-Div-Left {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: .25rem;
+}
+
+.Photo-Div-Right {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: .25rem;
+}
+
+.LeftUpper-Photo {
+  border-top-left-radius: 10px;
+}
+
+.LeftLower-Photo {
+  border-bottom-left-radius: 10px;
+}
+
+.RightUpper-Photo {
+  border-top-right-radius: 10px;
+}
+
+.RightLower-Photo {
+  border-bottom-right-radius: 10px;
+}
 
 @media (min-width: 550px) {
     .fav-products-list {
