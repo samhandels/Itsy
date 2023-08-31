@@ -8,44 +8,44 @@ import { createItemThunk } from "../../../store/shoppingCartReducer";
 import { useHistory } from "react-router-dom";
 
 //userID == shoppingCartId
-export function AddtoCartModal({product}) {
+export function AddtoCartModal({ product, purchaseQuantity }) {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
   const history = useHistory();
   // console.log("************In Add to Cart Modal **********", productId);
-  
+
   const createCartItem = (e) => {
     e.preventDefault();
-    dispatch(createItemThunk(product.id)).then(closeModal)
+    dispatch(createItemThunk(product.id, purchaseQuantity)).then(closeModal);
     // history.push("/")
-    history.push("/shopping_cart/current")
-    
-
+    history.push("/shopping_cart/current");
   };
 
   return (
     <>
-     <div className="row">
-     <div className="item-img"><img
-                  src={product?.product_image[0]}
-                  alt=""
-                  className="cart-img"
-                /></div>
-       <div>1 item added to cart!</div>
-         </div>
-     
-       <div className="column buttons">
-         <div className="button-container">
-           <button className="back-button" type="submit" onClick={closeModal}>
-             Keep shopping
-           </button>
-         </div>
-         <div className="button-container">
-           <button className="forward-button" type="submit" onClick={createCartItem}>
-             View cart & check out
-           </button>
-           </div>
-       </div>
+      <div className="row">
+        <div className="item-img">
+          <img src={product?.product_image[0]} alt="" className="cart-img" />
+        </div>
+        <div>1 item added to cart!</div>
+      </div>
+
+      <div className="column buttons">
+        <div className="button-container">
+          <button className="back-button" type="submit" onClick={closeModal}>
+            Don't add to cart
+          </button>
+        </div>
+        <div className="button-container">
+          <button
+            className="forward-button"
+            type="submit"
+            onClick={createCartItem}
+          >
+            View cart
+          </button>
+        </div>
+      </div>
     </>
   );
 }

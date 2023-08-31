@@ -45,16 +45,16 @@ export const ProductDetails = () => {
 
   //for product quantity drop down
   const [purchaseQuantity, setPurchaseQuantity] = useState(1);
-  
+
   useEffect(() => {
     dispatch(fetchProductDetails(productId));
   }, [dispatch, productId]);
-  
+
   if (!product) return null;
   //for product quantity drop down
   const quantityArr = [...Array(product.quantity + 1).keys()];
   quantityArr.shift(); //1......productQuantity
-  
+
   return (
     <div id="largest-product-detail-div">
       <div id="filter-holder-ProductDetails">
@@ -77,6 +77,7 @@ export const ProductDetails = () => {
               <img
                 id="primary-image-productDetails"
                 src={product.product_image[0]}
+                alt="product_image"
               />
             </div>
             <div>
@@ -104,7 +105,7 @@ export const ProductDetails = () => {
 
               <div id="how-many-productDetails">
                 {" "}
-                <label >
+                <label>
                   <select
                     name="selectedPurchaseQuantity"
                     value={purchaseQuantity}
@@ -130,7 +131,7 @@ export const ProductDetails = () => {
                 <OpenModalButton
                   buttonStyle="Add-productDetails"
                   buttonText="Add to cart"
-                  modalComponent={<AddtoCartModal product={product} />}
+                  modalComponent={<AddtoCartModal product={product} purchaseQuantity={purchaseQuantity}/>}
                 />
               </div>
 
