@@ -81,9 +81,9 @@ function Footer() {
             <div className="bottom-links">
                 <div> © 2023 Itsy</div>
                 <div className="links">
-                    <a>Terms & Conditions</a>
-                    <a>Privacy Policy</a>
-                    <a>Contact Us</a>
+                    <a href='https://github.com/samhandels/Itsy' target="_blank">Checkout our Github Repository</a>
+                    {/* <a>Privacy Policy</a>
+                    <a>Contact Us</a> */}
                 </div>
             </div>
         </footer>

@@ -17,17 +17,35 @@
 }
 
 #favorites-butt {
-  background-color: rgb(221,235,227);
-  color: black;
+  background-color: #f1641e;
+  color: white;
   text-decoration: none;
   padding: 0 424px;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+  text-align: center;
 }
 
-#favorites-butt:hover {
+/* #favorites-butt:hover {
   color: white;
   background-color: #f1641e;
+} */
+
+#empty-fav-Favorites {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 100;
+  margin-top: 5px;
+  margin-bottom: 25px;
+}
+
+#category-title-Favorites {
+  font-size: 30px;
+  margin: 15px 0;
+}
+
+.suggested-categories-fav {
+  border-top: 3px solid rgb(222,222,222);
 }
 
 .Collection-Categories-fav {

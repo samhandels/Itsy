@@ -13,20 +13,22 @@
 }
 
 #store-line {
-      border-bottom: 2px solid rgb(222,222,222);
+      border-bottom: 3px solid rgb(222,222,222);
 }
 
 #storefront-butt {
-      background-color: rgb(221,235,227);
-      color: black;
+
       text-decoration: none;
       padding: 0 424px;
       border-bottom-left-radius: 10px;
       border-bottom-right-radius: 10px;
+      color: white;
+      background-color: #f1641e;
+      text-align: center;
 }
 
 #storefront-butt:hover {
       cursor: pointer;
-      color: white;
-      background-color: #f1641e;
+      background-color: #7b8a4b;
+      color: black;
 }

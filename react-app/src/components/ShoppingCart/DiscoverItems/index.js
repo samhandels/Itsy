@@ -57,7 +57,6 @@ export const DiscoverItems = () => {
 
   return (
     <div>
-    <div>Discover items</div>
       <div id="productCard-holder-AllProducts">
         {discoverFourItems.map((product) => (
           <ProductCard product={product} key={product?.id} />

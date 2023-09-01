@@ -74,7 +74,15 @@ const UserReviewPage = () => {
 
     return (
         <div className="user-review-container">
-            <h1>Your reviews</h1>
+            <div id='user-review-inner-div-container'>
+
+            <div id='my-reviews-page-sign'>My Reviews</div>
+            <div id='review-line'></div>
+      <div id='review-butt'>
+        Manage all your reviews
+      </div>
+
+
             <div className="user-review-container-sub">
                 <div>
                 <div>
@@ -83,10 +91,9 @@ const UserReviewPage = () => {
                             <div>{returnProductById(purchase).name}</div>
                         ))}
                         </div>
-                <div>
+                <div id='individual-review-holder-Review-Page'>
                     {currentReviews.map((review) => (
                         <div className="user-review-details" key={review.id}>
-                            <hr></hr>
                             <div className="review-product-info">
                                 <img className="review-product-img" src={returnProduct(review).product_image}></img>
                                 <div className="review-product-text">
@@ -120,16 +127,21 @@ const UserReviewPage = () => {
                     ))}
                 </div>
                 </div>
-                <div>
+                <div id='help-small-business-outer-div'>
                     <div className="help-small-business">
                         <div className="help-small-bus-title">Your reviews on Itsy help shop owners by providing them instant feedback and allowing
-                                    them to stock their shops with items their customers will love</div>
+                                    them to stock their shops with items their customers will love. Thank you for supporting these small business owners.</div>
 
                     </div>
-                    <div className="help-small-business learn-more">
+                    {/* <div className="help-small-business learn-more">
                         <div>Learn more about reviews</div>
-                    </div>
+                    </div> */}
                 </div>
+            </div>
+
+
+
+
             </div>
         </div>
     )

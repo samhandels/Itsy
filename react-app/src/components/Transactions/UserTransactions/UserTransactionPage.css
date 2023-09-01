@@ -1,4 +1,4 @@
-.purchased-product-image {
+/* .purchased-product-image {
     height: 80px;
     width: 80px;
 }
@@ -6,4 +6,95 @@
 
 .transaction-details {
     display: flex;
+} */
+
+#other-transaction-holder-purchase {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
+
+#outer-div-purchase-history {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #inner-div-purchase-history {
+    width: 1000px;
+  }
+
+  #my-purchase-page-sign {
+    font-size: 50px;
+  }
+
+  #purchase-line {
+    border-bottom: 3px solid rgb(222,222,222);
+  }
+
+  #purchase-butt {
+    padding: 0 375px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: white;
+    background-color: #f1641e;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  #transaction-holder-purchase {
+    margin-bottom: 50px;
+    width: 90%;
+  }
+
+  #transaction-holder-purchase:hover {
+    /* box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px; */
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  }
+
+  #transaction-number-purchase {
+    font-size: 20px;
+    text-align: center;
+    color: white;
+    background-color: #7b8a4b;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  #price-purchase {
+    font-size: 20px;
+    text-align: center;
+    color: white;
+    background-color: #7b8a4b;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+  #one-transaction-purchase {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 0 20px;
+    margin: 10px 0;
+  }
+
+  #item-transaction-purchase {
+    max-width: 100%;
+  }
+
+  #item-transaction-purchase>img {
+    height: 200px;
+    width: auto;
+    object-fit: cover;
+    aspect-ratio: 4/3;
+    border-radius: 10px;
+  }
+
+  #item-name-purchase {
+    text-align: center;
+  }

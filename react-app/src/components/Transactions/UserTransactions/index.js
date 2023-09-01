@@ -65,25 +65,42 @@ const UserTransactionPage = () => {
     },[dispatch])
 
     return (
-        <>
-            <div>Purchase History</div>
+        <div id='outer-div-purchase-history'>
+
+            <div id='inner-div-purchase-history'>
+
+            <div id='my-purchase-page-sign'>My Purchase History</div>
+            <div id='purchase-line'></div>
+      <div id='purchase-butt'>
+        See all your past purchases
+      </div>
+        <div id='other-transaction-holder-purchase'>
+
             {
                 uniqueTransArr.map((uniqueTransId)=> (
-                    <div>
-                        <div>Transaction # {uniqueTransId}</div>
-                            <div>
+                    <div id='transaction-holder-purchase'>
+                        <div id='transaction-number-purchase'>Transaction # {uniqueTransId}</div>
+                            <div id='one-transaction-purchase'>
                             {filterTransactions(uniqueTransId, userTransactions).map((item)=> (
-                                <div className = "transaction-details">
+                                <div id='item-transaction-purchase' className = "transaction-details">
                                     <img className = "purchased-product-image" src={returnProductImage(item.productId)}></img>
-                                    <div>{item.productName}</div>
+                                    <div id='item-name-purchase'>{item.productName}</div>
                                 </div>
                                 ))}
                             </div>
-                        <div>Total Price: {getPrice(uniqueTransId, userTransactions)}</div>
+                        <div id='price-purchase'>Total Price: {getPrice(uniqueTransId, userTransactions)}</div>
                     </div>
                 ))
             }
-        </>
+
+
+        </div>
+
+
+
+
+            </div>
+        </div>
     )
 }
 
