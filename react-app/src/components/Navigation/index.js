@@ -22,11 +22,13 @@ function Navigation({ isLoaded }) {
 		e.preventDefault();
 		setSearchInput(e.target.value);
 		if (searchInput.length > 0) {
-			prodArray.filter((product) => {
+			prodArray?.filter((product) => {
 				if (product.description.toLowerCase().search(searchInput.toLowerCase()) !== -1) {
 					searchProducts.push(product)
 				} else if (product.name.toLowerCase().search(searchInput.toLowerCase()) !== -1) {
 					searchProducts.push(product)
+				} else {
+
 				}
 			})
 		}
