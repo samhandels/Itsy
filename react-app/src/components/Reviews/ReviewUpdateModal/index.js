@@ -137,7 +137,7 @@ const ReviewUpdateModal = ({ productId, reviewId }) => {
                         </div>
                         {stars < 3 && <div className="low-review-help">
                             <p>Sorry your experience wasn't great</p>
-                            <p>Learn ways to <Link className="review-help-link" onClick={() => closeModal()} to="/help/order-issues">get help with your order.</Link></p>
+                            <p>Click here to contact the shop owner</p>
                         </div>}
                     </div>
                 </div>}
@@ -153,7 +153,7 @@ const ReviewUpdateModal = ({ productId, reviewId }) => {
                             placeHolder={thisReview === "" ? "" : thisReview.review}
                             onChange={e => setReview(e.target.value)}>
                         </textarea>
-                        <p>By submitting, you agree to <Link to="/" onClick={() => closeModal()} className="review-help-link">Itsy's Review Policy</Link></p>
+                        <p>By submitting, you agree to Itsy's Review Policy</p>
                     </div>}
                 {
                     reviewPage === 3 &&

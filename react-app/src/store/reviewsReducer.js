@@ -3,10 +3,18 @@ export const GET_REVIEW = '/reviewsReducer/loadReview'
 export const ADD_REVIEW = '/reviewsReducer/addReview'
 export const UPDATE_REVIEW = '/reviewsReducer/updateReview'
 export const DELETE_REVIEW = '/reviewsReducer/deleteReview'
+export const WAIT_REVIEWS = '/reviewsReducere/setWaitingReviews'
 
 const loadReviews = reviews => {
     return {
         type: LOAD_REVIEWS,
+        reviews
+    }
+}
+
+const setWaitingReviews = reviews => {
+    return {
+        type: WAIT_REVIEWS,
         reviews
     }
 }
@@ -53,6 +61,7 @@ export const getOneReview = (reviewId) => async (dispatch) => {
     const review = await res.json()
     dispatch(loadReview(review))
 }
+
 
 export const postReview = (productId, review) => async (dispatch) => {
 
@@ -104,18 +113,27 @@ export const deleteReview = (reviewId) => async (dispatch) => {
 
 }
 
+export const getWaitingReviews = () => async (dispatch) => {
+    const response = await fetch(`/api/reviews/waitingReviews`)
+    console.log("RESPONSE", response)
+    const res = await response.json()
+    console.log("RES", res)
+    dispatch(setWaitingReviews(res))
+}
+
 
 
 const initialState = {
     reviews: {},
-    review: {}
+    review: {},
+    waitingReviews: {}
 }
 
 export const reviewsReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case LOAD_REVIEWS:
-            const reviewsState = { ...state, reviews: { ...state.reviews }, review: { ...state.review } }
+            let reviewsState = { ...state }
             action.reviews.forEach(
                 (review) => reviewsState.reviews[review.id] = review
             )
@@ -136,6 +154,12 @@ export const reviewsReducer = (state = initialState, action) => {
         case UPDATE_REVIEW:
             newState = { ...state, reviews: { ...state.reviews } }
             newState.reviews[action.review.id] = action.review
+            return newState
+        case WAIT_REVIEWS:
+            newState = { ...state, reviews: { ...state.reviews } }
+            action.reviews.forEach(
+                (review) => newState.waitingReviews[review.id] = review
+            )
             return newState
         default:
             return state;

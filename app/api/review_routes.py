@@ -1,6 +1,8 @@
 from flask import Blueprint, request, redirect
 from ..models import db
 from ..models.reviews import Review
+from..models.transactions import Transactions
+from ..models.transaction_items import TransactionItems
 from ..forms.review_form import ReviewForm
 from flask_login import current_user
 from datetime import datetime
@@ -65,6 +67,19 @@ def get_one_review(id):
     print(response.to_dict())
     return response.to_dict()
 
+@reviews.route("/waitingReviews")
+def waitingReviews():
+    userId = current_user.id
+    userReviews = Review.query.filter(Review.userId == userId).all()
+    reviewIds = [review.productId for review in userReviews]
+    userTrans = Transactions.query.filter(Transactions.userId == userId).all()
+    transIds = [trans.id for trans in userTrans]
+    userItemsPurchased = []
+    for id in transIds:
+        userItemsPurchased = (TransactionItems.query.filter(TransactionItems.transactionId == id))
+    noReviews = [item.productId for item in userItemsPurchased if item.productId not in reviewIds]
+    response = noReviews
+    return response
 
 @reviews.route("/<int:id>", methods=["DELETE"])
 def delete_review(id):
