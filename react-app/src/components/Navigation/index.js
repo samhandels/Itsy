@@ -5,18 +5,20 @@ import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
 import { getAllReviews, getWaitingReviews } from "../../store/reviewsReducer";
 import { AllProducts } from "../AllProducts";
+import { getAllFavorites } from "../../store/favoritesReducer";
 
 
 function Navigation({ isLoaded }) {
 	const dispatch = useDispatch()
 	const sessionUser = useSelector((state) => state.session.user);
 	const products = useSelector((state) => state.products)
+	const favorites = useSelector((state) => state.favorites.favorites)
 	const waitingReviews = useSelector((state) => state.reviews.waitingReviews)
 	const [searchInput, setSearchInput] = useState("")
 	const prodArray = Object.values(products)
-	console.log("PRODUCTS", products)
 	const history = useHistory()
 	let searchProducts = []
+
 
 	const handleChange = (e) => {
 		e.preventDefault();

@@ -113,7 +113,7 @@ export const ProductDetails = () => {
               <div id="primary-image-holder-productDetails">
                 <img
                   id="primary-image-productDetails"
-                  src={product.product_image[0]}
+                  src={product?.product_image[0]}
                   alt="product_image"
                 />
               </div>

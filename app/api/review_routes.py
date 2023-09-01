@@ -50,7 +50,6 @@ def update_review(id):
 
             review.review = form.data["review"]
             review.stars = int(form.data["stars"])
-            review.likes = int(form.data["likes"])
             print("REVIEW", review)
             db.session.commit()
             return review.to_dict()
