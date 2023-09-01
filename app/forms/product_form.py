@@ -8,7 +8,7 @@ class ProductForm(FlaskForm):
       name = StringField("Name", validators=[DataRequired(), Length(min=1, max=100)])
       price = FloatField("Price", validators=[DataRequired()])
       description = StringField("Description", validators=[DataRequired(), Length(min=1, max=1000)])
-      quantity = IntegerField("Quantity", validators=[DataRequired()])
+      quantity = IntegerField("Quantity")
       category = SelectField("Category", choices=categories)
       url = StringField("Photo", validators=[DataRequired()])
       submit = SubmitField("Create Product")

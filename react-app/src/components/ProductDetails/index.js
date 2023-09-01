@@ -22,6 +22,7 @@ export const ProductDetails = () => {
   const dispatch = useDispatch();
 
   const reviews = useSelector((state) => state.reviews.reviews);
+  const products = useSelector((state) => state.products)
   const favorites = useSelector((state) => state.favorites.favorites);
   const favArr = Object.values(favorites);
 
@@ -62,6 +63,11 @@ export const ProductDetails = () => {
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
+
+
+  useEffect(()=> {
+    dispatch(fetchProducts());
+  },[dispatch])
 
   useEffect(() => {
     dispatch(fetchProductDetails(productId));
@@ -107,7 +113,7 @@ export const ProductDetails = () => {
               <div id="primary-image-holder-productDetails">
                 <img
                   id="primary-image-productDetails"
-                  src={product.product_image[0]}
+                  src={product?.product_image[0]}
                   alt="product_image"
                 />
               </div>
