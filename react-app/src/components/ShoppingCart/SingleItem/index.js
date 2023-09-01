@@ -65,7 +65,7 @@ export default function SingleItems({ product, productInCartNum, allProducts }) 
                 </NavLink>
               </div>
               <div>
-                <button onClick={removeItem}>
+                <button id='remove-butt-shopping-cart' onClick={removeItem}>
                   <i className="fa-solid fa-x"></i> Remove
                 </button>
               </div>
@@ -128,7 +128,7 @@ export default function SingleItems({ product, productInCartNum, allProducts }) 
           <div>Total (1 item)</div>
           <div>${total}</div>
         </div>
-        <div className="row center">
+        <div id='order-up-butt' className="row center">
           <OpenModalButton
             buttonStyle="black-button"
             buttonText="Order up!"

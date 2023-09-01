@@ -1,3 +1,39 @@
+
+.user-review-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#user-review-inner-div-container {
+    width: 1000px;
+}
+
+#my-reviews-page-sign {
+    font-size: 50px;
+}
+
+#review-line {
+    border-bottom: 3px solid rgb(222,222,222);
+}
+
+#review-butt {
+    padding: 0 400px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: white;
+    background-color: #f1641e;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* #review-butt:hover {
+    cursor: pointer;
+    background-color: rgb(221,235,227);
+    color: black;
+} */
+
+
 .review-product-info {
     display: flex;
 }
@@ -20,25 +56,34 @@
     font-weight: normal
 }
 
-.review-detail-button-container {
-    display: flex;
-    width: 20%;
-    justify-content: space-between;
+#individual-review-holder-Review-Page:hover {
+    border: none;
 }
 
+.review-detail-button-container {
+    display: flex;
+    flex-direction: row;
+    width: 20%;
+    justify-content: flex-start;
+    gap: 1rem;
+}
+
+
+
 .review-detail-button-container>button {
-    background-color: darkgrey;
+    background-color: #7b8a4b;
     color: white;
     border-radius: 20px;
     padding: 2px 10px;
     border: none;
 }
 
-
-.user-review-container {
-    margin-left: 20px;
-
+.review-detail-button-container>button:hover {
+    background-color: #f1641e;
+    cursor: pointer;
 }
+
+
 
 .user-review-container-sub {
     display: grid;
@@ -50,7 +95,19 @@
 
 .user-review-details {
     padding-bottom: 10px;
+    margin: 30px 0;
+    padding: 10px 0;
+    padding-left: 25px;
+    font-size: 18px;
+    border-radius: 5px;
 }
+
+.user-review-details:hover {
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+        rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+
+
 
 .review-product-info {
     padding-top: 10px;
@@ -61,24 +118,40 @@
     font-weight: bold;
 }
 
+/* #help-small-business-outer-div {
+    display: grid;
+} */
+
 .help-small-business {
-    background-color: #e3aa8e;
+    position: sticky;
+    top: 5%;
+    background-color: #7b8a4b;
     width: 50%;
     height: fit-content;
     margin-left: auto;
     margin-right: auto;
     border-radius: 20px;
     color: white;
-    padding: 20px;
-    margin-bottom: 20px
+    padding: 17px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 100;
 }
 
-.help-small-business>div {
+.help-small-business:hover {
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+        rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+
+
+/* .help-small-business>div {
     color: white;
-}
+    border: 1px solid red;
+    position: sticky;
+} */
 
-
+/*
 .learn-more {
    display: flex;
    justify-content: center;
-}
+} */
