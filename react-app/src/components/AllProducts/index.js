@@ -6,14 +6,14 @@ import './styleAllProducts.css'
 import BlogSection from "../Blog";
 import { getAllFavorites } from "../../store/favoritesReducer";
 
-export const  AllProducts = (filter) => {
+export const  AllProducts = () => {
       const dispatch = useDispatch()
 
       const productsObj = useSelector((state) => (state.products ? state.products : {}))
 
       const favorites = useSelector((state) => state.favorites.favorites);
 
-      const [filter, setFilter] = useState(filter ? filter : "");
+      const [filter, setFilter] = useState("");
 
 
       useEffect(() => {
