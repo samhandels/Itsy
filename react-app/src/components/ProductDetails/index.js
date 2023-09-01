@@ -73,7 +73,7 @@ export const ProductDetails = () => {
 
   //to check if the current user is the same as product owner, if true, don't show "add to cart" OpenModal
   let productOwner = "";
-  if (product?.ownerId === sessionUser.id) productOwner = "hide";
+  if (product?.ownerId === sessionUser?.id) productOwner = "hide";
 
   return (
     <div id="largest-product-detail-div">
