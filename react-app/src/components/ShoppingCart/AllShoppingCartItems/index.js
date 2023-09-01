@@ -80,7 +80,7 @@ export default function AllShoppingCartItems() {
         <h1 id='discover-title-shopping-cart'>Discover other items</h1>
         <DiscoverItems />
       </section>
-      <NavLink to="/transactions"> Go to Transactions</NavLink>
+      {/* <NavLink to="/transactions"> Go to Transactions</NavLink> */}
 
 
 

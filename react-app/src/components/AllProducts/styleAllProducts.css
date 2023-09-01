@@ -27,10 +27,10 @@
       color: white;
       /* border-top: 1px solid rgb(255, 90, 95); */
       text-align: center;
-      font-size: 15px;
+      font-size: 25px;
       /* margin-bottom: -14px; */
       /* padding-top: 2px; */
-      background-color: #f1641e;
+      background-color: #7b8a4b;
       padding-top: 1px;
       box-shadow: 0px 3px 5px 2px lightgray;
       border-bottom: 2px solid rgb(222,222,222);
@@ -38,7 +38,7 @@
 
     #filter-reset:hover {
       cursor: pointer;
-      background-color: #7b8a4b;
+      background-color: #f1641e;
     }
 
 #sales-banner-AllProducts {
