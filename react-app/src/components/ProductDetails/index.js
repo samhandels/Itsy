@@ -83,8 +83,8 @@ export const ProductDetails = () => {
   //if it's out of stock, product quantity shows out of stock, and the add to cart button is disabled
   let stock = "hide";
   let noStock = "hide";
-  if (product.quantity <= 0) {
-    //when out of stuck === 0
+  if (product.quantity === 0) {
+    //when out of stuck 
     noStock = "show";
   }
 
