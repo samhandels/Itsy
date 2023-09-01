@@ -73,6 +73,10 @@
       margin-top: 10px;
 }
 
+#shop-button-AllProducts:hover {
+      cursor: pointer;
+}
+
 #terms-AllProducts {
       font-weight: 100;
       font-size: 12px;
@@ -84,6 +88,11 @@
       gap: 1.5rem;
       margin: 1rem;
       margin-top: 2rem
+}
+
+#shop-now {
+      text-decoration: none;
+      color: white;
 }
 
 

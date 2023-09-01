@@ -5,6 +5,7 @@ import { ProductCard } from "../ProductCard";
 import './styleAllProducts.css'
 import BlogSection from "../Blog";
 import { getAllFavorites } from "../../store/favoritesReducer";
+import { NavLink } from "react-router-dom";
 
 export const  AllProducts = () => {
       const dispatch = useDispatch()
@@ -85,9 +86,11 @@ export const  AllProducts = () => {
                         <div id='labor-day-AllProducts'>
                               The Labor Day Sales Event is here!
                         </div>
+                              <NavLink  id='shop-now' to='/shopping_cart/current'>
                         <div id='shop-button-AllProducts'>
                               Shop now
                         </div>
+                              </NavLink>
                         <div id='terms-AllProducts'>
                               Participating sellers only. Terms apply.
                         </div>
