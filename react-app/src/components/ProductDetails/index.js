@@ -47,10 +47,10 @@ export const ProductDetails = () => {
   const handleHeartClick = async (productId) => {
     if (isFavorite(productId)) {
       await dispatch(removeFavorite(favorite));
-      await dispatch(getAllFavorites());
+      await dispatch(getAllFavorites(sessionUser ? sessionUser : null));
     } else {
       await dispatch(createFavorite(productId));
-      await dispatch(getAllFavorites());
+      await dispatch(getAllFavorites(sessionUser ? sessionUser : null));
     }
   };
 
@@ -65,7 +65,7 @@ export const ProductDetails = () => {
 
   useEffect(() => {
     dispatch(fetchProductDetails(productId));
-    dispatch(getAllFavorites());
+    dispatch(getAllFavorites(sessionUser ? sessionUser : null));
     // dispatch(fetchUpdateProduct(product))
   }, [dispatch, productId]);
 
