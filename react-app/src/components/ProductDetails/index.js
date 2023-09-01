@@ -20,7 +20,7 @@ import { fetchProducts, fetchUpdateProduct } from "../../store/productsReducer";
 export const ProductDetails = () => {
   const { productId } = useParams();
   const dispatch = useDispatch();
-
+  const user = useSelector((state) => state.session.user)
   const reviews = useSelector((state) => state.reviews.reviews);
   const products = useSelector((state) => state.products);
   const favorites = useSelector((state) => state.favorites.favorites);
@@ -119,22 +119,18 @@ export const ProductDetails = () => {
                 {sessionUser && (
                   <i
                     id="heart-icon-prod-detail"
-                    className={`nav-link fa-regular ${
-                      isFavorite(product.id) ? "fa-solid fa-heart" : "fa-heart"
-                    }`}
+                    className={`nav-link fa-regular ${isFavorite(product.id) ? "fa-solid fa-heart" : "fa-heart"
+                      }`}
                     onClick={() => handleHeartClick(product.id)}
                   ></i>
                 )}
               </div>
             </div>
 
-            <div>
-              <ReviewFormPage productId={product.id} />
-            </div>
+              <div>
+                <ReviewFormPage productId={product.id} />
+              </div>
 
-            {/* {userReviews.map((review) => (
-              <div>{review.review}</div>
-            ))} */}
           </div>
 
           <div id="right-panel-productDetails">
@@ -183,6 +179,7 @@ export const ProductDetails = () => {
               <div
                 id="add-item-cart-fav-butt-ProductDetails"
                 className={addItemBtn}
+                
               >
                 <OpenSideModalButton
                   buttonStyle="Add-productDetails"

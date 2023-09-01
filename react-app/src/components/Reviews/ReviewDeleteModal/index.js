@@ -1,6 +1,6 @@
 
 import { useModal } from '../../../context/Modal'
-import { deleteReview } from '../../../store/reviewsReducer'
+import { deleteReview, getWaitingReviews } from '../../../store/reviewsReducer'
 import { useDispatch } from 'react-redux'
 
 const ReviewDeleteModal = ({ reviewId }) => {
@@ -11,6 +11,7 @@ const ReviewDeleteModal = ({ reviewId }) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         await dispatch(deleteReview(reviewId))
+        await dispatch(getWaitingReviews())
         closeModal()
     }
 

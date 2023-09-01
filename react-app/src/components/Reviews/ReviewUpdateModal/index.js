@@ -32,7 +32,7 @@ const ReviewUpdateModal = ({ productId, reviewId }) => {
 
     handleSubmit = async (e) => {
         e.preventDefault()
-
+        console.log("HANDLING SUBMIT")
         if (review) reviewInfo.review = review
         else reviewInfo.review = thisReview.review
         if (stars) reviewInfo.stars = stars
