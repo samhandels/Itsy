@@ -23,6 +23,8 @@ export const FilteredProducts = () => {
                 searchProducts.push(product)
             } else if (product.name.toLowerCase().search(search.toLowerCase()) !== -1) {
                 searchProducts.push(product)
+            } else if (product.category.toLowerCase().search(search.toLowerCase()) !== -1) {
+                searchProducts.push(product)
             }
         })
     }
