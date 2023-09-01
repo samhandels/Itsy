@@ -40,6 +40,7 @@ function SignupFormPage() {
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            pattern='^\S+@\S+$'
             required
           />
         </label>
