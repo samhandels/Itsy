@@ -9,7 +9,7 @@ import { deleteItemThunk } from "../../../store/shoppingCartReducer";
 // need to update the products quantity after the order is complete
 import { fetchProducts, fetchUpdateProduct } from "../../../store/productsReducer";
 
-export function OrderCompleteModal({ product, purchaseQuantity, itemArr }) {
+export function OrderCompleteModal({ product, purchaseQuantity}) {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
   const { id, name, price, description, quantity, category, product_image } = product
@@ -22,7 +22,8 @@ export function OrderCompleteModal({ product, purchaseQuantity, itemArr }) {
 //  console.log('******************purchaseQuantity******************', purchaseQuantity);
 //  console.log('******************updatedProduct******************', updateProduct);
 
-
+const itemsInCart = useSelector((state) => state.items)
+const itemArr = Object.values(itemsInCart)
   const onSubmit = (e) => {
     e.preventDefault();
     dispatch(deleteItemThunk(product.id)); //remove from shopping cart
