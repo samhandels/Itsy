@@ -22,7 +22,7 @@ export const ProductDetails = () => {
   const dispatch = useDispatch();
 
   const reviews = useSelector((state) => state.reviews.reviews);
-  const products = useSelector((state) => state.products)
+  const products = useSelector((state) => state.products);
   const favorites = useSelector((state) => state.favorites.favorites);
   const favArr = Object.values(favorites);
 
@@ -64,7 +64,6 @@ export const ProductDetails = () => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-
   useEffect(() => {
     dispatch(fetchProductDetails(productId));
     dispatch(getAllFavorites(sessionUser ? sessionUser : null));
@@ -83,8 +82,8 @@ export const ProductDetails = () => {
   //if it's out of stock, product quantity shows out of stock, and the add to cart button is disabled
   let stock = "hide";
   let noStock = "hide";
-  if (product.quantity === 0) {
-    //when out of stuck 
+  if (product.quantity <= 0) {
+    //when out of stuck  /iphone and fridge are -1, what the frick
     noStock = "show";
   }
 
@@ -184,7 +183,6 @@ export const ProductDetails = () => {
               <div
                 id="add-item-cart-fav-butt-ProductDetails"
                 className={addItemBtn}
-                
               >
                 <OpenSideModalButton
                   buttonStyle="Add-productDetails"
