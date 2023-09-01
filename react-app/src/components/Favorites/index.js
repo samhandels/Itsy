@@ -1,6 +1,6 @@
 import React from 'react';
 import './Favorites.css';
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ProductCard } from "../ProductCard";
 import { getAllFavorites } from '../../store/favoritesReducer';
@@ -9,6 +9,8 @@ const FavoritesPage = () => {
     const currentUser = useSelector((state) => state.session.user);
     const favorites = useSelector((state) => state.favorites.favorites);
     const dispatch = useDispatch()
+
+    const [filter, setFilter] = useState("")
     // console.log("favorites -------------", favorites)
 
     let favArr = Object.values(favorites)
@@ -43,7 +45,7 @@ const FavoritesPage = () => {
     <div className='suggested-categories-fav'>
         <div id='category-title-Favorites'>Categories we think you'll love</div>
         <div className='Collection-Categories-fav'>
-            <div className='Collection-Category-Outer-Div'>
+            <div className='Collection-Category-Outer-Div' onClick="">
                 <div className='Photo-Div'>
                     <div className='Photo-Div-Left'>
                         <img id="collection-image" className='LeftUpper-Photo' src='https://i.etsystatic.com/9433423/r/il/d4a8bb/2857074970/il_794xN.2857074970_es2x.jpg'></img>
