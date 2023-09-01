@@ -34,7 +34,7 @@ const deleteFavorite = (favoriteId) => {
 
 export const getAllFavorites = (user) => async (dispatch) => {
     if (!user){
-        return
+        return null
     }
     const res = await fetch('/api/favorites');
     const favorites = await res.json();
@@ -59,13 +59,14 @@ export const createFavorite = (productId) => async (dispatch) => {
     }
 };
 
-export const removeFavorite = (productId) => async (dispatch) => {
-    const res = await fetch(`/api/products/${productId}/favorites`, {
+export const removeFavorite = (favorite) => async (dispatch) => {
+    // console.log("FAVORITE IN REMOVE FAVORITE ----", fav)
+    const res = await fetch(`/api/products/${favorite.productId}/favorites`, {
         method: 'DELETE'
     });
 
     if (res.ok) {
-        dispatch(deleteFavorite(productId));
+        dispatch(deleteFavorite(favorite.id));
         return null;
     } else {
         const errors = await res.json();

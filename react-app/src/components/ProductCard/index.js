@@ -30,6 +30,8 @@ export const ProductCard = ({product}) => {
             currency: 'USD',
       });
 
+      const sessionUser = useSelector((state) => state.session.user);
+
       if (!product) return null
       // console.log("PRODUCT inside product card", product)
       return (
@@ -37,8 +39,12 @@ export const ProductCard = ({product}) => {
             <div id='card-holder-productCard'>
                   <NavLink id="link-ProductCard" to={`/products/${product.id}`}>
 
-                  <i className={`nav-link fa-regular ${isFavorite(product.id) ? "fa-solid fa-heart" : "fa-heart"
-                }`} id='fa-heart-product-card' onClick={() => handleHeartClick(product.id)}></i>
+
+                  {sessionUser && (
+                        <i className={`nav-link fa-regular ${isFavorite(product.id) ? "fa-solid fa-heart" : "fa-heart"}`}
+                        id='fa-heart-product-card'
+                        onClick={() => handleHeartClick(product.id)}></i>
+                  )}
 
                         <div id='card-image-ProductCard'>
                               <img id='card-image-ProductCard' src={ product.product_image[0] } />
