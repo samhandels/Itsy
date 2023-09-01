@@ -87,6 +87,13 @@
       margin-top: 7px;
 }
 
+.supply-count-productDetails {
+      color: rgb(166,26,46);
+      font-weight: 700;
+      font-size: 18px;
+      margin-top: 7px;
+}
+
 #price-productDetails {
       font-family: "Roboto";
       font-weight: 500;
@@ -272,5 +279,10 @@
 }
 
 .hide{
-      display: none;
+      /* display: none; */
+      visibility: hidden;
+}
+
+.show{
+      visibility: visible;
 }
