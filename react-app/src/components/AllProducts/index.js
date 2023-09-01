@@ -13,6 +13,8 @@ export const  AllProducts = () => {
 
       const favorites = useSelector((state) => state.favorites.favorites);
 
+      const [filter, setFilter] = useState("");
+
 
       useEffect(() => {
             dispatch(fetchProducts())
@@ -35,32 +37,46 @@ export const  AllProducts = () => {
 
             <div>
                   <div id='filter-holder-AllProducts'>
-                        <div className="filter-AllProducts">
-                              Jewelry & Accessories
+                        <div className="filter-AllProducts" onClick={(e) => setFilter("Jewelry")}>
+                              <div>Jewelry & Accessories</div>
+                              {filter === "Jewelry" ? <div id="iconic-active"></div> : null}
                         </div>
-                        <div className="filter-AllProducts">
-                              Clothing & Shoes
+                        <div className="filter-AllProducts" onClick={(e) => setFilter("Clothing")}>
+                              <div>Clothing & Shoes</div>
+                              {filter === "Clothing" ? <div id="iconic-active"></div> : null}
                         </div>
-                        <div className="filter-AllProducts">
-                              Home & Living
+                        <div className="filter-AllProducts" onClick={(e) => setFilter("Home")}>
+                              <div>Home & Living</div>
+                              {filter === "Home" ? <div id="iconic-active"></div> : null}
                         </div>
-                        <div className="filter-AllProducts">
-                              Wedding & Party
+                        <div className="filter-AllProducts" onClick={(e) => setFilter("Wedding")}>
+                              <div>Wedding & Party</div>
+                              {filter === "Wedding" ? <div id="iconic-active"></div> : null}
                         </div>
-                        <div className="filter-AllProducts">
-                              Toys & Entertainment
+                        <div className="filter-AllProducts" onClick={(e) => setFilter("Toys")}>
+                              <div>Toys & Entertainment</div>
+                              {filter === "Toys" ? <div id="iconic-active"></div> : null}
                         </div>
-                        <div className="filter-AllProducts">
-                              Art & Collectibles
+                        <div className="filter-AllProducts" onClick={(e) => setFilter("Art")}>
+                              <div>Art & Collectibles</div>
+                              {filter === "Art" ? <div id="iconic-active"></div> : null}
                         </div>
-                        <div className="filter-AllProducts">
-                              Craft Supplies
+                        <div className="filter-AllProducts" onClick={(e) => setFilter("Craft")}>
+                              <div>Craft Supplies</div>
+                              {filter === "Craft" ? <div id="iconic-active"></div> : null}
                         </div>
-                        <div className="filter-AllProducts">
-                              Gifts & Cards
+                        <div className="filter-AllProducts" onClick={(e) => setFilter("Gifts")}>
+                              <div>Gifts & Cards</div>
+                              {filter === "Gifts" ? <div id="iconic-active"></div> : null}
                         </div>
 
                   </div>
+
+                  {filter === "" ? null : (
+                        <div id="filter-reset" onClick={(e) => setFilter("")}>
+                        See All Products
+                        </div>
+                  )}
 
                   <div id='sales-banner-AllProducts'>
                         <div id='up-to-AllProducts'>
@@ -79,9 +95,13 @@ export const  AllProducts = () => {
 
                   <div id='productCard-holder-AllProducts'>
                         {/* {products} */}
-                        {products.map((product) => (
-                              <ProductCard product={product} key={product.id} />
-                        ))}
+                        {products
+                              .filter((spot) => {
+                                    return filter === "" ? spot : spot.category == filter;
+                              })
+                              .map((product) => (
+                                    <ProductCard product={product} key={product.id} />
+                              ))}
 
                   </div>
                   <BlogSection />
