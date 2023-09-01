@@ -158,7 +158,7 @@ export const ProductDetails = () => {
                   </select>
                 </label>
               </div>
-              <div id="install-productDetails">
+              {/* <div id="install-productDetails">
                 Pay in 4 installments with Klarna...
                 <a
                   href="https://www.klarna.com/us/"
@@ -167,7 +167,7 @@ export const ProductDetails = () => {
                 >
                   Learn more
                 </a>
-              </div>
+              </div> */}
               <div
                 id="add-item-cart-fav-butt-ProductDetails"
                 className={productOwner}

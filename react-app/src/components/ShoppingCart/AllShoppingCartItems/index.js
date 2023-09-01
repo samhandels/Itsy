@@ -44,10 +44,18 @@ export default function AllShoppingCartItems() {
   if (!products) return null;
   if (!sessionUser) return null;
   return (
-    <div className="shopping-cart components-border">
+    <div id="shopping-cart-components-border">
+      <div id='shopping-cart-inner-div'>
+
+      <div id='my-cart-page-sign'>My Shopping Cart</div>
+            <div id='cart-line'></div>
+      <div id='cart-butt'>
+        Manage all the items in your cart
+      </div>
+
       <div className="greeting">
-        Hello {sessionUser.username}, {productItemArray.length} items in your
-        shopping cart
+        Hello {sessionUser.username}, there are {productItemArray.length} items in your
+        shopping cart:
       </div>
 
       <section className="item-cards">
@@ -57,7 +65,7 @@ export default function AllShoppingCartItems() {
           let itemIdSameProductArray = items.filter((item) => item.productId);
 
           return (
-            <div className="cart_item" key={uniqueProduct?.id}>
+            <div id='individual-shop-cart' className="cart_item" key={uniqueProduct?.id}>
               <div>
                 <SingleItem
                   product={uniqueProduct}
@@ -68,10 +76,15 @@ export default function AllShoppingCartItems() {
           );
         })}
       </section>
-      <section className="discover-item-cards">
+      <section id='discover-sec-shopping-cart' className="discover-item-cards">
+        <h1 id='discover-title-shopping-cart'>Discover other items</h1>
         <DiscoverItems />
       </section>
       <NavLink to="/transactions"> Go to Transactions</NavLink>
+
+
+
+      </div>
     </div>
   );
 }
