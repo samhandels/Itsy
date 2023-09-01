@@ -18,6 +18,7 @@ import { CreateProductForm } from "./components/ProductForm/CreateProductForm";
 import { UpdateProductForm } from "./components/ProductForm/UpdateProductForm";
 import OrderIssuePage from "./components/Reviews/OrderIssuePage"
 import UserTransactionPage from "./components/Transactions/UserTransactions";
+import { FilteredProducts } from "./components/FilteredProducts";
 
 function App() {
   const dispatch = useDispatch();
@@ -48,6 +49,9 @@ function App() {
           </Route>
           <Route exact path="/help/order-issues">
             <OrderIssuePage />
+          </Route>
+          <Route exact path="/products/search/:searchInput">
+            <FilteredProducts />
           </Route>
           <ProtectedRoute exact path="/products/new">
             <CreateProductForm />
