@@ -8,18 +8,17 @@ export const ProductCard = ({product}) => {
       const dispatch = useDispatch();
       const favorites = useSelector((state) => state.favorites.favorites);
       const favArr = Object.values(favorites)
+      let favorite
       const isFavorite = (productId) => {
-            return favArr.find(favorite => favorite.productId === productId);
-
+            favorite = favArr.find(favorite => favorite.productId === productId);
+            return favorite;
         };
-
-
 
       // console.log("FAVORITES HANDLE CLICK HEART -- ", favorites)
       const handleHeartClick = async(productId) => {
             // console.log("PRODUCT ID in handle-click", productId)
             if (isFavorite(productId)) {
-                await dispatch(removeFavorite(productId));
+                await dispatch(removeFavorite(favorite));
             } else {
                 await dispatch(createFavorite(productId));
             }
