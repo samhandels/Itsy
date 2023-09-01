@@ -1,6 +1,6 @@
 export const LOAD_PRODUCTS = 'products/loadProducts';
 export const GET_PRODUCT = 'products/getProducts';
-export const DELETE_PRDODUCT = 'products/deleteProduct'
+export const DELETE_PRODUCTS = 'products/deleteProduct'
 
 export const loadProducts = (products) => ({
       type: LOAD_PRODUCTS,
@@ -13,7 +13,7 @@ export const getProduct = (product) => ({
 })
 
 export const deleteProduct = (productId) => ({
-      type: DELETE_PRDODUCT,
+      type: DELETE_PRODUCTS,
       productId
 })
 
@@ -90,13 +90,13 @@ export const fetchCreateProduct = (product) => async (dispatch) => {
 
 export const fetchUpdateProduct = (product) => async (dispatch) => {
 
-      console.log('thunk begins', product);
+      // console.log('***************thunk begins in updating product', product);
 
-      const { name, price, description, quantity, category, url } = product;
+      const {  name, price, description, quantity, category, url } = product;
 
       const update = { name, price, description, quantity, category, url }
 
-      console.log('please', update);
+      // console.log('***************** in thunk please update product *******', update);
 
       const res = await fetch(`/api/products/update/${product.id}`, {
             method: "POST",
@@ -142,7 +142,7 @@ export const productsReducer = (state = initialState, action) => {
                   return {...state, ...action.products};
             case GET_PRODUCT:
                   return { ...state, ...action.product };
-            case DELETE_PRDODUCT:
+            case DELETE_PRODUCTS:
                   const newState = { ...state };
                   delete newState[action.productId-1];
                   return newState;

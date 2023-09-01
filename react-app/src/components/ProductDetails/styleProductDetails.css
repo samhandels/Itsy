@@ -30,15 +30,36 @@
       border: none;
 }
 
+#left-upper-panel-productDetails {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: center;
+}
+
 #heart-icon-prod-detail {
-      position: absolute;
-      z-index: 1;
-      left: 57%;
-      top: 8%;
-      background-color:#F4F1EA;
+      /* position: absolute; */
+      /* z-index: 1; */
+      /* left: 57%; */
+      /* top: 8%; */
+      /* background-color:#F4F1EA; */
       padding: 5px 5px 5px 5px;
       border-radius: 50%;
+      margin-top: 1px;
+      margin-left: 5px;
+      /* height: 15px; */
 }
+
+#heart-icon-prod-detail:hover {
+      box-shadow: 0 1px 5px 5px #f1641e;
+      cursor: pointer;
+      /* box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;; */
+}
+
+.fa-solid.fa-heart {
+      color:#f1641e;
+  }
+
 
 #right-panel-productDetails {
       margin-bottom: 50px;
@@ -97,9 +118,13 @@
       margin-top: 20px;
       padding-top: 10px;
       padding-bottom: 10px;
-      padding-left: 7px;
+      padding-left: 20px;
+      box-shadow: rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+
+#how-many-productDetails:hover {
       box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
-    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+      rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
 }
 
 #reviews-holder-productDetails {
@@ -185,7 +210,8 @@
       font-family: "Roboto";
       font-weight: 300;
       font-size: 12px;
-      background-color: rgb(221,235,227);
+      background-color: #7b8a4b;
+      color: white;
       padding: 10px;
       border-radius: 15px;
       margin-top: 10px;
@@ -230,4 +256,20 @@
 #hand-text-productDetails {
       font-size: 13px;
       padding-left: 5px;
+}
+
+#add-item-cart-fav-butt-ProductDetails>button {
+      /* background-color: rgb(221,235,227); */
+      background-color: #7b8a4b;
+      border: none;
+      width: 100%;
+}
+
+#add-item-cart-fav-butt-ProductDetails>button:hover {
+      cursor: pointer;
+      background-color: #f1641e;
+}
+
+.hide{
+      display: none;
 }

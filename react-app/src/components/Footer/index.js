@@ -81,9 +81,9 @@ function Footer() {
             <div className="bottom-links">
                 <div> © 2023 Itsy</div>
                 <div className="links">
-                    <a href="/terms">Terms & Conditions</a>
-                    <a href="/privacy">Privacy Policy</a>
-                    <a href="/contact">Contact Us</a>
+                    <a>Terms & Conditions</a>
+                    <a>Privacy Policy</a>
+                    <a>Contact Us</a>
                 </div>
             </div>
         </footer>

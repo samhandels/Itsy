@@ -6,30 +6,34 @@ import { ProductCard } from "../ProductCard";
 import { ProductForm } from "../ProductForm";
 import OpenModalButton from "../OpenModalButton";
 import { DeleteProductsModal } from "../DeleteProductsModal";
+import './styleStore.css'
 
 export const Store = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
 
-  const allProducts = Object.values(
-    useSelector((state) => (state.products ? state.products : {}))
-  );
+  const productsObj = useSelector((state) => (state.products ? state.products : {}))
 
-  console.log("ALL PRODUCTS", allProducts)
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-  if (!allProducts.length) return null;
+  if (!productsObj) return null
 
-  const product = allProducts.filter((prod) => prod.ownerId === sessionUser.id);
+  const singleProdKey = "singleProduct"
+  delete productsObj[singleProdKey]
+  const products = Object.values(productsObj)
 
-  if (!allProducts) return null;
+  const product = products.filter((prod) => prod.ownerId === sessionUser.id);
+
+  if (!product) return null;
 
   return (
-    <div>
-      <h1>My Itsy Store</h1>
-      <NavLink className="black-button" to="/products/new">
+    <div id='storefront-entire-page'>
+      <div id='storefront-inner-div'>
+      <div id='my-storefront-sign'>My Itsy Storefront</div>
+      <div id='store-line'></div>
+      <NavLink id='storefront-butt' to="/products/new">
         Create a new product
       </NavLink>
 
@@ -50,6 +54,11 @@ export const Store = () => {
             </div>
           ))
           : null}
+      </div>
+
+
+
+
       </div>
     </div>
   );

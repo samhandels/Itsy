@@ -9,12 +9,7 @@ import { getAllFavorites } from "../../store/favoritesReducer";
 export const  AllProducts = () => {
       const dispatch = useDispatch()
 
-      // dispatch(fetchProducts())
-      // const products = fetchProducts()
-
-      const products = Object.values(
-            useSelector((state) => (state.products ? state.products : {}))
-          );
+      const productsObj = useSelector((state) => (state.products ? state.products : {}))
 
       const favorites = useSelector((state) => state.favorites.favorites);
 
@@ -27,6 +22,12 @@ export const  AllProducts = () => {
             dispatch(getAllFavorites())
         }, [dispatch])
 
+
+      if (!productsObj) return null
+
+      const singleProdKey = "singleProduct"
+      delete productsObj[singleProdKey]
+      const products = Object.values(productsObj)
 
       if (!products.length) return null
 

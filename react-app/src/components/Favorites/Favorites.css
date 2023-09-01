@@ -1,3 +1,40 @@
+#favorites-entire-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#favorites-inner-div {
+  width: 1000px;
+}
+
+#my-favorites-sign {
+  font-size: 50px;
+}
+
+#favorites-line {
+  border-bottom: 3px solid rgb(222,222,222);
+}
+
+#favorites-butt {
+  background-color: rgb(221,235,227);
+  color: black;
+  text-decoration: none;
+  padding: 0 424px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+#favorites-butt:hover {
+  color: white;
+  background-color: #f1641e;
+}
+
+.Collection-Categories-fav {
+  width: 100%;
+
+}
+
 .fav-products-list {
     display: grid;
     flex-direction: row;
@@ -12,8 +49,55 @@
 
 .fav-products-holder {
     display: grid;
+    margin-top: 20px;
 }
 
+.Collection-Categories-fav {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1.25rem;
+}
+
+#collection-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: 4/3;
+}
+
+.Photo-Div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .25rem;
+}
+
+.Photo-Div-Left {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: .25rem;
+}
+
+.Photo-Div-Right {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: .25rem;
+}
+
+.LeftUpper-Photo {
+  border-top-left-radius: 10px;
+}
+
+.LeftLower-Photo {
+  border-bottom-left-radius: 10px;
+}
+
+.RightUpper-Photo {
+  border-top-right-radius: 10px;
+}
+
+.RightLower-Photo {
+  border-bottom-right-radius: 10px;
+}
 
 @media (min-width: 550px) {
     .fav-products-list {

@@ -2,31 +2,24 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../../context/Modal";
 import "./OrderComplete.css";
-// import { updateProductThunk } from "../../../store/productsReducer";
-//! need to update the products quantity after the order is complete
-import { deleteItemThunk } from "../../../store/shoppingCartReducer";
 import { addTransaction, getTransactionItemsThunk } from "../../../store/transactionReducer";
 import { useEffect } from "react";
 // need to clear the item card out from the shopping cart after the order is complete
+import { deleteItemThunk } from "../../../store/shoppingCartReducer";
+// need to update the products quantity after the order is complete
+import { fetchProducts, fetchUpdateProduct } from "../../../store/productsReducer";
 
-export function OrderCompleteModal({ product, items }) {
+export function OrderCompleteModal({ product, purchaseQuantity, items }) {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
 
-  const itemsInCart = useSelector((state) => state.items)
-  const itemArr = Object.values(itemsInCart)
-
-
-  console.log("ITEMARR", itemArr)
-
-  const onSubmit = async (e) => {
+  const orderComplete = (e) => {
     e.preventDefault();
-    await dispatch(deleteItemThunk(product.id))
-    console.log("HERE")
-
-    await dispatch(addTransaction(itemArr))
-    console.log("ALSO HERE")
-    closeModal();
+    dispatch(deleteItemThunk(product.id)); //remove from shopping cart
+    dispatch(fetchUpdateProduct(updateProduct)) //update product quantity
+    dispatch(fetchProducts())
+    dispatch(addTransaction(itemArr))
+    closeModal()
   };
 
   useEffect(()=> {

@@ -34,7 +34,7 @@ const ReviewFormPage = ({ productId }) => {
 
 
     for (let i = 0; i < productReviews.length; i++) {
-        if (productReviews[i].userId === user.id) {
+        if (productReviews[i].userId === user?.id) {
 
             userLeftReview = true
         }
@@ -85,24 +85,27 @@ const ReviewFormPage = ({ productId }) => {
                 </form >}
                 modalComponent={<ReviewFormModal productId={productId} />}
             />}
+
+            <div id='reviews-holder-ReviewFormPage'>
+
             {productReviews.map((review) => (
                 <div className="review-details">
                     <div className="mini-modal-stars-area">
-                        <div> <i className={review?.stars > 0 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
-                        <div> <i className={review?.stars > 1 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
-                        <div> <i className={review?.stars > 2 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
-                        <div> <i className={review?.stars > 3 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
-                        <div> <i className={review?.stars > 4 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
+                        <div> <i id='stars-ReviewFormPage' className={review?.stars > 0 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
+                        <div> <i id='stars-ReviewFormPage' className={review?.stars > 1 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
+                        <div> <i id='stars-ReviewFormPage' className={review?.stars > 2 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
+                        <div> <i id='stars-ReviewFormPage' className={review?.stars > 3 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
+                        <div> <i id='stars-ReviewFormPage' className={review?.stars > 4 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
                     </div>
                     <div>
-                        <div>{review.review}</div>
+                        <div id="review-ReviewFormPage">{review.review}</div>
                     </div>
                     <div>
                         <div>{review.username}</div>
-                        <div>{review.createdAt}</div>
+                        <div id='createdAt-ReviewFormPage'>{review.createdAt}</div>
                     </div>
 
-                    {review.username === user.username ?
+                    {review.username === user?.username ?
                         <div className="review-detail-button-container-prod">
                             <OpenModalButton
                                 buttonText="Update"
@@ -119,6 +122,13 @@ const ReviewFormPage = ({ productId }) => {
                     }
                 </div>
             ))}
+
+
+
+            </div>
+
+
+
         </div >
     )
 
