@@ -83,11 +83,11 @@ function Navigation({ isLoaded }) {
 					{isLoaded && (
 						<ProfileButton className="nav-link profile-button" user={sessionUser} />
 					)}
-					{waitRevArr.length &&
+					{waitRevArr.length ?
 						<div>
 							<i className="fa-solid fa-circle"></i>
-							<div className = "fa-circle-inner">{waitRevArr.length}</div>
-						</div>
+							<div className="fa-circle-inner">{waitRevArr.length}</div>
+						</div> : ""
 					}
 				</div>
 				<NavLink exact to="/shopping_cart/current">
