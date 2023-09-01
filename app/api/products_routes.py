@@ -232,6 +232,9 @@ def create_shopping_cart_item_by_product(id):
     Create a shopping cart item to the shopping cart from the product detail page, only need productID and shoppingCartId
     """
 
+    item = ShoppingCartItems(productId = id,shoppingCartId = current_user.id)
+  
+
     req_json = request.get_json(force = True) #{'purchaseQuantity': '3'}
 #     print("****************************request**************************", request)
 #     print("****************************request**************************", req_json)
