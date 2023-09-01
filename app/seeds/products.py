@@ -15,7 +15,7 @@ def seed_products():
     product5 = Product(
         ownerId=2, name='Tiny Pouncing Kitten' , price=8.95, description='This is the description for the fourth product', quantity=10, category='Toys')
     product6 = Product(
-        ownerId=3, name='Mini Camera Keychain' , price=7.95, description='This is the description for the third product', quantity=12, category='Gift')
+        ownerId=3, name='Mini Camera Keychain' , price=7.95, description='This is the description for the third product', quantity=12, category='Gifts')
     product7 = Product(
         ownerId=1, name='Fancy Plastic Hangers' , price=6.95, description='This is the description for the third product', quantity=20, category='Home')
     product8 = Product(
