@@ -1,0 +1,9 @@
+.purchased-product-image {
+    height: 80px;
+    width: 80px;
+}
+
+
+.transaction-details {
+    display: flex;
+}

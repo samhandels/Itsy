@@ -13,6 +13,7 @@ class Review(db.Model):
     stars = db.Column(db.Integer)
     createdAt = db.Column(db.DateTime)
     updatedAt = db.Column(db.DateTime)
+    likes = db.Column(db.Integer)
 
 # relationship atrribute
     users = db.relationship("User", back_populates="reviews")
@@ -28,4 +29,5 @@ class Review(db.Model):
             'createdAt': self.createdAt,
             'updatedAt': self.updatedAt,
             'username': self.users.username,
+            'likes': self.likes
         }

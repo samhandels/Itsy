@@ -5,18 +5,15 @@ import "../AllShoppingCartItems/AllShoppingCartItems.css";
 import { useDispatch, useSelector } from "react-redux";
 import OpenModalButton from "../../OpenModalButton/index";
 import { OrderCompleteModal } from "../OrderCompleteModal";
-
-//!need to add when click on item card redirect to product detail page
 import { deleteItemThunk } from "../../../store/shoppingCartReducer";
-//!need to add when click on remove it removes the item from cart
 
-export default function SingleItems({  product, productInCartNum }) {
+export default function SingleItems({ product, productInCartNum, allProducts }) {
 
   //reflect the current product number in the shopping cart!
-  useEffect(()=>{
-    console.log(  "**********************product num in single ctiem card component******************", productInCartNum)
-    setPurchaseQuantity(productInCartNum)
-  }, [productInCartNum])
+  useEffect(() => {
+    // console.log(  "**********************product num in single ctiem card component******************", productInCartNum)
+    setPurchaseQuantity(productInCartNum);
+  }, [productInCartNum]);
 
   const dispatch = useDispatch();
   const [purchaseQuantity, setPurchaseQuantity] = useState(productInCartNum);
@@ -24,27 +21,29 @@ export default function SingleItems({  product, productInCartNum }) {
   const productQuantity = product?.quantity;
   const quantityArr = [...Array(productQuantity + 1).keys()];
   quantityArr.shift(); //1......productQuantity
-  
+
   const price = product.price;
   const itemTotal = (product.price * purchaseQuantity).toFixed(2);
   const discount = (price * 0.2 * purchaseQuantity).toFixed(2);
   const subtotal = (price * 0.8 * purchaseQuantity).toFixed(2);
   const shipping = (price * 0.1 * purchaseQuantity).toFixed(2);
   const total = (price * 1.1 * purchaseQuantity).toFixed(2);
-  
+
+
   // const sessionUser = useSelector((state) => state.session.user);
 
 
-  
+
   const removeItem = (e) => {
     e.preventDefault();
-    dispatch(deleteItemThunk(product?.id)) //feed it with all the same product item card ids
+    dispatch(deleteItemThunk(product?.id)); //feed it with all the same product item card ids
     //item1: product1
     //item2: product1
     //item1 and item2 should be remove from database
   };
-  
- 
+
+
+
   // if (!sessionUser) return null;
   return (
     <div className="components-border row space-between margin-bottom">
@@ -57,15 +56,18 @@ export default function SingleItems({  product, productInCartNum }) {
           <div className="item-detail container row">
             <div className="img-delete column">
               <div className="item-img">
-              <NavLink to={`/products/${product?.id}`}>
-                <img
-                  src={product?.product_image[0]}
-                  alt=""
-                  className="cart-img"
-                /></NavLink>
+                <NavLink to={`/products/${product?.id}`}>
+                  <img
+                    src={product?.product_image[0]}
+                    alt=""
+                    className="cart-img"
+                  />
+                </NavLink>
               </div>
               <div>
-              <button onClick={removeItem}><i className="fa-solid fa-x" ></i> Remove</button>
+                <button onClick={removeItem}>
+                  <i className="fa-solid fa-x"></i> Remove
+                </button>
               </div>
             </div>
             <div className="description-quantity column">
@@ -87,9 +89,7 @@ export default function SingleItems({  product, productInCartNum }) {
         </div>
         <div className="item-price container column">
           <div>${price}</div>
-          <div className="red">
-            Only {product.quantity} available and it's in 2 people's carts
-          </div>
+          <div className="red">Only {product.quantity} available</div>
           {/* <div>3 sold in the past 24 hours</div> */}
         </div>
       </div>
@@ -132,7 +132,12 @@ export default function SingleItems({  product, productInCartNum }) {
           <OpenModalButton
             buttonStyle="black-button"
             buttonText="Order up!"
-            modalComponent={<OrderCompleteModal product={product} />}
+            modalComponent={
+              <OrderCompleteModal
+                product={product}
+                purchaseQuantity={purchaseQuantity}
+              />
+            }
           />
         </div>
       </div>

@@ -15,7 +15,7 @@ import {
   getAllFavorites,
   removeFavorite,
 } from "../../store/favoritesReducer";
-import { fetchProducts } from "../../store/productsReducer";
+import { fetchProducts, fetchUpdateProduct } from "../../store/productsReducer";
 
 export const ProductDetails = () => {
   const { productId } = useParams();
@@ -25,17 +25,10 @@ export const ProductDetails = () => {
   const favorites = useSelector((state) => state.favorites.favorites);
   const favArr = Object.values(favorites);
 
+  let favorite
   const isFavorite = (productId) => {
-    return favArr.find((favorite) => favorite.productId === productId);
-  };
-  const handleHeartClick = async (productId) => {
-    if (isFavorite(productId)) {
-      await dispatch(removeFavorite(productId));
-      await dispatch(getAllFavorites());
-    } else {
-      await dispatch(createFavorite(productId));
-      await dispatch(getAllFavorites());
-    }
+      favorite = favArr.find((favorite) => favorite.productId === productId)
+      return favorite;
   };
 
   let dollar = new Intl.NumberFormat("en-US", {
@@ -44,12 +37,22 @@ export const ProductDetails = () => {
   });
 
   const product = useSelector((state) =>
-    state.products ? state.products.singleProduct : null
+  state.products ? state.products.singleProduct : null
   );
   const revArr = Object.values(reviews);
   const userReviews = revArr.filter(
     (review) => review.productId === product?.id
-  );
+    );
+
+    const handleHeartClick = async (productId) => {
+      if (isFavorite(productId)) {
+        await dispatch(removeFavorite(favorite));
+        await dispatch(getAllFavorites());
+      } else {
+        await dispatch(createFavorite(productId));
+        await dispatch(getAllFavorites());
+      }
+    };
 
   //for product quantity drop down
   const [purchaseQuantity, setPurchaseQuantity] = useState(1);
@@ -63,16 +66,17 @@ export const ProductDetails = () => {
   useEffect(() => {
     dispatch(fetchProductDetails(productId));
     dispatch(getAllFavorites());
+    // dispatch(fetchUpdateProduct(product))
   }, [dispatch, productId]);
 
   if (!product) return null;
   //for product quantity drop down
-  const quantityArr = [...Array(product.quantity + 1).keys()];
+  const quantityArr = [...Array(product?.quantity + 1).keys()];
   quantityArr.shift(); //1......productQuantity
 
   //to check if the current user is the same as product owner, if true, don't show "add to cart" OpenModal
   let productOwner = "";
-  if (product?.ownerId === sessionUser.id) productOwner = "hide";
+  if (product?.ownerId === sessionUser?.id) productOwner = "hide";
 
   return (
     <div id="largest-product-detail-div">
@@ -102,21 +106,17 @@ export const ProductDetails = () => {
 
               <div id='heart-div-productsDetails'>
 
-                <i
-                  id="heart-icon-prod-detail"
-                  className={`nav-link fa-regular ${
-                    isFavorite(product.id) ? "fa-solid fa-heart" : "fa-heart"
-                  }`}
-                  onClick={() => handleHeartClick(product.id)}
-                ></i>
+              {sessionUser && (
+              <i
+                id="heart-icon-prod-detail"
+                className={`nav-link fa-regular ${isFavorite(product.id) ? "fa-solid fa-heart" : "fa-heart"}`}
+                onClick={() => handleHeartClick(product.id)}
+              ></i>
+              )}
 
 
               </div>
             </div>
-
-
-
-
 
 
             <div>
@@ -184,12 +184,12 @@ export const ProductDetails = () => {
                 />
               </div>
               <div id="add-item-cart-fav-butt-ProductDetails">
-                <button
-                  className="Add-productDetails"
-                  onClick={() => handleHeartClick(product.id)}
-                >
-                  Add to Favorites &#x2764;{" "}
+              {sessionUser && (
+                <button className="Add-productDetails" onClick={() => handleHeartClick(product.id)}
+                >Add to Favorites &#x2764;
                 </button>
+               )}
+
               </div>
 
               <div id="star-section-productDetails">

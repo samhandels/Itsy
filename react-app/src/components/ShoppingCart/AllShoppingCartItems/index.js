@@ -6,6 +6,7 @@ import { getItemsThunk } from "../../../store/shoppingCartReducer";
 import { fetchProducts } from "../../../store/productsReducer";
 import SingleItem from "../SingleItem";
 import { DiscoverItems } from "../DiscoverItems";
+import { NavLink } from "react-router-dom";
 
 export default function AllShoppingCartItems() {
   const items = Object.values(
@@ -21,10 +22,12 @@ export default function AllShoppingCartItems() {
   // console.log("*********************the items from useSelector in component**************", items);
   const dispatch = useDispatch();
 
+
   useEffect(() => {
     dispatch(getItemsThunk());
     dispatch(fetchProducts()); //so all products are still on the shopping cart refreshing the page
   }, [dispatch]);
+
 
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -35,8 +38,8 @@ export default function AllShoppingCartItems() {
     return products.find((product) => product?.id === id); //create the productItem card for the cart
   });
 
-  // console.log(  "**********************unique product ID Array******************", uniqueProductIdArray)
-  // console.log(  "**********************unique product Array******************", productItemArray)
+  // console.log("**********************unique product ID Array******************", uniqueProductIdArray)
+  // console.log("**********************unique product Array******************", productItemArray)
   if (!items) return null;
   if (!products) return null;
   if (!sessionUser) return null;
@@ -48,15 +51,10 @@ export default function AllShoppingCartItems() {
       </div>
 
       <section className="item-cards">
-        {/* productItem is the unique card showing in the shopping cart */}
-        {productItemArray.map((uniqueProduct) => {
-          //get the product for the uniq item
-          const productInCartNum = items.filter(
-            (item) => item.productId === uniqueProduct?.id
-          ).length; //find out how many number of the same  product in the shopping cart
-          {
-            /* let itemIdSameProductArray = items.filter((item) => item.productId);  */
-          }
+      {/* productItem is the unique card showing in the shopping cart */}
+        {productItemArray.map((uniqueProduct) => { //get the product for the uniq item
+          const productInCartNum = items.filter((item) => item.productId === uniqueProduct?.id).length //find out how many number of the same  product in the shopping cart
+          let itemIdSameProductArray = items.filter((item) => item.productId);
 
           return (
             <div className="cart_item" key={uniqueProduct?.id}>
@@ -73,6 +71,7 @@ export default function AllShoppingCartItems() {
       <section className="discover-item-cards">
         <DiscoverItems />
       </section>
+      <NavLink to="/transactions"> Go to Transactions</NavLink>
     </div>
   );
 }
