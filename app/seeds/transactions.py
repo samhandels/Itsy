@@ -13,7 +13,7 @@ def seed_transactions():
         userId = 3
     )
     trans4 = Transactions(
-        userId = 4
+        userId = 1
     )
 
     db.session.add(trans1)
