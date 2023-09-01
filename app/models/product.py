@@ -11,7 +11,7 @@ class Product(db.Model):
     name = db.Column(db.String(100), nullable=False)
     price = db.Column(db.Float, nullable=False)
     description = db.Column(db.String(1000), nullable=False)
-    quantity = db.Column(db.Integer, nullable=False)
+    quantity = db.Column(db.Integer)
     category = db.Column(db.String(100), nullable=False)
     createdAt = db.Column(db.DateTime)
     updatedAt = db.Column(db.DateTime)
