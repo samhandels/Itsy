@@ -25,10 +25,10 @@ export const ProductDetails = () => {
   const favorites = useSelector((state) => state.favorites.favorites);
   const favArr = Object.values(favorites);
 
-  let favorite
+  let favorite;
   const isFavorite = (productId) => {
-      favorite = favArr.find((favorite) => favorite.productId === productId)
-      return favorite;
+    favorite = favArr.find((favorite) => favorite.productId === productId);
+    return favorite;
   };
 
   let dollar = new Intl.NumberFormat("en-US", {
@@ -37,22 +37,22 @@ export const ProductDetails = () => {
   });
 
   const product = useSelector((state) =>
-  state.products ? state.products.singleProduct : null
+    state.products ? state.products.singleProduct : null
   );
   const revArr = Object.values(reviews);
   const userReviews = revArr.filter(
     (review) => review.productId === product?.id
-    );
+  );
 
-    const handleHeartClick = async (productId) => {
-      if (isFavorite(productId)) {
-        await dispatch(removeFavorite(favorite));
-        await dispatch(getAllFavorites());
-      } else {
-        await dispatch(createFavorite(productId));
-        await dispatch(getAllFavorites());
-      }
-    };
+  const handleHeartClick = async (productId) => {
+    if (isFavorite(productId)) {
+      await dispatch(removeFavorite(favorite));
+      await dispatch(getAllFavorites());
+    } else {
+      await dispatch(createFavorite(productId));
+      await dispatch(getAllFavorites());
+    }
+  };
 
   //for product quantity drop down
   const [purchaseQuantity, setPurchaseQuantity] = useState(1);
@@ -71,12 +71,26 @@ export const ProductDetails = () => {
 
   if (!product) return null;
   //for product quantity drop down
-  const quantityArr = [...Array(product?.quantity + 1).keys()];
-  quantityArr.shift(); //1......productQuantity
 
   //to check if the current user is the same as product owner, if true, don't show "add to cart" OpenModal
   let productOwner = "";
   if (product?.ownerId === sessionUser?.id) productOwner = "hide";
+
+  //if it's out of stock, product quantity shows out of stock, and the add to cart button is disabled
+  let stock = "hide";
+  let noStock = "hide";
+  if (product.quantity <= 0) {
+    //when out of stuck === 0
+    noStock = "show";
+  }
+
+  let quantityArr = [];
+  if (product.quantity > 0) {
+    //has stock
+    stock = "show";
+    quantityArr = [...Array(product?.quantity + 1).keys()];
+    quantityArr.shift(); //1......productQuantity
+  }
 
   return (
     <div id="largest-product-detail-div">
@@ -89,13 +103,7 @@ export const ProductDetails = () => {
       <div id="entire-page-productDetails">
         <div id="page-productDetails">
           <div id="left-panel-productDetails">
-
-
-
             <div id="left-upper-panel-productDetails">
-
-
-
               <div id="primary-image-holder-productDetails">
                 <img
                   id="primary-image-productDetails"
@@ -104,20 +112,18 @@ export const ProductDetails = () => {
                 />
               </div>
 
-              <div id='heart-div-productsDetails'>
-
-              {sessionUser && (
-              <i
-                id="heart-icon-prod-detail"
-                className={`nav-link fa-regular ${isFavorite(product.id) ? "fa-solid fa-heart" : "fa-heart"}`}
-                onClick={() => handleHeartClick(product.id)}
-              ></i>
-              )}
-
-
+              <div id="heart-div-productsDetails">
+                {sessionUser && (
+                  <i
+                    id="heart-icon-prod-detail"
+                    className={`nav-link fa-regular ${
+                      isFavorite(product.id) ? "fa-solid fa-heart" : "fa-heart"
+                    }`}
+                    onClick={() => handleHeartClick(product.id)}
+                  ></i>
+                )}
               </div>
             </div>
-
 
             <div>
               <ReviewFormPage productId={product.id} />
@@ -130,8 +136,11 @@ export const ProductDetails = () => {
 
           <div id="right-panel-productDetails">
             <div id="order-side-panel-productDetials">
-              <div id="supply-count-productDetails">
+              <div id="supply-count-productDetails" className={stock}>
                 Only {product.quantity} left!
+              </div>
+              <div className={`supply-count-productDetails ${noStock}`}>
+                whoops...Out of stock, re-stocking soon!
               </div>
               <div id="price-productDetails">
                 {dollar.format(product.price)}
@@ -170,11 +179,14 @@ export const ProductDetails = () => {
               </div> */}
               <div
                 id="add-item-cart-fav-butt-ProductDetails"
-                className={productOwner}
+                className={`${
+                  product.quantity <= 0 ? "hide" : "show"
+                } ${productOwner}`}
               >
                 <OpenSideModalButton
                   buttonStyle="Add-productDetails"
                   buttonText="Add to cart"
+                  disabled={false}
                   modalComponent={
                     <AddtoCartModal
                       product={product}
@@ -184,12 +196,14 @@ export const ProductDetails = () => {
                 />
               </div>
               <div id="add-item-cart-fav-butt-ProductDetails">
-              {sessionUser && (
-                <button className="Add-productDetails" onClick={() => handleHeartClick(product.id)}
-                >Add to Favorites &#x2764;
-                </button>
-               )}
-
+                {sessionUser && (
+                  <button
+                    className="Add-productDetails"
+                    onClick={() => handleHeartClick(product.id)}
+                  >
+                    Add to Favorites &#x2764;
+                  </button>
+                )}
               </div>
 
               <div id="star-section-productDetails">
