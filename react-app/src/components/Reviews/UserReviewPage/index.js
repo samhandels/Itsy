@@ -5,6 +5,8 @@ import OpenModalButton from "../../OpenModalButton"
 import ReviewUpdateModal from "../ReviewUpdateModal"
 import ReviewDeleteModal from "../ReviewDeleteModal"
 import { useModal } from "../../../context/Modal"
+import { getTransactionItemsThunk } from "../../../store/transactionReducer"
+
 import "./UserReviewPage.css"
 
 
@@ -14,8 +16,11 @@ const UserReviewPage = () => {
     const currentUser = useSelector((state) => state.session.user)
     const allReviews = useSelector((state) => state.reviews.reviews)
     const allProducts = useSelector((state) => state.products)
+    const transactions = useSelector((state) => state.transactions.transactions)
 
-    console.log(allProducts)
+
+    const transArr = Object.values(transactions)
+    let userPurchases = transArr.filter((trans)=> trans.userId === currentUser.id)
 
     let revArr = Object.values(allReviews)
     let prodArr = Object.values(allProducts)
@@ -23,22 +28,61 @@ const UserReviewPage = () => {
         const thisProduct = prodArr.find((product) => {
             return product.id === review.productId
         })
-        console.log(thisProduct)
         return thisProduct
-
     }
+
+    const returnProductById = (id) => {
+        const thisProduct = prodArr.find((product) => {
+            return product.id === id
+        })
+        return thisProduct
+    }
+
+
 
     useEffect(() => {
         dispatch(getAllReviews())
     }, [dispatch])
+
+    useEffect(() => {
+        dispatch(getTransactionItemsThunk())
+    }, [dispatch])
     const currentReviews = revArr.filter((review) => review?.userId === currentUser.id)
+
+    const currentReviewProductIds = currentReviews.map((review)=> review.productId)
+    const currentUserReviewProductIds = userPurchases.map((purchase) => purchase.productId)
+
+
+    let noReviews = []
     if (!revArr.length) return null
     if (!prodArr.length) return null
+    if(!transArr.length) return null
+    for(let i = 0;i< currentReviewProductIds.length;i++){
+        let found = false;
+        for(let j=0;j<currentUserReviewProductIds.length;j++){
+            if(currentReviewProductIds[i] === currentUserReviewProductIds[j]) {
+                found = true
+                break;
+            }
+        }
+        if(!found) {
+            if(!noReviews.includes(currentReviewProductIds[i])){
+                noReviews.push(currentReviewProductIds[i])
+            }
+        }
+    }
 
     return (
         <div className="user-review-container">
             <h1>Your reviews</h1>
             <div className="user-review-container-sub">
+                <div>
+                <div>
+                    <div>Unreviewed items</div>
+                        {noReviews.map((purchase)=> (
+                            <div>{returnProductById(purchase).name}</div>
+                        ))}
+                        </div>
                 <div>
                     {currentReviews.map((review) => (
                         <div className="user-review-details" key={review.id}>
@@ -75,11 +119,12 @@ const UserReviewPage = () => {
                         </div>
                     ))}
                 </div>
+                </div>
                 <div>
                     <div className="help-small-business">
                         <div className="help-small-bus-title">Your reviews on Itsy help shop owners by providing them instant feedback and allowing
                                     them to stock their shops with items their customers will love</div>
-                        
+
                     </div>
                     <div className="help-small-business learn-more">
                         <div>Learn more about reviews</div>

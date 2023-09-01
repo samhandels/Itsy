@@ -34,7 +34,7 @@ const ReviewFormPage = ({ productId }) => {
 
 
     for (let i = 0; i < productReviews.length; i++) {
-        if (productReviews[i].userId === user.id) {
+        if (productReviews[i].userId === user?.id) {
 
             userLeftReview = true
         }
@@ -105,7 +105,7 @@ const ReviewFormPage = ({ productId }) => {
                         <div id='createdAt-ReviewFormPage'>{review.createdAt}</div>
                     </div>
 
-                    {review.username === user.username ?
+                    {review.username === user?.username ?
                         <div className="review-detail-button-container-prod">
                             <OpenModalButton
                                 buttonText="Update"
