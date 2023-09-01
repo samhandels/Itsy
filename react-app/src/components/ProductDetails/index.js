@@ -66,10 +66,6 @@ export const ProductDetails = () => {
 
 
   useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch])
-
-  useEffect(() => {
     dispatch(fetchProductDetails(productId));
     dispatch(getAllFavorites(sessionUser ? sessionUser : null));
     // dispatch(fetchUpdateProduct(product))
@@ -79,14 +75,16 @@ export const ProductDetails = () => {
   //for product quantity drop down
 
   //to check if the current user is the same as product owner, if true, don't show "add to cart" OpenModal
-  let productOwner = "";
-  if (product?.ownerId === sessionUser?.id) productOwner = "hide";
+  let addItemBtn = "hide";
+  if (product?.ownerId !== sessionUser?.id && product.quantity > 0) {
+    addItemBtn = "show";
+  }
 
   //if it's out of stock, product quantity shows out of stock, and the add to cart button is disabled
   let stock = "hide";
   let noStock = "hide";
-  if (product.quantity <= 0) {
-    //when out of stuck === 0
+  if (product.quantity === 0) {
+    //when out of stuck
     noStock = "show";
   }
 
@@ -181,8 +179,8 @@ export const ProductDetails = () => {
               </div> */}
               <div
                 id="add-item-cart-fav-butt-ProductDetails"
-                className={`${product.quantity <= 0 ? "hide" : "show"
-                  } ${productOwner}`}
+                className={addItemBtn}
+
               >
                 <OpenSideModalButton
                   buttonStyle="Add-productDetails"
