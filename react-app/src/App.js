@@ -17,6 +17,7 @@ import { Store } from "./components/Store";
 import { CreateProductForm } from "./components/ProductForm/CreateProductForm";
 import { UpdateProductForm } from "./components/ProductForm/UpdateProductForm";
 import OrderIssuePage from "./components/Reviews/OrderIssuePage"
+import UserTransactionPage from "./components/Transactions/UserTransactions";
 
 function App() {
   const dispatch = useDispatch();
@@ -38,6 +39,9 @@ function App() {
           </Route>
           <Route exact path="/reviews">
             <ReviewFormPage />
+          </Route>
+          <Route exact path="/transactions">
+            <UserTransactionPage />
           </Route>
           <Route path="/reviews/current">
             <UserReviewPage />

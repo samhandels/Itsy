@@ -11,6 +11,7 @@ from .api.products_routes import products
 from .api.review_routes import reviews
 from .api.shopping_cart_routes import shopping_cart
 from .api.favorites_routes import favorites
+from .api.transaction_routes import transactions
 from .seeds import seed_commands
 from .config import Config
 
@@ -36,6 +37,7 @@ app.register_blueprint(products, url_prefix='/api/products')
 app.register_blueprint(reviews, url_prefix='/api/reviews')
 app.register_blueprint(shopping_cart, url_prefix='/api/shopping_cart')
 app.register_blueprint(favorites, url_prefix='/api/favorites')
+app.register_blueprint(transactions, url_prefix='/api/transactions')
 
 db.init_app(app)
 Migrate(app, db)
