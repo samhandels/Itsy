@@ -8,6 +8,7 @@ import { useModal } from "../../../context/Modal"
 import { getTransactionItemsThunk } from "../../../store/transactionReducer"
 
 import "./UserReviewPage.css"
+import { fetchProducts } from "../../../store/productsReducer"
 
 
 
@@ -27,7 +28,6 @@ const UserReviewPage = () => {
     let prodArr = Object.values(allProducts)
 
     let waitRevArr = Object.values(waitingReviews)
-    console.log("WAITREVARR", waitRevArr)
 
     const returnProduct = (review) => {
         const thisProduct = prodArr.find((product) => {
@@ -36,17 +36,10 @@ const UserReviewPage = () => {
         return thisProduct
     }
 
-    const returnProductById = (id) => {
-        const thisProduct = prodArr.find((product) => {
-            return product.id === id
-        })
-        return thisProduct
-    }
-
-
 
     useEffect(() => {
         dispatch(getAllReviews())
+        dispatch(fetchProducts())
     }, [dispatch])
 
     useEffect(() => {
@@ -61,30 +54,15 @@ const UserReviewPage = () => {
     const currentReviewProductIds = currentReviews.map((review) => review.productId)
     const currentUserReviewProductIds = userPurchases.map((purchase) => purchase.productId)
 
-    console.log(currentUserReviewProductIds)
 
     let noReviews = []
     if (!revArr.length) return null
     if (!prodArr.length) return null
     if (!transArr.length) return null
     for (let i = 0; i < waitRevArr.length; i++) {
-        console.log("NOWWAIT", waitRevArr[i])
         noReviews.push(prodArr[waitRevArr[i] - 1])
-        // let found = false;
-        // for (let j = 0; j < currentUserReviewProductIds.length; j++) {
-        //     if (waitRevArr[i] === currentUserReviewProductIds[j]) {
-        //         found = true
-        //         break;
-        //     }
-        // }
-        // if (!found) {
-        //     if (!noReviews.includes(waitRevArr[i])) {
-        //         noReviews.push(waitRevArr[i])
-        //     }
-        // }
     }
 
-    console.log("NOREVIEW", noReviews)
 
     return (
         <div className="user-review-container">
@@ -99,7 +77,7 @@ const UserReviewPage = () => {
 
                 <div className="user-review-container-sub">
                     <div>
-                        <div>
+                        {noReviews.length ? <div>
                             <div>Unreviewed items</div>
                             {noReviews.map((purchase) => (
                                 <div>
@@ -107,7 +85,7 @@ const UserReviewPage = () => {
                                     <img className="review-product-img" src={purchase.product_image}></img>
                                 </div>
                             ))}
-                        </div>
+                        </div> : <div></div>}
                         <div id='individual-review-holder-Review-Page'>
                             {currentReviews.map((review) => (
                                 <div className="user-review-details" key={review.id}>
@@ -150,9 +128,6 @@ const UserReviewPage = () => {
                                 them to stock their shops with items their customers will love. Thank you for supporting these small business owners.</div>
 
                         </div>
-                        {/* <div className="help-small-business learn-more">
-                        <div>Learn more about reviews</div>
-                    </div> */}
                     </div>
                 </div>
 

@@ -109,3 +109,12 @@
   right: 60px;
   top: 24px;
 }
+
+.fa-circle-inner {
+  color: white;
+  position: absolute;
+  z-index: 1;
+  right: 65px;
+  top: 23px;
+  font-size: 12px;
+}

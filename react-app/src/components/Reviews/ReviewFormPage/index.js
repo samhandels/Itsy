@@ -10,10 +10,12 @@ import ReviewDeleteModal from '../ReviewDeleteModal'
 import './ReviewFormPage.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllReviews, updateReview } from '../../../store/reviewsReducer'
+import { fetchProducts } from '../../../store/productsReducer'
 
 
 
 const ReviewFormPage = ({ productId }) => {
+    console.log(productId)
     const [rating, setRating] = useState()
     const [activeRating, setActiveRating] = useState()
     const [showLikes, setShowLikes] = useState(true)
@@ -27,9 +29,8 @@ const ReviewFormPage = ({ productId }) => {
 
     const prodArr = Object.values(products)
 
-
     const productReviews = revArr.filter((review) => review?.productId === productId)
-    const thisProduct = prodArr.find((product) => product?.productId === productId)
+    const thisProduct = prodArr[productId - 1]
 
     const userLikes = []
 
@@ -37,12 +38,20 @@ const ReviewFormPage = ({ productId }) => {
         e.preventDefault()
         let reviewId = e.target.title
         let rev = revArr.filter((review) => review.id == reviewId)
+        userLikes.push(user.id)
         rev[0].likes += 1
         setShowLikes(false)
         dispatch(updateReview(rev[0]))
     }
 
+
     let userLeftReview = false;
+
+    let isMyProduct = false
+    console.log(thisProduct)
+    if(thisProduct?.ownerId === user.id) {
+        isMyProduct = true}
+
 
 
     for (let i = 0; i < productReviews.length; i++) {
@@ -58,7 +67,7 @@ const ReviewFormPage = ({ productId }) => {
 
     return (
         <div className="review-container">
-            {!userLeftReview && <OpenModalButton
+            {!isMyProduct? !userLeftReview && <OpenModalButton
                 buttonText={<form className="review-component"
                 >
                     <p>Review this item</p>
@@ -96,7 +105,7 @@ const ReviewFormPage = ({ productId }) => {
                     </div>
                 </form >}
                 modalComponent={<ReviewFormModal productId={productId} />}
-            />}
+            /> : <div className = "is-my-product">Here's what your shoppers had to say: </div>}
 
             <div id='reviews-holder-ReviewFormPage'>
 
@@ -130,7 +139,7 @@ const ReviewFormPage = ({ productId }) => {
                             </div> :
                             <div>
                                 {showLikes ?
-                                    <div className = "likes-container">
+                                    <div className="likes-container">
                                         <i onClick={handleLikes} className="fa-solid fa-thumbs-up" title={review.id}></i>
 
                                         <div className="after-thumb"> {review.likes} helpful? </div>

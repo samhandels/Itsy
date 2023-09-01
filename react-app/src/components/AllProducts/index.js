@@ -13,16 +13,17 @@ export const  AllProducts = () => {
 
       const favorites = useSelector((state) => state.favorites.favorites);
 
-      const [filter, setFilter] = useState("");
+      const user = useSelector((state) => state.session.user);
 
+      const [filter, setFilter] = useState("");
 
       useEffect(() => {
             dispatch(fetchProducts())
+            dispatch(getAllFavorites(user ? user : null))
       }, [dispatch])
 
-      useEffect(() => {
-            dispatch(getAllFavorites())
-        }, [dispatch])
+      // useEffect(() => {
+      //   }, [dispatch])
 
 
       if (!productsObj) return null
