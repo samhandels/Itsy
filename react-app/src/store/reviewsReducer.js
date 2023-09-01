@@ -88,20 +88,16 @@ export const postReview = (productId, review) => async (dispatch) => {
 
 export const updateReview = (review) => async (dispatch) => {
 
-    console.log("REVIEW SENT TO UPDATE THUNK", review)
-
     const res = await fetch(`/api/reviews/${review.id}`, {
         method: 'PUT',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(review)
     })
     const oldReview = await res.json()
-    console.log("Old Review", oldReview)
     oldReview.review = review.review
     oldReview.stars = review.stars
     oldReview.likes = review.likes
 
-    console.log("AFTER UPDATES", oldReview)
     dispatch(putReview(oldReview))
 }
 
@@ -115,9 +111,7 @@ export const deleteReview = (reviewId) => async (dispatch) => {
 
 export const getWaitingReviews = () => async (dispatch) => {
     const response = await fetch(`/api/reviews/waitingReviews`)
-    console.log("RESPONSE", response)
     const res = await response.json()
-    console.log("RES", res)
     dispatch(setWaitingReviews(res))
 }
 
@@ -156,11 +150,11 @@ export const reviewsReducer = (state = initialState, action) => {
             newState.reviews[action.review.id] = action.review
             return newState
         case WAIT_REVIEWS:
-            newState = { ...state, reviews: { ...state.reviews } }
-            action.reviews.forEach(
-                (review) => newState.waitingReviews[review.id] = review
-            )
-            return newState
+            let waitState = {...state}
+            for(let i = 0;i< action.reviews.length;i++){
+                waitState.waitingReviews[i] = action.reviews[i]
+            }
+            return waitState
         default:
             return state;
     }

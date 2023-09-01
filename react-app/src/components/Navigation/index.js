@@ -33,6 +33,10 @@ function Navigation({ isLoaded }) {
 			})
 		}
 	}
+	let waitRevArr
+	if (waitingReviews) {
+		waitRevArr = Object.values(waitingReviews)
+	}
 
 
 
@@ -77,7 +81,12 @@ function Navigation({ isLoaded }) {
 					{isLoaded && (
 						<ProfileButton className="nav-link profile-button" user={sessionUser} />
 					)}
-					<i className="fa-solid fa-circle"></i>
+					{waitRevArr.length &&
+						<div>
+							<i className="fa-solid fa-circle"></i>
+							<div className = "fa-circle-inner">{waitRevArr.length}</div>
+						</div>
+					}
 				</div>
 				<NavLink exact to="/shopping_cart/current">
 					<i className="nav-link fa-solid fa-cart-shopping"></i>

@@ -27,7 +27,6 @@ const UserReviewPage = () => {
     let prodArr = Object.values(allProducts)
 
     let waitRevArr = Object.values(waitingReviews)
-    console.log("WAITREVARR", waitRevArr)
 
     const returnProduct = (review) => {
         const thisProduct = prodArr.find((product) => {
@@ -62,6 +61,8 @@ const UserReviewPage = () => {
     const currentUserReviewProductIds = userPurchases.map((purchase) => purchase.productId)
 
     console.log(currentUserReviewProductIds)
+    console.log(currentReviews)
+    console.log(waitRevArr)
 
     let noReviews = []
     if (!revArr.length) return null

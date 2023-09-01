@@ -78,6 +78,7 @@ def waitingReviews():
     for id in transIds:
         userItemsPurchased = (TransactionItems.query.filter(TransactionItems.transactionId == id))
     noReviews = [item.productId for item in userItemsPurchased if item.productId not in reviewIds]
+    print("NOREVIEWS", noReviews)
     response = noReviews
     return response
 
