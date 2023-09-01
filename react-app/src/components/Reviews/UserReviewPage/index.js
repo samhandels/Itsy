@@ -60,16 +60,12 @@ const UserReviewPage = () => {
     const currentReviewProductIds = currentReviews.map((review) => review.productId)
     const currentUserReviewProductIds = userPurchases.map((purchase) => purchase.productId)
 
-    console.log(currentUserReviewProductIds)
-    console.log(currentReviews)
-    console.log(waitRevArr)
 
     let noReviews = []
     if (!revArr.length) return null
     if (!prodArr.length) return null
     if (!transArr.length) return null
     for (let i = 0; i < waitRevArr.length; i++) {
-        console.log("NOWWAIT", waitRevArr[i])
         noReviews.push(prodArr[waitRevArr[i] - 1])
         // let found = false;
         // for (let j = 0; j < currentUserReviewProductIds.length; j++) {
@@ -85,7 +81,6 @@ const UserReviewPage = () => {
         // }
     }
 
-    console.log("NOREVIEW", noReviews)
 
     return (
         <div className="user-review-container">

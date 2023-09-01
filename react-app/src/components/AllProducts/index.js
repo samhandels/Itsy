@@ -15,7 +15,6 @@ export const  AllProducts = () => {
 
       const [filter, setFilter] = useState("");
 
-
       useEffect(() => {
             dispatch(fetchProducts())
       }, [dispatch])

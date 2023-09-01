@@ -38,10 +38,12 @@ const ReviewFormPage = ({ productId }) => {
         e.preventDefault()
         let reviewId = e.target.title
         let rev = revArr.filter((review) => review.id == reviewId)
+        userLikes.push(user.id)
         rev[0].likes += 1
         setShowLikes(false)
         dispatch(updateReview(rev[0]))
     }
+
 
     let userLeftReview = false;
 
@@ -65,7 +67,7 @@ const ReviewFormPage = ({ productId }) => {
 
     return (
         <div className="review-container">
-            {!userLeftReview && !isMyProduct && <OpenModalButton
+            {!isMyProduct? !userLeftReview && <OpenModalButton
                 buttonText={<form className="review-component"
                 >
                     <p>Review this item</p>
@@ -103,7 +105,7 @@ const ReviewFormPage = ({ productId }) => {
                     </div>
                 </form >}
                 modalComponent={<ReviewFormModal productId={productId} />}
-            />}
+            /> : <div className = "is-my-product">Here's what your shoppers had to say: </div>}
 
             <div id='reviews-holder-ReviewFormPage'>
 
