@@ -86,3 +86,15 @@
     font-weight: 100;
     font-size: 12px;
 }
+
+.likesfalse {
+    display: none;
+}
+
+.likes-container {
+    display: flex;
+}
+
+.after-thumb {
+    margin-left: 4px;
+}

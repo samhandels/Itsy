@@ -1,6 +1,6 @@
 
 import { useModal } from '../../../context/Modal'
-import { deleteReview} from '../../../store/reviewsReducer'
+import { deleteReview } from '../../../store/reviewsReducer'
 import { useDispatch } from 'react-redux'
 
 const ReviewDeleteModal = ({ reviewId }) => {
@@ -19,7 +19,7 @@ const ReviewDeleteModal = ({ reviewId }) => {
         <div className="review-modal">
             <form className="delete-review-form" onSubmit={handleSubmit}>
                 <div>Are you sure you want to delete this review?</div>
-                <button type="button">Go Back</button>
+                <button type="button" onClick={closeModal}>Go Back</button>
                 <button type="submit">Confirm Delete</button>
             </form>
         </div>

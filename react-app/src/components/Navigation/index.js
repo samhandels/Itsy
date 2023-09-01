@@ -3,13 +3,15 @@ import { NavLink, Redirect, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
-import { getAllReviews } from "../../store/reviewsReducer";
+import { getAllReviews, getWaitingReviews } from "../../store/reviewsReducer";
 import { AllProducts } from "../AllProducts";
+
 
 function Navigation({ isLoaded }) {
 	const dispatch = useDispatch()
 	const sessionUser = useSelector((state) => state.session.user);
 	const products = useSelector((state) => state.products)
+	const waitingReviews = useSelector((state) => state.reviews.waitingReviews)
 	const [searchInput, setSearchInput] = useState("")
 	const prodArray = Object.values(products)
 	console.log("PRODUCTS", products)
@@ -20,11 +22,13 @@ function Navigation({ isLoaded }) {
 		e.preventDefault();
 		setSearchInput(e.target.value);
 		if (searchInput.length > 0) {
-			prodArray.filter((product) => {
+			prodArray?.filter((product) => {
 				if (product.description.toLowerCase().search(searchInput.toLowerCase()) !== -1) {
 					searchProducts.push(product)
 				} else if (product.name.toLowerCase().search(searchInput.toLowerCase()) !== -1) {
 					searchProducts.push(product)
+				} else {
+
 				}
 			})
 		}
@@ -41,6 +45,10 @@ function Navigation({ isLoaded }) {
 
 	useEffect(() => {
 		dispatch(getAllReviews())
+	}, [dispatch])
+
+	useEffect(() => {
+		dispatch(getWaitingReviews())
 	}, [dispatch])
 
 	return (
@@ -69,7 +77,7 @@ function Navigation({ isLoaded }) {
 					{isLoaded && (
 						<ProfileButton className="nav-link profile-button" user={sessionUser} />
 					)}
-					{/* <i className="fa-solid fa-circle"></i> */}
+					<i className="fa-solid fa-circle"></i>
 				</div>
 				<NavLink exact to="/shopping_cart/current">
 					<i className="nav-link fa-solid fa-cart-shopping"></i>

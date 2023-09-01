@@ -9,13 +9,14 @@ import ReviewUpdateModal from '../ReviewUpdateModal'
 import ReviewDeleteModal from '../ReviewDeleteModal'
 import './ReviewFormPage.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllReviews } from '../../../store/reviewsReducer'
+import { getAllReviews, updateReview } from '../../../store/reviewsReducer'
 
 
 
 const ReviewFormPage = ({ productId }) => {
     const [rating, setRating] = useState()
     const [activeRating, setActiveRating] = useState()
+    const [showLikes, setShowLikes] = useState(true)
     const user = useSelector((state) => state.session.user)
     const dispatch = useDispatch()
 
@@ -25,11 +26,22 @@ const ReviewFormPage = ({ productId }) => {
 
 
     const prodArr = Object.values(products)
-    console.log(prodArr)
+
 
     const productReviews = revArr.filter((review) => review?.productId === productId)
     const thisProduct = prodArr.find((product) => product?.productId === productId)
-    console.log(thisProduct)
+
+    const userLikes = []
+
+    const handleLikes = (e) => {
+        e.preventDefault()
+        let reviewId = e.target.title
+        let rev = revArr.filter((review) => review.id == reviewId)
+        rev[0].likes += 1
+        setShowLikes(false)
+        dispatch(updateReview(rev[0]))
+    }
+
     let userLeftReview = false;
 
 
@@ -38,11 +50,11 @@ const ReviewFormPage = ({ productId }) => {
 
             userLeftReview = true
         }
+
     }
     useEffect(() => {
         dispatch(getAllReviews())
     }, [dispatch])
-
 
     return (
         <div className="review-container">
@@ -88,40 +100,49 @@ const ReviewFormPage = ({ productId }) => {
 
             <div id='reviews-holder-ReviewFormPage'>
 
-            {productReviews.map((review) => (
-                <div className="review-details">
-                    <div className="mini-modal-stars-area">
-                        <div> <i id='stars-ReviewFormPage' className={review?.stars > 0 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
-                        <div> <i id='stars-ReviewFormPage' className={review?.stars > 1 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
-                        <div> <i id='stars-ReviewFormPage' className={review?.stars > 2 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
-                        <div> <i id='stars-ReviewFormPage' className={review?.stars > 3 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
-                        <div> <i id='stars-ReviewFormPage' className={review?.stars > 4 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
-                    </div>
-                    <div>
-                        <div id="review-ReviewFormPage">{review.review}</div>
-                    </div>
-                    <div>
-                        <div>{review.username}</div>
-                        <div id='createdAt-ReviewFormPage'>{review.createdAt}</div>
-                    </div>
-
-                    {review.username === user?.username ?
-                        <div className="review-detail-button-container-prod">
-                            <OpenModalButton
-                                buttonText="Update"
-                                modalComponent={<ReviewUpdateModal productId={review.productId} reviewId={review.id} />}
-                            />
-                            <OpenModalButton
-                                buttonText="Delete"
-                                modalComponent={<ReviewDeleteModal reviewId={review.id} />}
-                            />
-                        </div> :
-                        <div>
-                            <i className="fa-solid fa-thumbs-up"></i> 2 Helpful?
+                {productReviews.map((review) => (
+                    <div className="review-details">
+                        <div className="mini-modal-stars-area">
+                            <div> <i id='stars-ReviewFormPage' className={review?.stars > 0 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
+                            <div> <i id='stars-ReviewFormPage' className={review?.stars > 1 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
+                            <div> <i id='stars-ReviewFormPage' className={review?.stars > 2 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
+                            <div> <i id='stars-ReviewFormPage' className={review?.stars > 3 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
+                            <div> <i id='stars-ReviewFormPage' className={review?.stars > 4 ? "fa-solid fa-star" : "fa-regular fa-star"}></i></div>
                         </div>
-                    }
-                </div>
-            ))}
+                        <div>
+                            <div id="review-ReviewFormPage">{review.review}</div>
+                        </div>
+                        <div>
+                            <div>{review.username}</div>
+                            <div id='createdAt-ReviewFormPage'>{review.createdAt}</div>
+                        </div>
+
+                        {review.username === user?.username ?
+                            <div className="review-detail-button-container-prod">
+                                <OpenModalButton
+                                    buttonText="Update"
+                                    modalComponent={<ReviewUpdateModal productId={review.productId} reviewId={review.id} />}
+                                />
+                                <OpenModalButton
+                                    buttonText="Delete"
+                                    modalComponent={<ReviewDeleteModal reviewId={review.id} />}
+                                />
+                            </div> :
+                            <div>
+                                {showLikes ?
+                                    <div className = "likes-container">
+                                        <i onClick={handleLikes} className="fa-solid fa-thumbs-up" title={review.id}></i>
+
+                                        <div className="after-thumb"> {review.likes} helpful? </div>
+                                    </div> :
+                                    <div>
+                                        <div className="after-thumb"> {review.likes} helpful-- thanks for your feedback!</div>
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </div>
+                ))}
 
 
 
