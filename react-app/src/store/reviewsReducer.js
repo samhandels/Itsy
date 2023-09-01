@@ -90,6 +90,7 @@ export const updateReview = (review) => async (dispatch) => {
     console.log("Old Review", oldReview)
     oldReview.review = review.review
     oldReview.stars = review.stars
+    oldReview.likes = review.likes
 
     console.log("AFTER UPDATES", oldReview)
     dispatch(putReview(oldReview))

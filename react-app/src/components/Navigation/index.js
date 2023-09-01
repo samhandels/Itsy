@@ -69,7 +69,7 @@ function Navigation({ isLoaded }) {
 					{isLoaded && (
 						<ProfileButton className="nav-link profile-button" user={sessionUser} />
 					)}
-					{/* <i className="fa-solid fa-circle"></i> */}
+					<i className="fa-solid fa-circle"></i>
 				</div>
 				<NavLink exact to="/shopping_cart/current">
 					<i className="nav-link fa-solid fa-cart-shopping"></i>

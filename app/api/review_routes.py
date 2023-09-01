@@ -48,6 +48,7 @@ def update_review(id):
 
             review.review = form.data["review"]
             review.stars = int(form.data["stars"])
+            review.likes = int(form.data["likes"])
             print("REVIEW", review)
             db.session.commit()
             return review.to_dict()
@@ -75,4 +76,3 @@ def delete_review(id):
     db.session.delete(review_to_delete)
     db.session.commit()
     return redirect(f"/products/{product_id}")
-
