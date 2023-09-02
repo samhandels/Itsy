@@ -95,6 +95,20 @@
       color: white;
 }
 
+.welcome-banner {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      font-size: 20px;
+      font-weight: 500;
+      font-family: "Graphik Webfont",-apple-system,"Helvetica Neue","Droid Sans",Arial,sans-serif;
+}
+
+.firstname-underline {
+      text-decoration: underline;
+}
+
 
 @media (min-width: 550px) {
       #productCard-holder-AllProducts {
