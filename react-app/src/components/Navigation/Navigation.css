@@ -1,6 +1,9 @@
 .hidden {
   display: none;
 }
+/* .test {
+  border: 1px solid red;
+} */
 
 /* Navbar changes 8/27 */
 
@@ -25,6 +28,10 @@
   font-family: "Roboto";
   font-weight: 300;
   font-size: 15px;
+  width: 96%;
+  height: 100%;
+  outline: none;
+  /* object-fit: cover; */
 }
 
 .search-bar {
@@ -122,4 +129,18 @@
 .hide-that-button {
   background-color: white;
   border: none;
+}
+
+.hide-that-button:hover {
+  cursor: pointer;
+}
+
+#no-search-results {
+  font-size: 35px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+#no-search-link {
+  font-size: 20px;
 }

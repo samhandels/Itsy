@@ -19,6 +19,15 @@ function Navigation({ isLoaded }) {
 	const history = useHistory()
 	let searchProducts = []
 
+	// const resetEnter = () => {
+	// 	if (!searchInput) {
+	// 	  history.push("/");
+	// 	} else {
+	// 	  history.push(`/spots/filtered/${query}`);
+	// 	  reset();
+	// 	}
+	// };
+
 
 	const handleChange = (e) => {
 		e.preventDefault();
@@ -44,7 +53,11 @@ function Navigation({ isLoaded }) {
 
 	const onClick = (e) => {
 		e.preventDefault();
-		history.push(`/products/search/${searchInput}`)
+		if (searchInput) history.push(`/products/search/${searchInput}`)
+	}
+
+	const onEnter = () => {
+		if (searchInput) history.push(`/products/search/${searchInput}`)
 	}
 
 
@@ -71,6 +84,7 @@ function Navigation({ isLoaded }) {
 					placeholder="Search for anything"
 					onChange={handleChange}
 					value={searchInput}
+					onKeyDown={(e) => (e.key === "Enter" ? onEnter() : false)}
 				/>
 				<button className= "hide-that-button" onClick={onClick} ><i className="fa-solid fa-magnifying-glass" ></i></button>
 			</div>
