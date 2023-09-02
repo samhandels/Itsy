@@ -5,18 +5,20 @@ import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
 import { getAllReviews, getWaitingReviews } from "../../store/reviewsReducer";
 import { AllProducts } from "../AllProducts";
+import { getAllFavorites } from "../../store/favoritesReducer";
 
 
 function Navigation({ isLoaded }) {
 	const dispatch = useDispatch()
 	const sessionUser = useSelector((state) => state.session.user);
 	const products = useSelector((state) => state.products)
+	const favorites = useSelector((state) => state.favorites.favorites)
 	const waitingReviews = useSelector((state) => state.reviews.waitingReviews)
 	const [searchInput, setSearchInput] = useState("")
 	const prodArray = Object.values(products)
-	console.log("PRODUCTS", products)
 	const history = useHistory()
 	let searchProducts = []
+
 
 	const handleChange = (e) => {
 		e.preventDefault();
@@ -32,6 +34,10 @@ function Navigation({ isLoaded }) {
 				}
 			})
 		}
+	}
+	let waitRevArr
+	if (waitingReviews) {
+		waitRevArr = Object.values(waitingReviews)
 	}
 
 
@@ -66,7 +72,7 @@ function Navigation({ isLoaded }) {
 					onChange={handleChange}
 					value={searchInput}
 				/>
-				<button onClick={onClick} ><i className="fa-solid fa-magnifying-glass" ></i></button>
+				<button className= "hide-that-button" onClick={onClick} ><i className="fa-solid fa-magnifying-glass" ></i></button>
 			</div>
 			<div className="nav-bar-links">
 				<NavLink exact to="/favorites">
@@ -77,7 +83,12 @@ function Navigation({ isLoaded }) {
 					{isLoaded && (
 						<ProfileButton className="nav-link profile-button" user={sessionUser} />
 					)}
-					<i className="fa-solid fa-circle"></i>
+					{waitRevArr[0] ?
+						<div>
+							<i className="fa-solid fa-circle"></i>
+							<div className="fa-circle-inner">{waitRevArr.length}</div>
+						</div> : ""
+					}
 				</div>
 				<NavLink exact to="/shopping_cart/current">
 					<i className="nav-link fa-solid fa-cart-shopping"></i>

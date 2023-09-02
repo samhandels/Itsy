@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useModal } from '../../../context/Modal'
 import { Link } from 'react-router-dom'
 import './ReviewUpdateModal.css'
-import { getAllReviews, postReview, updateReview } from '../../../store/reviewsReducer'
+import { getAllReviews, getWaitingReviews, postReview, updateReview } from '../../../store/reviewsReducer'
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min'
 
 const ReviewUpdateModal = ({ productId, reviewId }) => {
@@ -32,14 +32,14 @@ const ReviewUpdateModal = ({ productId, reviewId }) => {
 
     handleSubmit = async (e) => {
         e.preventDefault()
-
+        console.log("HANDLING SUBMIT")
         if (review) reviewInfo.review = review
         else reviewInfo.review = thisReview.review
         if (stars) reviewInfo.stars = stars
         else reviewInfo.review = thisReview.stars
 
         reviewInfo.id = thisReview.id
-
+        dispatch(getWaitingReviews())
         const data = await dispatch(updateReview(reviewInfo))
         if (data) {
             setErrors(data);

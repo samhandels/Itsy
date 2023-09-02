@@ -20,9 +20,9 @@ import { fetchProducts, fetchUpdateProduct } from "../../store/productsReducer";
 export const ProductDetails = () => {
   const { productId } = useParams();
   const dispatch = useDispatch();
-
+  const user = useSelector((state) => state.session.user)
   const reviews = useSelector((state) => state.reviews.reviews);
-  const products = useSelector((state) => state.products)
+  const products = useSelector((state) => state.products);
   const favorites = useSelector((state) => state.favorites.favorites);
   const favArr = Object.values(favorites);
 
@@ -48,10 +48,10 @@ export const ProductDetails = () => {
   const handleHeartClick = async (productId) => {
     if (isFavorite(productId)) {
       await dispatch(removeFavorite(favorite));
-      await dispatch(getAllFavorites());
+      await dispatch(getAllFavorites(sessionUser ? sessionUser : null));
     } else {
       await dispatch(createFavorite(productId));
-      await dispatch(getAllFavorites());
+      await dispatch(getAllFavorites(sessionUser ? sessionUser : null));
     }
   };
 
@@ -64,14 +64,9 @@ export const ProductDetails = () => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-
-  useEffect(()=> {
-    dispatch(fetchProducts());
-  },[dispatch])
-
   useEffect(() => {
     dispatch(fetchProductDetails(productId));
-    dispatch(getAllFavorites());
+    dispatch(getAllFavorites(sessionUser ? sessionUser : null));
     // dispatch(fetchUpdateProduct(product))
   }, [dispatch, productId]);
 
@@ -79,14 +74,16 @@ export const ProductDetails = () => {
   //for product quantity drop down
 
   //to check if the current user is the same as product owner, if true, don't show "add to cart" OpenModal
-  let productOwner = "";
-  if (product?.ownerId === sessionUser?.id) productOwner = "hide";
+  let addItemBtn = "hide";
+  if (product?.ownerId !== sessionUser?.id && product.quantity > 0) {
+    addItemBtn = "show";
+  }
 
   //if it's out of stock, product quantity shows out of stock, and the add to cart button is disabled
   let stock = "hide";
   let noStock = "hide";
   if (product.quantity <= 0) {
-    //when out of stuck === 0
+    //when out of stuck  /iphone and fridge are -1, what the frick
     noStock = "show";
   }
 
@@ -113,7 +110,7 @@ export const ProductDetails = () => {
               <div id="primary-image-holder-productDetails">
                 <img
                   id="primary-image-productDetails"
-                  src={product.product_image[0]}
+                  src={product?.product_image[0]}
                   alt="product_image"
                 />
               </div>
@@ -122,22 +119,18 @@ export const ProductDetails = () => {
                 {sessionUser && (
                   <i
                     id="heart-icon-prod-detail"
-                    className={`nav-link fa-regular ${
-                      isFavorite(product.id) ? "fa-solid fa-heart" : "fa-heart"
-                    }`}
+                    className={`nav-link fa-regular ${isFavorite(product.id) ? "fa-solid fa-heart" : "fa-heart"
+                      }`}
                     onClick={() => handleHeartClick(product.id)}
                   ></i>
                 )}
               </div>
             </div>
 
-            <div>
-              <ReviewFormPage productId={product.id} />
-            </div>
+              <div>
+                <ReviewFormPage productId={product.id} />
+              </div>
 
-            {/* {userReviews.map((review) => (
-              <div>{review.review}</div>
-            ))} */}
           </div>
 
           <div id="right-panel-productDetails">
@@ -185,9 +178,8 @@ export const ProductDetails = () => {
               </div> */}
               <div
                 id="add-item-cart-fav-butt-ProductDetails"
-                className={`${
-                  product.quantity <= 0 ? "hide" : "show"
-                } ${productOwner}`}
+                className={addItemBtn}
+                
               >
                 <OpenSideModalButton
                   buttonStyle="Add-productDetails"

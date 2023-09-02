@@ -1,7 +1,8 @@
 
 import { useModal } from '../../../context/Modal'
-import { deleteReview } from '../../../store/reviewsReducer'
+import { deleteReview, getWaitingReviews } from '../../../store/reviewsReducer'
 import { useDispatch } from 'react-redux'
+import "./ReviewDeleteModal.css"
 
 const ReviewDeleteModal = ({ reviewId }) => {
     const dispatch = useDispatch();
@@ -11,16 +12,19 @@ const ReviewDeleteModal = ({ reviewId }) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         await dispatch(deleteReview(reviewId))
+        await dispatch(getWaitingReviews())
         closeModal()
     }
 
 
     return (
-        <div className="review-modal">
+        <div className="delete-review-modal">
             <form className="delete-review-form" onSubmit={handleSubmit}>
-                <div>Are you sure you want to delete this review?</div>
-                <button type="button" onClick={closeModal}>Go Back</button>
-                <button type="submit">Confirm Delete</button>
+                <div className = "delete-modal-title">Are you sure you want to delete this review?</div>
+                <div className = "button-container delete-modal-buttons">
+                    <button className="forward-button" type="button" onClick={closeModal}>Go Back</button>
+                    <button className="back-button confirm-delete-button" type="submit">Confirm Delete</button>
+                </div>
             </form>
         </div>
     )

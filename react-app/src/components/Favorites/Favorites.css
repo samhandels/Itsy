@@ -48,6 +48,10 @@
   border-top: 3px solid rgb(222,222,222);
 }
 
+.Collection-Category-Outer-Div:hover {
+  cursor: pointer;
+}
+
 .Collection-Categories-fav {
   width: 100%;
 
