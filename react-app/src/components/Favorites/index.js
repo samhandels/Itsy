@@ -99,7 +99,7 @@ const FavoritesPage = () => {
                 <h3>Home</h3>
             </div>
 
-            <div className='Collection-Category-Outer-Div' onClick={() => handleCategoryRedirect('Crafts')}>
+            <div className='Collection-Category-Outer-Div' onClick={() => handleCategoryRedirect('Craft')}>
                 <div className='Photo-Div'>
                     <div className='Photo-Div-Left'>
                         <img id="collection-image" className='LeftUpper-Photo' src='https://i.etsystatic.com/12316004/r/il/ec4a06/3824920921/il_340x270.3824920921_1i8f.jpg'></img>
@@ -193,7 +193,7 @@ const FavoritesPage = () => {
                         <h3>Home</h3>
                     </div>
 
-                    <div className='Collection-Category-Outer-Div' onClick={() => handleCategoryRedirect('Crafts')}>
+                    <div className='Collection-Category-Outer-Div' onClick={() => handleCategoryRedirect('Craft')}>
                         <div className='Photo-Div'>
                             <div className='Photo-Div-Left'>
                                 <img id="collection-image" className='LeftUpper-Photo' src='https://i.etsystatic.com/12316004/r/il/ec4a06/3824920921/il_340x270.3824920921_1i8f.jpg'></img>
