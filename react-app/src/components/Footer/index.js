@@ -33,7 +33,7 @@ function Footer() {
                     </div>
 
                     <div className="team-member">
-                        <img className='member-image' src="https://media.licdn.com/dms/image/C4D03AQFtc-pVwmDnEA/profile-displayphoto-shrink_200_200/0/1604125040371?e=1698883200&v=beta&t=hqwEc_8bV5b3XfhXlBlttQoiGcn9hyuv6bcTH9624T4" alt="Team Member 2" />
+                        <img className='member-image' src="https://media.licdn.com/dms/image/D4D03AQGMEVQhqGxcbA/profile-displayphoto-shrink_200_200/0/1693629991248?e=1698883200&v=beta&t=n5TFtRYB-ZRPx5xtASouGMj9e4Ho7N-uAo7zMQwbn6Y" alt="Team Member 2" />
                         <div className='member-name' >Juvenal Burguillos</div>
                             <a href="https://www.linkedin.com/in/juvenal-burguillos-b550041ba/" target="_blank" rel="noopener noreferrer">
                                 <img className='linkedin-logo' src="https://iconsplace.com/wp-content/uploads/_icons/ffffff/256/png/linkedin-icon-18-256.png" alt="linkedin"/>
