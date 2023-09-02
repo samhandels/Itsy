@@ -1,0 +1,23 @@
+
+.delete-review-form{
+    margin: 20px;
+}
+
+
+
+
+.confirm-delete-button:hover {
+    background-color: #f1641e;
+    cursor: pointer;
+}
+
+.delete-modal-title {
+    padding: 20px;
+}
+
+
+.delete-modal-buttons {
+    display: flex;
+    justify-content: space-between;
+
+}

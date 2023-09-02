@@ -87,8 +87,9 @@
 
 .user-review-container-sub {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
     column-gap: 20px;
+
 
 }
 
@@ -123,7 +124,6 @@
 } */
 
 .help-small-business {
-    position: sticky;
     top: 5%;
     background-color: #7b8a4b;
     width: 50%;
@@ -155,3 +155,13 @@
    display: flex;
    justify-content: center;
 } */
+
+.unreviewed-title {
+    display: flex;
+    justify-content: center;
+}
+
+.unreviewed-purchases {
+    display: flex;
+    align-items: center;
+}

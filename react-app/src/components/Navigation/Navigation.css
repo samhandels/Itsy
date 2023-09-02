@@ -106,15 +106,20 @@
   color: #f1641e;
   position: absolute;
   z-index: 1;
-  right: 60px;
-  top: 24px;
+  right: 59px;
+  top: 21px;
 }
 
 .fa-circle-inner {
   color: white;
   position: absolute;
   z-index: 1;
-  right: 65px;
-  top: 23px;
+  right: 64px;
+  top: 21px;
   font-size: 12px;
+}
+
+.hide-that-button {
+  background-color: white;
+  border: none;
 }

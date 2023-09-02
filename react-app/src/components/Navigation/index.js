@@ -72,7 +72,7 @@ function Navigation({ isLoaded }) {
 					onChange={handleChange}
 					value={searchInput}
 				/>
-				<button onClick={onClick} ><i className="fa-solid fa-magnifying-glass" ></i></button>
+				<button className= "hide-that-button" onClick={onClick} ><i className="fa-solid fa-magnifying-glass" ></i></button>
 			</div>
 			<div className="nav-bar-links">
 				<NavLink exact to="/favorites">
@@ -83,7 +83,7 @@ function Navigation({ isLoaded }) {
 					{isLoaded && (
 						<ProfileButton className="nav-link profile-button" user={sessionUser} />
 					)}
-					{waitRevArr.length ?
+					{waitRevArr[0] ?
 						<div>
 							<i className="fa-solid fa-circle"></i>
 							<div className="fa-circle-inner">{waitRevArr.length}</div>
