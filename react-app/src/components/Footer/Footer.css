@@ -195,6 +195,21 @@
   top: -1.5rem;
 }
 
+.tooltip-text-img {
+  visibility: hidden;
+  position: absolute;
+  width: max-content;
+  max-width: 100%;
+  color: white;
+  font-size: 12px;
+  /* background-color: rgb(255, 90, 95); */
+  /* border-radius: 10px; */
+  /* padding: 5px 10px 5px 10px; */
+  left: 50%;
+  transform: translateX(-50%) translateY(-100%);
+  /* top: -1.5rem; */
+}
+
 .hover-text {
   position: relative;
   display: inline-block;
@@ -203,7 +218,17 @@
   /* text-align: center; */
 }
 
+.hover-text-img {
+    position: relative;
+    display: inline-block;
+    /* margin: 0 15px; */
+}
+
 .hover-text:hover .tooltip-text {
+  visibility: visible;
+}
+
+.hover-text-img:hover .tooltip-text-img {
   visibility: visible;
 }
 
@@ -213,9 +238,24 @@
   opacity: 0;
   transition: opacity 0.5s;
   font-size: 14px;
+  font-family: "Roboto";
+}
+
+#topTip-img {
+  /* top: -20px; */
+  /* left: 60px; */
+  opacity: 0;
+  transition: opacity 0.5s;
+  font-size: 14px;
+  font-family: "Roboto";
+  font-style: normal;
 }
 
 .hover-text:hover #topTip {
+  opacity: 1;
+}
+
+.hover-text-img:hover #topTip-img {
   opacity: 1;
 }
 

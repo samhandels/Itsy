@@ -90,14 +90,14 @@ function Footer() {
                 <span id='topTip' className='tooltip-text'>React</span>
                 </i>
 
-                <i>
+                <i className='hover-text-img'>
                 <img className="fa-brands-redux-icon hover-text" src={redux_icon}></img>
-                <span id='topTip' className='tooltip-text'>Redux</span>
+                <span id='topTip-img' className='tooltip-text-img'>Redux</span>
                 </i>
 
-                <i>
+                <i className='hover-text-img'>
                 <img className="fa-brands-redux-icon hover-text" src={flask_icon}></img>
-                <span id='topTip' className='tooltip-text'>flask</span>
+                <span id='topTip-img' className='tooltip-text-img'>Flask</span>
                 </i>
 
                 <i class="fa-solid fa-database fa-xl hover-text">
@@ -108,9 +108,9 @@ function Footer() {
                 <span id='topTip' className='tooltip-text'>Python</span>
                 </i>
 
-                <i class="fa-solid fa-flask fa-xl hover-text">
+                {/* <i class="fa-solid fa-flask fa-xl hover-text">
                 <span id='topTip' className='tooltip-text'>Flask</span>
-                </i>
+                </i> */}
 
                 <i class="fa-brands fa-node-js fa-xl hover-text">
                 <span id='topTip' className='tooltip-text'>Node</span>
