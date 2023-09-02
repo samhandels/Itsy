@@ -80,9 +80,13 @@ export const  AllProducts = () => {
                         </div>
                   )}
 
-                  <div className="welcome-banner">
-                        Welcome back, &nbsp;<span className="firstname-underline">{user.firstName}</span>!
-                  </div>
+                  {
+                  user && (
+                        <div className="welcome-banner">
+                              Welcome back, &nbsp;<span className="firstname-underline">{user.firstName}</span>!
+                        </div>
+                  )
+                  }
 
                   <div id='sales-banner-AllProducts'>
                         <div id='up-to-AllProducts'>
