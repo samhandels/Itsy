@@ -79,9 +79,60 @@ function Footer() {
 
             {/* Bottom links section */}
             <div className="bottom-links">
-                <div> © 2023 Itsy</div>
+                <div> © 2023 Itsy - inspired by Etsy.com</div>
                 <div className="links">
-                    <a href='https://github.com/samhandels/Itsy' target="_blank">Checkout our Github Repository</a>
+
+
+
+                <i class="fa-brands fa-react fa-xl hover-text">
+                <span id='topTip' className='tooltip-text'>React+Redux</span>
+                </i>
+
+                <i class="fa-solid fa-database fa-xl hover-text">
+                <span id='topTip' className='tooltip-text'>SQLAlchemy</span>
+                </i>
+
+                <i class="fa-brands fa-python fa-xl hover-text">
+                <span id='topTip' className='tooltip-text'>Python</span>
+                </i>
+
+                <i class="fa-solid fa-flask fa-xl hover-text">
+                <span id='topTip' className='tooltip-text'>Flask</span>
+                </i>
+
+                <i class="fa-brands fa-node-js fa-xl hover-text">
+                <span id='topTip' className='tooltip-text'>Node</span>
+                </i>
+
+                <i class="fa-brands fa-square-js fa-xl hover-text">
+                <span id='topTip' className='tooltip-text'>Javascript</span>
+                </i>
+
+                <i class="fa-brands fa-html5 fa-xl hover-text">
+                <span id='topTip' className='tooltip-text'>HTML5</span>
+                </i>
+
+                <i class="fa-brands fa-css3-alt fa-xl hover-text">
+                <span id='topTip' className='tooltip-text'>CSS3</span>
+                </i>
+
+                {/* <i class="fa-brands fa-aws fa-xl hover-text">
+                <span id='topTip' className='tooltip-text'>Amazon</span>
+                </i> */}
+
+                <i class="fa-brands fa-git-alt fa-xl hover-text">
+                <span id='topTip' className='tooltip-text'>Git</span>
+                </i>
+
+                <i class="fa-brands fa-square-github fa-xl hover-text">
+                <span id='topTip' className='tooltip-text'>GitHub</span>
+                </i>
+
+
+
+
+
+                    <a href='https://github.com/samhandels/Itsy' target="_blank">GitHub Repo</a>
                     {/* <a>Privacy Policy</a>
                     <a>Contact Us</a> */}
                 </div>
