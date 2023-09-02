@@ -1,6 +1,8 @@
 import React from 'react';
 import './Footer.css';
 import githubLogo from './github.png';
+import redux_icon from './redux_icon.png';
+import flask_icon from './flask_icon.png';
 
 function Footer() {
     return (
@@ -85,7 +87,17 @@ function Footer() {
 
 
                 <i class="fa-brands fa-react fa-xl hover-text">
-                <span id='topTip' className='tooltip-text'>React+Redux</span>
+                <span id='topTip' className='tooltip-text'>React</span>
+                </i>
+
+                <i>
+                <img className="fa-brands-redux-icon hover-text" src={redux_icon}></img>
+                <span id='topTip' className='tooltip-text'>Redux</span>
+                </i>
+
+                <i>
+                <img className="fa-brands-redux-icon hover-text" src={flask_icon}></img>
+                <span id='topTip' className='tooltip-text'>flask</span>
                 </i>
 
                 <i class="fa-solid fa-database fa-xl hover-text">

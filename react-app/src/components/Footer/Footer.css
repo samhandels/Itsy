@@ -55,6 +55,11 @@
     border-radius: 20%;
 }
 
+.fa-brands-redux-icon {
+    max-height: 1.5rem;
+    top: 4px;
+}
+
 .team-member {
     text-align: center;
     margin-top: 5px;
