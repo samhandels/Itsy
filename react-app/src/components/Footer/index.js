@@ -97,7 +97,7 @@ function Footer() {
 
                 <i>
                 <img className="fa-brands-redux-icon hover-text" src={flask_icon}></img>
-                <span id='topTip' className='tooltip-text'>flask</span>
+                <span id='topTip' className='tooltip-text'>Flask</span>
                 </i>
 
                 <i class="fa-solid fa-database fa-xl hover-text">
