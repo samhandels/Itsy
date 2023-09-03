@@ -16,6 +16,7 @@ import {
   removeFavorite,
 } from "../../store/favoritesReducer";
 import { fetchProducts, fetchUpdateProduct } from "../../store/productsReducer";
+import Chat from "../chat";
 
 export const ProductDetails = () => {
   const { productId } = useParams();
@@ -25,6 +26,14 @@ export const ProductDetails = () => {
   const products = useSelector((state) => state.products);
   const favorites = useSelector((state) => state.favorites.favorites);
   const favArr = Object.values(favorites);
+
+  const [chat, setChat] = useState(false)
+
+  const turnOnChat = () => {
+
+      if (chat === false) setChat(true)
+      if (chat === true ) setChat(false)
+  }
 
   let favorite;
   const isFavorite = (productId) => {
@@ -203,6 +212,17 @@ export const ProductDetails = () => {
                   </button>
                 )}
               </div>
+              <div onClick={turnOnChat} id='add-item-cart-fav-butt'>
+                Turn Chatroom On/Off
+              </div>
+
+              {
+                chat ? (
+                  <div id='chat-div'>
+                  <Chat />
+                  </div> ) : null
+
+              }
 
               <div id="star-section-productDetails">
                 <img id="star-image-productDetails" src={star} />
