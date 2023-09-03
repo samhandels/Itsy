@@ -19,6 +19,7 @@
 
 .login-button:hover {
     background-color: black;
+    cursor: pointer;
 }
 
 .login-field {
