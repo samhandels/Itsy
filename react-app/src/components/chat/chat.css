@@ -33,6 +33,10 @@
       margin-left: 30px;
 }
 
+#x-chat:hover {
+      cursor: pointer;
+}
+
 #chat-middle-div-chat {
       padding-top: 20px;
       padding-left: 20px;

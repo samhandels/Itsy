@@ -1,14 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useSelector } from "react-redux";
 import { io } from 'socket.io-client';
 import './chat.css'
 import logo from './favicon.ico'
+import { useHistory } from "react-router-dom";
+import { ChatBoxContext } from "../../context/ChatBox";
+
 let socket;
 
-const Chat = () => {
+const Chat = ( {productId} ) => {
     const [chatInput, setChatInput] = useState("");
     const [messages, setMessages] = useState([]);
     const user = useSelector(state => state.session.user)
+    const history = useHistory()
+
+    const { chat, setChat } = useContext(ChatBoxContext)
 
     useEffect(() => {
         // open socket connection
@@ -23,6 +29,10 @@ const Chat = () => {
             socket.disconnect()
         })
     }, [])
+
+    const closeChat = () => {
+        setChat(false)
+    };
 
     const updateChatInput = (e) => {
         setChatInput(e.target.value)
@@ -45,7 +55,7 @@ const Chat = () => {
                         <div id='welcome-top-line-chat'>Welcome to the Itsy Chatroom</div>
                         <div id='welcome-bottom-line-chat'>Available 24 hours everyday</div>
                   </div>
-                  {/* <i id='x-chat' class="fa-solid fa-x fa-xl"></i> */}
+                  <i onClick={closeChat} id='x-chat' class="fa-solid fa-x fa-xl"></i>
             </div>
 
             <div id='chat-middle-div-chat'>

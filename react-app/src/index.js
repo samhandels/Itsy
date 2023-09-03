@@ -8,6 +8,8 @@ import { SideModalProvider, SideModal } from "./context/SideModal";
 import configureStore from "./store";
 import * as sessionActions from "./store/session";
 import App from "./App";
+// import { ChatBox } from "./context/ChatBox";
+import { ChatBoxProvider } from "./context/ChatBox";
 
 import "./index.css";
 
@@ -23,17 +25,19 @@ if (process.env.NODE_ENV !== "production") {
 // HTML elements on top of the all the other HTML elements:
 function Root() {
   return (
-    <SideModalProvider>
-      <ModalProvider>
-        <Provider store={store}>
-          <BrowserRouter>
-            <App />
-            <Modal />
-            <SideModal />
-          </BrowserRouter>
-        </Provider>
-      </ModalProvider>
-    </SideModalProvider>
+    <ChatBoxProvider>
+      <SideModalProvider>
+        <ModalProvider>
+          <Provider store={store}>
+            <BrowserRouter>
+              <App />
+              <Modal />
+              {/* <SideModal /> */}
+            </BrowserRouter>
+          </Provider>
+        </ModalProvider>
+      </SideModalProvider>
+    </ChatBoxProvider>
   );
 }
 

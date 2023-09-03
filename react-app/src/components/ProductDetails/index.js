@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchProductDetails } from "../../store/productsReducer";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./styleProductDetails.css";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import star from "./itsy-star.png";
@@ -17,6 +17,7 @@ import {
 } from "../../store/favoritesReducer";
 import { fetchProducts, fetchUpdateProduct } from "../../store/productsReducer";
 import Chat from "../chat";
+import { ChatBoxContext } from "../../context/ChatBox";
 
 export const ProductDetails = () => {
   const { productId } = useParams();
@@ -27,13 +28,13 @@ export const ProductDetails = () => {
   const favorites = useSelector((state) => state.favorites.favorites);
   const favArr = Object.values(favorites);
 
-  const [chat, setChat] = useState(false)
+  const { chat, setChat } = useContext(ChatBoxContext)
 
   const turnOnChat = () => {
-
       if (chat === false) setChat(true)
       if (chat === true ) setChat(false)
   }
+
 
   let favorite;
   const isFavorite = (productId) => {
@@ -136,9 +137,9 @@ export const ProductDetails = () => {
               </div>
             </div>
 
-              <div>
+              {/* <div>
                 <ReviewFormPage productId={product.id} />
-              </div>
+              </div> */}
 
           </div>
 
@@ -212,14 +213,19 @@ export const ProductDetails = () => {
                   </button>
                 )}
               </div>
-              <div onClick={turnOnChat} id='add-item-cart-fav-butt'>
-                Turn Chatroom On/Off
-              </div>
 
+              {
+                user ?
+                <div onClick={turnOnChat} id='add-item-cart-fav-butt'>
+                  Turn Chatroom On/Off
+                </div> : null
+
+              }
+                {console.log('here in the return', product.id)}
               {
                 chat ? (
                   <div id='chat-div'>
-                  <Chat />
+                  <Chat productId={product.id} />
                   </div> ) : null
 
               }
