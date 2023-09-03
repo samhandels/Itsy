@@ -30,12 +30,11 @@ const FavoritesPage = () => {
     return (
       <div id="favorites-entire-page">
         <div id="favorites-inner-div">
-          <div id="my-favorites-sign">{currentUser.username}'s Favorites</div>
+          <div id="my-favorites-sign">{currentUser.firstName}'s Favorites</div>
           <div id="favorites-line"></div>
 
           <div id="favorites-butt">
-            Favorite Items
-            <span>({favArr.length})</span>
+            {`Favorite Items  ${favArr.length}`}
           </div>
 
           <div className="fav-products-holder">
@@ -197,8 +196,7 @@ const FavoritesPage = () => {
         <div id="favorites-line"></div>
 
         <div id="favorites-butt">
-          Favorite Items
-          <span>({favArr.length})</span>
+        {`Favorite Items (${favArr.length})`}
         </div>
 
         <div className="fav-products-holder">

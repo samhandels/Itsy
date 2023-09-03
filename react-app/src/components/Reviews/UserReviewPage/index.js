@@ -119,11 +119,9 @@ const UserReviewPage = () => {
                 <div id='help-small-business-outer-div'>
                     <div className="help-small-business">
                         <div className="help-small-bus-title">Your reviews on Itsy help shop owners by providing them instant feedback and allowing
-                            them to stock their shops with items their customers will love. Thank you for supporting these small business owners.</div>
-
-                    </div>
-                    <div className="help-small-business">
-                        {noReviews.length ? <div>
+                            them to stock their shops with items their customers will love.</div>
+                            {noReviews.length ? <div>
+                                <div id='unreviewed-line'></div>
                             <div className="unreviewed-title">Unreviewed items</div>
                             {noReviews?.map((purchase) => (
                                 <div className = "unreviewed-purchases">
@@ -133,12 +131,10 @@ const UserReviewPage = () => {
                                 </div>
                             ))}
                         </div> : <div></div>}
+
                     </div>
                 </div>
                 </div>
-
-
-
 
             </div>
         </div>

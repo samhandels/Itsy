@@ -5,7 +5,7 @@ from datetime import datetime
 # Adds a demo user, you can add other users here if you want
 def seed_products():
     product1 = Product(
-        ownerId=1, name='Mini iPhones - Little Fingers' , price=12.95, description='Mini Iphones! Great for those who are looking to size down on electronics!', quantity=10, category='Toys')
+        ownerId=1, name='Mini iPhones - Tiny Fingers' , price=12.95, description='Mini Iphones! Great for those who are looking to size down on electronics!', quantity=10, category='Toys')
     product2 = Product(
         ownerId=2, name='Tiny Water Bottles' , price=11.95, description='Tiny water bottles! The perfect refreshment for your miniature guests!', quantity=5, category='Gifts')
     product3 = Product(

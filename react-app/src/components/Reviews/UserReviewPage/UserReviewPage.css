@@ -6,25 +6,26 @@
 }
 
 #user-review-inner-div-container {
-    width: 1000px;
+    width: 900px;
 }
 
 #my-reviews-page-sign {
-    font-size: 50px;
+    font-size: 35px;
+    font-weight: 100;
 }
 
 #review-line {
-    border-bottom: 3px solid rgb(222,222,222);
+    border-bottom: 2px solid rgb(222,222,222);
 }
 
 #review-butt {
-    padding: 0 400px;
+    width: 190px;
+    text-decoration: none;
+    text-align: center;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     color: white;
     background-color: #f1641e;
-    margin-bottom: 30px;
-    text-align: center;
 }
 
 /* #review-butt:hover {
@@ -35,15 +36,17 @@
 
 
 .review-product-info {
-    display: flex;
+    display: grid;
+    grid-template-columns: 2fr 5fr;
 }
 
 
 .review-product-img {
-    width: 80px;
-    height: 80px;
-    display: cover;
-    overflow: hidden;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 4/3;
+    border-radius: 10px;
 }
 
 .user-review-stars {
@@ -58,6 +61,7 @@
 
 #individual-review-holder-Review-Page:hover {
     border: none;
+
 }
 
 .review-detail-button-container {
@@ -101,6 +105,7 @@
     padding-left: 25px;
     font-size: 18px;
     border-radius: 5px;
+    width: 500px;
 }
 
 .user-review-details:hover {
@@ -124,9 +129,10 @@
 } */
 
 .help-small-business {
+    position: sticky;
     top: 5%;
     background-color: #7b8a4b;
-    width: 50%;
+    width: 75%;
     height: fit-content;
     margin-left: auto;
     margin-right: auto;
@@ -136,6 +142,7 @@
     margin-bottom: 20px;
     font-size: 20px;
     font-weight: 100;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
 .help-small-business:hover {
@@ -143,6 +150,10 @@
         rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
 }
 
+.help-small-bus-title {
+    font-size: 20px;
+    font-weight: 100;
+}
 
 /* .help-small-business>div {
     color: white;
@@ -164,4 +175,9 @@
 .unreviewed-purchases {
     display: flex;
     align-items: center;
+}
+
+#unreviewed-line {
+    margin: 10px 0;
+    border-bottom: 1px solid rgb(222,222,222);
 }

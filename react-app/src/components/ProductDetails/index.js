@@ -154,7 +154,7 @@ export const ProductDetails = () => {
               <div id="how-many-productDetails">
                 <label>
                   {" "}
-                  Choose how many you would like . . .{" "}
+                  Choose how many you would like:  {" "}
                   <select
                     name="selectedPurchaseQuantity"
                     value={purchaseQuantity}
@@ -179,7 +179,7 @@ export const ProductDetails = () => {
               <div
                 id="add-item-cart-fav-butt-ProductDetails"
                 className={addItemBtn}
-                
+
               >
                 <OpenSideModalButton
                   buttonStyle="Add-productDetails"

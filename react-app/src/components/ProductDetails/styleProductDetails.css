@@ -19,7 +19,7 @@
 }
 
 #page-productDetails {
-      max-width: 1000px;
+      max-width: 900px;
       display: grid;
       grid-template-columns: auto 35%;
       gap: 2.5rem;
