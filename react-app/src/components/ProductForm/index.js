@@ -115,7 +115,7 @@ export const ProductForm = ({ product, formType }) => {
          <div id='image-div-ProductForm'>
           <div>
            <div id='image-ProductForm'>Photo</div>
-           <div id='image-desc-ProductForm'>Image URL must start with "http" and end in .png /or .jpeg /or .jpg</div>
+           <div id='image-desc-ProductForm'>Image URL must start with "http" and end in .png .jpeg or .jpg</div>
         </div>
 
         <div id='right-image-div-ProductForm'>
