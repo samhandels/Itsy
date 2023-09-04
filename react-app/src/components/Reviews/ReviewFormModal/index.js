@@ -8,15 +8,15 @@ import './ReviewFormModal.css'
 import { postReview } from '../../../store/reviewsReducer'
 import { useDispatch, useSelector } from 'react-redux'
 
-const ReviewFormModal = ({ productId }) => {
+const ReviewFormModal = ({ currentStars, productId }) => {
     const dispatch = useDispatch();
     const [review, setReview] = useState("")
     const [stars, setStars] = useState(0)
-    const [activeStars, setActiveStars] = useState(0)
+    const [activeStars, setActiveStars] = useState(currentStars)
     const [reviewPage, setReviewPage] = useState(1)
     const [errors, setErrors] = useState([])
     const { closeModal } = useModal();
-    let reviewInfo = { review, stars }
+
 
     let reviews = useSelector((state) => state.reviews.reviews)
     let revArr = Object.values(reviews)
@@ -28,6 +28,8 @@ const ReviewFormModal = ({ productId }) => {
     // console.log("PRODUCTID", productId)
     // console.log("THISPRODUCTID", thisProduct.id)
 
+    if (!stars) setStars(currentStars)
+    let reviewInfo = { review, stars }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -36,7 +38,7 @@ const ReviewFormModal = ({ productId }) => {
             setErrors(data);
         } else {
             closeModal();
-            window.location.reload(false);
+
         }
     }
 
@@ -144,20 +146,26 @@ const ReviewFormModal = ({ productId }) => {
                     reviewPage === 3 &&
                     <div className='review-step review-step-3'>
                         <p className="review-detail-review">{review}</p>
-                        <div>
+                        {stars ? <div>
                             <i className={stars >= 1 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
                             <i className={stars >= 2 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
                             <i className={stars >= 3 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
                             <i className={stars >= 4 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
                             <i className={stars >= 5 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
-                        </div>
+                        </div> : <div>
+                            <i className={currentStars >= 1 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
+                            <i className={currentStars >= 2 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
+                            <i className={currentStars >= 3 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
+                            <i className={currentStars >= 4 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
+                            <i className={currentStars >= 5 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
+                        </div>}
                     </div>
                 }
                 <div className="review-button-container">
                     {reviewPage === 1 && <button type="button" className="back-button-review" onClick={closeModal}>Exit</button>}
                     {reviewPage === 2 && <button type="button" className="back-button" onClick={prevPage}>Go Back</button>}
-                    {reviewPage === 3 && <button type="button" className="back-button" onClick={prevPage}>Go Back</button>}
                     {reviewPage === 1 && <button type="button" className="forward-button" onClick={nextPage}>Next</button>}
+                    {reviewPage === 3 && <button type="button" className="back-button" onClick={prevPage}>Go Back</button>}
                     {reviewPage === 2 && <button type="button" className="forward-button" onClick={nextPage}>Next</button>}
                     {reviewPage === 3 && <button type="submit" className="forward-button" >Submit Your Review</button>}
                 </div>

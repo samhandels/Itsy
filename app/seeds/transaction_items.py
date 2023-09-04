@@ -5,35 +5,51 @@ from datetime import datetime
 def seed_transaction_items():
     trans_item_1 = TransactionItems(
         transactionId = 1,
-        productId = 2
+        productId = 3
     )
     trans_item_2 = TransactionItems(
         transactionId = 1,
-        productId = 3
+        productId = 6
     )
     trans_item_3 = TransactionItems(
         transactionId = 1,
-        productId = 4
+        productId = 9
     )
     trans_item_4 = TransactionItems(
-        transactionId = 1,
-        productId = 5
+        transactionId = 2,
+        productId = 1
     )
     trans_item_5 = TransactionItems(
         transactionId = 2,
-        productId = 3
+        productId = 4
     )
     trans_item_6 = TransactionItems(
+        transactionId = 2,
+        productId = 7
+    )
+    trans_item_7 = TransactionItems(
+        transactionId = 2,
+        productId = 10
+    )
+    trans_item_8 = TransactionItems(
         transactionId = 3,
         productId = 2
     )
-    trans_item_7 = TransactionItems(
+    trans_item_9 = TransactionItems(
         transactionId = 3,
-        productId = 4
+        productId = 5
     )
-    trans_item_8 = TransactionItems(
+    trans_item_10 = TransactionItems(
+        transactionId = 3,
+        productId = 8
+    )
+    trans_item_11 = TransactionItems(
+        transactionId = 3,
+        productId = 11
+    )
+    trans_item_12 = TransactionItems(
         transactionId = 4,
-        productId = 3
+        productId = 12
     )
     db.session.add(trans_item_1)
     db.session.add(trans_item_2)
@@ -43,6 +59,10 @@ def seed_transaction_items():
     db.session.add(trans_item_6)
     db.session.add(trans_item_7)
     db.session.add(trans_item_8)
+    db.session.add(trans_item_9)
+    db.session.add(trans_item_10)
+    db.session.add(trans_item_11)
+    db.session.add(trans_item_12)
 
     db.session.commit()
 
