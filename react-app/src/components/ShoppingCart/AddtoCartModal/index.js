@@ -1,5 +1,5 @@
 // Render a pop up after you click on Add to cart(on product detail page)
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useSideModal } from "../../../context/SideModal"; //!change to side modal css later
 import "./AddtoCart.css";
 //need to create item from this sideModal after clicking the "view cart & chcekcout"
@@ -14,12 +14,22 @@ export function AddtoCartModal({ product, purchaseQuantity }) {
   const { closeModal } = useSideModal();
   const history = useHistory();
   // console.log("************In Add to Cart Modal **********", productId);
+  const items = Object.values(
+    useSelector((state) => (state.items ? state.items : []))
+  );
+
+  const itemProductQuantity = items.filter(
+    (item) => item.productId === product.id
+  ).length;
 
   const createCartItem = (e) => {
     e.preventDefault();
-    dispatch(createItemThunk(product.id, purchaseQuantity))
-    closeModal() //if use .then(closeModal) it doesn't fire
-    history.push("/shopping_cart/current");
+    //if the item product quantity is less than the product id quantity
+    if (itemProductQuantity < product?.quantity) {
+      dispatch(createItemThunk(product.id, purchaseQuantity));
+      closeModal(); //if use .then(closeModal) it doesn't fire
+      history.push("/shopping_cart/current");
+    }
   };
 
   return (
@@ -31,25 +41,29 @@ export function AddtoCartModal({ product, purchaseQuantity }) {
           </div>
           <div>1 item added to cart!</div>
         </div>
-          <div className="column  ">
-            <div className="button-container-order margin-top">
-              <button className="back-button-cancel width-btn" type="button" onClick={closeModal}>
-                Don't add to cart
-              </button>
-            </div>
-            <div className="button-container margin-top column">
-              <button
-                className="forward-button-order width-btn"
-                type="submit"
-                onClick={createCartItem}
-              >
-                Add and view cart
-              </button>
-            </div>
+        <div className="column  ">
+          <div className="button-container-order margin-top">
+            <button
+              className="back-button-cancel width-btn"
+              type="button"
+              onClick={closeModal}
+            >
+              Don't add to cart
+            </button>
           </div>
+          <div className="button-container margin-top column">
+            <button
+              className="forward-button-order width-btn"
+              type="submit"
+              onClick={createCartItem}
+            >
+              Add and view cart
+            </button>
+          </div>
+        </div>
       </section>
-      <section id='discover-sec-shopping-cart' className="discover-item-cards">
-        <div className='margin-top font-size padding'>Items you may like</div>
+      <section id="discover-sec-shopping-cart" className="discover-item-cards">
+        <div className="margin-top font-size padding">Items you may like</div>
         <ItemsSideModal />
       </section>
     </div>

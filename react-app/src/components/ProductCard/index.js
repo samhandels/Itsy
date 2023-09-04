@@ -2,7 +2,6 @@ import { NavLink } from 'react-router-dom';
 import './styleProductCard.css'
 import { useDispatch, useSelector } from "react-redux";
 import { createFavorite, removeFavorite } from '../../store/favoritesReducer';
-import { createItemThunk } from '../../store/shoppingCartReducer';
 
 export const ProductCard = ({product}) => {
 
