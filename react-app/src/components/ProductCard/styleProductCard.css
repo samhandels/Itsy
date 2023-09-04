@@ -23,6 +23,9 @@
 }
 
 #card-holder-productCard:hover #fa-heart-product-card {
+      animation:
+            slide-up 500ms forwards,
+            fade-in 1000ms forwards;
       display: block;
       position: absolute;
       z-index: 1;
@@ -57,4 +60,22 @@
       font-family: "Roboto";
       font-weight: 500;
       font-size: 16px;
+}
+
+@keyframes slide-up {
+      0% {
+            transform: translateY(100%);
+      }
+      100% {
+            transform: translateY(0%);
+      }
+}
+
+@keyframes fade-in {
+      0% {
+            opacity: 0;
+      }
+      100% {
+            opacity: 1;
+      }
 }
