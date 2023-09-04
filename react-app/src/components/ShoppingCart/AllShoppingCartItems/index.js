@@ -7,15 +7,17 @@ import { fetchProducts } from "../../../store/productsReducer";
 import SingleItem from "../SingleItem";
 import { DiscoverItems } from "../DiscoverItems";
 import { NavLink } from "react-router-dom";
-
+import { getWaitingReviews } from "../../../store/reviewsReducer";
+import { getAllReviews } from "../../../store/reviewsReducer";
+import { getTransactionItemsThunk } from "../../../store/transactionReducer";
 export default function AllShoppingCartItems() {
   const items = Object.values(
     useSelector((state) => (state.items ? state.items : []))
   ); //items are not unique, there can be several same product in the item table
-  console.log(
-    "**********************Items from all items in shopping cart******************",
-    items
-  );
+  // console.log(
+  //   "**********************Items from all items in shopping cart******************",
+  //   items
+  // );
   const products = Object.values(
     useSelector((state) => (state.products ? state.products : []))
   ); //because you come from landing page, the state would have products already
@@ -25,7 +27,11 @@ export default function AllShoppingCartItems() {
 
   useEffect(() => {
     dispatch(getItemsThunk());
+    dispatch(getTransactionItemsThunk())
+    dispatch(getAllReviews())
+    dispatch(getWaitingReviews())
     dispatch(fetchProducts()); //so all products are still on the shopping cart refreshing the page
+    dispatch(getItemsThunk());
   }, [dispatch]);
 
 
@@ -47,44 +53,44 @@ export default function AllShoppingCartItems() {
     <div id="shopping-cart-components-border">
       <div id='shopping-cart-inner-div'>
 
-      <div id='my-cart-page-sign'>{sessionUser.firstName}'s Shopping Cart</div>
-            <div id='cart-line'></div>
-      <div id='cart-butt'>
-        {`Manage all the items in your cart (${productItemArray.length})`}
-      </div>
+        <div id='my-cart-page-sign'>{sessionUser.firstName}'s Shopping Cart</div>
+        <div id='cart-line'></div>
+        <div id='cart-butt'>
+          {`Manage all the items in your cart (${productItemArray.length})`}
+        </div>
 
-      <h4 className="greeting">
-        Hello {sessionUser.username}, there are {productItemArray.length} items in your
-        shopping cart:
-      </h4>
+        <h4 className="greeting">
+          Hello {sessionUser.username}, there are {productItemArray.length} items in your
+          shopping cart:
+        </h4>
 
-      <section className="item-cards">
-      {/* productItem is the unique card showing in the shopping cart */}
-        {productItemArray.map((uniqueProduct) => { //get the product for the uniq item
-          const productInCartNum = items.filter((item) => item.productId === uniqueProduct?.id).length //find out how many number of the same  product in the shopping cart
-          let itemIdSameProductArray = items.filter((item) => item.productId);
+        <section className="item-cards">
+          {/* productItem is the unique card showing in the shopping cart */}
+          {productItemArray.map((uniqueProduct) => { //get the product for the uniq item
+            const productInCartNum = items.filter((item) => item.productId === uniqueProduct?.id).length //find out how many number of the same  product in the shopping cart
+            let itemIdSameProductArray = items.filter((item) => item.productId);
 
-          return (
-            <div id='individual-shop-cart' className="cart_item" key={uniqueProduct?.id}>
-              <div>
-                <SingleItem
-                  product={uniqueProduct}
-                  productInCartNum={productInCartNum}
-                />
+            return (
+              <div id='individual-shop-cart' className="cart_item" key={uniqueProduct?.id}>
+                <div>
+                  <SingleItem
+                    product={uniqueProduct}
+                    productInCartNum={productInCartNum}
+                  />
+                </div>
               </div>
-            </div>
-          );
-        })}
-      </section>
-      <section id='discover-sec-shopping-cart' className="discover-item-cards">
-        <h6 id='discover-title-shopping-cart'>Discover other items</h6>
-        <DiscoverItems />
-      </section>
-      <section className="column center margin-bottom">
-      <h6 id='discover-title-shopping-cart'>Looking for more of your finds?</h6>
-      <NavLink className="navlink-btn" to="/favorites">View your favorites</NavLink>
-      </section>
-      {/* <NavLink to="/transactions"> Go to Transactions</NavLink> */}
+            );
+          })}
+        </section>
+        <section id='discover-sec-shopping-cart' className="discover-item-cards">
+          <h6 id='discover-title-shopping-cart'>Discover other items</h6>
+          <DiscoverItems />
+        </section>
+        <section className="column center margin-bottom">
+          <h6 id='discover-title-shopping-cart'>Looking for more of your finds?</h6>
+          <NavLink className="navlink-btn" to="/favorites">View your favorites</NavLink>
+        </section>
+        {/* <NavLink to="/transactions"> Go to Transactions</NavLink> */}
       </div>
     </div>
   );

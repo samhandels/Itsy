@@ -5,6 +5,7 @@ import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { Link } from "react-router-dom/";
+import './Navigation.css'
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -45,14 +46,14 @@ function ProfileButton({ user }) {
       </button>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
-          <>
-            <li className="profile-dropdown-li">{user.username}</li>
-            <li className="profile-dropdown-li">{user.email}</li>
-            <li onClick={closeMenu} className="profile-dropdown-li"><Link to="/reviews/current">Your Reviews</Link></li>
-            <li className="profile-dropdown-li">
+          <div id='profile-dropdown-profile-butt'>
+            <div className="profile-dropdown-li">{user.username}</div>
+            <div className="profile-dropdown-li">{user.email}</div>
+            <div onClick={closeMenu} className="profile-dropdown-li"><Link to="/reviews/current">Your Reviews</Link></div>
+            <div className="profile-dropdown-li">
               <button onClick={handleLogout}>Log Out</button>
-            </li>
-          </>
+            </div>
+          </div>
         ) : (
           <>
             <OpenModalButton

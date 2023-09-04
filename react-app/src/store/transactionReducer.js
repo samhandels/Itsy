@@ -17,14 +17,12 @@ export const getTransactionItemsThunk = () => async (dispatch) => {
     const res = await fetch("/api/transactions/current")
     if (res.ok) {
         const items = await res.json();
-        console.log("RESITEMS", items)
         dispatch(getTransactionItems(items))
     }
 }
 
 export const addTransaction = (items) => async (dispatch) => {
     const numItems = parseInt(items.length)
-    console.log("!!!!!!!!!!!!!!!!IN THUNK", items)
         const transactionCreator = await fetch("/api/transactions", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -39,14 +37,9 @@ export const addTransaction = (items) => async (dispatch) => {
 
 export const addTransactionItems = (numItems, transactionResponse, items) => async(dispatch) => {
     const newItems = [];
-    console.log("ITEMSINHERE", items)
-    console.log("TYPEOF", typeof(items))
     const itemsArr = Object.values(items)
-    console.log("ITEMSARR", itemsArr)
         itemsArr.forEach(async (item) =>  {
-        console.log("I'm in here. help!")
         newItems.push(item)
-        console.log("ITEMINDEX", item)
         const res = await fetch(`/api/transactions/${transactionResponse.id}`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -57,13 +50,11 @@ export const addTransactionItems = (numItems, transactionResponse, items) => asy
         })
         if (res.ok) {
             const items = await res.json();
-            console.log("NEWITEMS", newItems)
             dispatch(addTransItems(newItems))
 
 
         }
         else {
-            console.log("ERROR", res)
         }
 })
 return items
