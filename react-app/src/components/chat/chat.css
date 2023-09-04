@@ -80,9 +80,13 @@
       width: 35px;
       height: 35px;
       font-size: 25px;
-      background-color: black;
+      background-color: #7b8a4b;
       color: white;
       border-radius: 50%;
       border: none;
       margin-left: 10px;
+}
+
+#chat-butt-chat:hover {
+      cursor: pointer;
 }

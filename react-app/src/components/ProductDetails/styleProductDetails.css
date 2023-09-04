@@ -307,6 +307,9 @@
 }
 
 #chat-div {
+      animation:
+            slide-up 1000ms forwards,
+            fade-in 500ms forwards;
       /* animation
       transition-timing-function: ease;
       transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1); */
@@ -320,4 +323,60 @@
       z-index: 5;
       box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
       /* margin: 20px 20px 20px 20px; */
+}
+
+#chat-div-close {
+      display: none;
+      animation:
+            slide-down 700ms forwards,
+            fade-out 700ms forwards;
+      /* animation
+      transition-timing-function: ease;
+      transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1); */
+      position: fixed;
+      right: 30px;
+      bottom: 30px;
+      width: 400px;
+      height: 500px;
+      background-color: white;
+      border-radius: 25px;
+      z-index: 5;
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+      /* margin: 20px 20px 20px 20px; */
+}
+
+@keyframes slide-up {
+      0% {
+            transform: translateY(100%);
+      }
+      100% {
+            transform: translateY(0%);
+      }
+}
+
+@keyframes fade-in {
+      0% {
+            opacity: 0;
+      }
+      100% {
+            opacity: 1;
+      }
+}
+
+@keyframes slide-down {
+      100% {
+            transform: translateY(100%);
+      }
+      0% {
+            transform: translateY(0%);
+      }
+}
+
+@keyframes fade-out {
+      100% {
+            opacity: 0;
+      }
+      0% {
+            opacity: 1;
+      }
 }

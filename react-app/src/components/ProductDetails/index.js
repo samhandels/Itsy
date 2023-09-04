@@ -137,9 +137,9 @@ export const ProductDetails = () => {
               </div>
             </div>
 
-              {/* <div>
+              <div>
                 <ReviewFormPage productId={product.id} />
-              </div> */}
+              </div>
 
           </div>
 
@@ -217,16 +217,19 @@ export const ProductDetails = () => {
               {
                 user ?
                 <div onClick={turnOnChat} id='add-item-cart-fav-butt'>
-                  Turn Chatroom On/Off
+                  Chatroom
                 </div> : null
 
               }
-                {console.log('here in the return', product.id)}
               {
-                chat ? (
-                  <div id='chat-div'>
+                chat ?
+                  (<div id='chat-div'>
                   <Chat productId={product.id} />
-                  </div> ) : null
+                  </div> )
+                  :
+                  (<div id='chat-div-close'>
+                  <Chat productId={product.id} />
+                  </div> )
 
               }
 
