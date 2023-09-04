@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../../store/productsReducer";
 import "../../AllProducts/styleAllProducts.css";
 import { ItemtoCart } from "../ItemtoCart";
-import { session } from "passport";
 // import { getAllFavorites } from "../../../store/favoritesReducer";
 
 export const DiscoverItems = () => {
