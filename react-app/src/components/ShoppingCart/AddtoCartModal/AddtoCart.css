@@ -1,11 +1,12 @@
-.button-container>button {
+.button-container>button :hover{
  padding: 10px 20px;
  border-radius: 20px;
  position: static;
+ cursor: pointer;
 }
 
 .forward-button {
- background-color: black;
+ background-color: #7b8a4b;
  color: white;
  border: none
 }
@@ -34,4 +35,22 @@
 
 .margin-top{
  margin-top: 20px;
+}
+
+.margin-bottom{
+ margin-bottom: 30px;
+}
+
+
+
+.width-btn{
+ width: 16rem;
+}
+
+.font-size{
+ font-size: 20px;
+}
+
+.powerful-z-index{
+ z-index: 1000;
 }

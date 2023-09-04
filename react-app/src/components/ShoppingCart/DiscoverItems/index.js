@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../../store/productsReducer";
-import { ProductCard } from "../../../components/ProductCard";
 import "../../AllProducts/styleAllProducts.css";
+import { ItemtoCart } from "../ItemtoCart";
 // import { getAllFavorites } from "../../../store/favoritesReducer";
 
 export const DiscoverItems = () => {
@@ -59,7 +59,7 @@ export const DiscoverItems = () => {
     <div>
       <div id="productCard-holder-AllProducts">
         {discoverFourItems.map((product) => (
-          <ProductCard product={product} key={product?.id} />
+          <ItemtoCart product={product} key={product?.id} />
         ))}
       </div>
     </div>

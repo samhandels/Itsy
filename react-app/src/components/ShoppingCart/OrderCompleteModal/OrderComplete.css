@@ -1,22 +1,42 @@
-.button-container>button {
+
+
+.forward-button-order {
  padding: 10px 20px;
  border-radius: 20px;
  position: static;
-}
-
-.forward-button {
- background-color: black;
+ background-color: #7b8a4b;
  color: white;
  border: none
 }
 
-.back-button {
+.forward-button-order :hover {
+ cursor: pointer;
+}
+
+.back-button-cancel {
+ padding: 10px 20px;
+ border-radius: 20px;
+ position: static;
  background-color: lightgray;
  color: white;
  border: none;
 }
 
+
+.back-button-cancel :hover {
+ cursor: pointer;
+}
+
 .flex-row {
  display: flex;
  flex-direction: row;
+}
+
+.order-complete{
+ font-size: 30px;
+}
+
+.margin-side{
+ margin-left: 20px;
+ margin-right: 20px;
 }

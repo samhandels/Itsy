@@ -1,10 +1,10 @@
 import { NavLink } from 'react-router-dom';
-import './styleProductCard.css'
+import "../../AllProducts/styleAllProducts.css"
 import { useDispatch, useSelector } from "react-redux";
-import { createFavorite, removeFavorite } from '../../store/favoritesReducer';
-import { createItemThunk } from '../../store/shoppingCartReducer';
+import { createFavorite, removeFavorite } from '../../../store/favoritesReducer';
+import { createItemThunk } from '../../../store/shoppingCartReducer';
 
-export const ProductCard = ({product}) => {
+export const ItemtoCart = ({product}) => {
 
       const dispatch = useDispatch();
       const favorites = useSelector((state) => state.favorites.favorites);
@@ -24,6 +24,12 @@ export const ProductCard = ({product}) => {
                 await dispatch(createFavorite(productId));
             }
         };
+
+        let purchaseQuantity = 1
+        const addOnetoCart = (e)=>{
+            e.preventDefault();
+            dispatch(createItemThunk(product.id, purchaseQuantity))
+        }
 
       let dollar = new Intl.NumberFormat('en-US', {
             style: 'currency',
@@ -54,6 +60,9 @@ export const ProductCard = ({product}) => {
                         </div>
                         <div id='card-price-productCard'>
                               {dollar.format(product.price)}
+                        </div>
+                        <div>
+                              <button className='forward-button-order' onClick={addOnetoCart}>Add to cart</button>
                         </div>
 
 
