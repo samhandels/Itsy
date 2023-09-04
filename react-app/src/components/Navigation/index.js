@@ -6,7 +6,8 @@ import "./Navigation.css";
 import { getAllReviews, getWaitingReviews } from "../../store/reviewsReducer";
 import { AllProducts } from "../AllProducts";
 import { getAllFavorites } from "../../store/favoritesReducer";
-
+import { fetchProducts } from "../../store/productsReducer";
+import { getTransactionItemsThunk } from "../../store/transactionReducer";
 
 function Navigation({ isLoaded }) {
 	const dispatch = useDispatch()
@@ -61,9 +62,13 @@ function Navigation({ isLoaded }) {
 	}
 
 
-
 	useEffect(() => {
 		dispatch(getAllReviews())
+		dispatch(fetchProducts())
+	}, [dispatch])
+
+	useEffect(() => {
+		dispatch(getTransactionItemsThunk())
 	}, [dispatch])
 
 	useEffect(() => {
@@ -86,7 +91,7 @@ function Navigation({ isLoaded }) {
 					value={searchInput}
 					onKeyDown={(e) => (e.key === "Enter" ? onEnter() : false)}
 				/>
-				<button className= "hide-that-button" onClick={onClick} ><i className="fa-solid fa-magnifying-glass" ></i></button>
+				<button className="hide-that-button" onClick={onClick} ><i className="fa-solid fa-magnifying-glass" ></i></button>
 			</div>
 			<div className="nav-bar-links">
 				<NavLink exact to="/favorites">
