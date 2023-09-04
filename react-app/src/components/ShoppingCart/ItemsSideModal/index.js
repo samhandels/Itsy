@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../../store/productsReducer";
-import { ProductCard } from "../../../components/ProductCard";
-import "../../AllProducts/styleAllProducts.css";
+import { ItemtoCart } from "../ItemtoCart";
+import "../../AllProducts/styleAllProducts.css"
 
 export const ItemsSideModal = () => {
 
@@ -23,7 +23,7 @@ export const ItemsSideModal = () => {
     <div>
       <div id="productCard-holder-AllProducts-2by2">
         {products.map((product) => (
-          <ProductCard product={product} key={product?.id} />
+          <ItemtoCart product={product} key={product?.id} />
         ))}
       </div>
     </div>
