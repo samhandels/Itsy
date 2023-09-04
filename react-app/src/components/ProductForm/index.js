@@ -8,7 +8,7 @@ import { fetchUpdateProduct } from "../../store/productsReducer";
 
 export const ProductForm = ({ product, formType }) => {
   // all the inputs
-  console.log("tetete", formType);
+  // console.log("tetete", formType);
   const [productImage, setProductImage] = useState(product.product_image? product.product_image[0] : "");
   const [name, setName] = useState(product?.name);
   const [category, setCategory] = useState(product?.category);
@@ -53,7 +53,7 @@ export const ProductForm = ({ product, formType }) => {
       url: productImage
     };
     // console.log("what product is in the productForm==============", product);
-      console.log('how about here', product);
+      // console.log('how about here', product);
     // console.log("1. user input", product);
     if (formType === "Update") {
       // && !Object.values(errors).length
@@ -61,10 +61,10 @@ export const ProductForm = ({ product, formType }) => {
       //   updateProductThunk(product)
       // );
       // product = editedproduct;
-      console.log('dododododod', product);
+      // console.log('dododododod', product);
       const updatedProduct = await dispatch(fetchUpdateProduct(product))
 
-      console.log('popp', updatedProduct);
+      // console.log('popp', updatedProduct);
 
       history.replace(`/products/${updatedProduct.singleProduct.id}`)
 
