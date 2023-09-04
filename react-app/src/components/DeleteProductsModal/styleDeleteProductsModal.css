@@ -1,0 +1,38 @@
+
+#deleteModal {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0 10px 20px 10px
+}
+
+#buttonY-deleteModal {
+      background-color: #7b8a4b;
+      width: 60px;
+      height: 20px;
+      border-radius: 10px;
+      border: none;
+      color: white;
+      margin-right: 5px;
+}
+
+#buttonN-deleteModal {
+      background-color: #7b8a4b;
+      width: 60px;
+      height: 20px;
+      border-radius: 10px;
+      border: none;
+      color: white;
+      margin-left: 5px;
+}
+
+#buttonY-deleteModal:hover {
+      cursor: pointer;
+      background-color: #f1641e;
+}
+
+#buttonN-deleteModal:hover {
+      cursor: pointer;
+      background-color: #f1641e;
+}

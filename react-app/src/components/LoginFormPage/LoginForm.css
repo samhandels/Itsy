@@ -1,12 +1,101 @@
+#log-in-entire-page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+}
 
+#inner-login-page {
+      width: 500px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* border: 1px solid rgb(222, 222, 222); */
+      margin-bottom: 20px;
+      transition: 1s ease-out;
+}
+
+#inner-login-page:hover {
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+      transition: 0.5s ease-in-out;
+}
+
+#form-login-page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+}
+
+#email-password-login-page {
+      /* border: 1px solid rgb(222, 222, 222); */
+      padding: 10px 50px 30px 50px;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+#email-input-login-page {
+      margin-left: 40px;
+}
+
+#password-input-login-page {
+      margin-left: 15px;
+}
+
+#login-butt-login-page {
+      background-color: #7b8a4b;
+      color: white;
+      border: none;
+      border-radius: 15px;
+      margin-top: 10px;
+      width: 150px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      margin-top: 40px;
+}
+
+#login-butt-login-page:hover {
+      background-color: #f1641e;
+      cursor: pointer;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+#sign-up-login-page {
+      background-color: #7b8a4b;
+      color: white;
+      border: none;
+      border-radius: 15px;
+      margin-top: 5px;
+      width: 150px;
+      padding-top: 4px;
+      padding-bottom: 4px;
+      text-align: center;
+      font-family: "Roboto";
+      font-weight: 300;
+      font-size: 14px;
+}
+
+#sign-up-login-page:hover {
+      background-color: #f1641e;
+      cursor: pointer;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
 
 #demo-link-page {
-      color: #f1641e;
-      /* text-align: center; */
+      background-color: #7b8a4b;
+      color: white;
+      border: none;
+      border-radius: 15px;
+      margin-top: 5px;
+      width: 150px;
+      padding-top: 4px;
+      padding-bottom: 4px;
+      text-align: center;
+      font-family: "Roboto";
+      font-weight: 300;
+      font-size: 14px;
+      margin-bottom: 40px;
 }
 
   #demo-link-page:hover {
+      background-color: #f1641e;
       cursor: pointer;
-      text-decoration: underline;
-      /* border: 1px solid #f1641e; */
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
