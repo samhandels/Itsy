@@ -57,3 +57,32 @@
       color: white;
       cursor: pointer;
 }
+
+#updateButtManPage {
+      background-color: #7b8a4b;
+      color: white;
+      border-radius: 20px;
+      padding: 2px 10px;
+      border: none;
+}
+
+#updateButtManPage:hover {
+      cursor: pointer;
+      background-color: #f1641e;
+      color: white
+}
+
+#storefront-button-div>button {
+      background-color: #7b8a4b;
+      color: white;
+      border-radius: 20px;
+      padding: 2px 10px;
+      border: none;
+      margin-left: 5px;
+}
+
+#storefront-button-div>button:hover {
+      cursor: pointer;
+      background-color: #f1641e;
+      color: white
+}

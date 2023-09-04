@@ -47,7 +47,7 @@ export const Store = () => {
       <div id="productCard-holder-AllProducts">
         {product.length
           ? product.map((prod) => (
-            <div>
+            <div id='storefront-button-div'>
               <ProductCard product={prod} key={prod.id} />
 
               <NavLink exact to={`/products/update/${prod.id}`}>

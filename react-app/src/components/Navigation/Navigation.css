@@ -70,6 +70,27 @@
   border: none;
 }
 
+.profile-dropdown button {
+  color: white;
+  background-color: #f1641e;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 10px 20px;
+  border: none;
+  margin-right: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-dropdown button:hover {
+  background-color: #e6521d;
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .fa-user-circle {
   font-size: 18px;
   margin-left: -3px;

@@ -33,6 +33,7 @@
 
 .signup-button:hover {
     background-color: black;
+    cursor: pointer;
 }
 
 .grow {
