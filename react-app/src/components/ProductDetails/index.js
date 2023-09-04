@@ -20,7 +20,6 @@ import { fetchProducts, fetchUpdateProduct } from "../../store/productsReducer";
 export const ProductDetails = () => {
   const { productId } = useParams();
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.session.user)
   const reviews = useSelector((state) => state.reviews.reviews);
   const products = useSelector((state) => state.products);
   const favorites = useSelector((state) => state.favorites.favorites);
@@ -68,33 +67,39 @@ export const ProductDetails = () => {
     dispatch(fetchProductDetails(productId));
     dispatch(getAllFavorites(sessionUser ? sessionUser : null));
     // dispatch(fetchUpdateProduct(product))
-  }, [dispatch, productId]);
+  }, [dispatch, productId, sessionUser]);
 
-  if (!product) return null;
   //for product quantity drop down
 
   //to check if the current user is the same as product owner, if true, don't show "add to cart" OpenModal
   let addItemBtn = "hide";
-  if (product?.ownerId !== sessionUser?.id && product.quantity > 0) {
+  //if you are logged in and you are not the product owner and the product has stock
+  if (
+    sessionUser &&
+    product?.ownerId !== sessionUser?.id &&
+    product?.quantity > 0
+  ) {
     addItemBtn = "show";
   }
 
   //if it's out of stock, product quantity shows out of stock, and the add to cart button is disabled
   let stock = "hide";
   let noStock = "hide";
-  if (product.quantity <= 0) {
+  if (product?.quantity <= 0) {
     //when out of stuck  /iphone and fridge are -1, what the frick
     noStock = "show";
   }
 
   let quantityArr = [];
-  if (product.quantity > 0) {
+  if (product?.quantity > 0) {
     //has stock
     stock = "show";
     quantityArr = [...Array(product?.quantity + 1).keys()];
     quantityArr.shift(); //1......productQuantity
   }
 
+  if (!sessionUser) return null;
+  if (!product) return null;
   return (
     <div id="largest-product-detail-div">
       <div id="filter-holder-ProductDetails">
@@ -110,7 +115,7 @@ export const ProductDetails = () => {
               <div id="primary-image-holder-productDetails">
                 <img
                   id="primary-image-productDetails"
-                  src={product?.product_image[0]}
+                  src={product.product_image[0]}
                   alt="product_image"
                 />
               </div>
@@ -119,18 +124,18 @@ export const ProductDetails = () => {
                 {sessionUser && (
                   <i
                     id="heart-icon-prod-detail"
-                    className={`nav-link fa-regular ${isFavorite(product.id) ? "fa-solid fa-heart" : "fa-heart"
-                      }`}
+                    className={`nav-link fa-regular ${
+                      isFavorite(product.id) ? "fa-solid fa-heart" : "fa-heart"
+                    }`}
                     onClick={() => handleHeartClick(product.id)}
                   ></i>
                 )}
               </div>
             </div>
 
-              <div>
-                <ReviewFormPage productId={product.id} />
-              </div>
-
+            <div>
+              <ReviewFormPage productId={product.id} />
+            </div>
           </div>
 
           <div id="right-panel-productDetails">
@@ -154,7 +159,7 @@ export const ProductDetails = () => {
               <div id="how-many-productDetails">
                 <label>
                   {" "}
-                  Choose how many you would like:  {" "}
+                  Choose how many you would like:{" "}
                   <select
                     name="selectedPurchaseQuantity"
                     value={purchaseQuantity}
@@ -179,7 +184,6 @@ export const ProductDetails = () => {
               <div
                 id="add-item-cart-fav-butt-ProductDetails"
                 className={addItemBtn}
-
               >
                 <OpenSideModalButton
                   buttonStyle="Add-productDetails"
