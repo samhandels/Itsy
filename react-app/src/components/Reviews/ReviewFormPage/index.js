@@ -49,8 +49,9 @@ const ReviewFormPage = ({ productId }) => {
 
     let isMyProduct = false
     // console.log(thisProduct)
-    if(thisProduct?.ownerId === user?.id) {
-        isMyProduct = true}
+    if (thisProduct?.ownerId === user?.id) {
+        isMyProduct = true
+    }
 
 
 
@@ -105,8 +106,8 @@ const ReviewFormPage = ({ productId }) => {
                         </div>
                     </div>
                 </form >}
-                modalComponent={<ReviewFormModal productId={productId} />}
-            /> : productReviews.length ? <div className = "is-my-product">Here is what your shoppers had to say: </div> : <div>No reviews yet</div>}
+                modalComponent={<ReviewFormModal currentStars={activeRating} productId={productId} />}
+            /> : productReviews.length ? <div className="is-my-product">Here is what your shoppers had to say: </div> : <div>No reviews yet</div>}
 
             <div id='reviews-holder-ReviewFormPage'>
 
@@ -131,7 +132,7 @@ const ReviewFormPage = ({ productId }) => {
                             <div className="review-detail-button-container-prod">
                                 <OpenModalButton
                                     buttonText="Update"
-                                    modalComponent={<ReviewUpdateModal productId={review.productId} reviewId={review.id} />}
+                                    modalComponent={<ReviewUpdateModal currentStars={review.stars} productId={review.productId} reviewId={review.id} />}
                                 />
                                 <OpenModalButton
                                     buttonText="Delete"

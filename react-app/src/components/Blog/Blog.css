@@ -19,6 +19,7 @@
     gap: 1rem;
     margin-left: 10px;
     margin-right: 10px;
+    cursor: pointer;
     /* justify-content: space-between; */
 }
 
