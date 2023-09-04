@@ -14,7 +14,7 @@
 }
 
 .signup-button {
-    background-color: darkgrey;
+    background-color: #7b8a4b;
     color: white;
     border: none;
     border-radius: 20px;
@@ -32,7 +32,7 @@
 }
 
 .signup-button:hover {
-    background-color: black;
+    background-color: #f1641e;
     cursor: pointer;
 }
 
