@@ -6,12 +6,15 @@ import { ProductCard } from "../ProductCard";
 import './FilteredProducts.css'
 import BlogSection from "../Blog";
 import { getAllFavorites } from "../../store/favoritesReducer";
+import { NavLink } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 
 export const FilteredProducts = () => {
     const search = useParams().searchInput;
     const dispatch = useDispatch()
     let searchProducts = []
+    const history = useHistory()
 
     const productsObj = useSelector((state) => (state.products ? state.products : {}))
     const state = useSelector((state) => state)
@@ -29,7 +32,9 @@ export const FilteredProducts = () => {
         })
     }
 
-
+    const goLandingPage = () => {
+        history.replace('/')
+    }
 
     useEffect(() => {
         dispatch(fetchProducts())
@@ -45,12 +50,12 @@ export const FilteredProducts = () => {
     const singleProdKey = "singleProduct"
     delete productsObj[singleProdKey]
 
-    if (!searchProducts.length) return null
+    // if (!searchProducts.length) return null
 
     return (
 
         <div>
-            <div id='filter-holder-AllProducts'>
+            {/* <div id='filter-holder-AllProducts'>
                 <div className="filter-AllProducts">
                     Jewelry & Accessories
                 </div>
@@ -76,21 +81,36 @@ export const FilteredProducts = () => {
                     Gifts & Cards
                 </div>
 
-            </div>
+            </div> */}
 
-            <div id='sales-banner-AllProducts'>
-                <div id='up-to-AllProducts'>
-                    Up to 50% off
-                </div>
-                <div id='labor-day-AllProducts'>
-                    The Labor Day Sales Event is here!
-                </div>
-                <div id='shop-button-AllProducts'>
-                    Shop now
-                </div>
-                <div id='terms-AllProducts'>
-                    Participating sellers only. Terms apply.
-                </div>
+            <div id="filter-reset" className="reset-filter-search-results" onClick={goLandingPage}>
+                        See All Products
+                        </div>
+
+                <div id='sales-banner-AllProducts'>
+                        <div id='up-to-AllProducts'>
+                              Up to 50% off
+                        </div>
+                        <div id='labor-day-AllProducts'>
+                              The Labor Day Sales Event is here!
+                        </div>
+                              <NavLink  id='shop-now' to='/shopping_cart/current'>
+                        <div id='shop-button-AllProducts'>
+                              Shop now
+                        </div>
+                              </NavLink>
+                        <div id='terms-AllProducts'>
+                              Participating sellers only. Terms apply.
+                        </div>
+                  </div>
+
+            {
+                searchProducts.length ? null : <div id='no-search-results'>No Search Results</div>
+            }
+            <div className='center-all-outer'>
+            {
+                searchProducts.length ? null : <NavLink id='no-search-link' to='/'>See all products</NavLink>
+            }
             </div>
 
             <div id='productCard-holder-AllProducts'>

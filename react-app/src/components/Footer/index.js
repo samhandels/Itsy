@@ -1,6 +1,8 @@
 import React from 'react';
 import './Footer.css';
 import githubLogo from './github.png';
+import redux_icon from './redux_icon.png';
+import flask_icon from './flask_icon.png';
 
 function Footer() {
     return (
@@ -33,7 +35,7 @@ function Footer() {
                     </div>
 
                     <div className="team-member">
-                        <img className='member-image' src="https://media.licdn.com/dms/image/C4D03AQFtc-pVwmDnEA/profile-displayphoto-shrink_200_200/0/1604125040371?e=1698883200&v=beta&t=hqwEc_8bV5b3XfhXlBlttQoiGcn9hyuv6bcTH9624T4" alt="Team Member 2" />
+                        <img className='member-image' src="https://media.licdn.com/dms/image/D4D03AQGMEVQhqGxcbA/profile-displayphoto-shrink_200_200/0/1693629991248?e=1698883200&v=beta&t=n5TFtRYB-ZRPx5xtASouGMj9e4Ho7N-uAo7zMQwbn6Y" alt="Team Member 2" />
                         <div className='member-name' >Juvenal Burguillos</div>
                             <a href="https://www.linkedin.com/in/juvenal-burguillos-b550041ba/" target="_blank" rel="noopener noreferrer">
                                 <img className='linkedin-logo' src="https://iconsplace.com/wp-content/uploads/_icons/ffffff/256/png/linkedin-icon-18-256.png" alt="linkedin"/>
@@ -79,9 +81,70 @@ function Footer() {
 
             {/* Bottom links section */}
             <div className="bottom-links">
-                <div> © 2023 Itsy</div>
+                <div> © 2023 Itsy - inspired by Etsy.com</div>
                 <div className="links">
-                    <a href='https://github.com/samhandels/Itsy' target="_blank">Checkout our Github Repository</a>
+
+
+
+                <i class="fa-brands fa-react fa-xl hover-text">
+                <span id='topTip' className='tooltip-text'>React</span>
+                </i>
+
+                <i className='hover-text-img'>
+                <img className="fa-brands-redux-icon hover-text" src={redux_icon}></img>
+                <span id='topTip-img' className='tooltip-text-img'>Redux</span>
+                </i>
+
+                <i className='hover-text-img'>
+                <img className="fa-brands-redux-icon hover-text" src={flask_icon}></img>
+                <span id='topTip-img' className='tooltip-text-img'>Flask</span>
+                </i>
+
+                <i class="fa-solid fa-database fa-xl hover-text">
+                <span id='topTip' className='tooltip-text'>SQLAlchemy</span>
+                </i>
+
+                <i class="fa-brands fa-python fa-xl hover-text">
+                <span id='topTip' className='tooltip-text'>Python</span>
+                </i>
+
+                {/* <i class="fa-solid fa-flask fa-xl hover-text">
+                <span id='topTip' className='tooltip-text'>Flask</span>
+                </i> */}
+
+                <i class="fa-brands fa-node-js fa-xl hover-text">
+                <span id='topTip' className='tooltip-text'>Node</span>
+                </i>
+
+                <i class="fa-brands fa-square-js fa-xl hover-text">
+                <span id='topTip' className='tooltip-text'>Javascript</span>
+                </i>
+
+                <i class="fa-brands fa-html5 fa-xl hover-text">
+                <span id='topTip' className='tooltip-text'>HTML5</span>
+                </i>
+
+                <i class="fa-brands fa-css3-alt fa-xl hover-text">
+                <span id='topTip' className='tooltip-text'>CSS3</span>
+                </i>
+
+                {/* <i class="fa-brands fa-aws fa-xl hover-text">
+                <span id='topTip' className='tooltip-text'>Amazon</span>
+                </i> */}
+
+                <i class="fa-brands fa-git-alt fa-xl hover-text">
+                <span id='topTip' className='tooltip-text'>Git</span>
+                </i>
+
+                <i class="fa-brands fa-square-github fa-xl hover-text">
+                <span id='topTip' className='tooltip-text'>GitHub</span>
+                </i>
+
+
+
+
+
+                    <a href='https://github.com/samhandels/Itsy' target="_blank">GitHub Repo</a>
                     {/* <a>Privacy Policy</a>
                     <a>Contact Us</a> */}
                 </div>

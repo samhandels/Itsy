@@ -5,11 +5,14 @@
 }
 
 .login-modal {
-    margin: 30px;
+    margin: 0px 40px 30px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .login-button {
-    background-color: darkgrey;
+    background-color: #7b8a4b;
     color: white;
     border: none;
     border-radius: 20px;
@@ -18,7 +21,8 @@
 }
 
 .login-button:hover {
-    background-color: black;
+    background-color: #f1641e;
+    cursor: pointer;
 }
 
 .login-field {
@@ -34,12 +38,24 @@
 }
 
 #demo-link {
-    color: #f1641e;
+    background-color: #7b8a4b;
+    color: white;
+    border: none;
+    border-radius: 20px;
     text-align: center;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    margin-top: -10px;
+    font-family: "Roboto";
+    font-weight: 300;
+    font-size: 14px;
 }
 
 #demo-link:hover {
+    background-color: #f1641e;
     cursor: pointer;
-    text-decoration: underline;
-    /* border: 1px solid #f1641e; */
+}
+
+.sign-in-input-modal {
+    width: 200px;
 }

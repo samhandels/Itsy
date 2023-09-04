@@ -7,9 +7,12 @@ import { ProductForm } from "../ProductForm";
 import OpenModalButton from "../OpenModalButton";
 import { DeleteProductsModal } from "../DeleteProductsModal";
 import './styleStore.css'
+import { useHistory } from "react-router-dom";
 
 export const Store = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
+
   const sessionUser = useSelector((state) => state.session.user);
 
   const productsObj = useSelector((state) => (state.products ? state.products : {}))
@@ -26,12 +29,16 @@ export const Store = () => {
 
   const product = products.filter((prod) => prod.ownerId === sessionUser.id);
 
+  const create = () => {
+      history.replace('/products/new')
+  }
+
   if (!product) return null;
 
   return (
     <div id='storefront-entire-page'>
       <div id='storefront-inner-div'>
-      <div id='my-storefront-sign'>My Itsy Storefront</div>
+      <div id='my-storefront-sign'>{sessionUser.firstName}'s Storefront</div>
       <div id='store-line'></div>
       <NavLink id='storefront-butt' to="/products/new">
         Create a new product
@@ -40,7 +47,7 @@ export const Store = () => {
       <div id="productCard-holder-AllProducts">
         {product.length
           ? product.map((prod) => (
-            <div>
+            <div id='storefront-button-div'>
               <ProductCard product={prod} key={prod.id} />
 
               <NavLink exact to={`/products/update/${prod.id}`}>
@@ -56,7 +63,7 @@ export const Store = () => {
           : null}
       </div>
 
-
+      {/* <div onClick={create} id='create-butt-bottom-storefront'>Create a New Product</div> */}
 
 
       </div>

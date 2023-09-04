@@ -20,6 +20,14 @@ def seed_product_images():
         productId=7, url='https://i.etsystatic.com/20257527/r/il/c9c63d/4070354997/il_794xN.4070354997_12rg.jpg')
     product_image8 = ProductImage(
         productId=8, url='https://i.etsystatic.com/36840965/r/il/50cf61/5028439116/il_794xN.5028439116_pvwx.jpg')
+    product_image9 = ProductImage(
+        productId=9, url='https://i.etsystatic.com/25893813/r/il/bc0d0e/5221317936/il_794xN.5221317936_t617.jpg')
+    product_image10 = ProductImage(
+        productId=10, url='https://i.etsystatic.com/5137977/r/il/18dfde/3940491217/il_794xN.3940491217_mb7d.jpg')
+    product_image11 = ProductImage(
+        productId=11, url='https://i.etsystatic.com/35070992/r/il/8e83d5/3820942979/il_794xN.3820942979_duu0.jpg')
+    product_image12 = ProductImage(
+        productId=12, url='https://i.etsystatic.com/7113657/r/il/ee5971/5186842061/il_794xN.5186842061_3iup.jpg')
 
 
     db.session.add(product_image1)
@@ -30,6 +38,12 @@ def seed_product_images():
     db.session.add(product_image6)
     db.session.add(product_image7)
     db.session.add(product_image8)
+    db.session.add(product_image9)
+    db.session.add(product_image10)
+    db.session.add(product_image11)
+    db.session.add(product_image12)
+
+
     db.session.commit()
 
 

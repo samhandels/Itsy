@@ -48,9 +48,10 @@ export default function AllShoppingCartItems() {
       <div id='shopping-cart-inner-div'>
 
       <div id='my-cart-page-sign'>{sessionUser.firstName}'s Shopping Cart</div>
+      <div id='my-cart-page-sign'>{sessionUser.firstName}'s Shopping Cart</div>
             <div id='cart-line'></div>
       <div id='cart-butt'>
-        Manage all the items in your cart
+        {`Manage all the items in your cart (${productItemArray.length})`}
       </div>
 
       <h4 className="greeting">
