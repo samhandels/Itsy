@@ -25,8 +25,8 @@ const ReviewFormModal = ({ productId }) => {
     const prodArr = Object.values(products)
     const thisProduct = prodArr[productId - 1]
 
-    console.log("PRODUCTID", productId)
-    console.log("THISPRODUCTID", thisProduct.id)
+    // console.log("PRODUCTID", productId)
+    // console.log("THISPRODUCTID", thisProduct.id)
 
 
     const handleSubmit = async (e) => {
