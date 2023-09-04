@@ -4,7 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import ReviewFormPage from "./components/Reviews/ReviewFormPage";
-import AllShoppingCartItems from "./components/ShoppingCart/AllShoppingCartItems";
+import {AllShoppingCartItems} from "./components/ShoppingCart/AllShoppingCartItems";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
