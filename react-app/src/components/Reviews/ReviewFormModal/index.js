@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import { useModal } from '../../../context/Modal'
 import { Link } from 'react-router-dom'
 import './ReviewFormModal.css'
-import { postReview } from '../../../store/reviewsReducer'
+import { getWaitingReviews, postReview } from '../../../store/reviewsReducer'
 import { useDispatch, useSelector } from 'react-redux'
 
 const ReviewFormModal = ({ currentStars, productId }) => {
@@ -28,16 +28,18 @@ const ReviewFormModal = ({ currentStars, productId }) => {
     // console.log("PRODUCTID", productId)
     // console.log("THISPRODUCTID", thisProduct.id)
 
-    if (!stars) setStars(currentStars)
     let reviewInfo = { review, stars }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        if (!stars) setStars(currentStars)
+        await dispatch(getWaitingReviews())
         const data = await dispatch(postReview(productId, reviewInfo))
         if (data) {
             setErrors(data);
         } else {
             closeModal();
+            window.location.reload(false);
 
         }
     }
@@ -122,13 +124,13 @@ const ReviewFormModal = ({ currentStars, productId }) => {
                         </div>
                         {stars < 3 && <div className="low-review-help">
                             <p>Sorry your experience wasn't great</p>
-                            <p>Click here to contact the shop owner</p>
+                            <p> Please contact the shop owner</p>
                         </div>}
                     </div>
                 </div>}
                 {reviewPage === 2 &&
                     <div className='review-step review-step-2'>
-                        <p className="review-text-sugg">Helpful reviews on Etsy mention:</p>
+                        <p className="review-text-sugg">Helpful reviews on Itsy mention:</p>
                         <ul>
                             <li>the quality of the item</li>
                             <li>if the item matched the description</li>

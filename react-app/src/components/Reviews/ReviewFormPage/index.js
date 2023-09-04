@@ -24,13 +24,25 @@ const ReviewFormPage = ({ productId }) => {
 
     const reviews = useSelector((state) => state.reviews.reviews)
     const products = useSelector((state) => state.products)
+    const transactions = useSelector((state) => state.transactions.transactions)
     const revArr = Object.values(reviews)
+    const transArr = Object.values(transactions)
 
+    let userTransactions = transArr.filter((trans) => trans.userId === user.id)
+    console.log("USERTRANSACTIONS", userTransactions)
+    let purchasedItem = false;
 
+    userTransactions.forEach((transaction) => {
+        if(transaction.productId == productId) {
+            purchasedItem = true
+        }
+    })
     const prodArr = Object.values(products)
 
     const productReviews = revArr.filter((review) => review?.productId === productId)
     const thisProduct = prodArr[productId - 1]
+
+
 
     const userLikes = []
 
@@ -69,7 +81,7 @@ const ReviewFormPage = ({ productId }) => {
 
     return (
         <div className="review-container">
-            {!isMyProduct ? userLeftReview == false && <OpenModalButton
+            {!isMyProduct ? userLeftReview == false && purchasedItem && <OpenModalButton
                 buttonText={<form className="review-component"
                 >
                     <p>Review this item</p>

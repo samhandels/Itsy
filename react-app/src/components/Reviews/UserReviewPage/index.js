@@ -12,6 +12,7 @@ import { fetchProducts } from "../../../store/productsReducer"
 import { ProductCard } from "../../ProductCard"
 import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min"
 import ReviewFormModal from "../ReviewFormModal"
+import { LeaveReviewPrompt } from "./helpsmallbusiness"
 
 
 
@@ -44,15 +45,10 @@ const UserReviewPage = () => {
     useEffect(() => {
         dispatch(getAllReviews())
         dispatch(fetchProducts())
-    }, [dispatch])
-
-    useEffect(() => {
         dispatch(getTransactionItemsThunk())
-    }, [dispatch])
-
-    useEffect(() => {
         dispatch(getWaitingReviews())
     }, [dispatch])
+
 
     const currentReviews = revArr.filter((review) => review?.userId === currentUser.id)
     const currentReviewProductIds = currentReviews.map((review) => review.productId)
@@ -118,6 +114,7 @@ const UserReviewPage = () => {
                             </div>
                         ))}
                     </div>
+                    {/* <LeaveReviewPrompt noReviews={noReviews}/> */}
                     <div id='help-small-business-outer-div'>
                         <div className="help-small-business">
                             <div className="help-small-bus-title">Your reviews on Itsy help shop owners by providing them instant feedback and allowing
@@ -125,7 +122,7 @@ const UserReviewPage = () => {
                             {noReviews.length ? <div>
                                 <div id='unreviewed-line'></div>
                                 <div className="unreviewed-title">Unreviewed items</div>
-                                {noReviews.length ? noReviews?.map((purchase) => (
+                                {noReviews?.map((purchase) => (
                                     <OpenModalButton
                                         buttonText={<div className="unreviewed-purchases">
                                             <div><img className="unreview-product-img" src={purchase.product_image}></img></div>
@@ -135,7 +132,7 @@ const UserReviewPage = () => {
                                             </div>
                                         </div>}
                                         modalComponent={<ReviewFormModal productId={purchase.id} />}
-                                    />)) : <div></div>}
+                                    />))}
                             </div> : <div></div>}
 
                         </div>
