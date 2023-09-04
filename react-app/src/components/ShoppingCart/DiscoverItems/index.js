@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../../store/productsReducer";
 import "../../AllProducts/styleAllProducts.css";
 import { ItemtoCart } from "../ItemtoCart";
+import { session } from "passport";
 // import { getAllFavorites } from "../../../store/favoritesReducer";
 
 export const DiscoverItems = () => {
@@ -12,6 +13,8 @@ export const DiscoverItems = () => {
   const products = Object.values(
     useSelector((state) => (state.products ? state.products : {}))
   );
+
+  const sessionUser = useSelector(state=> state.session.user)
 
   // let generateRandom = [];
 
@@ -41,8 +44,9 @@ export const DiscoverItems = () => {
 
   // console.log("***************", generateRandom);
 
+  let notYourProducts = products.filter(product => product.ownerId !== sessionUser.id)
   let discoverFourItems = [0, 1, 2, 3].map((number) => {
-    return products[number]
+    return notYourProducts[number]
   });
 
   useEffect(() => {
