@@ -12,10 +12,10 @@ export default function AllShoppingCartItems() {
   const items = Object.values(
     useSelector((state) => (state.items ? state.items : []))
   ); //items are not unique, there can be several same product in the item table
-  console.log(
-    "**********************Items from all items in shopping cart******************",
-    items
-  );
+  // console.log(
+  //   "**********************Items from all items in shopping cart******************",
+  //   items
+  // );
   const products = Object.values(
     useSelector((state) => (state.products ? state.products : []))
   ); //because you come from landing page, the state would have products already
@@ -24,8 +24,8 @@ export default function AllShoppingCartItems() {
 
 
   useEffect(() => {
-    dispatch(getItemsThunk());
     dispatch(fetchProducts()); //so all products are still on the shopping cart refreshing the page
+    dispatch(getItemsThunk());
   }, [dispatch]);
 
 

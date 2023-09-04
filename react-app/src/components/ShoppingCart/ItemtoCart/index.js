@@ -28,7 +28,10 @@ export const ItemtoCart = ({product}) => {
         let purchaseQuantity = 1
         const addOnetoCart = (e)=>{
             e.preventDefault();
-            dispatch(createItemThunk(product.id, purchaseQuantity))
+            // console.log("*************************product id in the item card***************************", product.id);
+            // console.log("*************************purchasequantity in the item card***************************", purchaseQuantity);
+            
+            dispatch(createItemThunk(product?.id, purchaseQuantity))
         }
 
       let dollar = new Intl.NumberFormat('en-US', {
