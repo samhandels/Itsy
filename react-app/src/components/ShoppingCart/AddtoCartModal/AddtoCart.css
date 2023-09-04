@@ -51,3 +51,6 @@
  font-size: 20px;
 }
 
+.powerful-z-index{
+ z-index: 1000;
+}

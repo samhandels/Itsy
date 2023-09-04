@@ -23,7 +23,7 @@ export function AddtoCartModal({ product, purchaseQuantity }) {
   };
 
   return (
-    <>
+    <div className="powerful-z-index">
       <section className="margin-top column center margin-bottom">
         <div className="row center">
           <div className="item-img">
@@ -32,14 +32,14 @@ export function AddtoCartModal({ product, purchaseQuantity }) {
           <div>1 item added to cart!</div>
         </div>
           <div className="column  ">
-            <div className="button-container margin-top">
-              <button className="back-button width-btn" type="button" onClick={closeModal}>
+            <div className="button-container-order margin-top">
+              <button className="back-button-cancel width-btn" type="button" onClick={closeModal}>
                 Don't add to cart
               </button>
             </div>
             <div className="button-container margin-top column">
               <button
-                className="forward-button width-btn"
+                className="forward-button-order width-btn"
                 type="submit"
                 onClick={createCartItem}
               >
@@ -52,6 +52,6 @@ export function AddtoCartModal({ product, purchaseQuantity }) {
         <div className='margin-top font-size padding'>Items you may like</div>
         <ItemsSideModal />
       </section>
-    </>
+    </div>
   );
 }

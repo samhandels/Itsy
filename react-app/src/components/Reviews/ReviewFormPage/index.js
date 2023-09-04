@@ -49,7 +49,7 @@ const ReviewFormPage = ({ productId }) => {
 
     let isMyProduct = false
     console.log(thisProduct)
-    if(thisProduct?.ownerId === user.id) {
+    if(thisProduct?.ownerId === user?.id) {
         isMyProduct = true}
 
 
