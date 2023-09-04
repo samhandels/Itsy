@@ -36,6 +36,7 @@ const ReviewFormModal = ({ productId }) => {
             setErrors(data);
         } else {
             closeModal();
+            window.location.reload(false);
         }
     }
 

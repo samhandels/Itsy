@@ -14,6 +14,18 @@
     font-weight: 100;
 }
 
+.unreview-product-img{
+    height: 70px;
+    width: 80px;
+}
+
+.unrev-prod-info {
+    margin-left: 10px;
+    font-size: 12px;
+
+}
+
+
 #review-line {
     border-bottom: 2px solid rgb(222,222,222);
 }
