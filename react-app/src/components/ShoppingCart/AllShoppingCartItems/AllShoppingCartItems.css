@@ -1,4 +1,3 @@
-
 #shopping-cart-components-border {
   display: flex;
   flex-direction: column;
@@ -14,7 +13,7 @@
 }
 
 #cart-line {
-  border-bottom: 3px solid rgb(222,222,222);
+  border-bottom: 3px solid rgb(222, 222, 222);
 }
 
 #cart-butt {
@@ -26,9 +25,6 @@
   margin-bottom: 30px;
   text-align: center;
 }
-
-
-
 
 .components-border {
   /* border: 1px lightgrey solid; */
@@ -139,19 +135,19 @@
   cursor: pointer;
 }
 
-#order-up-butt>button {
+#order-up-butt > button {
   background-color: #7b8a4b;
   border-radius: 0;
   width: 325px;
 }
 
-#order-up-butt>button:hover {
+#order-up-butt > button:hover {
   background-color: #f1641e;
   cursor: pointer;
 }
 
 #discover-sec-shopping-cart {
-  border-top: 3px solid rgb(222,222,222);
+  border-top: 3px solid rgb(222, 222, 222);
 }
 
 #discover-title-shopping-cart {
@@ -167,5 +163,14 @@
 #individual-shop-cart:hover {
   border-radius: 10px;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
-  rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+
+.navlink-btn {
+  padding: 10px 20px;
+  border-radius: 20px;
+  position: static;
+  background-color: #7b8a4b;
+  color: white;
+  text-decoration: none;
 }

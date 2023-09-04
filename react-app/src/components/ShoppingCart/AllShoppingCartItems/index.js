@@ -47,16 +47,16 @@ export default function AllShoppingCartItems() {
     <div id="shopping-cart-components-border">
       <div id='shopping-cart-inner-div'>
 
-      <div id='my-cart-page-sign'>My Shopping Cart</div>
+      <div id='my-cart-page-sign'>{sessionUser.firstName}'s Shopping Cart</div>
             <div id='cart-line'></div>
       <div id='cart-butt'>
         Manage all the items in your cart
       </div>
 
-      <div className="greeting">
+      <h4 className="greeting">
         Hello {sessionUser.username}, there are {productItemArray.length} items in your
         shopping cart:
-      </div>
+      </h4>
 
       <section className="item-cards">
       {/* productItem is the unique card showing in the shopping cart */}
@@ -77,13 +77,14 @@ export default function AllShoppingCartItems() {
         })}
       </section>
       <section id='discover-sec-shopping-cart' className="discover-item-cards">
-        <h1 id='discover-title-shopping-cart'>Discover other items</h1>
+        <h6 id='discover-title-shopping-cart'>Discover other items</h6>
         <DiscoverItems />
       </section>
+      <section className="column center margin-bottom">
+      <h6 id='discover-title-shopping-cart'>Looking for more of your finds?</h6>
+      <NavLink className="navlink-btn" to="/favorites">View your favorites</NavLink>
+      </section>
       {/* <NavLink to="/transactions"> Go to Transactions</NavLink> */}
-
-
-
       </div>
     </div>
   );
