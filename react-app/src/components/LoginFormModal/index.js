@@ -42,7 +42,7 @@ function LoginFormModal() {
         </ul> : ""}
         <label className="login-field">
           Email address
-          <input
+          <input className="sign-in-input-modal"
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -51,7 +51,7 @@ function LoginFormModal() {
         </label>
         <label className="login-field">
           Password
-          <input
+          <input className="sign-in-input-modal"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -59,7 +59,7 @@ function LoginFormModal() {
           />
         </label>
         <button className="login-button grow" type="submit">Log In</button>
-        <div id='demo-link' onClick={demoSignIn}>Log in as Demo User</div>
+        <div id='demo-link' className="grow" onClick={demoSignIn}>Demo User</div>
       </form>
     </div>
   );

@@ -33,10 +33,10 @@ export const DeleteProductsModal = ({ productId }) => {
   return (
     <div id="deleteModal">
       <h2>Confirm Delete</h2>
-      <div id="youSure">Are you sure you want to remove this spot?</div>
+      <div id="youSure">Are you sure you want to remove this product?</div>
       <form onSubmit={deleteProduct}>
-        <button type="submit" id="buttonY" >{`Yes`}</button>
-        <button type="button" id="buttonN" onClick={closeModal}>{`No`}</button>
+        <button type="submit" id="buttonY-deleteModal" >{`Yes`}</button>
+        <button type="button" id="buttonN-deleteModal" onClick={closeModal}>{`No`}</button>
       </form>
     </div>
   );

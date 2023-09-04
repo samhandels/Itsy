@@ -40,16 +40,16 @@ export function OrderCompleteModal({ product, purchaseQuantity }) {
   }, [dispatch])
 
   return (
-    <div className="">
-      <h1>Order Complete!</h1>
-      <div>Itsy bitsy order will be on it's way:D </div>
+    <div className="margin-bottom margin-side">
+      <div className="order-complete margin-top">Order Complete!</div>
+      <div className="margin-bottom">Itsy bitsy order will be on it's way:D </div>
       <div className="flex-row buttons">
-        <div className="button-container">
-          <form onSubmit={onSubmit}>
-            <button className="back-button" type="button" onClick={closeModal}>
+        <div className="button-container-order">
+          <form className="button-container-order" onSubmit={onSubmit}>
+            <button className="back-button-cancel margin-right" type="button" onClick={closeModal}>
               Cancel
             </button>
-            <button className="forward-button" type="submit">
+            <button className="forward-button-order" type="submit">
               Continue with more order
             </button>
           </form>

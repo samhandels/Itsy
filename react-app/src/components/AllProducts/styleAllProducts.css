@@ -110,6 +110,18 @@
 }
 
 
+#productCard-holder-AllProducts-2by2 {
+      display: grid;
+      gap: 1.5rem;
+      margin: 1rem;
+      margin-top: 2rem;
+      grid-template-columns: 1fr 1fr;
+      /* grid-template-rows: repeat(2, 1fr); */
+}
+
+
+
+
 @media (min-width: 550px) {
       #productCard-holder-AllProducts {
         grid-template-columns: repeat(2, 1fr);

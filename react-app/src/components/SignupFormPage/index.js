@@ -30,15 +30,19 @@ function SignupFormPage() {
   };
 
   return (
-    <>
+    <div id='signup-entire-page'>
+      <div id='inner-signup-page'>
       <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
+      <form id='form-signup-page' onSubmit={handleSubmit}>
+      <div id='whole-form-signup-page'>
+      <div id='email-signup-page'>
+
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
         <label>
           Email
-          <input
+          <input id='email-input-signup-page'
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -46,36 +50,66 @@ function SignupFormPage() {
             required
           />
         </label>
+
+      </div>
+
+
+      <div id='username-signup-page'>
+
         <label>
           Username
-          <input
+          <input id='username-input-signup-page'
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
           />
         </label>
+
+
+      </div>
+
+
+      <div id='password-signup-page'>
         <label>
           Password
-          <input
+          <input id='password-input-signup-page'
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </label>
+
+
+      </div>
+
+      <div id='confirm-password-signup-page'>
+
         <label>
           Confirm Password
-          <input
+          <input id='confirm-password-input-signup-page'
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
         </label>
-        <button type="submit">Sign Up</button>
+
+      </div>
+
+
+      </div>
+
+
+
+        <button id='signup-butt-signup-page' type="submit">Sign Up</button>
       </form>
-    </>
+
+
+
+      </div>
+    </div>
   );
 }
 

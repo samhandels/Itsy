@@ -15,7 +15,7 @@ import { fetchProducts } from '../../../store/productsReducer'
 
 
 const ReviewFormPage = ({ productId }) => {
-    console.log(productId)
+    // console.log(productId)
     const [rating, setRating] = useState()
     const [activeRating, setActiveRating] = useState()
     const [showLikes, setShowLikes] = useState(true)
@@ -48,8 +48,8 @@ const ReviewFormPage = ({ productId }) => {
     let userLeftReview = false;
 
     let isMyProduct = false
-    console.log(thisProduct)
-    if(thisProduct?.ownerId === user.id) {
+    // console.log(thisProduct)
+    if(thisProduct?.ownerId === user?.id) {
         isMyProduct = true}
 
 
