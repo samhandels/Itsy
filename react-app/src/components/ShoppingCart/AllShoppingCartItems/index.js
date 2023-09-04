@@ -31,6 +31,7 @@ export default function AllShoppingCartItems() {
     dispatch(getAllReviews())
     dispatch(getWaitingReviews())
     dispatch(fetchProducts()); //so all products are still on the shopping cart refreshing the page
+    dispatch(getItemsThunk());
   }, [dispatch]);
 
 

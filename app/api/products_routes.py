@@ -236,17 +236,18 @@ def create_shopping_cart_item_by_product(id):
   
 
     req_json = request.get_json(force = True) #{'purchaseQuantity': '3'}
-#     print("****************************request**************************", request)
-#     print("****************************request**************************", req_json)
+    print("****************************request**************************", request)
+    print("****************************request**************************", req_json)
     str_quantity = req_json['purchaseQuantity']
     quantity = int(str_quantity)
 #     print("****************************quantity**************************", quantity)
 #     print("****************************quantity type**************************", type(quantity))
-    create_items = [ShoppingCartItems(productId = id,shoppingCartId = current_user.id) for bananable in range(quantity)] #creating all the items with the same products id
+    create_items = [ShoppingCartItems(productId = id,shoppingCartId = current_user.id) for index in range(quantity)] #creating all the items with the same products id
 
     for item in create_items:
+         print('***************************item*************************', item)
+         db.session.commit()
          db.session.add(item) #add them all to the database one by one
-    db.session.commit()
     return (f"{current_user.id} user has created {quantity} products for the shopping cart")
 
 
