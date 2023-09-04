@@ -58,8 +58,9 @@ const ReviewFormPage = ({ productId }) => {
         if (productReviews[i].userId === user?.id) {
 
             userLeftReview = true
+            break;
         }
-
+        
     }
     useEffect(() => {
         dispatch(getAllReviews())
@@ -67,7 +68,7 @@ const ReviewFormPage = ({ productId }) => {
 
     return (
         <div className="review-container">
-            {!isMyProduct? !userLeftReview && <OpenModalButton
+            {!isMyProduct ? userLeftReview == false && <OpenModalButton
                 buttonText={<form className="review-component"
                 >
                     <p>Review this item</p>
@@ -105,7 +106,7 @@ const ReviewFormPage = ({ productId }) => {
                     </div>
                 </form >}
                 modalComponent={<ReviewFormModal productId={productId} />}
-            /> : <div className = "is-my-product">Here's what your shoppers had to say: </div>}
+            /> : productReviews.length ? <div className = "is-my-product">Here is what your shoppers had to say: </div> : <div>No reviews yet</div>}
 
             <div id='reviews-holder-ReviewFormPage'>
 

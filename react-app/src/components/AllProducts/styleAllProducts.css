@@ -27,7 +27,7 @@
       color: white;
       /* border-top: 1px solid rgb(255, 90, 95); */
       text-align: center;
-      font-size: 25px;
+      font-size: 17px;
       /* margin-bottom: -14px; */
       /* padding-top: 2px; */
       background-color: #7b8a4b;
@@ -73,6 +73,10 @@
       margin-top: 10px;
 }
 
+#shop-button-AllProducts:hover {
+      cursor: pointer;
+}
+
 #terms-AllProducts {
       font-weight: 100;
       font-size: 12px;
@@ -84,6 +88,25 @@
       gap: 1.5rem;
       margin: 1rem;
       margin-top: 2rem
+}
+
+#shop-now {
+      text-decoration: none;
+      color: white;
+}
+
+.welcome-banner {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      font-size: 20px;
+      font-weight: 500;
+      font-family: "Graphik Webfont",-apple-system,"Helvetica Neue","Droid Sans",Arial,sans-serif;
+}
+
+.firstname-underline {
+      text-decoration: underline;
 }
 
 

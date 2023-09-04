@@ -1,6 +1,9 @@
 .hidden {
   display: none;
 }
+/* .test {
+  border: 1px solid red;
+} */
 
 /* Navbar changes 8/27 */
 
@@ -25,6 +28,10 @@
   font-family: "Roboto";
   font-weight: 300;
   font-size: 15px;
+  width: 96%;
+  height: 100%;
+  outline: none;
+  /* object-fit: cover; */
 }
 
 .search-bar {
@@ -61,6 +68,27 @@
 .user-button {
   background-color: white;
   border: none;
+}
+
+.profile-dropdown button {
+  color: white;
+  background-color: #f1641e;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 10px 20px;
+  border: none;
+  margin-right: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-dropdown button:hover {
+  background-color: #e6521d;
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .fa-user-circle {
@@ -106,15 +134,34 @@
   color: #f1641e;
   position: absolute;
   z-index: 1;
-  right: 60px;
-  top: 24px;
+  right: 59px;
+  top: 21px;
 }
 
 .fa-circle-inner {
   color: white;
   position: absolute;
   z-index: 1;
-  right: 65px;
-  top: 23px;
+  right: 64px;
+  top: 21px;
   font-size: 12px;
+}
+
+.hide-that-button {
+  background-color: white;
+  border: none;
+}
+
+.hide-that-button:hover {
+  cursor: pointer;
+}
+
+#no-search-results {
+  font-size: 35px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+#no-search-link {
+  font-size: 20px;
 }

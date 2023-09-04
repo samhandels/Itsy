@@ -6,6 +6,7 @@ import { ProductCard } from "../ProductCard";
 import './FilteredProducts.css'
 import BlogSection from "../Blog";
 import { getAllFavorites } from "../../store/favoritesReducer";
+import { NavLink } from "react-router-dom";
 
 
 export const FilteredProducts = () => {
@@ -45,7 +46,7 @@ export const FilteredProducts = () => {
     const singleProdKey = "singleProduct"
     delete productsObj[singleProdKey]
 
-    if (!searchProducts.length) return null
+    // if (!searchProducts.length) return null
 
     return (
 
@@ -91,6 +92,15 @@ export const FilteredProducts = () => {
                 <div id='terms-AllProducts'>
                     Participating sellers only. Terms apply.
                 </div>
+            </div>
+
+            {
+                searchProducts.length ? null : <div id='no-search-results'>No Search Results</div>
+            }
+            <div className='center-all-outer'>
+            {
+                searchProducts.length ? null : <NavLink id='no-search-link' to='/'>See all products</NavLink>
+            }
             </div>
 
             <div id='productCard-holder-AllProducts'>

@@ -47,16 +47,16 @@ export default function AllShoppingCartItems() {
     <div id="shopping-cart-components-border">
       <div id='shopping-cart-inner-div'>
 
-      <div id='my-cart-page-sign'>My Shopping Cart</div>
+      <div id='my-cart-page-sign'>{sessionUser.firstName}'s Shopping Cart</div>
             <div id='cart-line'></div>
       <div id='cart-butt'>
-        Manage all the items in your cart
+        {`Manage all the items in your cart (${productItemArray.length})`}
       </div>
 
-      <div className="greeting">
+      {/* <div className="greeting">
         Hello {sessionUser.username}, there are {productItemArray.length} items in your
         shopping cart:
-      </div>
+      </div> */}
 
       <section className="item-cards">
       {/* productItem is the unique card showing in the shopping cart */}

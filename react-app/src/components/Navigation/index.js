@@ -19,6 +19,15 @@ function Navigation({ isLoaded }) {
 	const history = useHistory()
 	let searchProducts = []
 
+	// const resetEnter = () => {
+	// 	if (!searchInput) {
+	// 	  history.push("/");
+	// 	} else {
+	// 	  history.push(`/spots/filtered/${query}`);
+	// 	  reset();
+	// 	}
+	// };
+
 
 	const handleChange = (e) => {
 		e.preventDefault();
@@ -44,7 +53,11 @@ function Navigation({ isLoaded }) {
 
 	const onClick = (e) => {
 		e.preventDefault();
-		history.push(`/products/search/${searchInput}`)
+		if (searchInput) history.push(`/products/search/${searchInput}`)
+	}
+
+	const onEnter = () => {
+		if (searchInput) history.push(`/products/search/${searchInput}`)
 	}
 
 
@@ -71,8 +84,9 @@ function Navigation({ isLoaded }) {
 					placeholder="Search for anything"
 					onChange={handleChange}
 					value={searchInput}
+					onKeyDown={(e) => (e.key === "Enter" ? onEnter() : false)}
 				/>
-				<button onClick={onClick} ><i className="fa-solid fa-magnifying-glass" ></i></button>
+				<button className= "hide-that-button" onClick={onClick} ><i className="fa-solid fa-magnifying-glass" ></i></button>
 			</div>
 			<div className="nav-bar-links">
 				<NavLink exact to="/favorites">
@@ -83,7 +97,7 @@ function Navigation({ isLoaded }) {
 					{isLoaded && (
 						<ProfileButton className="nav-link profile-button" user={sessionUser} />
 					)}
-					{waitRevArr.length ?
+					{waitRevArr[0] ?
 						<div>
 							<i className="fa-solid fa-circle"></i>
 							<div className="fa-circle-inner">{waitRevArr.length}</div>
