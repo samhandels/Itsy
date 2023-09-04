@@ -4,7 +4,7 @@ from ..models.reviews import Review
 from..models.transactions import Transactions
 from ..models.transaction_items import TransactionItems
 from ..forms.review_form import ReviewForm
-from flask_login import current_user
+from flask_login import current_user, login_required
 from datetime import datetime
 
 reviews = Blueprint("reviews", __name__)
@@ -17,6 +17,7 @@ def validation_errors_to_error_messages(validation_errors):
         return errorMessages
 
 @reviews.route("/current")
+@login_required
 def get_user_reviews():
     """
     Query for reviews by user id
@@ -25,6 +26,8 @@ def get_user_reviews():
     response = [user_rev.to_dict() for user_rev in user_reviews]
     print(response)
     return response
+
+
 @reviews.route("/")
 def get_all_reviews():
     """
