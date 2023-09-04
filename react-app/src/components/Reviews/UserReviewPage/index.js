@@ -122,6 +122,9 @@ const UserReviewPage = () => {
                             {noReviews.length ? <div>
                                 <div id='unreviewed-line'></div>
                                 <div className="unreviewed-title">Unreviewed items</div>
+
+                                <div id='unreviewed-items-div'>
+
                                 {noReviews?.map((purchase) => (
                                     <OpenModalButton
                                         buttonText={<div className="unreviewed-purchases">
@@ -133,6 +136,14 @@ const UserReviewPage = () => {
                                         </div>}
                                         modalComponent={<ReviewFormModal productId={purchase.id} />}
                                     />))}
+
+
+                                </div>
+
+
+
+
+
                             </div> : <div></div>}
 
                         </div>
