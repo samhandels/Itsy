@@ -27,11 +27,27 @@ def seed_reviews():
         likes = 0
     )
     review7= Review(
-        productId = 7, userId = 3, review="Here is a review for product 7 by user 3", stars = 3,
+        productId = 7, userId = 2, review="Here is a review for product 7 by user 2", stars = 3,
         likes = 0
     )
     review8= Review(
-        productId = 8, userId = 1, review="Here is a review for product 8 by user 1", stars = 2,
+        productId = 8, userId = 3, review="Here is a review for product 8 by user 3", stars = 2,
+        likes = 0
+    )
+    review9= Review(
+        productId = 9, userId = 1, review="Here is a review for product 9 by user 1", stars = 3,
+        likes = 0
+    )
+    review10= Review(
+        productId = 10, userId = 2, review="Here is a review for product 10 by user 2", stars = 4,
+        likes = 0
+    )
+    review11= Review(
+        productId = 11, userId = 3, review="Here is a review for product 11 by user 3", stars = 5,
+        likes = 0
+    )
+    review12= Review(
+        productId = 12, userId = 1, review="Here is a review for product 12 by user 1", stars = 1,
         likes = 0
     )
 
@@ -43,6 +59,10 @@ def seed_reviews():
     db.session.add(review6)
     db.session.add(review7)
     db.session.add(review8)
+    db.session.add(review9)
+    db.session.add(review10)
+    db.session.add(review11)
+    db.session.add(review12)
     db.session.commit()
 
 def undo_reviews():
