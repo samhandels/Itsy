@@ -110,4 +110,4 @@ def delete_review(id):
     product_id = review_to_delete.productId
     db.session.delete(review_to_delete)
     db.session.commit()
-    return redirect(f"/products/{product_id}")
+    return "Deleted"
