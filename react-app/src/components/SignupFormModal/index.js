@@ -18,7 +18,7 @@ function SignupFormModal() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		if (password === confirmPassword) {
-			console.log('**************sign up modal', firstName);
+			// console.log('**************sign up modal', firstName);
 			
 			const data = await dispatch(signUp(username, email, password, firstName, lastName));
 			if (data) {

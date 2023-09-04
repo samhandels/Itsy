@@ -38,7 +38,7 @@ const UserTransactionPage = () => {
     const getPrice = (uniqueTransId, userTransactions)  => {
         let price = 0
         for(let i = 0;i< userTransactions.length;i++) {
-            console.log("PRICE", price)
+            // console.log("PRICE", price)
             if(userTransactions[i].transactionId === parseInt(uniqueTransId)) {
                 price += userTransactions[i].price
             }
@@ -49,7 +49,7 @@ const UserTransactionPage = () => {
     const returnProductImage = (productId) => {
         for(let i = 0;i< prodArr.length;i++) {
             if(prodArr[i].id == productId) {
-                console.log(prodArr[i].product_image)
+                // console.log(prodArr[i].product_image)
                 return prodArr[i].product_image
             }
         }

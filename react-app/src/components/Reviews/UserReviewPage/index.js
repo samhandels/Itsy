@@ -63,10 +63,10 @@ const UserReviewPage = () => {
     if (!transArr.length) return null
     for (let i = 0; i < waitRevArr.length; i++) {
         noReviews.push(prodArr[waitRevArr[i] - 1])
-        console.log("WHAT", prodArr[waitRevArr[i] - 1])
+        // console.log("WHAT", prodArr[waitRevArr[i] - 1])
     }
 
-    console.log("REVIEWID", noReviews[0].id)
+    // console.log("REVIEWID", noReviews[0].id)
 
     return (
         <div className="user-review-container">
