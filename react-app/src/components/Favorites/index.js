@@ -278,12 +278,11 @@ const FavoritesPage = () => {
               <h3>Gifts</h3>
             </div>
 
-            <div className="Collection-Category-Outer-Div">
+            <div className="Collection-Category-Outer-Div"
+            onClick={() => handleCategoryRedirect("Home")}
+            >
               <div className="Photo-Div">
-                <div
-                  className="Photo-Div-Left"
-                  onClick={() => handleCategoryRedirect("Home")}
-                >
+                <div className="Photo-Div-Left">
                   <img
                     id="collection-image"
                     className="LeftUpper-Photo"

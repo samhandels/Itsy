@@ -81,6 +81,23 @@ def waitingReviews():
     response = noReviews
     return response
 
+@reviews.route("/<int:id>/waitingReviews", methods=['POST'])
+def check_new_wait_review(id):
+    userId = current_user.id
+    userReviews = Review.query.filter(Review.userId == userId).all()
+    reviewIds = [review.productId for review in userReviews]
+    userTrans = Transactions.query.filter(Transactions.userId == userId).all()
+    transIds = [trans.id for trans in userTrans]
+    userItemsPurchased = []
+    for id in transIds:
+        userItemsPurchased = (TransactionItems.query.filter(TransactionItems.transactionId == id))
+    noReviews = [item.productId for item in userItemsPurchased if item.productId not in reviewIds]
+    if noReviews.indexOf(id) != -1:
+        noReviews.append(id)
+    return noReviews
+
+
+
 @reviews.route("/<int:id>", methods=["DELETE"])
 def delete_review(id):
     """

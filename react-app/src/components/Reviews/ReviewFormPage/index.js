@@ -60,7 +60,7 @@ const ReviewFormPage = ({ productId }) => {
             userLeftReview = true
             break;
         }
-        
+
     }
     useEffect(() => {
         dispatch(getAllReviews())
@@ -139,7 +139,7 @@ const ReviewFormPage = ({ productId }) => {
                                 />
                             </div> :
                             <div>
-                                {showLikes ?
+                                {/* {showLikes ?
                                     <div className="likes-container">
                                         <i onClick={handleLikes} className="fa-solid fa-thumbs-up" title={review.id}></i>
 
@@ -148,7 +148,7 @@ const ReviewFormPage = ({ productId }) => {
                                     <div>
                                         <div className="after-thumb"> {review.likes} helpful-- thanks for your feedback!</div>
                                     </div>
-                                }
+                                } */}
                             </div>
                         }
                     </div>
