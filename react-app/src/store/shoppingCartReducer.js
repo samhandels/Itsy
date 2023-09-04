@@ -30,20 +30,20 @@ export const createItemThunk =
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ purchaseQuantity: purchaseQuantity }),
     });
-    console.log(
-      "*********************the response from backend in thunk**************",
-      res
-    );
+    // console.log(
+    //   "*********************the response from backend in thunk**************",
+    //   res
+    // );
 
     if (res.ok) {
-      console.log(
-        "*********************in the if block, in thunk**************"
-      );
+      // console.log(
+      //   "*********************in the if block, in thunk**************"
+      // );
       const newItemResponse = await res.json();
-      console.log(
-        "*********************in the if block, res.json()**************",
-        newItemResponse
-      );
+      // console.log(
+      //   "*********************in the if block, res.json()**************",
+      //   newItemResponse
+      // );
       dispatch(getItemsThunk());
       return newItemResponse;
     } else {
