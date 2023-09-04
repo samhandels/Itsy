@@ -21,13 +21,13 @@ def seed_products():
     product8 = Product(
         ownerId=2, name='Mini Food Brands' , price=15.95, description='Tiny products from popular food brands', quantity=15, category='Art')
     product9 = Product(
-        ownerId=2, name='Tiny Lotus Stud Earrings' , price=20.00, description='Beautiful Lotus Earrings, they are 14k solid gold', quantity=12, category='Jewelry')
+        ownerId=3, name='Tiny Lotus Stud Earrings' , price=20.99, description='Beautiful Lotus Earrings, they are 14k solid gold', quantity=12, category='Jewelry')
     product10 = Product(
-        ownerId=3, name='Tiny Knit Cardigans' , price=25.55, description='Tiny outerwear! Perfect for keeping your miniature friends warm!', quantity=12, category='Clothing')
+        ownerId=1, name='Tiny Knit Cardigans' , price=25.55, description='Tiny outerwear! Perfect for keeping your miniature friends warm!', quantity=12, category='Clothing')
     product11 = Product(
-        ownerId=1, name='Tiny Sleepwear' , price=10.99, description='Tiny sleepwear, perfect for bedtime', quantity=11, category='Clothing')
+        ownerId=2, name='Tiny Sleepwear' , price=10.99, description='Tiny sleepwear, perfect for bedtime', quantity=11, category='Clothing')
     product12 = Product(
-        ownerId=2, name='Tiny Wedding Day Couple' , price=15.99, description='Tiny Wedding Figurines, a great piece to add to your special day.', quantity=15, category='Wedding')
+        ownerId=3, name='Tiny Wedding Day Couple' , price=15.99, description='Tiny Wedding Figurines, a great piece to add to your special day.', quantity=15, category='Wedding')
 
 
     db.session.add(product1)
