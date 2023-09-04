@@ -65,7 +65,7 @@ export const ItemtoCart = ({product}) => {
                               {dollar.format(product.price)}
                         </div>
                         <div>
-                              <button className='forward-button-order' onClick={addOnetoCart}>Add to cart</button>
+                              <button className='forward-button-order padding-less' onClick={addOnetoCart}>Add to cart</button>
                         </div>
 
 
