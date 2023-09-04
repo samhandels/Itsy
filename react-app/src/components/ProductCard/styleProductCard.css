@@ -18,6 +18,25 @@
       position: relative;
 }
 
+#fa-heart-product-card {
+      display: none;
+}
+
+#card-holder-productCard:hover #fa-heart-product-card {
+      display: block;
+      position: absolute;
+      z-index: 1;
+      left: 87%;
+      top: 5%;
+      background-color:#F4F1EA;
+      padding: 5px 5px 5px 5px;
+      border-radius: 50%;
+}
+
+#card-holder-productCard:hover .fa-solid.fa-heart {
+      color:#f1641e;
+}
+
 #card-image-ProductCard:hover {
       /* box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
     rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px; */
@@ -38,18 +57,4 @@
       font-family: "Roboto";
       font-weight: 500;
       font-size: 16px;
-}
-
-#fa-heart-product-card {
-      position: absolute;
-      z-index: 1;
-      left: 87%;
-      top: 5%;
-      background-color:#F4F1EA;
-      padding: 5px 5px 5px 5px;
-      border-radius: 50%;
-}
-
-.fa-solid.fa-heart {
-      color:#f1641e;
 }
