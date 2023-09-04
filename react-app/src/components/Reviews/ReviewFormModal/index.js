@@ -154,7 +154,7 @@ const ReviewFormModal = ({ productId }) => {
                     </div>
                 }
                 <div className="review-button-container">
-                    {reviewPage === 1 && <button type="button" className="back-button-review">Exit</button>}
+                    {reviewPage === 1 && <button type="button" className="back-button-review" onClick={closeModal}>Exit</button>}
                     {reviewPage === 2 && <button type="button" className="back-button" onClick={prevPage}>Go Back</button>}
                     {reviewPage === 3 && <button type="button" className="back-button" onClick={prevPage}>Go Back</button>}
                     {reviewPage === 1 && <button type="button" className="forward-button" onClick={nextPage}>Next</button>}
