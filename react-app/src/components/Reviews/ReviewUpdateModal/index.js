@@ -40,7 +40,7 @@ const ReviewUpdateModal = ({ currentStars, productId, reviewId }) => {
         else reviewInfo.review = thisReview.stars
 
         reviewInfo.id = thisReview.id
-        dispatch(getWaitingReviews())
+        // dispatch(getWaitingReviews())
         const data = await dispatch(updateReview(reviewInfo))
         if (data) {
             setErrors(data);

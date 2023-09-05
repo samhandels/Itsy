@@ -33,7 +33,7 @@ const ReviewFormModal = ({ currentStars, productId }) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         if (!stars) setStars(currentStars)
-        await dispatch(getWaitingReviews())
+        // await dispatch(getWaitingReviews())
         const data = await dispatch(postReview(productId, reviewInfo))
         if (data) {
             setErrors(data);
@@ -136,8 +136,9 @@ const ReviewFormModal = ({ currentStars, productId }) => {
                             <li>if the item matched the description</li>
                             <li>if the item met your expectations</li>
                         </ul>
-                        <textarea className="review-text" type="text" placeholder={review === "" ? "Leave your review here" : ""}
-                            onChange={e => setReview(e.target.value)}>
+                        {review.length === 0 ? <div className="error">* This field is required</div> : <div></div>}
+                        <textarea className="review-text" type="text" minLength={"10"} placeholder={review === "" ? "Leave your review here" : ""}
+                            onChange={e => setReview(e.target.value)} >
                             {
                                 review === "" ? "" : review
                             }
@@ -168,7 +169,7 @@ const ReviewFormModal = ({ currentStars, productId }) => {
                     {reviewPage === 2 && <button type="button" className="back-button" onClick={prevPage}>Go Back</button>}
                     {reviewPage === 1 && <button type="button" className="forward-button" onClick={nextPage}>Next</button>}
                     {reviewPage === 3 && <button type="button" className="back-button" onClick={prevPage}>Go Back</button>}
-                    {reviewPage === 2 && <button type="button" className="forward-button" onClick={nextPage}>Next</button>}
+                    {reviewPage === 2 && review.length > 1 && <button type="button" className="forward-button" onClick={nextPage}>Next</button>}
                     {reviewPage === 3 && <button type="submit" className="forward-button" >Submit Your Review</button>}
                 </div>
 

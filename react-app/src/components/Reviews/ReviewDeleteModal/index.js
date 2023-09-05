@@ -12,7 +12,7 @@ const ReviewDeleteModal = ({ reviewId }) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         await dispatch(deleteReview(reviewId))
-        await dispatch(getWaitingReviews())
+        // await dispatch(getWaitingReviews())
         closeModal()
     }
 

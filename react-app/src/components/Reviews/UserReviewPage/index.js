@@ -46,7 +46,7 @@ const UserReviewPage = () => {
         dispatch(getAllReviews())
         dispatch(fetchProducts())
         dispatch(getTransactionItemsThunk())
-        dispatch(getWaitingReviews())
+        // dispatch(getWaitingReviews())
     }, [dispatch])
 
 
@@ -119,7 +119,7 @@ const UserReviewPage = () => {
                         <div className="help-small-business">
                             <div className="help-small-bus-title">Your reviews on Itsy help shop owners by providing them instant feedback and allowing
                                 them to stock their shops with items their customers will love.</div>
-                            {noReviews.length ? <div>
+                            {/* {noReviews.length ? <div>
                                 <div id='unreviewed-line'></div>
                                 <div className="unreviewed-title">Unreviewed items</div>
 
@@ -139,13 +139,7 @@ const UserReviewPage = () => {
 
 
                                 </div>
-
-
-
-
-
-                            </div> : <div></div>}
-
+                            </div> : <div></div>} */}
                         </div>
                     </div>
                 </div>

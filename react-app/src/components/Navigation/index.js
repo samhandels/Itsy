@@ -71,9 +71,9 @@ function Navigation({ isLoaded }) {
 		dispatch(getTransactionItemsThunk())
 	}, [dispatch])
 
-	useEffect(() => {
-		dispatch(getWaitingReviews())
-	}, [dispatch])
+	// useEffect(() => {
+	// 	dispatch(getWaitingReviews())
+	// }, [dispatch])
 
 	return (
 		<div className="main-nav-bar">

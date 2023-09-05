@@ -29,7 +29,7 @@ export default function AllShoppingCartItems() {
     dispatch(getItemsThunk());
     dispatch(getTransactionItemsThunk())
     dispatch(getAllReviews())
-    dispatch(getWaitingReviews())
+    // dispatch(getWaitingReviews())
     dispatch(fetchProducts()); //so all products are still on the shopping cart refreshing the page
     dispatch(getItemsThunk());
   }, [dispatch]);

@@ -155,21 +155,21 @@ export const reviewsReducer = (state = initialState, action) => {
             newState.review = action.review
             return newState
         case ADD_REVIEW:
-            newState = { ...state, reviews: { ...state.reviews }, waitingReviews: { ...state.waitingReviews } }
+            newState = { ...state, reviews: { ...state.reviews } }
             newState.reviews[action.review.id] = action.review
             newState.review = action.review
             return newState
         case DELETE_REVIEW:
-            newState = { ...state, reviews: { ...state.reviews }, waitingReviews: { ...state.waitingReviews } }
+            newState = { ...state, reviews: { ...state.reviews } }
             delete newState.reviews[action.reviewId]
             return newState
         case UPDATE_REVIEW:
-            newState = { ...state, reviews: { ...state.reviews }, waitingReviews: { ...state.waitingReviews } }
+            newState = { ...state, reviews: { ...state.reviews } }
             newState.reviews[action.review.id] = action.review
             return newState
         case WAIT_REVIEWS:
             let waitState = { ...state, waitingReviews: { ...state.waitingReviews } }
-            for (let i = 0; i < action.reviews.length; i++) {
+            for (let i = 0; i < action.waitingReviews.length; i++) {
                 waitState.waitingReviews[i] = action.reviews[i]
             }
             return waitState
