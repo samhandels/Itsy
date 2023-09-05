@@ -39,7 +39,7 @@ export function OrderCompleteModal({ product, purchaseQuantity }) {
 
   useEffect(() => {
     dispatch(getTransactionItemsThunk())
-    dispatch(getWaitingReviews())
+    // dispatch(getWaitingReviews())
   }, [dispatch])
 
   return (

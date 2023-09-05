@@ -28,12 +28,16 @@ const ReviewFormPage = ({ productId }) => {
     const revArr = Object.values(reviews)
     const transArr = Object.values(transactions)
 
-    let userTransactions = transArr.filter((trans) => trans.userId === user.id)
+    let userTransactions
+    if (user) {
+        userTransactions = transArr.filter((trans) => trans.userId === user.id)
+    }
     console.log("USERTRANSACTIONS", userTransactions)
     let purchasedItem = false;
 
-    userTransactions.forEach((transaction) => {
-        if(transaction.productId == productId) {
+
+    userTransactions?.forEach((transaction) => {
+        if (transaction.productId == productId) {
             purchasedItem = true
         }
     })

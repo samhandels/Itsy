@@ -45,6 +45,7 @@ export const ProductDetails = () => {
     (review) => review.productId === product?.id
   );
 
+
   const handleHeartClick = async (productId) => {
     if (isFavorite(productId)) {
       await dispatch(removeFavorite(favorite));
@@ -86,6 +87,7 @@ export const ProductDetails = () => {
     //when out of stuck  /iphone and fridge are -1, what the frick
     noStock = "show";
   }
+
 
   let quantityArr = [];
   if (product.quantity > 0) {
