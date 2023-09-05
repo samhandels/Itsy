@@ -121,6 +121,7 @@ const ReviewFormModal = ({ currentStars, productId }) => {
                                 <div>My review stars<span className="error">*</span></div>
                             </div>
                         </div>
+                        {stars === 0 && <div className="error">Please rate your purchase</div>}
                         {stars < 3 && <div className="low-review-help">
                             <p>Sorry your experience wasn't great</p>
                             <p> Please contact the shop owner</p>
@@ -148,25 +149,19 @@ const ReviewFormModal = ({ currentStars, productId }) => {
                     reviewPage === 3 &&
                     <div className='review-step review-step-3'>
                         <p className="review-detail-review">{review}</p>
-                        {stars ? <div>
+                        <div>
                             <i className={stars >= 1 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
                             <i className={stars >= 2 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
                             <i className={stars >= 3 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
                             <i className={stars >= 4 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
                             <i className={stars >= 5 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
-                        </div> : <div>
-                            <i className={currentStars >= 1 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
-                            <i className={currentStars >= 2 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
-                            <i className={currentStars >= 3 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
-                            <i className={currentStars >= 4 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
-                            <i className={currentStars >= 5 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
-                        </div>}
+                        </div>
                     </div>
                 }
                 <div className="review-button-container">
                     {reviewPage === 1 && <button type="button" className="back-button-review" onClick={closeModal}>Exit</button>}
                     {reviewPage === 2 && <button type="button" className="back-button" onClick={prevPage}>Go Back</button>}
-                    {reviewPage === 1 && <button type="button" className="forward-button" onClick={nextPage}>Next</button>}
+                    {reviewPage === 1 && stars > 0 && <button type="button" className="forward-button" onClick={nextPage}>Next</button>}
                     {reviewPage === 3 && <button type="button" className="back-button" onClick={prevPage}>Go Back</button>}
                     {reviewPage === 2 && review.length > 1 && <button type="button" className="forward-button" onClick={nextPage}>Next</button>}
                     {reviewPage === 3 && <button type="submit" className="forward-button" >Submit Your Review</button>}
