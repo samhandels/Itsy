@@ -12,7 +12,7 @@ const ReviewFormModal = ({ currentStars, productId }) => {
     const dispatch = useDispatch();
     const [review, setReview] = useState("")
     const [stars, setStars] = useState(0)
-    const [activeStars, setActiveStars] = useState(currentStars)
+    const [activeStars, setActiveStars] = useState(0)
     const [reviewPage, setReviewPage] = useState(1)
     const [errors, setErrors] = useState([])
     const { closeModal } = useModal();
@@ -32,7 +32,6 @@ const ReviewFormModal = ({ currentStars, productId }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        if (!stars) setStars(currentStars)
         // await dispatch(getWaitingReviews())
         const data = await dispatch(postReview(productId, reviewInfo))
         if (data) {
