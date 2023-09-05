@@ -25,6 +25,7 @@ export function AddtoCartModal({ product, purchaseQuantity }) {
 
 const createCartItem = (e) => {
   e.preventDefault();
+  //if the items already has reach the max quantity, don't allow to add it to cart (don't hit createItemThunk)
   if(itemProductQuantity < product?.quantity){
     dispatch(createItemThunk(product.id, purchaseQuantity))
     closeModal() //if use .then(closeModal) it doesn't fire
@@ -32,7 +33,7 @@ const createCartItem = (e) => {
   }
   else{
     alert("Unfortunately, you're trying to order more than what we have, go check out items in your cart!")
-    console.log('****************item is already the same quantity as product quantity****************',);
+    // console.log('****************item is already the same quantity as product quantity****************');
     }
   };
 
