@@ -44,9 +44,9 @@ function App() {
           <Route exact path="/transactions">
             <UserTransactionPage />
           </Route>
-          <Route path="/reviews/current">
+          <ProtectedRoute exact path="/reviews/current">
             <UserReviewPage />
-          </Route>
+          </ProtectedRoute>
           <Route exact path="/help/order-issues">
             <OrderIssuePage />
           </Route>

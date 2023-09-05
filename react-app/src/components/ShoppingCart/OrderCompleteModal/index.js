@@ -31,15 +31,15 @@ export function OrderCompleteModal({ product, purchaseQuantity }) {
     dispatch(fetchUpdateProduct(updateProduct)) //update product quantity
     dispatch(fetchProducts())
     dispatch(addTransaction(itemArr))
-    itemArr.forEach((item) => {
-      dispatch(addWaitingReview(item.id))
-    })
+    // itemArr.forEach((item) => {
+    //   dispatch(addWaitingReview(item.id))
+    // })
     closeModal()
   };
 
   useEffect(() => {
     dispatch(getTransactionItemsThunk())
-    dispatch(getWaitingReviews())
+    // dispatch(getWaitingReviews())
   }, [dispatch])
 
   return (

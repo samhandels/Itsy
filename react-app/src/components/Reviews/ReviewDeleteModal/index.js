@@ -12,7 +12,7 @@ const ReviewDeleteModal = ({ reviewId }) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         await dispatch(deleteReview(reviewId))
-        await dispatch(getWaitingReviews())
+        // await dispatch(getWaitingReviews())
         closeModal()
     }
 
@@ -22,7 +22,7 @@ const ReviewDeleteModal = ({ reviewId }) => {
             <form className="delete-review-form" onSubmit={handleSubmit}>
                 <div className = "delete-modal-title">Are you sure you want to delete this review?</div>
                 <div className = "button-container delete-modal-buttons">
-                    <button className="forward-button" type="button" onClick={closeModal}>Go Back</button>
+                    <button className="forward-button exit-review-modal" type="button" onClick={closeModal}>Go Back</button>
                     <button className="back-button confirm-delete-button" type="submit">Confirm Delete</button>
                 </div>
             </form>

@@ -45,6 +45,7 @@ export const ProductDetails = () => {
     (review) => review.productId === product?.id
   );
 
+
   const handleHeartClick = async (productId) => {
     if (isFavorite(productId)) {
       await dispatch(removeFavorite(favorite));
@@ -75,7 +76,7 @@ export const ProductDetails = () => {
 
   //to check if the current user is the same as product owner, if true, don't show "add to cart" OpenModal
   let addItemBtn = "hide";
-  if (product?.ownerId !== sessionUser?.id && product.quantity > 0) {
+  if (sessionUser && product?.ownerId !== sessionUser?.id && product.quantity > 0) {
     addItemBtn = "show";
   }
 
@@ -86,6 +87,7 @@ export const ProductDetails = () => {
     //when out of stuck  /iphone and fridge are -1, what the frick
     noStock = "show";
   }
+
 
   let quantityArr = [];
   if (product.quantity > 0) {

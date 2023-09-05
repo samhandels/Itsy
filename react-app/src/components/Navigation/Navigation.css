@@ -97,7 +97,7 @@
 }
 
 #profile-dropdown-profile-butt {
-  padding: 10px 7px 10px 0px;
+  padding: 12px 9px 12px 0px;
 }
 
 .fa-user-circle {
@@ -174,4 +174,8 @@
 
 #no-search-link {
   font-size: 20px;
+}
+
+#line-profile-dropdown {
+  border: 1px solid rgb(222, 222, 222)
 }
