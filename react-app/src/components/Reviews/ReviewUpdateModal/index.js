@@ -8,11 +8,12 @@ import './ReviewUpdateModal.css'
 import { getAllReviews, getWaitingReviews, postReview, updateReview } from '../../../store/reviewsReducer'
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min'
 
-const ReviewUpdateModal = ({ productId, reviewId }) => {
+const ReviewUpdateModal = ({ currentStars, productId, reviewId }) => {
+    console.log("CURRENTSTARS", currentStars)
     const dispatch = useDispatch();
     const [review, setReview] = useState("")
     const [stars, setStars] = useState(0)
-    const [activeStars, setActiveStars] = useState(0)
+    const [activeStars, setActiveStars] = useState(currentStars)
     const [reviewPage, setReviewPage] = useState(1)
     const [errors, setErrors] = useState([])
     const { closeModal } = useModal();
@@ -39,7 +40,7 @@ const ReviewUpdateModal = ({ productId, reviewId }) => {
         else reviewInfo.review = thisReview.stars
 
         reviewInfo.id = thisReview.id
-        dispatch(getWaitingReviews())
+        // dispatch(getWaitingReviews())
         const data = await dispatch(updateReview(reviewInfo))
         if (data) {
             setErrors(data);

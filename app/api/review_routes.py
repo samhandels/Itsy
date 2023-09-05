@@ -4,7 +4,7 @@ from ..models.reviews import Review
 from..models.transactions import Transactions
 from ..models.transaction_items import TransactionItems
 from ..forms.review_form import ReviewForm
-from flask_login import current_user
+from flask_login import current_user, login_required
 from datetime import datetime
 
 reviews = Blueprint("reviews", __name__)
@@ -17,6 +17,7 @@ def validation_errors_to_error_messages(validation_errors):
         return errorMessages
 
 @reviews.route("/current")
+@login_required
 def get_user_reviews():
     """
     Query for reviews by user id
@@ -25,6 +26,8 @@ def get_user_reviews():
     response = [user_rev.to_dict() for user_rev in user_reviews]
     print(response)
     return response
+
+
 @reviews.route("/")
 def get_all_reviews():
     """
@@ -81,6 +84,23 @@ def waitingReviews():
     response = noReviews
     return response
 
+@reviews.route("/<int:id>/waitingReviews", methods=['POST'])
+def check_new_wait_review(id):
+    userId = current_user.id
+    userReviews = Review.query.filter(Review.userId == userId).all()
+    reviewIds = [review.productId for review in userReviews]
+    userTrans = Transactions.query.filter(Transactions.userId == userId).all()
+    transIds = [trans.id for trans in userTrans]
+    userItemsPurchased = []
+    for id in transIds:
+        userItemsPurchased = (TransactionItems.query.filter(TransactionItems.transactionId == id))
+    noReviews = [item.productId for item in userItemsPurchased if item.productId not in reviewIds]
+    if noReviews.indexOf(id) != -1:
+        noReviews.append(id)
+    return noReviews
+
+
+
 @reviews.route("/<int:id>", methods=["DELETE"])
 def delete_review(id):
     """
@@ -90,4 +110,4 @@ def delete_review(id):
     product_id = review_to_delete.productId
     db.session.delete(review_to_delete)
     db.session.commit()
-    return redirect(f"/products/{product_id}")
+    return "Deleted"

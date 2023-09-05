@@ -1,5 +1,5 @@
 // Render a pop up after you click on Add to cart(on product detail page)
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useSideModal } from "../../../context/SideModal"; //!change to side modal css later
 import "./AddtoCart.css";
 //need to create item from this sideModal after clicking the "view cart & chcekcout"
@@ -15,11 +15,25 @@ export function AddtoCartModal({ product, purchaseQuantity }) {
   const history = useHistory();
   // console.log("************In Add to Cart Modal **********", productId);
 
-  const createCartItem = (e) => {
-    e.preventDefault();
+  const items = Object.values(
+    useSelector((state) => (state.items ? state.items : []))
+  )
+
+  const itemProductQuantity = items.filter(item=> item.productId === product.id).length
+// console.log('********************************item product quantity', itemProductQuantity);
+// console.log('********************************product quantity', product.quantity);
+
+const createCartItem = (e) => {
+  e.preventDefault();
+  if(itemProductQuantity < product?.quantity){
     dispatch(createItemThunk(product.id, purchaseQuantity))
     closeModal() //if use .then(closeModal) it doesn't fire
     history.push("/shopping_cart/current");
+  }
+  else{
+    alert("Unfortunately, you're trying to order more than what we have, go check out items in your cart!")
+    console.log('****************item is already the same quantity as product quantity****************',);
+    }
   };
 
   return (

@@ -22,32 +22,43 @@ export const getItemsThunk = () => async (dispatch) => {
   }
 };
 
-export const createItemThunk = (productId, purchaseQuantity) => async (dispatch) => {
-  //  try {
-  const res = await fetch(`/api/products/${productId}/shopping_cart`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({"purchaseQuantity": purchaseQuantity}),
-  });
+export const createItemThunk =
+  (productId, purchaseQuantity) => async (dispatch) => {
+    //  try {
+    const res = await fetch(`/api/products/${productId}/shopping_cart`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ purchaseQuantity: purchaseQuantity }),
+    });
+    // console.log(
+    //   "*********************the response from backend in thunk**************",
+    //   res
+    // );
 
-  // console.log(res);
-  if (res.ok) {
-    const newItemResponse = await res.json();
-    dispatch(getItemsThunk());
-    return newItemResponse;
-  } else {
-    const errors = await res.json();
-    return errors;
-  }
-  //  } catch (error) {
-  // const errors = await error.json();
-  //  return error;
-  //  }
-};
-
+    if (res.ok) {
+      // console.log(
+      //   "*********************in the if block, in thunk**************"
+      // );
+      const newItemResponse = await res.json();
+      // console.log(
+      //   "*********************in the if block, res.json()**************",
+      //   newItemResponse
+      // );
+      dispatch(getItemsThunk());
+      return newItemResponse;
+    } else {
+      const errors = await res.json();
+      // console.log("*********************in the else block, the response from backend in thunk**************", errors);
+      return errors;
+    }
+    //  } catch (error) {
+    // const errors = await error.json();
+    //  return error;
+    //  }
+  };
 
 export const deleteItemThunk = (productId) => async (dispatch) => {
-    //  console.log("*********************the response from backend in thunk**************", productId);
+  //  console.log("*********************the response from backend in thunk**************", productId);
   const res = await fetch(`/api/shopping_cart/${productId}`, {
     method: "DELETE",
   });

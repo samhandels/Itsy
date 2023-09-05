@@ -14,6 +14,18 @@
     font-weight: 100;
 }
 
+.unreview-product-img{
+    height: 70px;
+    width: 80px;
+}
+
+.unrev-prod-info {
+    margin-left: 10px;
+    font-size: 12px;
+    /* text-align: center; */
+}
+
+
 #review-line {
     border-bottom: 2px solid rgb(222,222,222);
 }
@@ -170,14 +182,28 @@
 .unreviewed-title {
     display: flex;
     justify-content: center;
+    margin-bottom: 10px;
+    margin-top: 15px;
 }
 
 .unreviewed-purchases {
     display: flex;
     align-items: center;
+    width: 248px;
+    padding-top: 3px;
+}
+
+.unreviewed-purchases:hover {
+    cursor: pointer;
 }
 
 #unreviewed-line {
     margin: 10px 0;
     border-bottom: 1px solid rgb(222,222,222);
+}
+
+#unreviewed-items-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

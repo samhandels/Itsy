@@ -5,10 +5,10 @@ import { useEffect, useState } from 'react'
 import { useModal } from '../../../context/Modal'
 import { Link } from 'react-router-dom'
 import './ReviewFormModal.css'
-import { postReview } from '../../../store/reviewsReducer'
+import { getWaitingReviews, postReview } from '../../../store/reviewsReducer'
 import { useDispatch, useSelector } from 'react-redux'
 
-const ReviewFormModal = ({ productId }) => {
+const ReviewFormModal = ({ currentStars, productId }) => {
     const dispatch = useDispatch();
     const [review, setReview] = useState("")
     const [stars, setStars] = useState(0)
@@ -16,7 +16,7 @@ const ReviewFormModal = ({ productId }) => {
     const [reviewPage, setReviewPage] = useState(1)
     const [errors, setErrors] = useState([])
     const { closeModal } = useModal();
-    let reviewInfo = { review, stars }
+
 
     let reviews = useSelector((state) => state.reviews.reviews)
     let revArr = Object.values(reviews)
@@ -28,14 +28,18 @@ const ReviewFormModal = ({ productId }) => {
     // console.log("PRODUCTID", productId)
     // console.log("THISPRODUCTID", thisProduct.id)
 
+    let reviewInfo = { review, stars }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        // await dispatch(getWaitingReviews())
         const data = await dispatch(postReview(productId, reviewInfo))
         if (data) {
             setErrors(data);
         } else {
             closeModal();
+            window.location.reload(false);
+
         }
     }
 
@@ -117,22 +121,24 @@ const ReviewFormModal = ({ productId }) => {
                                 <div>My review stars<span className="error">*</span></div>
                             </div>
                         </div>
+                        {stars === 0 && <div className="error">Please rate your purchase</div>}
                         {stars < 3 && <div className="low-review-help">
                             <p>Sorry your experience wasn't great</p>
-                            <p>Click here to contact the shop owner</p>
+                            <p> Please contact the shop owner</p>
                         </div>}
                     </div>
                 </div>}
                 {reviewPage === 2 &&
                     <div className='review-step review-step-2'>
-                        <p className="review-text-sugg">Helpful reviews on Etsy mention:</p>
+                        <p className="review-text-sugg">Helpful reviews on Itsy mention:</p>
                         <ul>
                             <li>the quality of the item</li>
                             <li>if the item matched the description</li>
                             <li>if the item met your expectations</li>
                         </ul>
-                        <textarea className="review-text" type="text" placeholder={review === "" ? "Leave your review here" : ""}
-                            onChange={e => setReview(e.target.value)}>
+                        {review.length === 0 ? <div className="error">* This field is required</div> : <div></div>}
+                        <textarea className="review-text" type="text" minLength={"10"} placeholder={review === "" ? "Leave your review here" : ""}
+                            onChange={e => setReview(e.target.value)} >
                             {
                                 review === "" ? "" : review
                             }
@@ -153,11 +159,11 @@ const ReviewFormModal = ({ productId }) => {
                     </div>
                 }
                 <div className="review-button-container">
-                    {reviewPage === 1 && <button type="button" className="back-button-review">Exit</button>}
+                    {reviewPage === 1 && <button type="button" className="back-button-review" onClick={closeModal}>Exit</button>}
                     {reviewPage === 2 && <button type="button" className="back-button" onClick={prevPage}>Go Back</button>}
+                    {reviewPage === 1 && stars > 0 && <button type="button" className="forward-button" onClick={nextPage}>Next</button>}
                     {reviewPage === 3 && <button type="button" className="back-button" onClick={prevPage}>Go Back</button>}
-                    {reviewPage === 1 && <button type="button" className="forward-button" onClick={nextPage}>Next</button>}
-                    {reviewPage === 2 && <button type="button" className="forward-button" onClick={nextPage}>Next</button>}
+                    {reviewPage === 2 && review.length > 1 && <button type="button" className="forward-button" onClick={nextPage}>Next</button>}
                     {reviewPage === 3 && <button type="submit" className="forward-button" >Submit Your Review</button>}
                 </div>
 

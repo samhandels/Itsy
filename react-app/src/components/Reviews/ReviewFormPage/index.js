@@ -11,6 +11,7 @@ import './ReviewFormPage.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllReviews, updateReview } from '../../../store/reviewsReducer'
 import { fetchProducts } from '../../../store/productsReducer'
+import { getTransactionItemsThunk } from '../../../store/transactionReducer'
 
 
 
@@ -24,13 +25,29 @@ const ReviewFormPage = ({ productId }) => {
 
     const reviews = useSelector((state) => state.reviews.reviews)
     const products = useSelector((state) => state.products)
+    const transactions = useSelector((state) => state.transactions.transactions)
     const revArr = Object.values(reviews)
+    const transArr = Object.values(transactions)
+
+    let userTransactions
+    if (user) {
+        userTransactions = transArr.filter((trans) => trans.userId === user.id)
+    }
+    console.log("USERTRANSACTIONS", userTransactions)
+    let purchasedItem = false;
 
 
+    userTransactions?.forEach((transaction) => {
+        if (transaction.productId == productId) {
+            purchasedItem = true
+        }
+    })
     const prodArr = Object.values(products)
 
     const productReviews = revArr.filter((review) => review?.productId === productId)
     const thisProduct = prodArr[productId - 1]
+
+
 
     const userLikes = []
 
@@ -49,8 +66,9 @@ const ReviewFormPage = ({ productId }) => {
 
     let isMyProduct = false
     // console.log(thisProduct)
-    if(thisProduct?.ownerId === user?.id) {
-        isMyProduct = true}
+    if (thisProduct?.ownerId === user?.id) {
+        isMyProduct = true
+    }
 
 
 
@@ -60,15 +78,16 @@ const ReviewFormPage = ({ productId }) => {
             userLeftReview = true
             break;
         }
-        
+
     }
     useEffect(() => {
         dispatch(getAllReviews())
+        dispatch(getTransactionItemsThunk)
     }, [dispatch])
 
     return (
         <div className="review-container">
-            {!isMyProduct ? userLeftReview == false && <OpenModalButton
+            {!isMyProduct ? userLeftReview == false && purchasedItem && <OpenModalButton
                 buttonText={<form className="review-component"
                 >
                     <p>Review this item</p>
@@ -105,8 +124,8 @@ const ReviewFormPage = ({ productId }) => {
                         </div>
                     </div>
                 </form >}
-                modalComponent={<ReviewFormModal productId={productId} />}
-            /> : productReviews.length ? <div className = "is-my-product">Here is what your shoppers had to say: </div> : <div>No reviews yet</div>}
+                modalComponent={<ReviewFormModal currentStars={activeRating} productId={productId} />}
+            /> : productReviews.length ? <div className="is-my-product">Here is what your shoppers had to say: </div> : <div>No reviews yet</div>}
 
             <div id='reviews-holder-ReviewFormPage'>
 
@@ -131,7 +150,7 @@ const ReviewFormPage = ({ productId }) => {
                             <div className="review-detail-button-container-prod">
                                 <OpenModalButton
                                     buttonText="Update"
-                                    modalComponent={<ReviewUpdateModal productId={review.productId} reviewId={review.id} />}
+                                    modalComponent={<ReviewUpdateModal currentStars={review.stars} productId={review.productId} reviewId={review.id} />}
                                 />
                                 <OpenModalButton
                                     buttonText="Delete"
@@ -139,7 +158,7 @@ const ReviewFormPage = ({ productId }) => {
                                 />
                             </div> :
                             <div>
-                                {showLikes ?
+                                {/* {showLikes ?
                                     <div className="likes-container">
                                         <i onClick={handleLikes} className="fa-solid fa-thumbs-up" title={review.id}></i>
 
@@ -148,7 +167,7 @@ const ReviewFormPage = ({ productId }) => {
                                     <div>
                                         <div className="after-thumb"> {review.likes} helpful-- thanks for your feedback!</div>
                                     </div>
-                                }
+                                } */}
                             </div>
                         }
                     </div>

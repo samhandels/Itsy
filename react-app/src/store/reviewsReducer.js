@@ -112,8 +112,26 @@ export const deleteReview = (reviewId) => async (dispatch) => {
 export const getWaitingReviews = () => async (dispatch) => {
     const response = await fetch(`/api/reviews/waitingReviews`)
     const res = await response.json()
+    let noDups = []
+    res.forEach((res) => {
+        if (noDups.indexOf(res) === -1) {
+            noDups.push(res)
+        }
+    })
+    dispatch(setWaitingReviews(noDups))
+}
+
+export const addWaitingReview = (productId) => async (dispatch) => {
+    const response = await fetch(`/api/reviews/${productId}/waitingReviews`, {
+        method: 'POST',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(productId)
+    }
+    )
+    const res = await response.json()
     dispatch(setWaitingReviews(res))
 }
+
 
 
 
@@ -137,21 +155,21 @@ export const reviewsReducer = (state = initialState, action) => {
             newState.review = action.review
             return newState
         case ADD_REVIEW:
-            newState = { ...state, reviews: { ...state.reviews } }
+            newState = { ...state, reviews: { ...state.reviews }, waitingReviews: { ...state.waitingReviews } }
             newState.reviews[action.review.id] = action.review
             newState.review = action.review
             return newState
         case DELETE_REVIEW:
-            newState = { ...state, reviews: { ...state.reviews } }
+            newState = { ...state, reviews: { ...state.reviews }, waitingReviews: { ...state.waitingReviews } }
             delete newState.reviews[action.reviewId]
             return newState
         case UPDATE_REVIEW:
-            newState = { ...state, reviews: { ...state.reviews } }
+            newState = { ...state, reviews: { ...state.reviews }, waitingReviews: { ...state.waitingReviews } }
             newState.reviews[action.review.id] = action.review
             return newState
         case WAIT_REVIEWS:
-            let waitState = {...state}
-            for(let i = 0;i< action.reviews.length;i++){
+            let waitState = { ...state, waitingReviews: { ...state.waitingReviews } }
+            for (let i = 0; i < action.reviews.length; i++) {
                 waitState.waitingReviews[i] = action.reviews[i]
             }
             return waitState

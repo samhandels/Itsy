@@ -1,6 +1,7 @@
 .footer-container {
     background-color: #f8f8f8;
     border-top: 1px solid #e0e0e0;
+    /* margin-left: -5px; */
 }
 
 #renewable-energy-section {
@@ -13,8 +14,8 @@
     padding: 7px;
     background-color: rgb(77,107,198);
     /* background-color: #FCB48C; */
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    /* border-top-left-radius: 5px; */
+    /* border-top-right-radius: 5px; */
 }
 
 .team-section {

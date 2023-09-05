@@ -28,12 +28,17 @@ const UserTransactionPage = () => {
     const filterTransactions = (uniqueTransId, userTransactions)  => {
         let retArr = []
         for(let i = 0;i< userTransactions.length;i++) {
+
             if(userTransactions[i].transactionId === parseInt(uniqueTransId)) {
+
                 retArr.push(userTransactions[i])
             }
         }
+       
         return retArr
     }
+
+
 
     const getPrice = (uniqueTransId, userTransactions)  => {
         let price = 0

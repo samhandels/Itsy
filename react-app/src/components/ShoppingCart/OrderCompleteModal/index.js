@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import { deleteItemThunk } from "../../../store/shoppingCartReducer";
 // need to update the products quantity after the order is complete
 import { fetchProducts, fetchUpdateProduct } from "../../../store/productsReducer";
-import { getWaitingReviews } from "../../../store/reviewsReducer";
+import { addWaitingReview, getWaitingReviews } from "../../../store/reviewsReducer";
 
 export function OrderCompleteModal({ product, purchaseQuantity }) {
   const dispatch = useDispatch();
@@ -31,12 +31,15 @@ export function OrderCompleteModal({ product, purchaseQuantity }) {
     dispatch(fetchUpdateProduct(updateProduct)) //update product quantity
     dispatch(fetchProducts())
     dispatch(addTransaction(itemArr))
-    dispatch(getWaitingReviews())
+    // itemArr.forEach((item) => {
+    //   dispatch(addWaitingReview(item.id))
+    // })
     closeModal()
   };
 
   useEffect(() => {
     dispatch(getTransactionItemsThunk())
+    // dispatch(getWaitingReviews())
   }, [dispatch])
 
   return (

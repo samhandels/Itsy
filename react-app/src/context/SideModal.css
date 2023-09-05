@@ -27,4 +27,6 @@
  width: 45vw; 
  /* 40% of the whole width of the screen */
  z-index: 2;
+ overflow: auto;
+ /* to scroll scroll */
 }
