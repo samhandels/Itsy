@@ -6,8 +6,9 @@ import './styleAllProducts.css'
 import BlogSection from "../Blog";
 import { getAllFavorites } from "../../store/favoritesReducer";
 import { NavLink } from "react-router-dom";
+import { getTransactionItemsThunk } from "../../store/transactionReducer";
 
-export const  AllProducts = () => {
+export const AllProducts = () => {
       const dispatch = useDispatch()
 
       const productsObj = useSelector((state) => (state.products ? state.products : {}))
@@ -21,6 +22,7 @@ export const  AllProducts = () => {
       useEffect(() => {
             dispatch(fetchProducts())
             dispatch(getAllFavorites(user ? user : null))
+            dispatch(getTransactionItemsThunk())
       }, [dispatch])
 
       // useEffect(() => {
@@ -76,16 +78,16 @@ export const  AllProducts = () => {
 
                   {filter === "" ? null : (
                         <div id="filter-reset" onClick={(e) => setFilter("")}>
-                        See All Products
+                              See All Products
                         </div>
                   )}
 
                   {
-                  user && (
-                        <div className="welcome-banner">
-                              Welcome back, &nbsp;<span className="firstname-underline">{user.firstName}</span>!
-                        </div>
-                  )
+                        user && (
+                              <div className="welcome-banner">
+                                    Welcome back, &nbsp;<span className="firstname-underline">{user.firstName}</span>!
+                              </div>
+                        )
                   }
 
                   <div id='sales-banner-AllProducts'>
@@ -95,11 +97,11 @@ export const  AllProducts = () => {
                         <div id='labor-day-AllProducts'>
                               The Labor Day Sales Event is here!
                         </div>
-                              <NavLink  id='shop-now' to='/shopping_cart/current'>
-                        <div id='shop-button-AllProducts'>
-                              Shop now
-                        </div>
-                              </NavLink>
+                        <NavLink id='shop-now' to='/shopping_cart/current'>
+                              <div id='shop-button-AllProducts'>
+                                    Shop now
+                              </div>
+                        </NavLink>
                         <div id='terms-AllProducts'>
                               Participating sellers only. Terms apply.
                         </div>

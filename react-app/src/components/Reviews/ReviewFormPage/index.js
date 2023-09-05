@@ -11,6 +11,7 @@ import './ReviewFormPage.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllReviews, updateReview } from '../../../store/reviewsReducer'
 import { fetchProducts } from '../../../store/productsReducer'
+import { getTransactionItemsThunk } from '../../../store/transactionReducer'
 
 
 
@@ -81,6 +82,7 @@ const ReviewFormPage = ({ productId }) => {
     }
     useEffect(() => {
         dispatch(getAllReviews())
+        dispatch(getTransactionItemsThunk)
     }, [dispatch])
 
     return (
