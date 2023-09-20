@@ -24,7 +24,7 @@ const ReviewUpdateModal = ({ currentStars, productId, reviewId }) => {
 
     const products = useSelector((state) => state.products)
     const prodArr = Object.values(products)
-    const thisProduct = prodArr[thisReview?.productId - 1]
+    const thisProduct = prodArr[thisReview?.productId]
 
 
 

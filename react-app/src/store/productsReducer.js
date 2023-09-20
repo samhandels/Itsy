@@ -37,8 +37,9 @@ export const fetchProducts = (query) => async (dispatch) => {
 
             if (res.ok) {
                   const allProducts = await res.json();
-                  const productsArray = Object.values(allProducts)
-                  dispatch(loadProducts(productsArray))
+                  const products = {}
+                  allProducts.forEach(product => products[product.id] = product)
+                  dispatch(loadProducts(products))
 
             } else {
                   const errors = await res.json()

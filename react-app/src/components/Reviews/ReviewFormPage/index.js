@@ -45,7 +45,7 @@ const ReviewFormPage = ({ productId }) => {
     const prodArr = Object.values(products)
 
     const productReviews = revArr.filter((review) => review?.productId === productId)
-    const thisProduct = prodArr[productId - 1]
+    const thisProduct = prodArr[productId]
 
 
 
