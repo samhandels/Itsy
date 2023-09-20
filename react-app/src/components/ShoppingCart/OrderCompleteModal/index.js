@@ -19,7 +19,7 @@ export function OrderCompleteModal({ product, purchaseQuantity }) {
   //  console.log('******************  Product******************', product);
   //  console.log('****************** before Product******************', updateProduct);
   updateProduct.quantity = updateProduct.quantity - purchaseQuantity
-  updateProduct.url = product_image[0] //has to match what the fetchUpdateProduct key and data formate it wants
+  updateProduct.image = product_image[0] //has to match what the fetchUpdateProduct key and data formate it wants
   //  console.log('******************purchaseQuantity******************', purchaseQuantity);
   //  console.log('******************updatedProduct******************', updateProduct);
 

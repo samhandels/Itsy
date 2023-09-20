@@ -9,6 +9,7 @@ from ..forms.product_form import ProductForm
 from ..forms.review_form import ReviewForm
 from datetime import datetime
 from flask_login import login_required, current_user # current_user.id
+from app.api.aws_helper import (upload_file_to_s3, get_unique_filename)
 
 
 products = Blueprint("products", __name__)
@@ -124,9 +125,16 @@ def create_product():
 
             index = max(idList)
 
+            image = form.data["image"]
+            image.filename = get_unique_filename(image.filename)
+            upload = upload_file_to_s3(image)
+            print(upload)
+            if "url" not in upload:
+                return {"Errors": [upload]}
+
             new_image = ProductImage (
-                  url = form.data["url"],
-                  productId = index
+                  image = upload["url"],
+                  productId = index,
             )
 
             print(new_image)
@@ -161,7 +169,7 @@ def update_product(id):
 
            image = ProductImage.query.get(id)
 
-           image.url = form.data["url"]
+           image.image = form.data["image"]
            db.session.commit()
 
            response = Product.query.get(id)
@@ -233,7 +241,7 @@ def create_shopping_cart_item_by_product(id):
     """
 
     item = ShoppingCartItems(productId = id,shoppingCartId = current_user.id)
-  
+
 
     req_json = request.get_json(force = True) #{'purchaseQuantity': '3'}
 #     print("****************************request**************************", request)

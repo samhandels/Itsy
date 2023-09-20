@@ -25,6 +25,7 @@ greenlet = "==2.0.1"
 Mako = "==1.2.4"
 flask-cors = "*"
 flask-login = "*"
+boto3 = "*"
 
 [dev-packages]
 

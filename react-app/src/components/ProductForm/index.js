@@ -9,7 +9,7 @@ import { fetchUpdateProduct } from "../../store/productsReducer";
 export const ProductForm = ({ product, formType }) => {
   // all the inputs
   // console.log("tetete", formType);
-  const [productImage, setProductImage] = useState(product.product_image? product.product_image[0] : "");
+  const [image, setImage] = useState(product.product_image? product.product_image[0] : "");
   const [name, setName] = useState(product?.name);
   const [category, setCategory] = useState(product?.category);
   const [description, setDescription] = useState(product?.description);
@@ -43,6 +43,14 @@ export const ProductForm = ({ product, formType }) => {
     e.preventDefault();
     setHasSubmitted(true);
     // setErrors({});
+    const formData = new FormData();
+    formData.append("category", category);
+    formData.append("quantity", quantity);
+    formData.append("description", description);
+    formData.append("name", name);
+    formData.append("price", price);
+    if (image) formData.append('image', image);
+
     product = {
       ...product,
       category,
@@ -50,7 +58,7 @@ export const ProductForm = ({ product, formType }) => {
       description,
       name,
       price,
-      url: productImage
+      image
     };
     // console.log("what product is in the productForm==============", product);
       // console.log('how about here', product);
@@ -62,7 +70,7 @@ export const ProductForm = ({ product, formType }) => {
       // );
       // product = editedproduct;
       // console.log('dododododod', product);
-      const updatedProduct = await dispatch(fetchUpdateProduct(product))
+      const updatedProduct = await dispatch(fetchUpdateProduct(formData))
 
       // console.log('popp', updatedProduct);
 
@@ -75,6 +83,8 @@ export const ProductForm = ({ product, formType }) => {
       // );
       // console.log("3. back to form", newproduct);
       // product = newproduct;
+
+      console.log("product in our productForm handleSubmit --------------------------------", product)
       const newProduct = await dispatch(fetchCreateProduct(product))
 
       history.replace(`/products/${newProduct.singleProduct.id}`)
@@ -110,7 +120,7 @@ export const ProductForm = ({ product, formType }) => {
 
           </div>
 
-         <form onSubmit={handleSubmit}>
+         <form onSubmit={handleSubmit} encType="multipart/form-data">
 
          <div id='image-div-ProductForm'>
           <div>
@@ -122,16 +132,17 @@ export const ProductForm = ({ product, formType }) => {
 
          <label>
              <input id="image-input-ProductForm"
-              type="text"
-              placeholder="Product Image URL ending with .png .jpeg or .jpg"
-              value={productImage}
-              onChange={(e) => setProductImage(e.target.value)}
-              pattern='^http.*\.(png|jpg|jpeg)$'
+              type="file"
+              accept="image/*"
+              // placeholder="Product Image URL ending with .png .jpeg or .jpg"
+              // value={productImage}
+              onChange={(e) => setImage(e.target.files[0])}
+              // pattern='^http.*\.(png|jpg|jpeg)$'
               required
             />
           </label>
           <div>
-            {hasSubmitted && errors.productImage && `${errors.productImage}`}
+            {hasSubmitted && errors.image && `${errors.image}`}
           </div>
 
 
