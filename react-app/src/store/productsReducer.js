@@ -65,11 +65,20 @@ export const fetchProductDetails = (productId) => async (dispatch) => {
 
 export const fetchCreateProduct = (product) => async (dispatch) => {
       try {
+            const formData = new FormData();
+            for (const key in product) {
+                  if (key === 'image') {
+                      formData.append('image', product.image);
+                  } else {
+                      formData.append(key, product[key]);
+                  }
+              }
 
             const res = await fetch("/api/products/new", {
                   method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify(product),
+                  // headers: { "Content-Type": "application/json" },
+                  // body: JSON.stringify(product),
+                  body: formData
             });
 
             if (res.ok) {
@@ -92,9 +101,9 @@ export const fetchUpdateProduct = (product) => async (dispatch) => {
 
       // console.log('***************thunk begins in updating product', product);
 
-      const {  name, price, description, quantity, category, url } = product;
+      const {  name, price, description, quantity, category, image } = product;
 
-      const update = { name, price, description, quantity, category, url }
+      const update = { name, price, description, quantity, category, image }
 
       // console.log('***************** in thunk please update product *******', update);
 

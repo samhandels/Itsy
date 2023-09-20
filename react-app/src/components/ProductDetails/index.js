@@ -110,6 +110,7 @@ export const ProductDetails = () => {
           <div id="left-panel-productDetails">
             <div id="left-upper-panel-productDetails">
               <div id="primary-image-holder-productDetails">
+                {console.log("product in productDetails ------------------", product)}
                 <img
                   id="primary-image-productDetails"
                   src={product?.product_image[0]}
