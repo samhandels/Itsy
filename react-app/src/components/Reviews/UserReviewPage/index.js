@@ -83,7 +83,7 @@ const UserReviewPage = () => {
                         {currentReviews.map((review) => (
                             <div className="user-review-details" key={review.id}>
                                 <div className="review-product-info">
-                                    <Link to={`/products/${review.productId}`} ><img className="review-product-img" src={returnProduct(review).product_image}></img></Link>
+                                    <Link to={`/products/${review.productId}`} ><img className="review-product-img" src={returnProduct(review).image}></img></Link>
                                     <div className="review-product-text">
                                         <div>{returnProduct(review).name}</div>
                                         <div><span className="not-bold">Shop Owner: </span>{returnProduct(review).ownerName}</div>
