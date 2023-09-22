@@ -36,9 +36,9 @@ export const createItemThunk =
     // );
 
     if (res.ok) {
-      // console.log(
-      //   "*********************in the if block, in thunk**************"
-      // );
+      console.log(
+        "*********************in the if block, in thunk**************"
+      );
       const newItemResponse = await res.json();
       // console.log(
       //   "*********************in the if block, res.json()**************",

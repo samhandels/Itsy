@@ -52,21 +52,20 @@ export const ItemtoCart = ({ product }) => {
       <NavLink id="link-ProductCard" to={`/products/${product.id}`}>
         {sessionUser && (
           <i
-            className={`nav-link fa-regular ${
-              isFavorite(product.id) ? "fa-solid fa-heart" : "fa-heart"
-            }`}
+            className={`nav-link fa-regular ${isFavorite(product.id) ? "fa-solid fa-heart" : "fa-heart"
+              }`}
             id="fa-heart-product-card"
             onClick={() => handleHeartClick(product.id)}
           ></i>
         )}
 
         <div id="card-image-ProductCard">
-          <img id="card-image-ProductCard" src={product.product_image[0]} />
+          <img id="card-image-ProductCard" src={product.image[0]} />
         </div>
         <div id="card-name-productCard">{product.name}</div>
         <div id="card-price-productCard">{dollar.format(product.price)}</div>
         <div id="add-item-cart-fav-butt-ProductDetails" >
-        {/* className={addItemBtn} */}
+          {/* className={addItemBtn} */}
           <OpenSideModalButton
             buttonStyle="Add-productDetails"
             buttonText="Add to cart"

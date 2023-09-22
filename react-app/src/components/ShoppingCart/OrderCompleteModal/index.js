@@ -13,13 +13,14 @@ import { addWaitingReview, getWaitingReviews } from "../../../store/reviewsReduc
 export function OrderCompleteModal({ product, purchaseQuantity }) {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
-  const { id, name, price, description, quantity, category, product_image } = product
+  const { id, name, price, description, quantity, category, image } = product
   //the correct product quantity after order is complete
   const updateProduct = { id, name, price, description, quantity, category }
-  //  console.log('******************  Product******************', product);
+   console.log('******************  Product******************', product);
   //  console.log('****************** before Product******************', updateProduct);
+
   updateProduct.quantity = updateProduct.quantity - purchaseQuantity
-  updateProduct.image = product_image[0] //has to match what the fetchUpdateProduct key and data formate it wants
+  updateProduct.image = image //has to match what the fetchUpdateProduct key and data formate it wants
   //  console.log('******************purchaseQuantity******************', purchaseQuantity);
   //  console.log('******************updatedProduct******************', updateProduct);
 

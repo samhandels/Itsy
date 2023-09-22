@@ -104,7 +104,7 @@ export const fetchUpdateProduct = (product) => async (dispatch) => {
 
       const {  name, price, description, quantity, category, image } = product;
 
-      const update = { name, price, description, quantity, category, image }
+      const update = { name, price, description, quantity, category }
 
       // console.log('***************** in thunk please update product *******', update);
 

@@ -167,10 +167,11 @@ def update_product(id):
            product.category = form.data["category"]
            db.session.commit()
 
-           image = ProductImage.query.get(id)
+        #    image = ProductImage.query.get(id)
+        #    product.image = image.image
 
-           image.image = form.data["image"]
-           db.session.commit()
+        #    image.image = form.data["image"]
+        #    db.session.commit()
 
            response = Product.query.get(id)
            print(response)
