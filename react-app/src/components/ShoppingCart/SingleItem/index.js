@@ -58,7 +58,7 @@ export default function SingleItems({ product, productInCartNum, allProducts }) 
               <div className="item-img">
                 <NavLink to={`/products/${product?.id}`}>
                   <img
-                    src={product?.product_image[0]}
+                    src={product?.image[0]}
                     alt=""
                     className="cart-img"
                   />

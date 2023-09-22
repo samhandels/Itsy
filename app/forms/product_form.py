@@ -12,5 +12,5 @@ class ProductForm(FlaskForm):
       description = StringField("Description", validators=[DataRequired(), Length(min=1, max=1000)])
       quantity = IntegerField("Quantity")
       category = SelectField("Category", choices=categories)
-      image = FileField("Photo", validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
+      image = FileField("Photo", validators=[ FileAllowed(list(ALLOWED_EXTENSIONS))])
       submit = SubmitField("Create Product")

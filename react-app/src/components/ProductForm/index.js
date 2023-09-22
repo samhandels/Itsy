@@ -9,7 +9,7 @@ import { fetchUpdateProduct } from "../../store/productsReducer";
 export const ProductForm = ({ product, formType }) => {
   // all the inputs
   // console.log("tetete", formType);
-  const [image, setImage] = useState(product.product_image? product.product_image[0] : "");
+  const [image, setImage] = useState(product.product_image ? product.image[0] : "");
   const [name, setName] = useState(product?.name);
   const [category, setCategory] = useState(product?.category);
   const [description, setDescription] = useState(product?.description);
@@ -43,13 +43,13 @@ export const ProductForm = ({ product, formType }) => {
     e.preventDefault();
     setHasSubmitted(true);
     // setErrors({});
-    const formData = new FormData();
-    formData.append("category", category);
-    formData.append("quantity", quantity);
-    formData.append("description", description);
-    formData.append("name", name);
-    formData.append("price", price);
-    if (image) formData.append('image', image);
+    // const formData = new FormData();
+    // formData.append("category", category);
+    // formData.append("quantity", quantity);
+    // formData.append("description", description);
+    // formData.append("name", name);
+    // formData.append("price", price);
+    // if (image) formData.append('image', image);
 
     product = {
       ...product,
@@ -57,11 +57,11 @@ export const ProductForm = ({ product, formType }) => {
       quantity,
       description,
       name,
-      price,
-      image
+      price
     };
+    if (image) product.image = image
     // console.log("what product is in the productForm==============", product);
-      // console.log('how about here', product);
+    // console.log('how about here', product);
     // console.log("1. user input", product);
     if (formType === "Update") {
       // && !Object.values(errors).length
@@ -70,7 +70,7 @@ export const ProductForm = ({ product, formType }) => {
       // );
       // product = editedproduct;
       // console.log('dododododod', product);
-      const updatedProduct = await dispatch(fetchUpdateProduct(formData))
+      const updatedProduct = await dispatch(fetchUpdateProduct(product))
 
       // console.log('popp', updatedProduct);
 
@@ -109,62 +109,62 @@ export const ProductForm = ({ product, formType }) => {
 
   return (
 
-      <div id='entire-page-form'>
+    <div id='entire-page-form'>
 
-        <div id='form-holder-form'>
+      <div id='form-holder-form'>
 
-          <div>
+        <div>
 
-       <div id='create-ProductForm'>Create a Product</div>
-       <div>Add a photo and details about your item. Fill out what you can for now — you will be able to edit this later.</div>
-
-          </div>
-
-         <form onSubmit={handleSubmit} encType="multipart/form-data">
-
-         <div id='image-div-ProductForm'>
-          <div>
-           <div id='image-ProductForm'>Photo</div>
-           <div id='image-desc-ProductForm'>Image URL must start with "http" and end in .png .jpeg or .jpg</div>
-        </div>
-
-        <div id='right-image-div-ProductForm'>
-
-         <label>
-             <input id="image-input-ProductForm"
-              type="file"
-              accept="image/*"
-              // placeholder="Product Image URL ending with .png .jpeg or .jpg"
-              // value={productImage}
-              onChange={(e) => setImage(e.target.files[0])}
-              // pattern='^http.*\.(png|jpg|jpeg)$'
-              required
-            />
-          </label>
-          <div>
-            {hasSubmitted && errors.image && `${errors.image}`}
-          </div>
-
+          {formType === "Update" ? <div id='create-ProductForm'>Update a Product</div> : <div id='create-ProductForm'>Create a Product</div>}
+          <div>Add a photo and details about your item. Fill out what you can for now — you will be able to edit this later.</div>
 
         </div>
 
-        </div>
-        <div id='details-section-ProductForm'>
-          <div id='product-ProductForm'>Product details</div>
-          <div>Tell the world all about your item and why they will love it.</div>
+        <form onSubmit={handleSubmit} encType="multipart/form-data">
+
+          {formType === "Update" ? <div></div> : <div id='image-div-ProductForm'>
+            <div>
+              <div id='image-ProductForm'>Photo</div>
+              <div id='image-desc-ProductForm'>Image URL must start with "http" and end in .png .jpeg or .jpg</div>
+            </div>
+
+            <div id='right-image-div-ProductForm'>
+
+              <label>
+                <input id="image-input-ProductForm"
+                  type="file"
+                  accept="image/*"
+                  // placeholder="Product Image URL ending with .png .jpeg or .jpg"
+                  // value={productImage}
+                  onChange={(e) => setImage(e.target.files[0])}
+                  // pattern='^http.*\.(png|jpg|jpeg)$'
+                  required
+                />
+              </label>
+              <div>
+                {hasSubmitted && errors.image && `${errors.image}`}
+              </div>
 
 
-          <div id='title-div-ProductForm'>
+            </div>
 
-            <div id='left-title-div-ProductForm'>
+          </div>}
+          <div id='details-section-ProductForm'>
+            <div id='product-ProductForm'>Product details</div>
+            <div>Tell the world all about your item and why they will love it.</div>
+
+
+            <div id='title-div-ProductForm'>
+
+              <div id='left-title-div-ProductForm'>
 
                 <div id='name-ProductForm'>Product Name</div>
                 <div id='name-desc-ProductForm'>Include keywords that buyers would use to search for your item.</div>
 
 
-            </div>
+              </div>
 
-            <div id='right-title-div-ProductForm'>
+              <div id='right-title-div-ProductForm'>
 
 
                 <label >
@@ -179,23 +179,23 @@ export const ProductForm = ({ product, formType }) => {
                 <div>
                   {hasSubmitted && errors.name && `${errors.name}`}
                 </div>
+              </div>
             </div>
-          </div>
 
 
-          <div id='category-div-ProductForm'>
+            <div id='category-div-ProductForm'>
 
 
-            <div id='left-category-div-ProductForm'>
+              <div id='left-category-div-ProductForm'>
 
                 <div id='category-ProductForm'>Category</div>
                 <div id='category-desc-ProductForm'>Choose a category that will help more shoppers find your item.</div>
 
 
-            </div>
+              </div>
 
 
-            <div id='right-category-div-ProductForm'>
+              <div id='right-category-div-ProductForm'>
 
                 <label>
                   <select id='category-input-ProductForm'
@@ -204,15 +204,15 @@ export const ProductForm = ({ product, formType }) => {
                     value={category}
                     required
                     onChange={(e) => setCategory(e.target.value)}>
-                      <option value=''>Choose a Category:</option>
-                      <option value='Jewelry'>Jewelry & Accessories</option>
-                      <option value='Clothing'>Clothing & Shoes</option>
-                      <option value='Home'>Home & Living</option>
-                      <option value='Wedding'>Wedding & Party</option>
-                      <option value='Toys'>Toys & Entertainment</option>
-                      <option value='Art'>Art & Collectibles</option>
-                      <option value='Craft'>Craft Supplies</option>
-                      <option value='Gifts'>Gifts & Gift Cards</option>
+                    <option value=''>Choose a Category:</option>
+                    <option value='Jewelry'>Jewelry & Accessories</option>
+                    <option value='Clothing'>Clothing & Shoes</option>
+                    <option value='Home'>Home & Living</option>
+                    <option value='Wedding'>Wedding & Party</option>
+                    <option value='Toys'>Toys & Entertainment</option>
+                    <option value='Art'>Art & Collectibles</option>
+                    <option value='Craft'>Craft Supplies</option>
+                    <option value='Gifts'>Gifts & Gift Cards</option>
                   </select>
                 </label>
                 <div>
@@ -220,37 +220,6 @@ export const ProductForm = ({ product, formType }) => {
                 </div>
 
 
-            </div>
-
-
-
-          </div>
-
-
-          <div id='desc-div-ProductForm'>
-
-            <div id='left-desc-div-ProductForm'>
-
-                <div id='desc-ProductForm'>Description</div>
-                <div id='desc-desc-ProductForm'>Start with a brief overview that describes your item’s finest features. Shoppers will only see the first few lines of your description at first, so make it count!</div>
-                <div id='desc-desc2-ProductForm'>Not sure what else to say? Shoppers also like hearing about your process, and the story behind this item.</div>
-
-            </div>
-
-
-            <div id='left-desc-div-ProductForm'>
-
-
-              <label>
-                <textarea id='desc-input-ProductForm'
-                  placeholder="Please write at least 30 characters"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                  required
-                />
-              </label>
-              <div className="errors">
-                {hasSubmitted && errors.description && `${errors.description}`}
               </div>
 
 
@@ -258,118 +227,149 @@ export const ProductForm = ({ product, formType }) => {
             </div>
 
 
+            <div id='desc-div-ProductForm'>
+
+              <div id='left-desc-div-ProductForm'>
+
+                <div id='desc-ProductForm'>Description</div>
+                <div id='desc-desc-ProductForm'>Start with a brief overview that describes your item’s finest features. Shoppers will only see the first few lines of your description at first, so make it count!</div>
+                <div id='desc-desc2-ProductForm'>Not sure what else to say? Shoppers also like hearing about your process, and the story behind this item.</div>
+
+              </div>
+
+
+              <div id='left-desc-div-ProductForm'>
+
+
+                <label>
+                  <textarea id='desc-input-ProductForm'
+                    placeholder="Please write at least 30 characters"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    required
+                  />
+                </label>
+                <div className="errors">
+                  {hasSubmitted && errors.description && `${errors.description}`}
+                </div>
+
+
+
+              </div>
+
+
+            </div>
+
+
+
+
           </div>
 
 
 
 
-        </div>
 
 
 
 
+          <div id='inventory-section-ProductForm'>
+            <div id='inventory-ProductForm'>Inventory and Pricing</div>
 
+            <div id='price-div-ProductForm'>
+              <div id='left-price-div-ProductForm'>
+                <div id='price-ProductForm'>Price</div>
+                <div id='price-desc-ProductForm'>
+                  Remember to factor in the costs of materials, labor, and other business expenses. If you offer free shipping, make sure to include the cost of shipping so it doesn't eat into your profits.
+                </div>
+              </div>
 
+              <div id='right-price-div-ProductForm'>
 
-
-        <div id='inventory-section-ProductForm'>
-                          <div id='inventory-ProductForm'>Inventory and Pricing</div>
-
-                        <div id='price-div-ProductForm'>
-                            <div id='left-price-div-ProductForm'>
-                              <div id='price-ProductForm'>Price</div>
-                              <div id='price-desc-ProductForm'>
-                              Remember to factor in the costs of materials, labor, and other business expenses. If you offer free shipping, make sure to include the cost of shipping so it doesn't eat into your profits.
-                              </div>
-                            </div>
-
-                            <div id='right-price-div-ProductForm'>
-
-                            <label>
-                              {/* <i className="fa-solid fa-dollar-sign"></i>
+                <label>
+                  {/* <i className="fa-solid fa-dollar-sign"></i>
                               {"  "} */}
-                              <input id='price-input-ProductForm'
-                                className="price"
-                                type="number"
-                                placeholder="USD $0"
-                                value={price}
-                                onChange={(e) => setPrice(e.target.value)}
-                                required
-                              />
-                            </label>
-                            <div className="errors">
-                              {hasSubmitted && errors.price && `${errors.price}`}
-                            </div>
+                  <input id='price-input-ProductForm'
+                    className="price"
+                    type="number"
+                    placeholder="USD $0"
+                    value={price}
+                    onChange={(e) => setPrice(e.target.value)}
+                    required
+                  />
+                </label>
+                <div className="errors">
+                  {hasSubmitted && errors.price && `${errors.price}`}
+                </div>
 
 
 
-                            </div>
+              </div>
 
 
-                        </div>
+            </div>
 
 
-                        <div id='quantity-div-ProductForm'>
+            <div id='quantity-div-ProductForm'>
 
-                              <div id='left-quantity-div-ProductForm'>
+              <div id='left-quantity-div-ProductForm'>
 
-                                <div id='quantity-ProductForm'>Quantity</div>
-                                <div id='quantity-desc-ProductForm'>
-                                For quantities greater than one, this listing will renew automatically until it sells out.
-                                </div>
+                <div id='quantity-ProductForm'>Quantity</div>
+                <div id='quantity-desc-ProductForm'>
+                  For quantities greater than one, this listing will renew automatically until it sells out.
+                </div>
 
-                              </div>
+              </div>
 
-                                <div id='right-quantity-div-ProductForm'>
-
-
-                            <label>
-                              <input id='quantity-input-ProductForm'
-                                className="quantity"
-                                type="number"
-                                placeholder="1"
-                                value={quantity}
-                                onChange={(e) => setQuantity(e.target.value)}
-                                required
-                              />
-                            </label>
-                            <div className="errors">
-                              {hasSubmitted && errors.quantity && `${errors.quantity}`}
-                            </div>
+              <div id='right-quantity-div-ProductForm'>
 
 
-
-
-                                </div>
+                <label>
+                  <input id='quantity-input-ProductForm'
+                    className="quantity"
+                    type="number"
+                    placeholder="1"
+                    value={quantity}
+                    onChange={(e) => setQuantity(e.target.value)}
+                    required
+                  />
+                </label>
+                <div className="errors">
+                  {hasSubmitted && errors.quantity && `${errors.quantity}`}
+                </div>
 
 
 
 
-
-                        </div>
-
-                          </div>
+              </div>
 
 
 
 
-                          <button id='submit-butt-ProductForm' className="black-button" type="submit">
-                            {formType}
-                          </button>
 
-      </form>
+            </div>
 
+          </div>
 
 
 
-        </div>
 
+          <button id='submit-butt-ProductForm' className="black-button" type="submit">
+            {formType}
+          </button>
 
+        </form>
 
 
 
 
       </div>
+
+
+
+
+
+
+    </div>
 
 
 
