@@ -54,43 +54,43 @@ export default function SingleItems({ product, productInCartNum, allProducts }) 
       <div id='left-panel-individual-item-cart'>
 
 
-            <div id='store-name-cart'>{product?.ownerName}'s Store</div>
+        <div id='store-name-cart'>{product?.ownerName}'s Store</div>
 
 
 
-          <div className="test">
-            <div id='' className="test">
-              <div className="">
-                <NavLink to={`/products/${product?.id}`}>
-                  <img
-                    src={product?.product_image[0]}
-                    alt=""
-                    className="cart-img-cart"
-                  />
-                </NavLink>
-              </div>
-              <div>
-                <button id='remove-butt-shopping-cart' onClick={removeItem}>
-                  <i className="fa-solid fa-x"></i> Remove
-                </button>
-              </div>
-            </div>
+        <div className="test">
+          <div id='' className="test">
             <div className="">
-              <div>{product.name}</div>
-              <div>Quantity</div>
-              <label>
-                <select
-                  name="selectedPurchaseQuantity"
-                  value={purchaseQuantity}
-                  onChange={(e) => setPurchaseQuantity(e.target.value)}
-                >
-                  {quantityArr.map((number) => (
-                    <option value={number}>{number}</option>
-                  ))}
-                </select>
-              </label>
+              <NavLink to={`/products/${product?.id}`}>
+                <img
+                  src={product?.image[0]}
+                  alt=""
+                  className="cart-img-cart"
+                />
+              </NavLink>
+            </div>
+            <div>
+              <button id='remove-butt-shopping-cart' onClick={removeItem}>
+                <i className="fa-solid fa-x"></i> Remove
+              </button>
             </div>
           </div>
+          <div className="">
+            <div>{product.name}</div>
+            <div>Quantity</div>
+            <label>
+              <select
+                name="selectedPurchaseQuantity"
+                value={purchaseQuantity}
+                onChange={(e) => setPurchaseQuantity(e.target.value)}
+              >
+                {quantityArr.map((number) => (
+                  <option value={number}>{number}</option>
+                ))}
+              </select>
+            </label>
+          </div>
+        </div>
 
         <div className="">
           <div>${price}</div>

@@ -113,7 +113,7 @@ export const ProductDetails = () => {
                 {console.log("product in productDetails ------------------", product)}
                 <img
                   id="primary-image-productDetails"
-                  src={product?.product_image[0]}
+                  src={product?.image}
                   alt="product_image"
                 />
               </div>
@@ -130,9 +130,9 @@ export const ProductDetails = () => {
               </div>
             </div>
 
-              <div>
-                <ReviewFormPage productId={product.id} />
-              </div>
+            <div>
+              <ReviewFormPage productId={product.id} />
+            </div>
 
           </div>
 
