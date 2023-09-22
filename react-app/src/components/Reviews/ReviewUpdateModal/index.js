@@ -78,7 +78,7 @@ const ReviewUpdateModal = ({ currentStars, productId, reviewId }) => {
                     <div >
                         <div className="review-step-one-upper">
                             <div>
-                                <img className="review-product-image" src={thisProduct.product_image}></img>
+                                <img className="review-product-image" src={thisProduct.image}></img>
                             </div>
                             <div className="review-step-one-upper-right">
                                 <div>{thisProduct && thisProduct.name}</div>
