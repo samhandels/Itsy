@@ -33,7 +33,7 @@ const ReviewFormPage = ({ productId }) => {
     if (user) {
         userTransactions = transArr.filter((trans) => trans.userId === user.id)
     }
-    console.log("USERTRANSACTIONS", userTransactions)
+    // console.log("USERTRANSACTIONS", userTransactions)
     let purchasedItem = false;
 
 

@@ -84,7 +84,7 @@ export const ProductForm = ({ product, formType }) => {
       // console.log("3. back to form", newproduct);
       // product = newproduct;
 
-      console.log("product in our productForm handleSubmit --------------------------------", product)
+      // console.log("product in our productForm handleSubmit --------------------------------", product)
       const newProduct = await dispatch(fetchCreateProduct(product))
 
       history.replace(`/products/${newProduct.singleProduct.id}`)

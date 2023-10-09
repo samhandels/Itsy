@@ -30,7 +30,7 @@ export const addTransaction = (items) => async (dispatch) => {
         })
 
         const transactionResponse = await transactionCreator.json();
-        console.log("TRANSRESPONSE" , transactionResponse)
+        // console.log("TRANSRESPONSE" , transactionResponse)
         dispatch(addTransactionItems(numItems, transactionResponse, items))
 
 }

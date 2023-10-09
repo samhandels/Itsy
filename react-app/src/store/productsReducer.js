@@ -117,7 +117,7 @@ export const fetchUpdateProduct = (product) => async (dispatch) => {
             const productResponse = await res.json();
             const products = {}
             products.singleProduct = { ...productResponse }
-            console.log('midddle thunk', products);
+            // console.log('midddle thunk', products);
             dispatch(getProduct(products))
             return products;
       } else {

@@ -9,7 +9,7 @@ import { getAllReviews, getWaitingReviews, postReview, updateReview } from '../.
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min'
 
 const ReviewUpdateModal = ({ currentStars, productId, reviewId }) => {
-    console.log("CURRENTSTARS", currentStars)
+    // console.log("CURRENTSTARS", currentStars)
     const dispatch = useDispatch();
     const [review, setReview] = useState("")
     const [stars, setStars] = useState(0)
@@ -33,7 +33,7 @@ const ReviewUpdateModal = ({ currentStars, productId, reviewId }) => {
 
     handleSubmit = async (e) => {
         e.preventDefault()
-        console.log("HANDLING SUBMIT")
+        // console.log("HANDLING SUBMIT")
         if (review) reviewInfo.review = review
         else reviewInfo.review = thisReview.review
         if (stars) reviewInfo.stars = stars
