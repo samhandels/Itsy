@@ -16,7 +16,7 @@ export function OrderCompleteModal({ product, purchaseQuantity }) {
   const { id, name, price, description, quantity, category, image } = product
   //the correct product quantity after order is complete
   const updateProduct = { id, name, price, description, quantity, category }
-   console.log('******************  Product******************', product);
+  //  console.log('******************  Product******************', product);
   //  console.log('****************** before Product******************', updateProduct);
 
   updateProduct.quantity = updateProduct.quantity - purchaseQuantity
