@@ -95,7 +95,7 @@ export const AllProducts = () => {
                               Up to 50% off
                         </div>
                         <div id='labor-day-AllProducts'>
-                              The Labor Day Sales Event is here!
+                              The Holiday Sales Event is here!
                         </div>
                         <NavLink id='shop-now' to='/shopping_cart/current'>
                               <div id='shop-button-AllProducts'>
