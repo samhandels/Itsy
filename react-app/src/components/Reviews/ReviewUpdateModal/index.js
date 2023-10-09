@@ -137,8 +137,8 @@ const ReviewUpdateModal = ({ currentStars, productId, reviewId }) => {
                             </div>
                         </div>
                         {stars < 3 && <div className="low-review-help">
-                            <p>Sorry your experience wasn't great</p>
-                            <p>Click here to contact the shop owner</p>
+                            <p>Sorry your experience wasn't great.</p>
+                            <p>We'll let the shop owner know.</p>
                         </div>}
                     </div>
                 </div>}

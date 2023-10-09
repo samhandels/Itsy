@@ -110,7 +110,6 @@ export const ProductDetails = () => {
           <div id="left-panel-productDetails">
             <div id="left-upper-panel-productDetails">
               <div id="primary-image-holder-productDetails">
-                {console.log("product in productDetails ------------------", product)}
                 <img
                   id="primary-image-productDetails"
                   src={product?.image}
@@ -155,6 +154,10 @@ export const ProductDetails = () => {
               </div>
 
               <div id="how-many-productDetails">
+
+              {
+                sessionUser && product?.ownerId !== sessionUser?.id ?
+
                 <label>
                   {" "}
                   Choose how many you would like:  {" "}
@@ -168,6 +171,16 @@ export const ProductDetails = () => {
                     ))}
                   </select>
                 </label>
+
+                :
+
+                <div> You can't purchase your own products. </div>
+
+
+              }
+
+
+
               </div>
               {/* <div id="install-productDetails">
                 Pay in 4 installments with Klarna...
