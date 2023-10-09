@@ -9,7 +9,7 @@ import { getAllReviews, getWaitingReviews, postReview, updateReview } from '../.
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min'
 
 const ReviewUpdateModal = ({ currentStars, productId, reviewId }) => {
-    console.log("CURRENTSTARS", currentStars)
+    // console.log("CURRENTSTARS", currentStars)
     const dispatch = useDispatch();
     const [review, setReview] = useState("")
     const [stars, setStars] = useState(0)
@@ -24,7 +24,7 @@ const ReviewUpdateModal = ({ currentStars, productId, reviewId }) => {
 
     const products = useSelector((state) => state.products)
     const prodArr = Object.values(products)
-    const thisProduct = prodArr[thisReview?.productId - 1]
+    const thisProduct = prodArr[thisReview?.productId]
 
 
 
@@ -33,7 +33,7 @@ const ReviewUpdateModal = ({ currentStars, productId, reviewId }) => {
 
     handleSubmit = async (e) => {
         e.preventDefault()
-        console.log("HANDLING SUBMIT")
+        // console.log("HANDLING SUBMIT")
         if (review) reviewInfo.review = review
         else reviewInfo.review = thisReview.review
         if (stars) reviewInfo.stars = stars
@@ -137,8 +137,8 @@ const ReviewUpdateModal = ({ currentStars, productId, reviewId }) => {
                             </div>
                         </div>
                         {stars < 3 && <div className="low-review-help">
-                            <p>Sorry your experience wasn't great</p>
-                            <p>Click here to contact the shop owner</p>
+                            <p>Sorry your experience wasn't great.</p>
+                            <p>We'll let the shop owner know.</p>
                         </div>}
                     </div>
                 </div>}

@@ -33,7 +33,7 @@ const ReviewFormPage = ({ productId }) => {
     if (user) {
         userTransactions = transArr.filter((trans) => trans.userId === user.id)
     }
-    console.log("USERTRANSACTIONS", userTransactions)
+    // console.log("USERTRANSACTIONS", userTransactions)
     let purchasedItem = false;
 
 
@@ -45,7 +45,7 @@ const ReviewFormPage = ({ productId }) => {
     const prodArr = Object.values(products)
 
     const productReviews = revArr.filter((review) => review?.productId === productId)
-    const thisProduct = prodArr[productId - 1]
+    const thisProduct = prodArr[productId]
 
 
 

@@ -26,14 +26,14 @@ export function AddtoCartModal({ product, purchaseQuantity }) {
   const createCartItem = (e) => {
     e.preventDefault();
     if (itemProductQuantity < product?.quantity) {
-      console.log("HERE!!!!!!")
+      // console.log("HERE!!!!!!")
       dispatch(createItemThunk(product.id, purchaseQuantity))
       closeModal() //if use .then(closeModal) it doesn't fire
       history.push("/shopping_cart/current");
     }
     else {
       alert("Unfortunately, you're trying to order more than what we have, go check out items in your cart!")
-      console.log('****************item is already the same quantity as product quantity****************',);
+      // console.log('****************item is already the same quantity as product quantity****************',);
     }
   };
 

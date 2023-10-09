@@ -23,7 +23,7 @@ const ReviewFormModal = ({ currentStars, productId }) => {
 
     const products = useSelector((state) => state.products)
     const prodArr = Object.values(products)
-    const thisProduct = prodArr[productId - 1]
+    const thisProduct = prodArr[productId]
 
     // console.log("PRODUCTID", productId)
     // console.log("THISPRODUCTID", thisProduct.id)
