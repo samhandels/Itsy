@@ -66,6 +66,12 @@ def seed_product_images():
         productId=30, image='https://i.etsystatic.com/7181882/r/il/6cf38a/4526323554/il_1140xN.4526323554_48yn.jpg')
     product_image31 = ProductImage(
         productId=31, image='https://i.etsystatic.com/9619595/r/il/fd3864/4471554537/il_1140xN.4471554537_m810.jpg')
+    product_image32 = ProductImage(
+        productId=32, image='https://i.etsystatic.com/7985906/r/il/7ace7c/1129728442/il_794xN.1129728442_hvl6.jpg')
+    product_image33 = ProductImage(
+        productId=33, image='https://i.etsystatic.com/37470940/r/il/f2c503/4661438723/il_794xN.4661438723_lko1.jpg')
+    product_image34 = ProductImage(
+        productId=34, image='https://i.etsystatic.com/31233225/r/il/236b70/5178416072/il_794xN.5178416072_3qjj.jpg')
 
     db.session.add(product_image1)
     db.session.add(product_image2)
@@ -98,6 +104,9 @@ def seed_product_images():
     db.session.add(product_image29)
     db.session.add(product_image30)
     db.session.add(product_image31)
+    db.session.add(product_image32)
+    db.session.add(product_image33)
+    db.session.add(product_image34)
 
 
     db.session.commit()

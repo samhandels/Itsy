@@ -43,29 +43,35 @@ def seed_products():
     product19 = Product(
         ownerId=2, name='Tiny Crocs' , price=5.99, description='A cute miniature pair of crocs, they are hand made and hand painted, each purchase comes with 5 colors.', quantity=25, category='Clothing')
     product20 = Product(
-        ownerId=2, name='Dollhouse Books' , price=17.99, description='Mini Antique Books, comes with a kit to further create more books as well', quantity=15, category='Home')
+        ownerId=3, name='Dollhouse Books' , price=17.99, description='Mini Antique Books, comes with a kit to further create more books as well', quantity=15, category='Home')
     product21 = Product(
-        ownerId=2, name='8pc Breakfast Food and Drink Miniature Lot' , price=5.99, description='8pc Breakfast Food and Drink Miniature Lot. You will receive 8 pieces of miniature breakfast items - 2 drinks and 6 food items.', quantity=10, category='Craft')
+        ownerId=1, name='8pc Breakfast Food and Drink Miniature Lot' , price=5.99, description='8pc Breakfast Food and Drink Miniature Lot. You will receive 8 pieces of miniature breakfast items - 2 drinks and 6 food items.', quantity=10, category='Craft')
     product22 = Product(
         ownerId=2, name='Horror Classics Miniature DVD Set - 4 Movies' , price=15.00, description='This is a set of 4 miniature Horror Classic DVDs in 1:12 scale. The Shining, The Exorcist, The Texas Chainsaw Massacre, Jaws', quantity=14, category='Art')
     product23 = Product(
-        ownerId=2, name='Tiny Wedding Gifts' , price=10.99, description='Tiny wedding gift packages and bags, perfect to gift your tiny friends!', quantity=12, category='Wedding')
+        ownerId=3, name='Tiny Wedding Gifts' , price=10.99, description='Tiny wedding gift packages and bags, perfect to gift your tiny friends!', quantity=12, category='Wedding')
     product24 = Product(
-        ownerId=2, name='Tiny Micro Diamond Earrings' , price=35.99, description='Super small micro crystal diamond earring / nose stud 1,2 mm 1,7 mm', quantity=15, category='Jewelry')
+        ownerId=1, name='Tiny Micro Diamond Earrings' , price=35.99, description='Super small micro crystal diamond earring / nose stud 1,2 mm 1,7 mm', quantity=15, category='Jewelry')
     product25 = Product(
         ownerId=2, name='Opal Inlay Earrings' , price=25.99, description='Stack our Opal Inlay Hoops with your everyday jewelry pieces to add a sparkle of color and uniqueness. With our three different opal colors', quantity=13, category='Jewelry')
     product26 = Product(
-        ownerId=2, name='Miniature Dollhouse Table Set' , price=17.99, description='miniature dollhouse kitchen table 1/12 scale', quantity=15, category='Home')
+        ownerId=3, name='Miniature Dollhouse Table Set' , price=17.99, description='miniature dollhouse kitchen table 1/12 scale', quantity=15, category='Home')
     product27 = Product(
-        ownerId=2, name='Miniature Nutcracker' , price=5.99, description='These mini nutcrackers are a truly unique addition to your holiday collection. Just picture one standing on your mantle or hutch. These would make a great gift for your mini loving friends as well since they are unique and somewhat difficult to find in miniatures.', quantity=15, category='Gifts')
+        ownerId=1, name='Miniature Nutcracker' , price=5.99, description='These mini nutcrackers are a truly unique addition to your holiday collection. Just picture one standing on your mantle or hutch. These would make a great gift for your mini loving friends as well since they are unique and somewhat difficult to find in miniatures.', quantity=15, category='Gifts')
     product28 = Product(
         ownerId=2, name='Dolls House Quality Furniture Classic Cream Sofa' , price=12.99, description='One of the largest Dolls House makers in the UK with over 70 designs to choose from.', quantity=15, category='Craft')
     product29 = Product(
-        ownerId=2, name='Miniature Koi & Lily Pads' , price=15.99, description='These are hand crafted Koi and Black Moor Fish and Lily Pads that I use for all of my ponds. Each fish and pad are crafted one drop of resin at a time and toothpicks to make sure they fill in correctly.', quantity=17, category='Toys')
+        ownerId=3, name='Miniature Koi & Lily Pads' , price=15.99, description='These are hand crafted Koi and Black Moor Fish and Lily Pads that I use for all of my ponds. Each fish and pad are crafted one drop of resin at a time and toothpicks to make sure they fill in correctly.', quantity=17, category='Toys')
     product30 = Product(
-        ownerId=2, name='Miniature Sunglasses Glitter ONE PAIR' , price=15.99, description='Miniature sunglasses in a variety of glitter colors. Gotta love the sparkle!', quantity=15, category='Clothing')
+        ownerId=1, name='Miniature Sunglasses Glitter ONE PAIR' , price=15.99, description='Miniature sunglasses in a variety of glitter colors. Gotta love the sparkle!', quantity=15, category='Clothing')
     product31 = Product(
         ownerId=2, name='Mini Cookies' , price=19.99, description='Grab bag of assorted miniature cookies handmade polymer clay dollhouse miniatures', quantity=15, category='Craft')
+    product32 = Product(
+        ownerId=3, name='Mini Gold Tooth Necklace' , price=25.99, description='This tiny tooth Necklace catches the light for a ton of sparkly ,and it looks amazing layered with so many of the other necklaces in my collection... beautiful and dainty.', quantity=12, category='Jewelry')
+    product33 = Product(
+        ownerId=1, name='Mini Wedding Favors' , price=15.99, description='Hand made magnet Mini Flower Bouquets for your wedding.', quantity=50, category='Wedding')
+    product34 = Product(
+        ownerId=2, name='Mini Skulls' , price=7.99, description='Mini resin skulls: these would be great to collect, use at a Halloween Party or even giving to your trick or treaters.', quantity=25, category='Art')
 
     db.session.add(product1)
     db.session.add(product2)
@@ -98,6 +104,9 @@ def seed_products():
     db.session.add(product29)
     db.session.add(product30)
     db.session.add(product31)
+    db.session.add(product32)
+    db.session.add(product33)
+    db.session.add(product34)
 
     db.session.commit()
 
