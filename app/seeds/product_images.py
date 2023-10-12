@@ -72,6 +72,67 @@ def seed_product_images():
         productId=33, image='https://i.etsystatic.com/37470940/r/il/f2c503/4661438723/il_794xN.4661438723_lko1.jpg')
     product_image34 = ProductImage(
         productId=34, image='https://i.etsystatic.com/31233225/r/il/236b70/5178416072/il_794xN.5178416072_3qjj.jpg')
+    product_image35 = ProductImage(
+        productId=35, image='https://i.etsystatic.com/13725333/r/il/149e1c/5291929573/il_1588xN.5291929573_modp.jpg')
+    product_image36 = ProductImage(
+        productId=36, image='https://i.etsystatic.com/21459429/r/il/d0e5f5/2751180434/il_1588xN.2751180434_bk5t.jpg')
+    product_image37 = ProductImage(
+        productId=37, image='https://i.etsystatic.com/7336872/r/il/e5f187/1911793295/il_1588xN.1911793295_740q.jpg')
+    product_image38 = ProductImage(
+        productId=38, image='https://i.etsystatic.com/23239473/r/il/939c3a/5300848006/il_1588xN.5300848006_pigx.jpg')
+    product_image39 = ProductImage(
+        productId=39, image='https://i.etsystatic.com/37005038/r/il/fcbb8e/4178923028/il_1588xN.4178923028_2dl3.jpg')
+    product_image40 = ProductImage(
+        productId=40, image='https://i.etsystatic.com/11625838/r/il/1d21ec/1703504302/il_1588xN.1703504302_df5n.jpg')
+    product_image41 = ProductImage(
+        productId=41, image='https://i.etsystatic.com/7566541/r/il/17c5f7/1278658387/il_1588xN.1278658387_ngg7.jpg')
+    product_image42 = ProductImage(
+        productId=42, image='https://i.etsystatic.com/26728645/r/il/814571/4673476643/il_1588xN.4673476643_5npt.jpg')
+    product_image43 = ProductImage(
+        productId=43, image='https://i.etsystatic.com/26728645/r/il/3a402a/3224338838/il_1588xN.3224338838_gmen.jpg')
+    product_image44 = ProductImage(
+        productId=44, image='https://i.etsystatic.com/26858393/r/il/042fb4/4975168533/il_1588xN.4975168533_ho2e.jpg')
+    product_image45 = ProductImage(
+        productId=45, image='https://i.etsystatic.com/10911151/r/il/3623d4/5236017505/il_1588xN.5236017505_dyji.jpg')
+    product_image46 = ProductImage(
+        productId=46, image='https://i.etsystatic.com/27000924/r/il/23b183/5193688987/il_1588xN.5193688987_revj.jpg')
+    product_image47 = ProductImage(
+        productId=47, image='https://i.etsystatic.com/13736874/r/il/147723/5075798975/il_1588xN.5075798975_q3w5.jpg')
+    product_image48 = ProductImage(
+        productId=48, image='https://i.etsystatic.com/13736874/r/il/0b5464/5027509740/il_1588xN.5027509740_cdak.jpg')
+    product_image49 = ProductImage(
+        productId=49, image='https://i.etsystatic.com/10601155/r/il/cce527/716208099/il_1588xN.716208099_lhxu.jpg')
+    product_image50 = ProductImage(
+        productId=50, image='https://i.etsystatic.com/38542546/r/il/e4bfb8/5237837708/il_1588xN.5237837708_2pae.jpg')
+    product_image51 = ProductImage(
+        productId=51, image='https://i.etsystatic.com/38542546/r/il/c12e1a/5146768089/il_1588xN.5146768089_ggfs.jpg')
+    product_image52 = ProductImage(
+        productId=52, image='https://i.etsystatic.com/38542546/r/il/91132c/5368164197/il_1588xN.5368164197_2rvh.jpg')
+    product_image53 = ProductImage(
+        productId=53, image='https://i.etsystatic.com/29567678/r/il/996b2f/5269283071/il_1588xN.5269283071_5o96.jpg')
+    product_image54 = ProductImage(
+        productId=54, image='https://i.etsystatic.com/15049114/r/il/1d6cc7/4732844391/il_1588xN.4732844391_3rao.jpg')
+    product_image55 = ProductImage(
+        productId=55, image='https://i.etsystatic.com/29433234/r/il/49ae1d/5289980596/il_1588xN.5289980596_so33.jpg')
+    product_image56 = ProductImage(
+        productId=56, image='https://i.etsystatic.com/37463746/r/il/27b5d9/4948895981/il_1588xN.4948895981_667n.jpg')
+    product_image57 = ProductImage(
+        productId=57, image='https://i.etsystatic.com/12646132/r/il/907501/3370985987/il_1588xN.3370985987_2no9.jpg')
+    product_image58 = ProductImage(
+        productId=58, image='https://i.etsystatic.com/5964963/r/il/4bbc90/1380332755/il_1588xN.1380332755_mv0e.jpg')
+    product_image59 = ProductImage(
+        productId=59, image='https://i.etsystatic.com/11352363/r/il/797c05/1607138151/il_1588xN.1607138151_7mpz.jpg')
+    product_image60 = ProductImage(
+        productId=60, image='https://i.etsystatic.com/5613597/r/il/31767c/580231218/il_1588xN.580231218_ojkx.jpg')
+    product_image61 = ProductImage(
+        productId=61, image='https://i.etsystatic.com/8102881/r/il/bea3f6/853505467/il_1588xN.853505467_3s1x.jpg')
+    product_image62 = ProductImage(
+        productId=62, image='https://i.etsystatic.com/34782146/r/il/3665d4/4760645982/il_1588xN.4760645982_83kw.jpg')
+    product_image63 = ProductImage(
+        productId=63, image='https://i.etsystatic.com/19255730/r/il/38e469/2916752270/il_1588xN.2916752270_4kgs.jpg')
+    product_image64 = ProductImage(
+        productId=64, image='https://i.etsystatic.com/12471968/r/il/8946a3/5377670320/il_1588xN.5377670320_s16l.jpg')
+
 
     db.session.add(product_image1)
     db.session.add(product_image2)
@@ -107,6 +168,38 @@ def seed_product_images():
     db.session.add(product_image32)
     db.session.add(product_image33)
     db.session.add(product_image34)
+    db.session.add(product_image35)
+    db.session.add(product_image36)
+    db.session.add(product_image37)
+    db.session.add(product_image38)
+    db.session.add(product_image39)
+    db.session.add(product_image40)
+    db.session.add(product_image41)
+    db.session.add(product_image42)
+    db.session.add(product_image43)
+    db.session.add(product_image44)
+    db.session.add(product_image45)
+    db.session.add(product_image46)
+    db.session.add(product_image47)
+    db.session.add(product_image48)
+    db.session.add(product_image49)
+    db.session.add(product_image50)
+    db.session.add(product_image51)
+    db.session.add(product_image52)
+    db.session.add(product_image53)
+    db.session.add(product_image54)
+    db.session.add(product_image55)
+    db.session.add(product_image56)
+    db.session.add(product_image57)
+    db.session.add(product_image58)
+    db.session.add(product_image59)
+    db.session.add(product_image60)
+    db.session.add(product_image61)
+    db.session.add(product_image62)
+    db.session.add(product_image63)
+    db.session.add(product_image64)
+
+
 
 
     db.session.commit()
