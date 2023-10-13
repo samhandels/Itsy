@@ -128,7 +128,7 @@ const ReviewFormPage = ({ productId }) => {
                     </div>
                 </form >}
                 modalComponent={<ReviewFormModal currentStars={activeRating} productId={productId - 1} />}
-            /> : productReviews.length ? <div className="is-my-product">Here is what your shoppers had to say: </div> : <div>No reviews yet</div>}
+            /> : productReviews.length ? <div className="is-my-product">Here is what your shoppers had to say: </div> : <div className='is-my-product'>This is your product, but there are no reviews yet.</div>}
 
             {
                 !isMyProduct && purchasedItem == false ?
