@@ -174,3 +174,21 @@
   border-color: #222;
   border-style: solid;
 }
+
+#arrow {
+  border: 1px solid rgb(222, 222, 222);
+  padding: 5px 10px;
+  background-color: #0E0E0E17;
+  border-radius: 50%;
+  margin-left: 5px;
+}
+
+#arrow:hover {
+  background-color: rgb(241, 100, 30);
+  cursor: pointer;
+  color: white;
+}
+
+a {
+  all: unset
+}
