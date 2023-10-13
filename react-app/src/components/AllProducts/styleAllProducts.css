@@ -139,3 +139,29 @@
 .padding-less {
   padding: 5px 10px;
 }
+
+#pageNum-holder {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+#pageNum-box {
+  border: 1px solid rgb(222, 222, 222);
+  padding: 5px 15px;
+}
+
+#pageNum-box:hover {
+  background-color: rgb(241, 100, 30);
+  cursor: pointer;
+  color: white;
+}
+
+#page {
+  margin-left: 16px;
+
+}
+
+.highlight {
+  color: #f1641e;
+}

@@ -19,6 +19,10 @@ export const AllProducts = () => {
 
       const [filter, setFilter] = useState("");
 
+      const [ currentPage, setCurrentPage ] = useState(1);
+      const [ itemsPerPage, setItemsPerPage ] = useState(20);
+      const pageNumbers = [];
+
       useEffect(() => {
             dispatch(fetchProducts())
             dispatch(getAllFavorites(user ? user : null))
@@ -35,6 +39,23 @@ export const AllProducts = () => {
       delete productsObj[singleProdKey]
       const products = Object.values(productsObj)
 
+
+      const indexLastItem = currentPage * itemsPerPage;
+      const indexFirstItem = indexLastItem - itemsPerPage;
+      const currentItems = products.slice(indexFirstItem, indexLastItem)
+      const totalItems = products.length;
+
+      for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
+            pageNumbers.push(i);
+      }
+
+      const paginate = (number) => setCurrentPage(number)
+
+      const current = (number) => {
+            if (currentPage == number) return "highlight"
+      }
+
+      console.log('yooooooo',pageNumbers);
       if (!products.length) return null
 
       return (
@@ -109,13 +130,29 @@ export const AllProducts = () => {
 
                   <div id='productCard-holder-AllProducts'>
                         {/* {products} */}
-                        {products
+                        {currentItems
                               .filter((spot) => {
                                     return filter === "" ? spot : spot.category == filter;
                               })
                               .map((product) => (
                                     <ProductCard product={product} key={product.id} />
                               ))}
+
+                  </div>
+                  <div id="page"> Page:
+                        <div id='pageNum-holder'>
+                              {
+
+                                    pageNumbers.map(number => (
+                                          <div onClick={() => paginate(number)} id='pageNum-box' key={number}>
+                                                <div className={current(number)} id='pageNum' >{number}</div>
+                                          </div>
+                                    ))
+
+
+                              }
+
+                        </div>
 
                   </div>
                   <BlogSection />
