@@ -23,3 +23,9 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
