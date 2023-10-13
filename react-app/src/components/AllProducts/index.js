@@ -183,7 +183,12 @@ export const AllProducts = () => {
                         <div id="page"> There's so much more for you to discover
                               <div id='pageNum-holder'>
 
-                              <a href="#filter-holder-AllProducts" onClick={prevPage} id='arrow'>⇠</a>
+                                    {
+                                          currentPage > 1 ?
+                                          <a href="#filter-holder-AllProducts" onClick={prevPage} id='arrow'>⇠</a>
+                                          : null
+                                    }
+
 
                                     {
 
@@ -196,7 +201,12 @@ export const AllProducts = () => {
 
                                     }
 
-                                    <a href="#filter-holder-AllProducts" onClick={nextPage} id='arrow'>⇢</a>
+                                    {
+                                          currentPage < pageNumbers.length ?
+                                          <a href="#filter-holder-AllProducts" onClick={nextPage} id='arrow'>⇢</a>
+                                          : null
+                                    }
+
                               </div>
 
                         </div>
