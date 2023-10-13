@@ -42,11 +42,14 @@ const ReviewFormPage = ({ productId }) => {
             purchasedItem = true
         }
     })
+
+    console.log(userTransactions, 'this');
+
+
     const prodArr = Object.values(products)
 
     const productReviews = revArr.filter((review) => review?.productId === productId)
-    const thisProduct = prodArr[productId]
-
+    const thisProduct = prodArr[productId - 1]
 
 
     const userLikes = []
@@ -124,8 +127,23 @@ const ReviewFormPage = ({ productId }) => {
                         </div>
                     </div>
                 </form >}
-                modalComponent={<ReviewFormModal currentStars={activeRating} productId={productId} />}
-            /> : productReviews.length ? <div className="is-my-product">Here is what your shoppers had to say: </div> : <div>No reviews yet</div>}
+                modalComponent={<ReviewFormModal currentStars={activeRating} productId={productId - 1} />}
+            /> : productReviews.length ? <div className="is-my-product">Here is what your shoppers had to say: </div> : <div className='is-my-product'>This is your product, but there are no reviews yet.</div>}
+
+            {
+                !isMyProduct && purchasedItem == false ?
+
+                    <div className='review-explanation-text' >You can only review products that you have purchased.</div>
+                :
+
+                null
+            }
+
+
+
+
+
+
 
             <div id='reviews-holder-ReviewFormPage'>
 

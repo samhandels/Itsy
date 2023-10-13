@@ -11,8 +11,8 @@ import { useDispatch, useSelector } from 'react-redux'
 const ReviewFormModal = ({ currentStars, productId }) => {
     const dispatch = useDispatch();
     const [review, setReview] = useState("")
-    const [stars, setStars] = useState(0)
-    const [activeStars, setActiveStars] = useState(0)
+    const [stars, setStars] = useState(currentStars)
+    const [activeStars, setActiveStars] = useState(currentStars)
     const [reviewPage, setReviewPage] = useState(1)
     const [errors, setErrors] = useState([])
     const { closeModal } = useModal();
@@ -26,13 +26,14 @@ const ReviewFormModal = ({ currentStars, productId }) => {
     const thisProduct = prodArr[productId]
 
     // console.log("PRODUCTID", productId)
-    // console.log("THISPRODUCTID", thisProduct.id)
+    console.log("THISPRODUCTID", thisProduct)
 
     let reviewInfo = { review, stars }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         // await dispatch(getWaitingReviews())
+        productId += 1;
         const data = await dispatch(postReview(productId, reviewInfo))
         if (data) {
             setErrors(data);
@@ -71,7 +72,7 @@ const ReviewFormModal = ({ currentStars, productId }) => {
                     <div >
                         <div className="review-step-one-upper">
                             <div>
-                                <img className="review-product-image" src={thisProduct.product_image}></img>
+                                <img className="review-product-image" src={thisProduct.image[0]}></img>
                             </div>
                             <div className="review-step-one-upper-right">
                                 <div>{thisProduct && thisProduct.name}</div>
@@ -124,7 +125,11 @@ const ReviewFormModal = ({ currentStars, productId }) => {
                         {stars === 0 && <div className="error">Please rate your purchase</div>}
                         {stars < 3 && <div className="low-review-help">
                             <p>Sorry your experience wasn't great</p>
-                            <p> Please contact the shop owner</p>
+                            <p>We'll let the shop owner know</p>
+                        </div>}
+                        {stars > 2 && <div className="low-review-help">
+                            <p>Woohoo! We're glad everything went well.</p>
+                            <p>We'll let the shop owner know.</p>
                         </div>}
                     </div>
                 </div>}

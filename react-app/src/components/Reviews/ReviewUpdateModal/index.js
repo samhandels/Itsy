@@ -12,7 +12,7 @@ const ReviewUpdateModal = ({ currentStars, productId, reviewId }) => {
     // console.log("CURRENTSTARS", currentStars)
     const dispatch = useDispatch();
     const [review, setReview] = useState("")
-    const [stars, setStars] = useState(0)
+    const [stars, setStars] = useState(currentStars)
     const [activeStars, setActiveStars] = useState(currentStars)
     const [reviewPage, setReviewPage] = useState(1)
     const [errors, setErrors] = useState([])
@@ -24,10 +24,7 @@ const ReviewUpdateModal = ({ currentStars, productId, reviewId }) => {
 
     const products = useSelector((state) => state.products)
     const prodArr = Object.values(products)
-    const thisProduct = prodArr[thisReview?.productId]
-
-
-
+    const thisProduct = prodArr[productId-1]
 
     let handleSubmit;
 
@@ -140,6 +137,10 @@ const ReviewUpdateModal = ({ currentStars, productId, reviewId }) => {
                             <p>Sorry your experience wasn't great.</p>
                             <p>We'll let the shop owner know.</p>
                         </div>}
+                        {stars > 2 && <div className="low-review-help">
+                            <p>Woohoo! We're glad everything went well.</p>
+                            <p>We'll let the shop owner know.</p>
+                        </div>}
                     </div>
                 </div>}
                 {reviewPage === 2 &&
@@ -150,8 +151,9 @@ const ReviewUpdateModal = ({ currentStars, productId, reviewId }) => {
                             <li>if the item matched the description</li>
                             <li>if the item met your expectations</li>
                         </ul>
-                        <textarea className="review-text" type="text" placeholder={review === "" ? "Leave your review here" : ""}
-                            placeHolder={thisReview === "" ? "" : thisReview.review}
+                        <textarea className="review-text" type="text"
+                        // placeholder={review === "" ? "Leave your review here" : ""}
+                            placeholder={thisReview === "" ? "" : thisReview.review}
                             onChange={e => setReview(e.target.value)}>
                         </textarea>
                         <p>By submitting, you agree to Itsy's Review Policy</p>
@@ -173,11 +175,15 @@ const ReviewUpdateModal = ({ currentStars, productId, reviewId }) => {
                             <i className={thisReview.stars >= 4 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
                             <i className={thisReview.stars >= 5 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
                         </div>}
+                        <div id='review-text-final-update' >
+
                         {review === "" ? <div>{thisReview.review}</div> : <div>{review}</div>}
+
+                        </div>
                     </div>
                 }
                 <div className="review-button-container">
-                    {reviewPage === 1 && <button type="button" className="back-button">Exit</button>}
+                    {reviewPage === 1 && <button type="button" className="back-button" onClick={closeModal}>Exit</button>}
                     {reviewPage > 1 && <button type="button" className="back-button" onClick={prevPage}>Go Back</button>}
                     {reviewPage < 3 && <button type="button" className="forward-button" onClick={nextPage}>Next</button>}
                     {reviewPage === 3 && <button type="submit" className="forward-button" >Submit</button>}

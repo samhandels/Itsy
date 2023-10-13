@@ -101,6 +101,12 @@
 
 .is-my-product {
     font-size: 20px;
-    margin-top: 10px;
+    margin-top: 35px;
     margin-left: 30px;
+}
+
+.review-explanation-text {
+    margin-top: 35px;
+    font-size: 20px;
+    margin-left: 10px;
 }

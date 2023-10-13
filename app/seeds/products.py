@@ -72,6 +72,68 @@ def seed_products():
         ownerId=1, name='Mini Wedding Favors' , price=15.99, description='Hand made magnet Mini Flower Bouquets for your wedding.', quantity=50, category='Wedding')
     product34 = Product(
         ownerId=2, name='Mini Skulls' , price=7.99, description='Mini resin skulls: these would be great to collect, use at a Halloween Party or even giving to your trick or treaters.', quantity=25, category='Art')
+    product35 = Product(
+        ownerId=3, name='Damascus Butcher Pocket Knife Set - Worlds Smallest Mini Keychain Knife Tiny' , price=47.99, description='Variety Set - Super fun slicing through tape with Mini Knifes! Keychain Design - Just clip it on and go! Cute miniature knife that fits perfectly on a keychain of backpack. High Quality - Stainless Steel blades with sturdy handles from wood or plastic with a shine polish.', quantity=22, category='Home')
+    product36 = Product(
+        ownerId=2, name='Miniature your name mugs Personalized gifts' , price=7.99, description='Miniature coffee mugs personalized with your name. The perfect gift for your loved ones.', quantity=15, category='Home')
+    product37 = Product(
+        ownerId=1, name='Miniature Large Leaf Tropical Plant' , price=9.99, description='This gorgeous tropical large leaf plant comes with a white planter finished off with tiny pebbles.', quantity=25, category='Home')
+    product38 = Product(
+        ownerId=3, name='Bright Color Beads Name Necklace' , price=37.99, description='Bright and beautiful colorful name necklace, personalized with the name or word of your choice on a sparkling gold filled chain, with a gold heart and and round gold beads at each end. The beads are gorgeous jewel tones with gold letters, sure to be eye catching!', quantity=25, category='Jewelry')
+    product39 = Product(
+        ownerId=2, name='18K GOLD Vintage Birth Month Flower Necklace' , price=147.99, description='18K GOLD Vintage Birth Month Flower Necklace / Birth Flower Square Zodiac / Lotus Floral Pendant Jewelry', quantity=25, category='Jewelry')
+    product40 = Product(
+        ownerId=1, name='Gold Opal Ring' , price=37.99, description='All pieces from Naturally by Grace are hypoallergenic and are nickel and lead free. A great option for those with sensitive skin!', quantity=15, category='Jewelry')
+    product41 = Product(
+        ownerId=3, name='Gold Ring, Stackable Ring, Thin Ring, Sterling Silver Ring, Dainty Ring' , price=7.99, description='These are our Hammered Stacking Bands in Gold Filled, Rose Gold Filled or Recycled Sterling Silver', quantity=20, category='Jewelry')
+    product42 = Product(
+        ownerId=2, name='Mini Ugg Boots' , price=17.99, description='Miniature Ugg Boots, perfect for your small dolls or friends.', quantity=21, category='Clothing')
+    product43 = Product(
+        ownerId=1, name='Tiny Casual Shoes' , price=27.99, description='Miniature Shoes for your dolls and toys', quantity=25, category='Clothing')
+    product44 = Product(
+        ownerId=3, name='Mini Nikes' , price=25.99, description='Mini Nike sports shoes, great for display, or for use.', quantity=20, category='Clothing')
+    product45 = Product(
+        ownerId=2, name='Corduroy pants for 1/6 scale doll clothes' , price=17.99, description='The leggings are made of stretchy corduroy fabric which makes it easy to put on the doll. Bell bottoms and some dolls may require heels or flat shoes depending on the height.', quantity=10, category='Clothing')
+    product46 = Product(
+        ownerId=1, name='Miniature Christmas Ornaments' , price=12.99, description='Bulk Miniature Christmas Ornaments, Grab Bag of Pretty Mini Glass Ball Baubles. 20 or 40 pieces, Assorted Metallic Color Patterns', quantity=20, category='Wedding')
+    product47 = Product(
+        ownerId=3, name='Miniature Beer Can ACCESSORY ONLY' , price=17.99, description='Mini Beer Cans, perfect for parties or events!', quantity=22, category='Wedding')
+    product48 = Product(
+        ownerId=2, name='Miniature Drink Cup' , price=17.99, description='Miniature Drinks, perfect for parties or events!', quantity=10, category='Wedding')
+    product49 = Product(
+        ownerId=1, name='Personalised Love Padlock, Engagement Love Lock' , price=27.99, description='Personalized Lock, a great gift for your engaged friends or loved ones.', quantity=14, category='Wedding')
+    product50 = Product(
+        ownerId=3, name='McDonalds Mini Halloween Buckets' , price=7.99, description='Mini Halloween Buckets, perfect for your dolls or toys as accessories', quantity=16, category='Toys')
+    product51 = Product(
+        ownerId=2, name='Mini Milk Crate' , price=17.99, description='Mini Milk Crates, perfect for use on a miniature set or for any toys/collectibles.', quantity=19, category='Toys')
+    product52 = Product(
+        ownerId=1, name='Gemstone Dragon' , price=27.99, description='Gemstone Dragons, the perfect toys for your kids!', quantity=19, category='Toys')
+    product53 = Product(
+        ownerId=3, name='Fidget Frog Fidget Toy' , price=6.99, description='Fidget Frog Fidget Toy, Articulated Sensory Toy, Tiny Frogs, Flexible Frog, Desk Fidget Toy, Sensory Toy Adult, Stress Toy, Articulated Stim', quantity=12, category='Toys')
+    product54 = Product(
+        ownerId=2, name='Vintage Wildflower Field Wall Art' , price=57.99, description='Vintage Botanical Wildflower Field Wall Art | Framed Wood Signs Print of vintage art. Print is printed directly to painted wood.', quantity=16, category='Art')
+    product55 = Product(
+        ownerId=1, name='Printable Vintage Art Prints for Home Decor' , price=27.99, description='Elevate your home decor to extraordinary heights with our exquisite Eclectic Gallery Set. Immerse yourself in a world of artistic wonder as you explore our mega bundle', quantity=12, category='Art')
+    product56 = Product(
+        ownerId=3, name='Japanese Matsumoto Hoji Frog Set of 3' , price=24.99, description='Japanese Matsumoto Hoji Frog Set of 3, Vintage Frog Woodblock Poster, Ukiyo-e Frog Print, Japanese Frog Printable Wall Art', quantity=11, category='Art')
+    product57 = Product(
+        ownerId=2, name='Miniature Picture Vincent Van Gogh Starry Night' , price=15.99, description='Miniature dollhouse print in an ornate gold frame. This has a magnetic back. It also may be displayed free standing on your favorite table or dresser.', quantity=16, category='Art')
+    product58 = Product(
+        ownerId=1, name='Leather Air Plant Holder' , price=20.99, description='A little leather air-plant holder brings a little bit of greenery into your home or office, without all the mess of a potted plant.', quantity=16, category='Craft')
+    product59 = Product(
+        ownerId=3, name='Beautiful Hardwood Lucet in two sizes for Cord Making' , price=7.99, description='Made from super beautiful hardwoods, this lucet is sure to turn heads! A lucet is an ancient cord making tool used by Vikings and reenactors alike.', quantity=16, category='Craft')
+    product60 = Product(
+        ownerId=2, name='DIY bowling game, wooden bowling pins' , price=18.99, description='Set of 10 wooden bowling pins and 2 balls. They are unfinished and ready for you to paint or stain. ', quantity=19, category='Craft')
+    product61 = Product(
+        ownerId=1, name='Miniature Gift Packages' , price=10.99, description='Three beautiful little packages, lovingly wrapped. All tied up with a fluffy Red Bow.', quantity=20, category='Gifts')
+    product62 = Product(
+        ownerId=3, name='Mini Toy Random Assortment' , price=24.99, description='Mini Toys Random Assortment Qty: 14 random miniature toys per order', quantity=16, category='Gifts')
+    product63 = Product(
+        ownerId=2, name='Micro crochet Dollhouse miniature geese' , price=37.99, description='These cute tiny geese can be gifted to your lovely person on a special date or holiday. You can choose the goose-boy or goose-girl or the couple.', quantity=26, category='Gifts')
+    product64 = Product(
+        ownerId=1, name='Mallard Wooden Duck Figurine' , price=7.99, description='This is a cute little duck that measures about 2.5 inches long and 1 inch tall.', quantity=10, category='Gifts')
+
+
 
     db.session.add(product1)
     db.session.add(product2)
@@ -107,6 +169,38 @@ def seed_products():
     db.session.add(product32)
     db.session.add(product33)
     db.session.add(product34)
+    db.session.add(product35)
+    db.session.add(product36)
+    db.session.add(product37)
+    db.session.add(product38)
+    db.session.add(product39)
+    db.session.add(product40)
+    db.session.add(product41)
+    db.session.add(product42)
+    db.session.add(product43)
+    db.session.add(product44)
+    db.session.add(product45)
+    db.session.add(product46)
+    db.session.add(product47)
+    db.session.add(product48)
+    db.session.add(product49)
+    db.session.add(product50)
+    db.session.add(product50)
+    db.session.add(product51)
+    db.session.add(product52)
+    db.session.add(product53)
+    db.session.add(product54)
+    db.session.add(product55)
+    db.session.add(product56)
+    db.session.add(product57)
+    db.session.add(product58)
+    db.session.add(product59)
+    db.session.add(product60)
+    db.session.add(product61)
+    db.session.add(product62)
+    db.session.add(product63)
+    db.session.add(product64)
+
 
     db.session.commit()
 

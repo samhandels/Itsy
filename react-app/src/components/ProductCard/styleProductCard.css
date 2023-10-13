@@ -41,9 +41,10 @@
 }
 
 #card-image-ProductCard:hover {
-      /* box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
-    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px; */
-    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+      box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+    /* box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px; */
+
 }
 
 #card-name-productCard {
@@ -51,8 +52,8 @@
       font-size: 16px;
       font-weight: 300;
       white-space: nowrap;
-      /* text-overflow: ellipsis;
-      overflow: hidden; */
+      text-overflow: ellipsis;
+      overflow: hidden;
 
 }
 

@@ -97,6 +97,8 @@ export const ProductDetails = () => {
     quantityArr.shift(); //1......productQuantity
   }
 
+  console.log('product-dtail', product);
+
   return (
     <div id="largest-product-detail-div">
       <div id="filter-holder-ProductDetails">

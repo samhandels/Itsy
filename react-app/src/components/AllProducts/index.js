@@ -19,6 +19,10 @@ export const AllProducts = () => {
 
       const [filter, setFilter] = useState("");
 
+      const [ currentPage, setCurrentPage ] = useState(1);
+      const [ itemsPerPage, setItemsPerPage ] = useState(20);
+      const pageNumbers = [];
+
       useEffect(() => {
             dispatch(fetchProducts())
             dispatch(getAllFavorites(user ? user : null))
@@ -34,6 +38,22 @@ export const AllProducts = () => {
       const singleProdKey = "singleProduct"
       delete productsObj[singleProdKey]
       const products = Object.values(productsObj)
+
+
+      const indexLastItem = currentPage * itemsPerPage;
+      const indexFirstItem = indexLastItem - itemsPerPage;
+      const currentItems = products.slice(indexFirstItem, indexLastItem)
+      const totalItems = products.length;
+
+      for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
+            pageNumbers.push(i);
+      }
+
+      const paginate = (number) => setCurrentPage(number)
+
+      const current = (number) => {
+            if (currentPage == number) return "highlight"
+      }
 
       if (!products.length) return null
 
@@ -107,8 +127,10 @@ export const AllProducts = () => {
                         </div>
                   </div>
 
-                  <div id='productCard-holder-AllProducts'>
-                        {/* {products} */}
+                  {
+                        filter ?
+
+                        <div id='productCard-holder-AllProducts'>
                         {products
                               .filter((spot) => {
                                     return filter === "" ? spot : spot.category == filter;
@@ -117,7 +139,52 @@ export const AllProducts = () => {
                                     <ProductCard product={product} key={product.id} />
                               ))}
 
-                  </div>
+                        </div>
+
+                        :
+
+                        <div id='productCard-holder-AllProducts'>
+                        {/* {products} */}
+                        {currentItems
+                              .filter((spot) => {
+                                    return filter === "" ? spot : spot.category == filter;
+                              })
+                              .map((product) => (
+                                    <ProductCard product={product} key={product.id} />
+                              ))}
+
+                        </div>
+
+
+
+                  }
+
+                  {
+                        filter ?
+
+                        null
+
+                        :
+
+                        <div id="page"> There's so much more for you to discover
+                              <div id='pageNum-holder'>
+                                    {
+
+                                          pageNumbers.map(number => (
+                                                <div onClick={() => paginate(number)} className={current(number)} id='pageNum-box' key={number}>
+                                                      <div id='pageNum' >{number}</div>
+                                                </div>
+                                          ))
+
+
+                                    }
+
+                              </div>
+
+                        </div>
+
+                  }
+
                   <BlogSection />
             </div>
 

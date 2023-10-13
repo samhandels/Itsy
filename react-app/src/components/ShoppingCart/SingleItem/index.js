@@ -50,8 +50,8 @@ export default function SingleItems({ product, productInCartNum, allProducts }) 
       <div className="item container row card">
         <div className="owner-item-delete column margin-right">
           <div className=" product-owner row space-between">
-            <div>{product?.ownerName}</div>
-            <div>Contact shop</div>
+            <div>{`${product?.ownerName}'s Store`}</div>
+            {/* <div>Contact shop</div> */}
           </div>
           <div className="item-detail container row">
             <div className="img-delete column">

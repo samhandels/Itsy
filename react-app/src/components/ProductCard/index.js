@@ -46,7 +46,7 @@ export const ProductCard = ({ product }) => {
                                     onClick={() => handleHeartClick(product.id)}></i>
                         )}
 
-                        <div id='card-image-ProductCard'>
+                        <div id='card-image-ProductCard-div'>
                               <img id='card-image-ProductCard' src={product.image[0]} />
                         </div>
                         <div id='card-name-productCard'>
