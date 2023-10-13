@@ -53,6 +53,7 @@ export const AllProducts = () => {
 
       const current = (number) => {
             if (currentPage == number) return "highlight"
+            else return "pageNum-box"
       }
 
       const nextPage = () => {
@@ -180,8 +181,8 @@ export const AllProducts = () => {
 
                         :
 
-                        <div id="page"> There's so much more for you to discover
-                              <div id='pageNum-holder'>
+                        <div id="page"> There's so much more for you to discover...
+                              <div className='pageNum-holder'>
 
                                     {
                                           currentPage > 1 ?
@@ -193,7 +194,7 @@ export const AllProducts = () => {
                                     {
 
                                           pageNumbers.map(number => (
-                                                <a href="#filter-holder-AllProducts" onClick={() => paginate(number)} className={current(number)} id='pageNum-box' key={number}>
+                                                <a href="#filter-holder-AllProducts" onClick={() => paginate(number)} id={current(number)} className='pageNum-box' key={number}>
                                                       <div id='pageNum' >{number}</div>
                                                 </a>
                                           ))
