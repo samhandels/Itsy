@@ -55,7 +55,6 @@ export const AllProducts = () => {
             if (currentPage == number) return "highlight"
       }
 
-      console.log('yooooooo',pageNumbers);
       if (!products.length) return null
 
       return (
@@ -128,7 +127,23 @@ export const AllProducts = () => {
                         </div>
                   </div>
 
-                  <div id='productCard-holder-AllProducts'>
+                  {
+                        filter ?
+
+                        <div id='productCard-holder-AllProducts'>
+                        {products
+                              .filter((spot) => {
+                                    return filter === "" ? spot : spot.category == filter;
+                              })
+                              .map((product) => (
+                                    <ProductCard product={product} key={product.id} />
+                              ))}
+
+                        </div>
+
+                        :
+
+                        <div id='productCard-holder-AllProducts'>
                         {/* {products} */}
                         {currentItems
                               .filter((spot) => {
@@ -138,23 +153,38 @@ export const AllProducts = () => {
                                     <ProductCard product={product} key={product.id} />
                               ))}
 
-                  </div>
-                  <div id="page"> Page:
-                        <div id='pageNum-holder'>
-                              {
-
-                                    pageNumbers.map(number => (
-                                          <div onClick={() => paginate(number)} id='pageNum-box' key={number}>
-                                                <div className={current(number)} id='pageNum' >{number}</div>
-                                          </div>
-                                    ))
+                        </div>
 
 
-                              }
+
+                  }
+
+                  {
+                        filter ?
+
+                        null
+
+                        :
+
+                        <div id="page"> Page:
+                              <div id='pageNum-holder'>
+                                    {
+
+                                          pageNumbers.map(number => (
+                                                <div onClick={() => paginate(number)} id='pageNum-box' key={number}>
+                                                      <div className={current(number)} id='pageNum' >{number}</div>
+                                                </div>
+                                          ))
+
+
+                                    }
+
+                              </div>
 
                         </div>
 
-                  </div>
+                  }
+
                   <BlogSection />
             </div>
 
