@@ -140,7 +140,11 @@
   padding: 5px 10px;
 }
 
-#pageNum-holder {
+.pageNum-holder> a {
+  all: unset
+}
+
+.pageNum-holder {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -168,11 +172,19 @@
   font-size: 20px;
 }
 
-.highlight {
+#highlight {
   color: #f1641e;
-  border-width: 2px;
-  border-color: #222;
-  border-style: solid;
+  border: 2px solid #f1641e;
+  padding: 5px 15px;
+  background-color: #0E0E0E17;
+  border-radius: 50%;
+  margin-left: 5px;
+}
+
+#highlight:hover {
+  background-color: rgb(241, 100, 30);
+  cursor: pointer;
+  color: white;
 }
 
 #arrow {
@@ -187,8 +199,4 @@
   background-color: rgb(241, 100, 30);
   cursor: pointer;
   color: white;
-}
-
-a {
-  all: unset
 }
