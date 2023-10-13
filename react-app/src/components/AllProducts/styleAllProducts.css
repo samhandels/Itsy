@@ -144,11 +144,15 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  margin-left: -5px;
 }
 
 #pageNum-box {
   border: 1px solid rgb(222, 222, 222);
   padding: 5px 15px;
+  background-color: #0E0E0E17;
+  border-radius: 50%;
+  margin-left: 5px;
 }
 
 #pageNum-box:hover {
@@ -159,9 +163,14 @@
 
 #page {
   margin-left: 16px;
-
+  font-weight: 700;
+  margin-top: 30px;
+  font-size: 20px;
 }
 
 .highlight {
   color: #f1641e;
+  border-width: 2px;
+  border-color: #222;
+  border-style: solid;
 }

@@ -166,13 +166,13 @@ export const AllProducts = () => {
 
                         :
 
-                        <div id="page"> Page:
+                        <div id="page"> There's so much more for you to discover
                               <div id='pageNum-holder'>
                                     {
 
                                           pageNumbers.map(number => (
-                                                <div onClick={() => paginate(number)} id='pageNum-box' key={number}>
-                                                      <div className={current(number)} id='pageNum' >{number}</div>
+                                                <div onClick={() => paginate(number)} className={current(number)} id='pageNum-box' key={number}>
+                                                      <div id='pageNum' >{number}</div>
                                                 </div>
                                           ))
 
