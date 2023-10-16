@@ -15,6 +15,14 @@
       font-weight: 200;
 }
 
+.description-length-count, .price-error, .quantity-error{
+      float: right;
+}
+
+.description-length-error, .price-error, .quantity-error{
+      color: red;
+}
+
 #image-div-ProductForm {
       display: grid;
       grid-template-columns: 2fr 3fr;

@@ -9,10 +9,8 @@ transactions = Blueprint('transactions', __name__)
 
 @transactions.route('/current')
 def get_transactions():
-        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
         transaction_items = TransactionItems.query.all()
         response = [trans.to_dict() for trans in transaction_items]
-        print("RESPONSE", response)
         return response
 
 @transactions.route('', methods=["POST"])

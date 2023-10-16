@@ -178,6 +178,7 @@ export const ProductForm = ({ product, formType }) => {
                 </label>
                 <div>
                   {hasSubmitted && errors.name && `${errors.name}`}
+                  <span className="description-length-count">{name ? name.length <= 100 ? 100 - name.length : <span className="description-length-error">Product name is too long. Please try trimming it down.</span> : 100}</span>
                 </div>
               </div>
             </div>
@@ -251,6 +252,7 @@ export const ProductForm = ({ product, formType }) => {
                 </label>
                 <div className="errors">
                   {hasSubmitted && errors.description && `${errors.description}`}
+                  <span className="description-length-count">{description ? description.length <= 500 ? 500 - description.length : <span className="description-length-error">Description is too long. Please try trimming it down.</span> : 500}</span>
                 </div>
 
 
@@ -299,6 +301,7 @@ export const ProductForm = ({ product, formType }) => {
                 </label>
                 <div className="errors">
                   {hasSubmitted && errors.price && `${errors.price}`}
+                  {price > 50000 && <span className="price-error">Maximum price is USD $50,000</span>}
                 </div>
 
 
@@ -335,6 +338,7 @@ export const ProductForm = ({ product, formType }) => {
                 </label>
                 <div className="errors">
                   {hasSubmitted && errors.quantity && `${errors.quantity}`}
+                  {quantity > 100 && <span className="quantity-error">Maximum quantity is 100</span>}
                 </div>
 
 
@@ -353,9 +357,10 @@ export const ProductForm = ({ product, formType }) => {
 
 
 
+          {description && description.length <= 1000 && name && name.length <=100 &&
           <button id='submit-butt-ProductForm' className="black-button" type="submit">
             {formType}
-          </button>
+          </button>}
 
         </form>
 
