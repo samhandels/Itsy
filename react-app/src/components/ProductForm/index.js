@@ -337,7 +337,7 @@ export const ProductForm = ({ product, formType }) => {
                 </label>
                 <div className="errors">
                   {hasSubmitted && errors.quantity && `${errors.quantity}`}
-                  {quantity > 1000 && <span className="quantity-error">Maximum quantity is 1000</span>}
+                  {quantity > 100 && <span className="quantity-error">Maximum quantity is 100</span>}
                 </div>
 
 
