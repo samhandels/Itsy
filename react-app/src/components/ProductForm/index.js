@@ -178,6 +178,7 @@ export const ProductForm = ({ product, formType }) => {
                 </label>
                 <div>
                   {hasSubmitted && errors.name && `${errors.name}`}
+                  <span className="description-length-count">{name ? name.length <= 100 ? 100 - name.length : <span className="description-length-error">Product name is too long. Please try trimming it down.</span> : 100}</span>
                 </div>
               </div>
             </div>
@@ -356,7 +357,7 @@ export const ProductForm = ({ product, formType }) => {
 
 
 
-          {description && description.length <= 1000 &&
+          {description && description.length <= 1000 && name && name.length <=100 &&
           <button id='submit-butt-ProductForm' className="black-button" type="submit">
             {formType}
           </button>}
