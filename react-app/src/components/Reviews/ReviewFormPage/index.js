@@ -16,7 +16,6 @@ import { getTransactionItemsThunk } from '../../../store/transactionReducer'
 
 
 const ReviewFormPage = ({ productId }) => {
-    // console.log(productId)
     const [rating, setRating] = useState()
     const [activeRating, setActiveRating] = useState()
     const [showLikes, setShowLikes] = useState(true)
@@ -43,7 +42,6 @@ const ReviewFormPage = ({ productId }) => {
         }
     })
 
-    console.log(userTransactions, 'this');
 
 
     const prodArr = Object.values(products)

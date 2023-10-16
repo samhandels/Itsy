@@ -176,3 +176,7 @@
 .review-step-3 {
     overflow: hidden;
 }
+
+.review-step-3-text {
+    overflow:auto;
+}

@@ -154,6 +154,7 @@ const ReviewUpdateModal = ({ currentStars, productId, reviewId }) => {
                         <textarea className="review-text" type="text"
                         // placeholder={review === "" ? "Leave your review here" : ""}
                             placeholder={thisReview === "" ? "" : thisReview.review}
+                            maxLength={"1000"}
                             onChange={e => setReview(e.target.value)}>
                         </textarea>
                         <p>By submitting, you agree to Itsy's Review Policy</p>
@@ -175,7 +176,7 @@ const ReviewUpdateModal = ({ currentStars, productId, reviewId }) => {
                             <i className={thisReview.stars >= 4 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
                             <i className={thisReview.stars >= 5 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
                         </div>}
-                        <div id='review-text-final-update' >
+                        <div id='review-text-final-update review-step-3' >
 
                         {review === "" ? <div>{thisReview.review}</div> : <div>{review}</div>}
 

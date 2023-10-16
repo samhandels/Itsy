@@ -25,8 +25,6 @@ const ReviewFormModal = ({ currentStars, productId }) => {
     const prodArr = Object.values(products)
     const thisProduct = prodArr[productId]
 
-    // console.log("PRODUCTID", productId)
-    console.log("THISPRODUCTID", thisProduct)
 
     let reviewInfo = { review, stars }
 
@@ -142,7 +140,7 @@ const ReviewFormModal = ({ currentStars, productId }) => {
                             <li>if the item met your expectations</li>
                         </ul>
                         {review.length === 0 ? <div className="error">* This field is required</div> : <div></div>}
-                        <textarea className="review-text" type="text" minLength={"10"} placeholder={review === "" ? "Leave your review here" : ""}
+                        <textarea className="review-text" type="text" minLength={"10"} maxLength={"1000"} placeholder={review === "" ? "Leave your review here" : ""}
                             onChange={e => setReview(e.target.value)} >
                             {
                                 review === "" ? "" : review
@@ -153,7 +151,7 @@ const ReviewFormModal = ({ currentStars, productId }) => {
                 {
                     reviewPage === 3 &&
                     <div className='review-step review-step-3'>
-                        <p className="review-detail-review">{review}</p>
+                        <p className="review-detail-review review-step-3-text">{review}</p>
                         <div>
                             <i className={stars >= 1 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
                             <i className={stars >= 2 ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
