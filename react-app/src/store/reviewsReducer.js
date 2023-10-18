@@ -19,7 +19,7 @@ const setWaitingReviews = reviews => {
     }
 }
 
-const loadReview = review => {
+export const loadReview = review => {
     return {
         type: GET_REVIEW,
         review

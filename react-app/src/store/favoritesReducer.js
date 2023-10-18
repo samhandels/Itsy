@@ -10,7 +10,7 @@ const loadFavorites = (favorites) => {
     };
 };
 
-const getFavorite = (favorite) => {
+export const getFavorite = (favorite) => {
     return {
         type: GET_FAVORITE,
         favorite,

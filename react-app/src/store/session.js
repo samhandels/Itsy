@@ -1,3 +1,7 @@
+import { getFavorite } from "./favoritesReducer";
+import { loadReview } from "./reviewsReducer";
+import { getItemsAction } from "./shoppingCartReducer";
+
 // constants
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
@@ -63,6 +67,9 @@ export const logout = () => async (dispatch) => {
 	});
 
 	if (response.ok) {
+		dispatch(getItemsAction({}));
+		dispatch(getFavorite({}));
+		dispatch(loadReview({}));
 		dispatch(removeUser());
 	}
 };
