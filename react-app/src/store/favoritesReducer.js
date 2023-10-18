@@ -3,7 +3,7 @@ export const GET_FAVORITE = '/favoritesReducer/getFavorite';
 export const ADD_FAVORITE = '/favoritesReducer/addFavorite';
 export const DELETE_FAVORITE = '/favoritesReducer/deleteFavorite';
 
-const loadFavorites = (favorites) => {
+export const loadFavorites = (favorites) => {
     return {
         type: LOAD_FAVORITES,
         favorites,
@@ -84,9 +84,11 @@ export const favoritesReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_FAVORITES:
             const favoritesState = { ...state, favorites: {} };
-            action.favorites.forEach((favorite) => {
-                favoritesState.favorites[favorite.id] = favorite;
-            });
+            if (action.favorites.length) {
+                action.favorites.forEach((favorite) => {
+                    favoritesState.favorites[favorite.id] = favorite;
+                });
+            }
             return favoritesState;
         case GET_FAVORITE:
             newState = { ...state };

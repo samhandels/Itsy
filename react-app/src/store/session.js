@@ -1,4 +1,4 @@
-import { getFavorite } from "./favoritesReducer";
+import { getFavorite, loadFavorites } from "./favoritesReducer";
 import { loadReview } from "./reviewsReducer";
 import { getItemsAction } from "./shoppingCartReducer";
 
@@ -68,7 +68,7 @@ export const logout = () => async (dispatch) => {
 
 	if (response.ok) {
 		dispatch(getItemsAction({}));
-		dispatch(getFavorite({}));
+		dispatch(loadFavorites([]));
 		dispatch(loadReview({}));
 		dispatch(removeUser());
 	}
