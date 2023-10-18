@@ -70,6 +70,60 @@ While using Itys, users can:
 - Make Itsy mobile friendly
 - Multiple product images per product detail page
 
+## Set Up
+
+- Clone the repo
+
+### Back End Server
+
+- Open up a new terminal
+
+- Open up the project folder
+
+- Install dependencies
+
+  ```bash
+  pipenv install -r requirements.txt
+  ```
+
+- Create a **.env** file based on the example
+
+- Run the following commands to open your pipenv, migrate the database, seed the database, and run the Flask app
+
+  ```bash
+  pipenv shell
+  ```
+
+  ```bash
+  flask db upgrade
+  ```
+
+  ```bash
+  flask seed all
+  ```
+
+  ```bash
+  flask run
+  ```
+
+### Front End
+
+- Open up another new terminal
+
+- Direct to the <code>react-app</code> folder
+
+- Install dependencies
+
+  ```bash
+  npm install
+  ```
+
+- Start the React App
+
+  ```bash
+  npm start
+  ```
+
 # Contact Us
 | Aila Lu | Juvenal Burguillos | Sam Handelsman | Erica Zimmerman |
 | --- | --- | --- | --- |
