@@ -19,10 +19,10 @@
     width: 90%;
 }
 
-.review-details:hover {
+/* .review-details:hover {
     box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
     rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
-}
+} */
 
 .review-container>button {
     background-color: transparent;
@@ -80,6 +80,8 @@
     font-weight: 200;
     font-size: 20px;
     margin-top: 10px;
+    width: 550px;
+    overflow-wrap: break-word;
 }
 
 #createdAt-ReviewFormPage {
