@@ -157,6 +157,11 @@ export const ProductDetails = () => {
               <div id="how-many-productDetails">
 
               {
+                !sessionUser ?
+                <div> Please log-in or sign-up to buy this item </div>
+
+                :
+
                 sessionUser && product?.ownerId !== sessionUser?.id ?
 
                 <label>
@@ -175,7 +180,7 @@ export const ProductDetails = () => {
 
                 :
 
-                <div> You can't purchase your own products. </div>
+                <div> You can't purchase your own products </div>
 
 
               }
