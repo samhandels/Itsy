@@ -1,6 +1,7 @@
 import React from 'react';
 import './Footer.css';
 import githubLogo from './github.png';
+import linkedinLogo from './linkedin.png'
 import redux_icon from './redux_icon.png';
 import flask_icon from './flask_icon.png';
 
@@ -17,11 +18,11 @@ function Footer() {
             <div className="team-section">
                 <div className="team-members">
                     <div className="team-member">
-                        <img className='member-image' src="https://media.licdn.com/dms/image/C4E03AQHw8P2euo3WZQ/profile-displayphoto-shrink_200_200/0/1517638025526?e=1698883200&v=beta&t=lnYjzvYCaP07-P7VWIQKpe-kwv-p3pCzFJhImAhd2fs" alt="Team Member 1" />
+                        <img className='member-image' src="https://media.licdn.com/dms/image/C4E03AQHw8P2euo3WZQ/profile-displayphoto-shrink_800_800/0/1517638026286?e=1707955200&v=beta&t=k7H9RadikmiduWjucCb4lFRtMMULMb-KuB1CUXYbMVc" alt="Team Member 1" />
                         <div className='member-name' >Aila Lu</div>
                         <div>
                             <a href="https://www.linkedin.com/in/ailalutw/" target="_blank" rel="noopener noreferrer">
-                                <img className='linkedin-logo' src="https://iconsplace.com/wp-content/uploads/_icons/ffffff/256/png/linkedin-icon-18-256.png" alt="linkedin"/>
+                                <img className='linkedin-logo' src={linkedinLogo} alt="linkedin"/>
                             </a>
                             <a href="https://github.com/AilaLu" target="_blank" rel="noopener noreferrer">
                                 <img className='github-logo' src={githubLogo} alt="GitHub" />
@@ -35,10 +36,10 @@ function Footer() {
                     </div>
 
                     <div className="team-member">
-                        <img className='member-image' src="https://media.licdn.com/dms/image/D4D03AQGMEVQhqGxcbA/profile-displayphoto-shrink_200_200/0/1693629991248?e=1698883200&v=beta&t=n5TFtRYB-ZRPx5xtASouGMj9e4Ho7N-uAo7zMQwbn6Y" alt="Team Member 2" />
+                        <img className='member-image' src="https://media.licdn.com/dms/image/D4D35AQG5hxVDtX4fwQ/profile-framedphoto-shrink_800_800/0/1695923599058?e=1703358000&v=beta&t=vzXPyO2Dqy8yHrGuEy2Pq4tcVKfHWlxaRplQW86yy4Y" alt="Team Member 2" />
                         <div className='member-name' >Juvenal Burguillos</div>
                             <a href="https://www.linkedin.com/in/juvenal-burguillos-b550041ba/" target="_blank" rel="noopener noreferrer">
-                                <img className='linkedin-logo' src="https://iconsplace.com/wp-content/uploads/_icons/ffffff/256/png/linkedin-icon-18-256.png" alt="linkedin"/>
+                                <img className='linkedin-logo' src={linkedinLogo} alt="linkedin"/>
                             </a>
                             <a href="https://github.com/juvie3" target="_blank" rel="noopener noreferrer">
                                 <img className='github-logo' src={githubLogo} alt="GitHub" />
@@ -51,10 +52,10 @@ function Footer() {
                     </div>
 
                     <div className="team-member">
-                        <img className='member-image' src="https://media.licdn.com/dms/image/C5603AQF0GSgWR49DHw/profile-displayphoto-shrink_200_200/0/1568408227822?e=1698883200&v=beta&t=lqj5Bb0FKkdi2f-MsDgd8aVbgyfvPwg8kiMSLp1N4Mg" alt="Team Member 3" />
+                        <img className='member-image' src="https://media.licdn.com/dms/image/D5635AQFka-oIHsLiwQ/profile-framedphoto-shrink_800_800/0/1695923438445?e=1703358000&v=beta&t=MhChKFxKGGbT5zNVpadYm-XaIFVNKOlaOAJrw-SCotc" alt="Team Member 3" />
                         <div className='member-name' >Sam Handelsman</div>
                             <a href="https://www.linkedin.com/in/sam-handelsman/" target="_blank" rel="noopener noreferrer">
-                                <img className='linkedin-logo' src="https://iconsplace.com/wp-content/uploads/_icons/ffffff/256/png/linkedin-icon-18-256.png" alt="linkedin"/>
+                                <img className='linkedin-logo' src={linkedinLogo} alt="linkedin"/>
                             </a>
                             <a href="https://github.com/samhandels" target="_blank" rel="noopener noreferrer">
                                 <img className='github-logo' src={githubLogo} alt="GitHub" />
@@ -67,10 +68,10 @@ function Footer() {
                     </div>
 
                     <div className="team-member">
-                        <img className='member-image' src="https://media.licdn.com/dms/image/D4E03AQExbSO-orZanQ/profile-displayphoto-shrink_200_200/0/1693175484136?e=1698883200&v=beta&t=WTw5NNcWTcE_n7hmuwTnahMyQRDSwNS1r1dHJsxXHL8" alt="Team Member 4" />
+                        <img className='member-image' src="https://media.licdn.com/dms/image/D4E03AQExbSO-orZanQ/profile-displayphoto-shrink_800_800/0/1693175484469?e=1707955200&v=beta&t=IHvXNzRwWeLmyrJRrHY43et84JUjYjpjuDIqM-fxYEE" alt="Team Member 4" />
                         <div className='member-name' >Erica Zimmerman</div>
                             <a href="https://www.linkedin.com/in/erica-zimmerman-15168a28a/" target="_blank" rel="noopener noreferrer">
-                                <img className='linkedin-logo' src="https://iconsplace.com/wp-content/uploads/_icons/ffffff/256/png/linkedin-icon-18-256.png" alt="linkedin"/>
+                                <img className='linkedin-logo' src={linkedinLogo} alt="linkedin"/>
                             </a>
                             <a href="https://github.com/ez111640" target="_blank" rel="noopener noreferrer">
                                 <img className='github-logo' src={githubLogo} alt="GitHub" />
