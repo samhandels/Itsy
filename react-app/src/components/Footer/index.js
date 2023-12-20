@@ -18,7 +18,7 @@ function Footer() {
             <div className="team-section">
                 <div className="team-members">
                     <div className="team-member">
-                        <img className='member-image' src="https://media.licdn.com/dms/image/C4E03AQHw8P2euo3WZQ/profile-displayphoto-shrink_800_800/0/1517638026286?e=1707955200&v=beta&t=k7H9RadikmiduWjucCb4lFRtMMULMb-KuB1CUXYbMVc" alt="Team Member 1" />
+                        <img className='member-image' src="https://media.licdn.com/dms/image/D5635AQHBzC9zFBnuvA/profile-framedphoto-shrink_800_800/0/1702753344206?e=1703700000&v=beta&t=9E1D4SOUE9sUrBxmFabgmnA41UljqdsBt_qcgYtICfg" alt="Team Member 1" />
                         <div className='member-name' >Aila Lu</div>
                         <div>
                             <a href="https://www.linkedin.com/in/ailalutw/" target="_blank" rel="noopener noreferrer">
