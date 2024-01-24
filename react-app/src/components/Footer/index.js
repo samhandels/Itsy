@@ -5,6 +5,10 @@ import linkedinLogo from './linkedin.png'
 import redux_icon from './redux_icon.png';
 import flask_icon from './flask_icon.png';
 
+import aila from './aila.jpeg'
+import juvi from './juvi.jpeg'
+import sam from './sam.jpeg'
+
 function Footer() {
     return (
         <footer className="footer-container">
@@ -18,7 +22,7 @@ function Footer() {
             <div className="team-section">
                 <div className="team-members">
                     <div className="team-member">
-                        <img className='member-image' src="https://media.licdn.com/dms/image/C4E03AQHw8P2euo3WZQ/profile-displayphoto-shrink_800_800/0/1517638026286?e=1707955200&v=beta&t=k7H9RadikmiduWjucCb4lFRtMMULMb-KuB1CUXYbMVc" alt="Team Member 1" />
+                        <img className='member-image' src={aila} alt="Team Member 1" />
                         <div className='member-name' >Aila Lu</div>
                         <div>
                             <a href="https://www.linkedin.com/in/ailalutw/" target="_blank" rel="noopener noreferrer">
@@ -36,7 +40,7 @@ function Footer() {
                     </div>
 
                     <div className="team-member">
-                        <img className='member-image' src="https://media.licdn.com/dms/image/D4D35AQG5hxVDtX4fwQ/profile-framedphoto-shrink_800_800/0/1695923599058?e=1703358000&v=beta&t=vzXPyO2Dqy8yHrGuEy2Pq4tcVKfHWlxaRplQW86yy4Y" alt="Team Member 2" />
+                        <img className='member-image' src={juvi} alt="Team Member 2" />
                         <div className='member-name' >Juvenal Burguillos</div>
                             <a href="https://www.linkedin.com/in/juvenal-burguillos-b550041ba/" target="_blank" rel="noopener noreferrer">
                                 <img className='linkedin-logo' src={linkedinLogo} alt="linkedin"/>
@@ -52,7 +56,7 @@ function Footer() {
                     </div>
 
                     <div className="team-member">
-                        <img className='member-image' src="https://media.licdn.com/dms/image/D5635AQFka-oIHsLiwQ/profile-framedphoto-shrink_800_800/0/1695923438445?e=1703358000&v=beta&t=MhChKFxKGGbT5zNVpadYm-XaIFVNKOlaOAJrw-SCotc" alt="Team Member 3" />
+                        <img className='member-image' src={sam} alt="Team Member 3" />
                         <div className='member-name' >Sam Handelsman</div>
                             <a href="https://www.linkedin.com/in/sam-handelsman/" target="_blank" rel="noopener noreferrer">
                                 <img className='linkedin-logo' src={linkedinLogo} alt="linkedin"/>
